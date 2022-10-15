@@ -13,4 +13,12 @@ export const testColors = {
   gray: "#6c757d",
   grayDark: "#343a40",
   black: "#000",
+  themeDark: {
+    background: "#2D2D2D",
+    accent: "#A07F5D",
+    accentHover: "#B58F68",
+    textPrimary: "#FCFCFC",
+    textSecondary: "#9A9A9A",
+    stroke: "#535353",
+  },
 };

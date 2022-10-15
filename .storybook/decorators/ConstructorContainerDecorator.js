@@ -1,7 +1,19 @@
 import React from "react";
-import { ConstructorContainer } from "./ConstructorContainer";
-import { testColors } from "../../utils/constants";
+import { ConstructorContainer } from "../../src/containers";
+import { testColors } from "../../src/utils/constants";
 
+const createArrow = ({
+  borderRadius = "10px",
+  bgColor = testColors.gray,
+  textColor = testColors.cyan,
+  borderColor = testColors.black,
+  borderWidth = "1px",
+  hoverBgColor = testColors.grayDark,
+  hoverTextColor = testColors.blue,
+  hoverBorderColor = testColors.orange,
+}) => {
+  return {};
+};
 const createButton = ({
   borderRadius = "10px",
   bgColor = testColors.gray,
@@ -48,8 +60,19 @@ const createTypography = ({
 
 const buttons = {
   primary: createButton({}),
-  secondary: createButton({ borderRadius: "0" }),
-  tertiary: createButton({ borderRadius: "5px", borderWidth: "0" }),
+  secondary: createButton({
+    borderRadius: "0",
+    bgColor: testColors.green,
+    textColor: testColors.black,
+    hoverBgColor: testColors.orange,
+  }),
+  tertiary: createButton({
+    borderRadius: "1000px",
+    borderWidth: "0",
+    bgColor: testColors.cyan,
+    textColor: testColors.red,
+    hoverBgColor: testColors.pink,
+  }),
 };
 
 const typographies = {
@@ -101,54 +124,26 @@ const typographies = {
 };
 
 const customColors = {
-  1: testColors.black,
-  2: testColors.cyan,
-  3: testColors.green,
-  4: testColors.orange,
-  5: testColors.pink,
-  6: testColors.indigo,
-  7: testColors.grayDark,
-  8: testColors.yellow,
-  9: testColors.purple,
-  10: testColors.blue,
+  accent: testColors.themeDark.accent,
+  "accent-hover": testColors.themeDark.accentHover,
+  background: testColors.themeDark.accentHover,
+  "text-primary": testColors.themeDark.textPrimary,
+  stroke: testColors.themeDark.textSecondary,
+  "text-secondary": testColors.themeDark.textSecondary,
+  "extra-1": testColors.blue,
+  "extra-2": testColors.cyan,
+  "extra-3": testColors.grayDark,
+  "extra-4": testColors.green,
 };
 
-export default {
-  title: "Constructor Container",
-  component: ConstructorContainer,
-  args: {
-    buttons,
-    typographies,
-    customColors,
-  },
-};
-
-const Story = (args) => {
-  return <ConstructorContainer {...args} />;
-};
-
-export const Ui_Kit_Theme_Custom_Showcase = Story.bind({});
-
-Ui_Kit_Theme_Custom_Showcase.args = {
-  children: (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "20px",
-        marginTop: "20px",
-        alignItems: "center",
-      }}
+export const ConstructorContainerDecorator = (Story) => {
+  return (
+    <ConstructorContainer
+      customColors={customColors}
+      buttons={buttons}
+      typographies={typographies}
     >
-      <button className="button button-primary">Button Primary</button>
-      <button className="button button-secondary">Button Secondary</button>
-      <button className="button button-tertiary">Button Tertiary</button>
-      <p className="text-accent typography-h2">Typography H2</p>
-      <p className="typography-h3 text-custom-4">Typography H3</p>
-      <p className="typography-h4">Typography H4</p>
-      <p className="typography-h5">Typography H5</p>
-      <p className="typography-p1">Typography P1</p>
-      <p className="typography-p2">Typography P2</p>
-    </div>
-  ),
+      <Story />
+    </ConstructorContainer>
+  );
 };

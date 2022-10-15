@@ -1,0 +1,155 @@
+@import "../../styles/mixins.scss";
+
+constructor-container {
+  .typography-h2 {
+    line-height: var(--typography-h2-line-height);
+    letter-spacing: var(--typography-h2-letter-spacing);
+    font-family: var(--typography-h2-font-family);
+    text-transform: var(--typography-h2-text-transform);
+    font-size: var(--typography-h2-font-size-mobile);
+
+    @include tablet {
+      font-size: var(--typography-h2-font-size-tablet);
+    }
+
+    @include laptop {
+      font-size: var(--typography-h2-font-size-laptop);
+    }
+
+    @include desktop {
+      font-size: var(--typography-h2-font-size-desktop);
+    }
+  }
+
+  .typography-h3 {
+    line-height: var(--typography-h3-line-height);
+    letter-spacing: var(--typography-h3-letter-spacing);
+    font-family: var(--typography-h3-font-family);
+    text-transform: var(--typography-h3-text-transform);
+    font-size: var(--typography-h3-font-size-mobile);
+
+    @include tablet {
+      font-size: var(--typography-h3-font-size-tablet);
+    }
+
+    @include laptop {
+      font-size: var(--typography-h3-font-size-laptop);
+    }
+
+    @include desktop {
+      font-size: var(--typography-h3-font-size-desktop);
+    }
+  }
+
+  .typography-h4 {
+    line-height: var(--typography-h4-line-height);
+    letter-spacing: var(--typography-h4-letter-spacing);
+    font-family: var(--typography-h4-font-family);
+    text-transform: var(--typography-h4-text-transform);
+    font-size: var(--typography-h4-font-size-mobile);
+
+    @include tablet {
+      font-size: var(--typography-h4-font-size-tablet);
+    }
+
+    @include laptop {
+      font-size: var(--typography-h4-font-size-laptop);
+    }
+
+    @include desktop {
+      font-size: var(--typography-h4-font-size-desktop);
+    }
+  }
+
+  .typography-h5 {
+    line-height: var(--typography-h5-line-height);
+    letter-spacing: var(--typography-h5-letter-spacing);
+    font-family: var(--typography-h5-font-family);
+    text-transform: var(--typography-h5-text-transform);
+    font-size: var(--typography-h5-font-size-mobile);
+
+    @include tablet {
+      font-size: var(--typography-h5-font-size-tablet);
+    }
+
+    @include laptop {
+      font-size: var(--typography-h5-font-size-laptop);
+    }
+
+    @include desktop {
+      font-size: var(--typography-h5-font-size-desktop);
+    }
+  }
+
+  .typography-p1 {
+    line-height: var(--typography-p1-line-height);
+    letter-spacing: var(--typography-p1-letter-spacing);
+    font-family: var(--typography-p1-font-family);
+    text-transform: var(--typography-p1-text-transform);
+    font-size: var(--typography-p1-font-size-mobile);
+
+    @include tablet {
+      font-size: var(--typography-p1-font-size-tablet);
+    }
+
+    @include laptop {
+      font-size: var(--typography-p1-font-size-laptop);
+    }
+
+    @include desktop {
+      font-size: var(--typography-p1-font-size-desktop);
+    }
+  }
+
+  .typography-p2 {
+    line-height: var(--typography-p2-line-height);
+    letter-spacing: var(--typography-p2-letter-spacing);
+    font-family: var(--typography-p2-font-family);
+    text-transform: var(--typography-p2-text-transform);
+    font-size: var(--typography-p2-font-size-mobile);
+
+    @include tablet {
+      font-size: var(--typography-p2-font-size-tablet);
+    }
+
+    @include laptop {
+      font-size: var(--typography-p2-font-size-laptop);
+    }
+
+    @include desktop {
+      font-size: var(--typography-p2-font-size-desktop);
+    }
+  }
+
+  .typography-accent {
+    color: var(--color-accent);
+  }
+
+  .typography-primary {
+    color: var(--color-text-primary);
+  }
+
+  .typography-secondary {
+    color: var(--color-text-secondary);
+  }
+
+  .typography-extra-1 {
+    color: var(--custom-theme-color-extra-1);
+  }
+
+  .typography-extra-2 {
+    color: var(--custom-theme-color-extra-2);
+  }
+
+  .typography-extra-3 {
+    color: var(--custom-theme-color-extra-3);
+  }
+
+  .typography-extra-4 {
+    color: var(--custom-theme-color-extra-4);
+  }
+
+  .typography-injected {
+    color: var(--injected-typography-color);
+  }
+}

@@ -2,6 +2,8 @@ import React from "react";
 
 import "./ConstructorContainer.scss";
 
+import { Button, Typography } from "../../components";
+
 const getButtonVars = (button, type) => {
   return {
     [`--button-${type}-border-radius`]: button.borderRadius,

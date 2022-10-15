@@ -3,36 +3,59 @@
 constructor-container {
   display: block;
 
-  .theme-light {
+  &[data-theme="dark"],
+  &[data-theme="light"],
+  [data-theme="light"],
+  [data-theme="dark"] {
     --color-accent: #a07f5d;
     --color-accent-hover: #b58f68;
+  }
+
+  &[data-theme="dark"],
+  [data-theme="dark"] {
+    --color-text-primary: #fcfcfc;
+    --color-text-secondary: #9a9a9a;
+    --color-background: #2d2d2d;
+    --color-stroke: #535353;
+    --stroke-border-radius: 0;
+    --button-bg: var(--color-accent);
+    --button-hover-bg: var(--color-accent-hover);
+    --button-border: none;
+    --button-border-radius: 0;
+    --button-hover-border: none;
+    --button-text: var(--color-text-primary);
+  }
+
+  &[data-theme="light"],
+  [data-theme="light"] {
     --color-text-primary: #2d2d2d;
     --color-text-secondary: #8a8a8a;
     --color-background: #fcfcfc;
     --color-stroke: #dedede;
     --stroke-border-radius: 10px;
+    --button-bg: var(--color-background);
+    --button-hover-bg: var(--color-background);
+    --button-border: 1px solid var(--color-accent);
+    --button-border-radius: 10px;
+    --button-hover-border: 1px solid var(--color-accent-hover);
+    --button-text: var(--color-text-primary);
   }
 
-  .theme-dark {
-    --color-accent: #a07f5d;
-    --color-accent-hover: #b58f68;
-    --color-text-primary: #fcfcfc;
-    --color-text-secondary: #9a9a9a;
-    --color-background: #2d2d2d;
-    --color-stroke: #535353;
-    --stroke-frame-border-radius: 0;
-  }
-
-  .text-accent {
-    color: var(--color-accent);
-  }
-
-  .text-primary {
-    color: var(--text-primary);
-  }
-
-  .text-secondary {
-    color: var(--text-secondary);
+  &[data-theme="custom"],
+  [data-theme="custom"] {
+    --color-accent: var(--custom-theme-color-accent);
+    --color-accent-hover: var(--custom-theme-color-accent-hover);
+    --color-text-primary: var(--custom-theme-color-text-primary);
+    --color-text-secondary: var(--custom-theme-color-text-secondary);
+    --color-background: var(--custom-theme-color-background);
+    --color-stroke: var(--custom-theme-color-stroke);
+    --stroke-border-radius: var(--custom-theme-stroke-border-radius);
+    --button-bg: var(--color-accent);
+    --button-hover-bg: var(--color-accent-hover);
+    --button-border: none;
+    --button-border-radius: 0;
+    --button-hover-border: none;
+    --button-text: var(--color-text-primary);
   }
 
   .stroke-frame {
@@ -44,232 +67,73 @@ constructor-container {
     background-color: var(--color-background);
   }
 
-  .button {
-    pointer-events: auto;
-    padding: 0 15px;
+  .arrow {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50px;
-    width: 100%;
-    transition: all 0.25s;
     cursor: pointer;
+    width: 50px;
+    height: 50px;
 
-    @include tablet {
-      width: fit-content;
-      min-width: 220px;
-    }
-
-    font-size: 14px;
     @include desktop {
-      font-size: 16px;
+      width: 60px;
+      height: 60px;
     }
 
-    &:hover {
-      font-weight: 500;
+    &[data-direction="next"] {
+      &::after {
+        content: ">";
+      }
+    }
+
+    &[data-direction="prev"] {
+      &::after {
+        content: "<";
+      }
+      transform: rotate(180deg);
     }
   }
 
-  .button-primary {
-    border-radius: var(--button-primary-border-radius);
-    background-color: var(--button-primary-bg-color);
-    color: var(--button-primary-text-color);
-    border-color: var(--button-primary-border-color);
-    border-width: var(--button-primary-border-width);
+  .arrow-primary {
+    border-radius: var(--arrow-primary-border-radius);
+    background-color: var(--arrow-primary-bg-color);
+    color: var(--arrow-primary-text-color);
+    border-color: var(--arrow-primary-border-color);
+    border-width: var(--arrow-primary-border-width);
     border-style: solid;
     &:hover {
-      background-color: var(--button-primary-hover-bg-color);
-      color: var(--button-primary-hover-text-color);
-      border-color: var(--button-primary-hover-border-color);
+      background-color: var(--arrow-primary-hover-bg-color);
+      color: var(--arrow-primary-hover-text-color);
+      border-color: var(--arrow-primary-hover-border-color);
     }
   }
 
-  .button-secondary {
-    border-radius: var(--button-secondary-border-radius);
-    background-color: var(--button-secondary-bg-color);
-    color: var(--button-secondary-text-color);
-    border-color: var(--button-secondary-border-color);
-    border-width: var(--button-secondary-border-width);
+  .arrow-secondary {
+    border-radius: var(--arrow-secondary-border-radius);
+    background-color: var(--arrow-secondary-bg-color);
+    color: var(--arrow-secondary-text-color);
+    border-color: var(--arrow-secondary-border-color);
+    border-width: var(--arrow-secondary-border-width);
     border-style: solid;
     &:hover {
-      background-color: var(--button-secondary-hover-bg-color);
-      color: var(--button-secondary-hover-text-color);
-      border-color: var(--button-secondary-hover-border-color);
+      background-color: var(--arrow-secondary-hover-bg-color);
+      color: var(--arrow-secondary-hover-text-color);
+      border-color: var(--arrow-secondary-hover-border-color);
     }
   }
 
-  .button-tertiary {
-    border-radius: var(--button-tertiary-border-radius);
-    background-color: var(--button-tertiary-bg-color);
-    color: var(--button-tertiary-text-color);
-    border-color: var(--button-tertiary-border-color);
-    border-width: var(--button-tertiary-border-width);
+  .arrow-tertiary {
+    border-radius: var(--arrow-tertiary-border-radius);
+    background-color: var(--arrow-tertiary-bg-color);
+    color: var(--arrow-tertiary-text-color);
+    border-color: var(--arrow-tertiary-border-color);
+    border-width: var(--arrow-tertiary-border-width);
     border-style: solid;
     &:hover {
-      background-color: var(--button-tertiary-hover-bg-color);
-      color: var(--button-tertiary-hover-text-color);
-      border-color: var(--button-tertiary-hover-border-color);
+      background-color: var(--arrow-tertiary-hover-bg-color);
+      color: var(--arrow-tertiary-hover-text-color);
+      border-color: var(--arrow-tertiary-hover-border-color);
     }
-  }
-
-  .typography-h2 {
-    line-height: var(--typography-h2-line-height);
-    letter-spacing: var(--typography-h2-letter-spacing);
-    font-family: var(--typography-h2-font-family);
-    text-transform: var(--typography-h2-text-transform);
-    font-size: var(--typography-h2-font-size-mobile);
-
-    @include tablet {
-      font-size: var(--typography-h2-font-size-tablet);
-    }
-
-    @include laptop {
-      font-size: var(--typography-h2-font-size-laptop);
-    }
-
-    @include desktop {
-      font-size: var(--typography-h2-font-size-desktop);
-    }
-  }
-
-  .typography-h3 {
-    line-height: var(--typography-h3-line-height);
-    letter-spacing: var(--typography-h3-letter-spacing);
-    font-family: var(--typography-h3-font-family);
-    text-transform: var(--typography-h3-text-transform);
-    font-size: var(--typography-h3-font-size-mobile);
-
-    @include tablet {
-      font-size: var(--typography-h3-font-size-tablet);
-    }
-
-    @include laptop {
-      font-size: var(--typography-h3-font-size-laptop);
-    }
-
-    @include desktop {
-      font-size: var(--typography-h3-font-size-desktop);
-    }
-  }
-
-  .typography-h4 {
-    line-height: var(--typography-h4-line-height);
-    letter-spacing: var(--typography-h4-letter-spacing);
-    font-family: var(--typography-h4-font-family);
-    text-transform: var(--typography-h4-text-transform);
-    font-size: var(--typography-h4-font-size-mobile);
-
-    @include tablet {
-      font-size: var(--typography-h4-font-size-tablet);
-    }
-
-    @include laptop {
-      font-size: var(--typography-h4-font-size-laptop);
-    }
-
-    @include desktop {
-      font-size: var(--typography-h4-font-size-desktop);
-    }
-  }
-
-  .typography-h5 {
-    line-height: var(--typography-h5-line-height);
-    letter-spacing: var(--typography-h5-letter-spacing);
-    font-family: var(--typography-h5-font-family);
-    text-transform: var(--typography-h5-text-transform);
-    font-size: var(--typography-h5-font-size-mobile);
-
-    @include tablet {
-      font-size: var(--typography-h5-font-size-tablet);
-    }
-
-    @include laptop {
-      font-size: var(--typography-h5-font-size-laptop);
-    }
-
-    @include desktop {
-      font-size: var(--typography-h5-font-size-desktop);
-    }
-  }
-
-  .typography-p1 {
-    line-height: var(--typography-p1-line-height);
-    letter-spacing: var(--typography-p1-letter-spacing);
-    font-family: var(--typography-p1-font-family);
-    text-transform: var(--typography-p1-text-transform);
-    font-size: var(--typography-p1-font-size-mobile);
-
-    @include tablet {
-      font-size: var(--typography-p1-font-size-tablet);
-    }
-
-    @include laptop {
-      font-size: var(--typography-p1-font-size-laptop);
-    }
-
-    @include desktop {
-      font-size: var(--typography-p1-font-size-desktop);
-    }
-  }
-
-  .typography-p2 {
-    line-height: var(--typography-p2-line-height);
-    letter-spacing: var(--typography-p2-letter-spacing);
-    font-family: var(--typography-p2-font-family);
-    text-transform: var(--typography-p2-text-transform);
-    font-size: var(--typography-p2-font-size-mobile);
-
-    @include tablet {
-      font-size: var(--typography-p2-font-size-tablet);
-    }
-
-    @include laptop {
-      font-size: var(--typography-p2-font-size-laptop);
-    }
-
-    @include desktop {
-      font-size: var(--typography-p2-font-size-desktop);
-    }
-  }
-
-  .text-custom-1 {
-    color: var(--custom-theme-color-1);
-  }
-
-  .text-custom-2 {
-    color: var(--custom-theme-color-2);
-  }
-
-  .text-custom-3 {
-    color: var(--custom-theme-color-3);
-  }
-
-  .text-custom-4 {
-    color: var(--custom-theme-color-4);
-  }
-
-  .text-custom-5 {
-    color: var(--custom-theme-color-5);
-  }
-
-  .text-custom-6 {
-    color: var(--custom-theme-color-6);
-  }
-
-  .text-custom-7 {
-    color: var(--custom-theme-color-7);
-  }
-
-  .text-custom-8 {
-    color: var(--custom-theme-color-8);
-  }
-
-  .text-custom-9 {
-    color: var(--custom-theme-color-9);
-  }
-
-  .text-custom-10 {
-    color: var(--custom-theme-color-10);
   }
 
   .bg-custom-1 {
@@ -310,5 +174,9 @@ constructor-container {
 
   .bg-custom-10 {
     background-color: var(--custom-theme-color-10);
+  }
+
+  .bg-injected {
+    background-color: var(--injected-bg-color);
   }
 }
