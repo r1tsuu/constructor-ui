@@ -67,7 +67,7 @@ constructor-container {
     background-color: var(--color-background);
   }
 
-  .arrow {
+  .arrow-cube {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,60 +80,74 @@ constructor-container {
       height: 60px;
     }
 
-    &[data-direction="next"] {
-      &::after {
-        content: ">";
+    &::after {
+      content: ">";
+      &[data-direction="prev"] {
+        transform: rotate(180deg);
       }
     }
+  }
 
-    &[data-direction="prev"] {
-      &::after {
-        content: "<";
+  .arrow-cube-default {
+  }
+
+  .arrow-cube-primary {
+    border-radius: var(--arrow-cube-primary-border-radius);
+    background-color: var(--arrow-cube-primary-bg-color);
+    color: var(--arrow-cube-primary-text-color);
+    border-color: var(--arrow-cube-primary-border-color);
+    border-width: var(--arrow-cube-primary-border-width);
+    border-style: solid;
+    &:hover {
+      background-color: var(--arrow-cube-primary-hover-bg-color);
+      color: var(--arrow-cube-primary-hover-text-color);
+      border-color: var(--arrow-cube-primary-hover-border-color);
+    }
+  }
+
+  .arrow-cube-secondary {
+    border-radius: var(--arrow-cube-secondary-border-radius);
+    background-color: var(--arrow-cube-secondary-bg-color);
+    color: var(--arrow-cube-secondary-text-color);
+    border-color: var(--arrow-cube-secondary-border-color);
+    border-width: var(--arrow-cube-secondary-border-width);
+    border-style: solid;
+    &:hover {
+      background-color: var(--arrow-cube-secondary-hover-bg-color);
+      color: var(--arrow-cube-secondary-hover-text-color);
+      border-color: var(--arrow-cube-secondary-hover-border-color);
+    }
+  }
+
+  .arrow-cube-tertiary {
+    border-radius: var(--arrow-cube-tertiary-border-radius);
+    background-color: var(--arrow-cube-tertiary-bg-color);
+    color: var(--arrow-cube-tertiary-text-color);
+    border-color: var(--arrow-cube-tertiary-border-color);
+    border-width: var(--arrow-cube-tertiary-border-width);
+    border-style: solid;
+    &:hover {
+      background-color: var(--arrow-cube-tertiary-hover-bg-color);
+      color: var(--arrow-cube-tertiary-hover-text-color);
+      border-color: var(--arrow-cube-tertiary-hover-border-color);
+    }
+  }
+
+  .arrow-long {
+    &::after {
+      content: "⟶";
+      &[data-direction="prev"] {
+        transform: rotate(180deg);
       }
-      transform: rotate(180deg);
     }
   }
 
-  .arrow-primary {
-    border-radius: var(--arrow-primary-border-radius);
-    background-color: var(--arrow-primary-bg-color);
-    color: var(--arrow-primary-text-color);
-    border-color: var(--arrow-primary-border-color);
-    border-width: var(--arrow-primary-border-width);
-    border-style: solid;
-    &:hover {
-      background-color: var(--arrow-primary-hover-bg-color);
-      color: var(--arrow-primary-hover-text-color);
-      border-color: var(--arrow-primary-hover-border-color);
-    }
+  .arrow-long-default {
+    color: var(--color-text-primary);
   }
 
-  .arrow-secondary {
-    border-radius: var(--arrow-secondary-border-radius);
-    background-color: var(--arrow-secondary-bg-color);
-    color: var(--arrow-secondary-text-color);
-    border-color: var(--arrow-secondary-border-color);
-    border-width: var(--arrow-secondary-border-width);
-    border-style: solid;
-    &:hover {
-      background-color: var(--arrow-secondary-hover-bg-color);
-      color: var(--arrow-secondary-hover-text-color);
-      border-color: var(--arrow-secondary-hover-border-color);
-    }
-  }
-
-  .arrow-tertiary {
-    border-radius: var(--arrow-tertiary-border-radius);
-    background-color: var(--arrow-tertiary-bg-color);
-    color: var(--arrow-tertiary-text-color);
-    border-color: var(--arrow-tertiary-border-color);
-    border-width: var(--arrow-tertiary-border-width);
-    border-style: solid;
-    &:hover {
-      background-color: var(--arrow-tertiary-hover-bg-color);
-      color: var(--arrow-tertiary-hover-text-color);
-      border-color: var(--arrow-tertiary-hover-border-color);
-    }
+  .arrow-long-custom {
+    custom: var(--arrow-long-custom-text-color);
   }
 
   .bg-custom-1 {

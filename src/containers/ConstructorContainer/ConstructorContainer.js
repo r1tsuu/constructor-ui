@@ -30,6 +30,24 @@ const getTypographyVars = (typography, type) => {
   };
 };
 
+const getArrowCubeVars = (arrowCube, type) => {
+  return {
+    [`--arrow-cube-${type}-border-radius`]: arrowCube.borderRadius,
+    [`--arrow-cube-${type}-bg-color`]: arrowCube.bgColor,
+    [`--arrow-cube-${type}-text-color`]: arrowCube.textColor,
+    [`--arrow-cube-${type}-border-color`]: arrowCube.borderColor,
+    [`--arrow-cube-${type}-border-width`]: arrowCube.borderWidth,
+    [`--arrow-cube-${type}-hover-bg-color`]: arrowCube.hoverBgColor,
+    [`--arrow-cube-${type}-hover-border-color`]: arrowCube.hoverBorderColor,
+  };
+};
+
+const getArrowLongVars = (arrowLong) => {
+  return {
+    [`--arrow-long-custom-text-color`]: arrowLong.textColor,
+  };
+};
+
 const getCustomColorVar = (color, type) => {
   return {
     [`--custom-theme-color-${type}`]: color,
@@ -50,10 +68,13 @@ export const ConstructorContainer = ({
   buttons,
   typographies,
   customColors,
+  arrowsCube,
+  arrowLong,
   children,
 }) => {
   return (
     <constructor-container
+      className="preflight"
       style={{
         ...resolveAllVars({
           components: buttons,
@@ -67,6 +88,11 @@ export const ConstructorContainer = ({
           components: customColors,
           getVars: getCustomColorVar,
         }),
+        ...resolveAllVars({
+          components: arrowsCube,
+          getVars: getArrowCubeVars,
+        }),
+        ...getArrowLongVars(arrowLong),
       }}
     >
       {children}
