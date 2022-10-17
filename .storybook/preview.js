@@ -1,6 +1,5 @@
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import "../src/styles/index.scss";
-import { ConstructorContainerDecorator } from "./decorators";
 
 export const parameters = {
   viewport: {
@@ -44,5 +43,3 @@ export const parameters = {
     ],
   },
 };
-
-export const decorators = [ConstructorContainerDecorator];

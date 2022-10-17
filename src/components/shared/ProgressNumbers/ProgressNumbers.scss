@@ -1,0 +1,27 @@
+$transformValue: 300%;
+$transformTransition: transform 300ms;
+
+.progress-numbers {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+
+  .current-value-enter {
+    transform: translate(-$transformValue, $transformValue);
+  }
+
+  .current-value-enter-active {
+    transform: translate(0, 0);
+    transition: $transformTransition;
+  }
+
+  .current-value-exit {
+    transform: translate(0, 0);
+  }
+
+  .current-value-exit-active {
+    transform: translate($transformValue, -$transformValue);
+    transition: $transformTransition;
+  }
+}

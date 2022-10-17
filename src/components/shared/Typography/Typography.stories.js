@@ -1,9 +1,10 @@
 import React from "react";
+import { UiKitContainerDecorator } from "../../../../.storybook/decorators";
 
 import { Typography } from "./Typography";
 
 export default {
-  title: "Typography",
+  title: "UI KIT/Typography",
   component: Typography,
   argTypes: {
     "data-theme": {
@@ -31,6 +32,7 @@ export default {
       table: { disable: true },
     },
   },
+  decorators: [UiKitContainerDecorator],
   args: {
     "data-theme": "dark",
     children: "Текст типография",

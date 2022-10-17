@@ -22,3 +22,9 @@ export const testColors = {
     stroke: "#535353",
   },
 };
+
+export const mediaQueries = {
+  minTablet: "(min-width: 768px)",
+  minLaptop: "(min-width: 1150px)",
+  minDesktop: "(min-width: 1550px)",
+};

@@ -1,19 +1,35 @@
 import React from "react";
-import { ConstructorContainer } from "../../src/containers";
+import { UiKitContainer } from "../../src/containers";
 import { testColors } from "../../src/utils/constants";
 
-const createArrow = ({
+const createArrowCube = ({
   borderRadius = "10px",
   bgColor = testColors.gray,
-  textColor = testColors.cyan,
+  iconColor = testColors.cyan,
   borderColor = testColors.black,
   borderWidth = "1px",
   hoverBgColor = testColors.grayDark,
   hoverTextColor = testColors.blue,
   hoverBorderColor = testColors.orange,
 }) => {
-  return {};
+  return {
+    borderRadius,
+    bgColor,
+    iconColor,
+    borderColor,
+    borderWidth,
+    hoverBgColor,
+    hoverTextColor,
+    hoverBorderColor,
+  };
 };
+
+const createArrowLong = ({ iconColor = testColors.green }) => {
+  return {
+    iconColor,
+  };
+};
+
 const createButton = ({
   borderRadius = "10px",
   bgColor = testColors.gray,
@@ -61,8 +77,8 @@ const createTypography = ({
 const buttons = {
   primary: createButton({}),
   secondary: createButton({
-    borderRadius: "0",
-    bgColor: testColors.green,
+    borderRadius: "20px",
+    bgColor: testColors.blue,
     textColor: testColors.black,
     hoverBgColor: testColors.orange,
   }),
@@ -126,24 +142,43 @@ const typographies = {
 const customColors = {
   accent: testColors.themeDark.accent,
   "accent-hover": testColors.themeDark.accentHover,
-  background: testColors.themeDark.accentHover,
+  background: testColors.themeDark.background,
   "text-primary": testColors.themeDark.textPrimary,
   stroke: testColors.themeDark.textSecondary,
   "text-secondary": testColors.themeDark.textSecondary,
   "extra-1": testColors.blue,
   "extra-2": testColors.cyan,
   "extra-3": testColors.grayDark,
-  "extra-4": testColors.green,
+  "extra-4": testColors.cyan,
 };
 
-export const ConstructorContainerDecorator = (Story) => {
+const arrowsCube = {
+  primary: createArrowCube({}),
+  secondary: createArrowCube({
+    bgColor: testColors.green,
+    borderRadius: "0",
+    iconColor: testColors.red,
+  }),
+  tertiary: createArrowCube({
+    bgColor: testColors.orange,
+    iconColor: testColors.pink,
+    borderColor: testColors.blue,
+    hoverBgColor: testColors.cyan,
+  }),
+};
+
+const arrowLong = createArrowLong({});
+
+export const uiKitContainerDecoratorProps = {
+  customColors,
+  buttons,
+  typographies,
+  arrowsCube,
+  arrowLong,
+};
+
+export const UiKitContainerDecorator = (Story) => {
   return (
-    <ConstructorContainer
-      customColors={customColors}
-      buttons={buttons}
-      typographies={typographies}
-    >
-      <Story />
-    </ConstructorContainer>
+    <UiKitContainer {...uiKitContainerDecoratorProps}>{Story()}</UiKitContainer>
   );
 };

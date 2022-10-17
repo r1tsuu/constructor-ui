@@ -1,1 +1,1 @@
-export * from "./ConstructorContainerDecorator";
+export * from "./UiKitContainerDecorator";

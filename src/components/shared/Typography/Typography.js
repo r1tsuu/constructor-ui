@@ -9,6 +9,7 @@ const resolveTypographyAttrs = ({
   type,
   className,
   style,
+  dange,
 }) => {
   const getClassName = (colorClassName) =>
     clsx(`typography-${type}`, colorClassName, className);
@@ -48,15 +49,23 @@ export const Typography = ({
   color = "default",
   children,
   className,
+  isHTML = false,
   style,
   ...props
 }) => {
   return (
     <As
       {...resolveTypographyAttrs({ themeColor, color, type, className })}
+      {...(isHTML
+        ? {
+            dangerouslySetInnerHTML: {
+              __html: children,
+            },
+          }
+        : {
+            children,
+          })}
       {...props}
-    >
-      {children}
-    </As>
+    />
   );
 };

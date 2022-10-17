@@ -1,8 +1,6 @@
-import React from "react";
+import { useEffect } from "react";
 
-import "./ConstructorContainer.scss";
-
-import { Button, Typography } from "../../components";
+import "./UiKitContainer.scss";
 
 const getButtonVars = (button, type) => {
   return {
@@ -34,7 +32,7 @@ const getArrowCubeVars = (arrowCube, type) => {
   return {
     [`--arrow-cube-${type}-border-radius`]: arrowCube.borderRadius,
     [`--arrow-cube-${type}-bg-color`]: arrowCube.bgColor,
-    [`--arrow-cube-${type}-text-color`]: arrowCube.textColor,
+    [`--arrow-cube-${type}-icon-color`]: arrowCube.iconColor,
     [`--arrow-cube-${type}-border-color`]: arrowCube.borderColor,
     [`--arrow-cube-${type}-border-width`]: arrowCube.borderWidth,
     [`--arrow-cube-${type}-hover-bg-color`]: arrowCube.hoverBgColor,
@@ -44,7 +42,7 @@ const getArrowCubeVars = (arrowCube, type) => {
 
 const getArrowLongVars = (arrowLong) => {
   return {
-    [`--arrow-long-custom-text-color`]: arrowLong.textColor,
+    [`--arrow-long-custom-icon-color`]: arrowLong.iconColor,
   };
 };
 
@@ -64,7 +62,14 @@ const resolveAllVars = ({ components, getVars }) => {
   );
 };
 
-export const ConstructorContainer = ({
+const insertVariables = (varsObj) => {
+  // eslint-disable-next-line no-unused-vars
+  for (const [varKey, varValue] of Object.entries(varsObj)) {
+    document.documentElement.style.setProperty(varKey, varValue);
+  }
+};
+
+export const UiKitContainer = ({
   buttons,
   typographies,
   customColors,
@@ -72,30 +77,31 @@ export const ConstructorContainer = ({
   arrowLong,
   children,
 }) => {
-  return (
-    <constructor-container
-      className="preflight"
-      style={{
-        ...resolveAllVars({
+  const jsonVars = JSON.stringify({ buttons, typographies, customColors });
+  useEffect(() => {
+    insertVariables(
+      Object.assign(
+        resolveAllVars({
           components: buttons,
           getVars: getButtonVars,
         }),
-        ...resolveAllVars({
+        resolveAllVars({
           components: typographies,
           getVars: getTypographyVars,
         }),
-        ...resolveAllVars({
+        resolveAllVars({
           components: customColors,
           getVars: getCustomColorVar,
         }),
-        ...resolveAllVars({
+        resolveAllVars({
           components: arrowsCube,
           getVars: getArrowCubeVars,
         }),
-        ...getArrowLongVars(arrowLong),
-      }}
-    >
-      {children}
-    </constructor-container>
-  );
+        getArrowLongVars(arrowLong)
+      )
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [jsonVars]);
+
+  return children;
 };

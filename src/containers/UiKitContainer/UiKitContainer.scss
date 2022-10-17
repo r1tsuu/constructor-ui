@@ -1,0 +1,166 @@
+@import "../../styles/mixins.scss";
+
+html {
+  --button-padding: 0 15px;
+  --button-height: 50px;
+  --button-font-size: 14px;
+  --button-width: 100%;
+  --button-min-width: 0;
+  --arrow-cube-dimensions: 50px;
+  // --arrow-long-font-size: 36px;
+  --arrow-long-width: 34px;
+  --arrow-long-height: 16px;
+  --typography-h2-font-size: var(--typography-h2-font-size-mobile);
+  --typography-h3-font-size: var(--typography-h3-font-size-mobile);
+  --typography-h4-font-size: var(--typography-h4-font-size-mobile);
+  --typography-h5-font-size: var(--typography-h5-font-size-mobile);
+  --typography-p1-font-size: var(--typography-p1-font-size-mobile);
+  --typography-p2-font-size: var(--typography-p2-font-size-mobile);
+
+  @include tablet {
+    --button-width: auto;
+    --button-min-width: 220px;
+    --button-font-size: 16px;
+    --typography-h2-font-size: var(--typography-h2-font-size-tablet);
+    --typography-h3-font-size: var(--typography-h3-font-size-tablet);
+    --typography-h4-font-size: var(--typography-h4-font-size-tablet);
+    --typography-h5-font-size: var(--typography-h5-font-size-tablet);
+    --typography-p1-font-size: var(--typography-p1-font-size-tablet);
+    --typography-p2-font-size: var(--typography-p2-font-size-tablet);
+  }
+
+  @include laptop {
+    --typography-h2-font-size: var(--typography-h2-font-size-laptop);
+    --typography-h3-font-size: var(--typography-h3-font-size-laptop);
+    --typography-h4-font-size: var(--typography-h4-font-size-laptop);
+    --typography-h5-font-size: var(--typography-h5-font-size-laptop);
+    --typography-p1-font-size: var(--typography-p1-font-size-laptop);
+    --typography-p2-font-size: var(--typography-p2-font-size-laptop);
+  }
+
+  @include desktop {
+    --arrow-cube-dimensions: 60px;
+    --typography-h2-font-size: var(--typography-h2-font-size-desktop);
+    --typography-h3-font-size: var(--typography-h3-font-size-desktop);
+    --typography-h4-font-size: var(--typography-h4-font-size-desktop);
+    --typography-h5-font-size: var(--typography-h5-font-size-desktop);
+    --typography-p1-font-size: var(--typography-p1-font-size-desktop);
+    --typography-p2-font-size: var(--typography-p2-font-size-desktop);
+  }
+}
+
+[data-theme="light"],
+[data-theme="dark"],
+[data-theme="custom"] {
+  --arrow-cube-default-icon-color: var(--color-text-primary);
+  --button-default-text-color: var(--color-text-primary);
+  --arrow-long-default-icon-color: var(--color-text-primary);
+}
+
+[data-theme="light"],
+[data-theme="dark"] {
+  --color-accent: #a07f5d;
+  --color-accent-hover: #b58f68;
+}
+
+[data-theme="dark"] {
+  --color-text-primary: #fcfcfc;
+  --color-text-secondary: #9a9a9a;
+  --color-background: #2d2d2d;
+  --color-stroke: #535353;
+}
+
+[data-theme="dark"],
+[data-theme="custom"] {
+  --stroke-border-radius: 0;
+  --button-default-bg-color: var(--color-accent);
+  --button-default-hover-bg: var(--color-accent-hover);
+  --button-default-border: none;
+  --button-default-border-radius: 0;
+  --button-default-hover-border: none;
+  --arrow-cube-default-bg-color: var(--color-accent);
+  --arrow-cube-default-hover-bg: var(--color-accent-hover);
+  --arrow-cube-default-border: none;
+  --arrow-cube-cube-default-border-radius: 0;
+  --arrow-cube-default-hover-border: none;
+}
+
+[data-theme="light"] {
+  --color-text-primary: #2d2d2d;
+  --color-text-secondary: #8a8a8a;
+  --color-background: #fcfcfc;
+  --color-stroke: #dedede;
+  --stroke-border-radius: 10px;
+  --button-default-bg-color: var(--color-background);
+  --button-default-hover-bg: var(--color-background);
+  --button-default-border: 1px solid var(--color-accent);
+  --button-default-border-radius: 10px;
+  --button-default-hover-border: 1px solid var(--color-accent-hover);
+  --arrow-cube-default-bg-color: var(--color-background);
+  --arrow-cube-default-hover-bg: var(--color-background);
+  --arrow-cube-default-border: 1px solid var(--color-accent);
+  --arrow-cube-default-border-radius: 10px;
+  --arrow-cube-default-hover-border: 1px solid var(--color-accent-hover);
+}
+
+[data-theme="custom"] {
+  --color-accent: var(--custom-theme-color-accent);
+  --color-accent-hover: var(--custom-theme-color-accent-hover);
+  --color-text-primary: var(--custom-theme-color-text-primary);
+  --color-text-secondary: var(--custom-theme-color-text-secondary);
+  --color-background: var(--custom-theme-color-background);
+  --color-stroke: var(--custom-theme-color-stroke);
+}
+
+.stroke-frame {
+  border: 1px solid var(--color-stroke);
+  border-radius: var(--card-stroke-frame-radius);
+}
+
+.with-background {
+  background-color: var(--color-background);
+}
+
+.bg-custom-1 {
+  background-color: var(--custom-theme-color-1);
+}
+
+.bg-custom-2 {
+  background-color: var(--custom-theme-color-2);
+}
+
+.bg-custom-3 {
+  background-color: var(--custom-theme-color-3);
+}
+
+.bg-custom-4 {
+  background-color: var(--custom-theme-color-4);
+}
+
+.bg-custom-5 {
+  background-color: var(--custom-theme-color-5);
+}
+
+.bg-custom-6 {
+  background-color: var(--custom-theme-color-6);
+}
+
+.bg-custom-7 {
+  background-color: var(--custom-theme-color-7);
+}
+
+.bg-custom-8 {
+  background-color: var(--custom-theme-color-8);
+}
+
+.bg-custom-9 {
+  background-color: var(--custom-theme-color-9);
+}
+
+.bg-custom-10 {
+  background-color: var(--custom-theme-color-10);
+}
+
+.bg-injected {
+  background-color: var(--injected-bg-color);
+}

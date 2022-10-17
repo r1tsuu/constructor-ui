@@ -1,8 +1,9 @@
 import React from "react";
+import { UiKitContainerDecorator } from "../../../../.storybook/decorators";
 import { Button } from "./Button";
 
 export default {
-  title: "Button",
+  title: "UI KIT/Button",
   component: Button,
   argTypes: {
     "data-theme": {
@@ -21,6 +22,7 @@ export default {
       table: { disable: true },
     },
   },
+  decorators: [UiKitContainerDecorator],
   args: {
     "data-theme": "dark",
     type: "default",
