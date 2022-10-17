@@ -1,5 +1,5 @@
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
-import "../src/styles/index.scss";
+import "../src/styles/preflight.scss";
 
 export const parameters = {
   viewport: {

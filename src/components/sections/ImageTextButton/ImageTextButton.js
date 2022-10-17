@@ -15,10 +15,10 @@ export const ImageTextButton = ({
   photoSource,
   photoMobileSource,
   buttonName,
+  colors,
+  typographies,
+  buttonPosition,
 }) => {
   const isMinLaptop = useMediaQuery(mediaQueries.minLaptop);
-
-  const renderTextBlock = () => {
-    return <></>;
-  };
+  return <section className="image-text-button"></section>;
 };

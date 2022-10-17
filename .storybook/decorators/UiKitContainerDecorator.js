@@ -179,6 +179,8 @@ export const uiKitContainerDecoratorProps = {
 
 export const UiKitContainerDecorator = (Story) => {
   return (
-    <UiKitContainer {...uiKitContainerDecoratorProps}>{Story()}</UiKitContainer>
+    <UiKitContainer {...uiKitContainerDecoratorProps}>
+      <div className="preflight">{Story()}</div>
+    </UiKitContainer>
   );
 };
