@@ -1,7 +1,5 @@
 import { useEffect } from "react";
 
-import "./UiKitContainer.scss";
-
 const getButtonVars = (button, type) => {
   return {
     [`--button-${type}-border-radius`]: button.borderRadius,

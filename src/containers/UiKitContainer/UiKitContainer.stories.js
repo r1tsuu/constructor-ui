@@ -1,7 +1,12 @@
 import React from "react";
 import { uiKitContainerDecoratorProps } from "../../../.storybook/decorators";
-import { Button, Typography } from "../../components";
-import { Arrow } from "../../components/Arrow/Arrow";
+import {
+  Button,
+  Typography,
+  Arrow,
+  Section,
+  ContentContainer,
+} from "../../components";
 import { UiKitContainer } from "./UiKitContainer";
 
 export default {
@@ -20,22 +25,21 @@ export default {
 
 const Wrapper = ({ children, dataTheme }) => {
   return (
-    <div
-      className="with-background"
-      style={{
-        padding: "0 50px",
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",
-        gap: "50px",
-      }}
-      data-theme={dataTheme}
-    >
-      {children}
-    </div>
+    <Section theme={dataTheme}>
+      <ContentContainer
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          flexDirection: "column",
+          gap: "50px",
+        }}
+      >
+        {children}
+      </ContentContainer>
+    </Section>
   );
 };
 

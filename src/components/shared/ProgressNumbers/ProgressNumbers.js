@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import { Typography } from "../Typography";
 
-import "./ProgressNumbers.scss";
+import styles from "./ProgressNumbers.module.scss";
 
 export const ProgressNumbers = ({ value, maxValue, className, ...props }) => {
   const [isAnimating, setAnimating] = useState(false);
@@ -24,18 +24,23 @@ export const ProgressNumbers = ({ value, maxValue, className, ...props }) => {
   }, []);
 
   return (
-    <div className={clsx("progress-numbers", className)} {...props}>
+    <div className={clsx(styles.wrapper, className)} {...props}>
       <CSSTransition
-        classNames="current-value"
+        classNames={{
+          enter: styles.valueEnter,
+          enterActive: styles.valueEnterActive,
+          exit: styles.valueExit,
+          exitActive: styles.valueExitActive,
+        }}
         in={!isAnimating}
         unmountOnExit
         timeout={300}
       >
-        <Typography className="current-value" as={"span"} type={"h3"}>
+        <Typography as={"span"} type={"h3"}>
           {value}/
         </Typography>
       </CSSTransition>
-      <Typography as={"span"} type={"h4"} themeColor={"secondary"}>
+      <Typography as={"span"} type={"h4"} color={"secondary"}>
         {maxValue}
       </Typography>
     </div>

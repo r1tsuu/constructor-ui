@@ -19,26 +19,27 @@ export default {
         type: "select",
       },
     },
-    themeColor: {
-      options: ["primary", "secondary", "accent"],
-      control: {
-        type: "select",
-      },
-    },
     color: {
       control: "color",
     },
     as: {
       table: { disable: true },
     },
+    isHTML: {
+      table: {
+        disable: true,
+      },
+    },
   },
   decorators: [UiKitContainerDecorator],
   args: {
     "data-theme": "dark",
     children: "Текст типография",
-    themeColor: "primary",
+    color: "primary",
     type: "h2",
   },
 };
 
-export const Default = (args) => <Typography {...args} />;
+export const Default = ({ color, ...args }) => (
+  <Typography color={color.replace("text-", "")} {...args} />
+);

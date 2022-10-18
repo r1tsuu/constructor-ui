@@ -1,5 +1,5 @@
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
-import "../src/styles/preflight.scss";
+import "../src/styles/ui-kit-vars.scss";
 
 export const parameters = {
   viewport: {
@@ -12,6 +12,10 @@ export const parameters = {
       date: /Date$/,
     },
     presetColors: [
+      {
+        color: "background",
+        title: "theme background",
+      },
       {
         color: "text-primary",
         title: "theme text-primary",

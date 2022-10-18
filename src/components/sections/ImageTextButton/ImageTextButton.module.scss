@@ -1,0 +1,73 @@
+@import "../../../styles/mixins";
+
+@include laptop {
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "photoWrapper subTitle"
+      "photoWrapper title"
+      "photoWrapper description"
+      "photoWrapper buttonWrapper";
+    column-gap: 73px;
+  }
+
+  .reverse {
+    column-gap: 125px;
+    grid-template-areas:
+      "subTitle photoWrapper"
+      "title photoWrapper"
+      "description photoWrapper"
+      "buttonWrapper photoWrapper";
+  }
+}
+
+.subTitle {
+  grid-area: subTitle;
+  margin-bottom: 15px;
+
+  @include laptop {
+    margin-top: 37.5px;
+  }
+}
+
+.title {
+  grid-area: title;
+  margin-bottom: 30px;
+}
+
+.photoWrapper {
+  grid-area: photoWrapper;
+  margin-bottom: 30px;
+  @include laptop {
+    margin-bottom: 0;
+  }
+}
+
+.description {
+  grid-area: description;
+  margin-bottom: 30px;
+  @include tablet {
+    max-width: 400px;
+  }
+}
+
+.buttonWrapper {
+  grid-area: buttonWrapper;
+  @include laptop {
+    display: flex;
+    margin-bottom: 37.5px;
+  }
+}
+
+.left {
+  justify-content: flex-start;
+}
+
+.center {
+  justify-content: center;
+}
+
+.right {
+  justify-content: flex-end;
+}

@@ -1,0 +1,27 @@
+$transformValue: 300%;
+$transformTransition: transform 300ms;
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.valueEnter {
+  transform: translate(-$transformValue, $transformValue);
+}
+
+.valueEnterActive {
+  transform: translate(0, 0);
+  transition: $transformTransition;
+}
+
+.valueExit {
+  transform: translate(0, 0);
+}
+
+.valueExitActive {
+  transform: translate($transformValue, -$transformValue);
+  transition: $transformTransition;
+}

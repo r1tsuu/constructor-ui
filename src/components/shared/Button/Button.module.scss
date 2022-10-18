@@ -1,4 +1,4 @@
-.button {
+.base {
   pointer-events: auto;
   display: flex;
   justify-content: center;
@@ -17,7 +17,7 @@
   }
 }
 
-.button-default {
+.default {
   background-color: var(--button-default-bg-color);
   border: var(--button-default-border);
   border-radius: var(--button-default-border-radius);
@@ -28,7 +28,7 @@
   }
 }
 
-.button-primary {
+.primary {
   border-radius: var(--button-primary-border-radius);
   background-color: var(--button-primary-bg-color);
   color: var(--button-primary-text-color);
@@ -42,7 +42,7 @@
   }
 }
 
-.button-secondary {
+.secondary {
   border-radius: var(--button-secondary-border-radius);
   background-color: var(--button-secondary-bg-color);
   color: var(--button-secondary-text-color);
@@ -56,7 +56,7 @@
   }
 }
 
-.button-tertiary {
+.tertiary {
   border-radius: var(--button-tertiary-border-radius);
   background-color: var(--button-tertiary-bg-color);
   color: var(--button-tertiary-text-color);

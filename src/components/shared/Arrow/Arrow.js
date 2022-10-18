@@ -2,7 +2,16 @@ import React from "react";
 import clsx from "clsx";
 import { CubeIcon, LongIcon } from "./arrow-icons";
 
-import "./Arrow.scss";
+import styles from "./Arrow.module.scss";
+
+const arrowTypesStyles = {
+  "cube-default": [styles.cube, styles.cubeDefault],
+  "cube-primary": [styles.cube, styles.cubePrimary],
+  "cube-secondary": [styles.cube, styles.cubeSecondary],
+  "cube-tertiary": [styles.cube, styles.cubeTertiary],
+  "long-default": [styles.long, styles.longDefault],
+  "long-custom": [styles.long, styles.longCustom],
+};
 
 export const Arrow = ({
   isPrev,
@@ -15,11 +24,7 @@ export const Arrow = ({
 
   return (
     <As
-      className={clsx(
-        isCube ? "arrow-cube" : "arrow-long",
-        `arrow-${type}`,
-        className
-      )}
+      className={clsx(styles.baseStyles, arrowTypesStyles[type], className)}
       data-direction={isPrev ? "prev" : "next"}
       {...props}
     >

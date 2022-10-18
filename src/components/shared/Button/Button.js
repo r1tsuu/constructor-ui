@@ -1,18 +1,19 @@
 import React from "react";
 import clsx from "clsx";
 
-import "./Button.scss";
+import styles from "./Button.module.scss";
 
 export const Button = ({
   type = "default",
   as: As = "button",
   className,
+  label,
   children,
   ...props
 }) => {
   return (
-    <As className={clsx("button", `button-${type}`, className)} {...props}>
-      {children}
+    <As className={clsx(styles.base, styles[type], className)} {...props}>
+      {label || children}
     </As>
   );
 };

@@ -1,61 +1,48 @@
 import React from "react";
 import clsx from "clsx";
 
-import "./Typography.scss";
+import styles from "./Typography.module.scss";
 
-const resolveTypographyAttrs = ({
-  themeColor,
-  color,
-  type,
-  className,
-  style,
-  dange,
-}) => {
-  const getClassName = (colorClassName) =>
-    clsx(`typography-${type}`, colorClassName, className);
-
-  if (!color || color === "default") {
-    return {
-      className: getClassName(`typography-${themeColor}`),
-      style,
-    };
-  }
-
-  if (
-    ["text-primary", "text-secondary", "accent", "primary, secondary"].includes(
-      color
-    ) ||
-    color.startsWith("extra-")
-  ) {
-    return {
-      className: getClassName(`typography-${color.replace("text-", "")}`),
-      style,
-    };
-  }
-
-  return {
-    className: getClassName("typography-injected"),
-    style: {
-      "--injected-typography-color": color,
-      ...style,
-    },
-  };
-};
+const themeColors = [
+  "text-primary",
+  "text-secondary",
+  "primary",
+  "secondary",
+  "accent",
+  "extra-1",
+  "extra-2",
+  "extra-3",
+  "extra-4",
+];
 
 export const Typography = ({
   type = "h3",
   as: As = "p",
-  themeColor = "primary",
-  color = "default",
+  color = "primary",
   children,
   className,
-  isHTML = false,
+  isHTML = true,
   style,
   ...props
 }) => {
+  const isThemeColor = themeColors.includes(color);
+
   return (
     <As
-      {...resolveTypographyAttrs({ themeColor, color, type, className })}
+      className={clsx(
+        styles[type],
+        isThemeColor ? styles[color.replace("text-", "")] : styles.injected,
+        className
+      )}
+      style={
+        !isThemeColor
+          ? {
+              "--injected-color": color,
+
+              ...style,
+            }
+          : style
+      }
       {...(isHTML
         ? {
             dangerouslySetInnerHTML: {

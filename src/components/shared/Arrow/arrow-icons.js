@@ -9,7 +9,6 @@ export const CubeIcon = () => (
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      className="arrow-icon"
       d="M1.125 1.25L4.875 5L1.125 8.75"
       stroke-linecap="round"
       stroke-linejoin="round"

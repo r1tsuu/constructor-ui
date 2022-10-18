@@ -1,16 +1,15 @@
-.arrow-cube,
-.arrow-long {
+.baseStyles {
   cursor: pointer;
   &[data-direction="prev"] {
     transform: rotate(180deg);
   }
   transition: 0.25s;
-  .arrow-icon {
+  path {
     stroke: var(--arrow-icon-color);
   }
 }
 
-.arrow-cube {
+.cube {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,7 +17,7 @@
   height: var(--arrow-cube-dimensions);
 }
 
-.arrow-cube-default {
+.cubeDefault {
   border-radius: var(--arrow-cube-default-border-radius);
   background-color: var(--arrow-cube-default-bg-color);
   border: var(--arrow-cube-default-border);
@@ -31,7 +30,7 @@
   --arrow-icon-color: var(--arrow-cube-default-icon-color);
 }
 
-.arrow-cube-primary {
+.cubePrimary {
   border-radius: var(--arrow-cube-primary-border-radius);
   background-color: var(--arrow-cube-primary-bg-color);
   border-color: var(--arrow-cube-primary-border-color);
@@ -45,7 +44,7 @@
   --arrow-icon-color: var(--arrow-cube-primary-icon-color);
 }
 
-.arrow-cube-secondary {
+.cubeSecondary {
   border-radius: var(--arrow-cube-secondary-border-radius);
   background-color: var(--arrow-cube-secondary-bg-color);
   color: var(--arrow-cube-secondary-text-color);
@@ -61,7 +60,7 @@
   --arrow-icon-color: var(--arrow-cube-secondary-icon-color);
 }
 
-.arrow-cube-tertiary {
+.cubeTertiary {
   border-radius: var(--arrow-cube-tertiary-border-radius);
   background-color: var(--arrow-cube-tertiary-bg-color);
   color: var(--arrow-cube-tertiary-text-color);
@@ -77,17 +76,17 @@
   --arrow-icon-color: var(--arrow-cube-tertiary-icon-color);
 }
 
-.arrow-long {
+.long {
   border: none;
   background: transparent;
   outline: none;
   width: var(--arrow);
 }
 
-.arrow-long-default {
+.longDefault {
   --arrow-icon-color: var(--arrow-long-default-icon-color);
 }
 
-.arrow-long-custom {
+.longCustom {
   --arrow-icon-color: var(--arrow-long-custom-icon-color);
 }
