@@ -144,7 +144,7 @@ const customColors = {
   "accent-hover": testColors.themeDark.accentHover,
   background: testColors.themeDark.background,
   "text-primary": testColors.themeDark.textPrimary,
-  stroke: testColors.themeDark.textSecondary,
+  stroke: testColors.themeDark.stroke,
   "text-secondary": testColors.themeDark.textSecondary,
   "extra-1": testColors.blue,
   "extra-2": testColors.cyan,

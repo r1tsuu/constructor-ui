@@ -3,6 +3,8 @@ import clsx from "clsx";
 
 import styles from "./ContentContainer.module.scss";
 
+const { style } = styles;
+
 export const ContentContainer = ({
   className = "",
   as: As = "div",
@@ -10,7 +12,7 @@ export const ContentContainer = ({
   ...props
 }) => {
   return (
-    <div className={clsx(styles.contentContainer, className)} {...props}>
+    <div className={clsx(style, className)} {...props}>
       {children}
     </div>
   );

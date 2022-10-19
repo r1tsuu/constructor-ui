@@ -1,5 +1,6 @@
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import "../src/styles/ui-kit-vars.scss";
+import { InStorybookDecorator } from "./decorators";
 
 export const parameters = {
   viewport: {
@@ -29,6 +30,10 @@ export const parameters = {
         title: "theme accent-color",
       },
       {
+        color: "stroke",
+        title: "theme stroke-color",
+      },
+      {
         color: "extra-1",
         title: "theme extra-1 color",
       },
@@ -47,3 +52,5 @@ export const parameters = {
     ],
   },
 };
+
+export const decorators = [InStorybookDecorator];

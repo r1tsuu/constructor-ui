@@ -1,0 +1,65 @@
+@import "../../../styles/mixins";
+
+.subTitle {
+  margin-bottom: 15px;
+}
+
+.title {
+  margin-bottom: 30px;
+
+  @include desktop {
+    margin-bottom: 40px;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@include laptop {
+  .grid_3 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .grid_4 {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+
+.card {
+  padding: 25px;
+  display: grid;
+  grid-template-columns: 45px 1fr;
+
+  grid-template-areas:
+    "cardIconWrapper cardTitle"
+    "cardIconWrapper cardSubTitle";
+  column-gap: 20px;
+  @include desktop {
+    grid-template-columns: 60px 1fr;
+    padding: 30px;
+    column-gap: 30px;
+  }
+}
+
+.cardIconWrapper {
+  grid-area: cardIconWrapper;
+}
+
+.cardTitle {
+  grid-area: cardTitle;
+  margin-bottom: 5px;
+
+  @include desktop {
+    margin-bottom: 10px;
+  }
+}
+
+.cardSubTitle {
+  grid-area: cardSubTitle;
+}

@@ -2,6 +2,7 @@ import React from "react";
 import clsx from "clsx";
 
 import styles from "./Typography.module.scss";
+import { useInStorybook } from "../../../contexts/InStorybookContext";
 
 const themeColors = [
   "text-primary",
@@ -16,15 +17,16 @@ const themeColors = [
 ];
 
 export const Typography = ({
-  type = "h3",
+  type,
   as: As = "p",
-  color = "primary",
+  color,
   children,
   className,
   isHTML = true,
   style,
   ...props
 }) => {
+  const isInStorybook = useInStorybook();
   const isThemeColor = themeColors.includes(color);
 
   return (
@@ -34,6 +36,7 @@ export const Typography = ({
         isThemeColor ? styles[color.replace("text-", "")] : styles.injected,
         className
       )}
+      contentEditable={isInStorybook}
       style={
         !isThemeColor
           ? {

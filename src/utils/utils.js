@@ -7,3 +7,11 @@ export const cloneWithClass = ({ className, element }) => {
     className: clsx(element.props.className, className),
   });
 };
+
+export const mergeProps = (props, { className, style }) => {
+  return {
+    ...props,
+    className: clsx(props.className, className),
+    style: { ...props.style, ...style },
+  };
+};

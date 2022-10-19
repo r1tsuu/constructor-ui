@@ -1,15 +1,17 @@
 import React from "react";
 import { UiKitContainerDecorator } from "../../../../.storybook/decorators";
 import {
+  baseArgs,
+  baseArgTypes,
   buttonType,
   colorType,
-  themeType,
   typographyType,
 } from "../../../utils/stories-utils";
 
 import { ImageTextButton } from "./ImageTextButton";
 
 const argTypes = {
+  ...baseArgTypes,
   buttonType: buttonType(),
   buttonPosition: {
     options: ["left", "center", "right"],
@@ -17,8 +19,6 @@ const argTypes = {
       type: "radio",
     },
   },
-  backgroundColor: colorType(),
-  theme: themeType(),
   subTitleTypography: typographyType(),
   subTitleColor: colorType(),
   titleTypography: typographyType(),
@@ -33,8 +33,7 @@ export default {
   decorators: [UiKitContainerDecorator],
   argTypes,
   args: {
-    theme: "dark",
-    backgroundColor: "background",
+    ...baseArgs,
     subTitle: "будуємо з любов’ю",
     subTitleTypography: "h5",
     subTitleColor: "accent",
@@ -49,7 +48,6 @@ export default {
     isReverse: false,
     buttonType: "default",
     buttonPosition: "left",
-    test: {},
   },
 };
 
@@ -75,6 +73,10 @@ export const Default = ({
         buttonPosition,
         theme,
         backgroundColor,
+        section: {
+          theme,
+          bg: backgroundColor,
+        },
         subTitle: {
           type: subTitleTypography,
           color: subTitleColor,

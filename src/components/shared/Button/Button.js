@@ -2,6 +2,7 @@ import React from "react";
 import clsx from "clsx";
 
 import styles from "./Button.module.scss";
+import { Typography } from "..";
 
 export const Button = ({
   type = "default",
@@ -13,7 +14,7 @@ export const Button = ({
 }) => {
   return (
     <As className={clsx(styles.base, styles[type], className)} {...props}>
-      {label || children}
+      <Typography as="span">{label}</Typography>
     </As>
   );
 };

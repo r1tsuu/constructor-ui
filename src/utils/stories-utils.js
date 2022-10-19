@@ -46,3 +46,22 @@ export const colorType = () => {
     control: "color",
   };
 };
+
+export const radio = (options = []) => {
+  return {
+    options,
+    control: {
+      type: "radio",
+    },
+  };
+};
+
+export const baseArgTypes = {
+  theme: themeType(),
+  backgroundColor: colorType(),
+};
+
+export const baseArgs = {
+  theme: "dark",
+  backgroundColor: "background",
+};

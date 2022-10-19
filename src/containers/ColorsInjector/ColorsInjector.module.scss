@@ -1,0 +1,131 @@
+.colors {
+  &[data-text-color="background"] {
+    color: var(--color-background);
+  }
+
+  &[data-background-color="background"] {
+    background-color: var(--color-background);
+  }
+
+  &[data-border-color="background"] {
+    border-color: var(--color-background);
+  }
+
+  &[data-text-color="text-primary"] {
+    color: var(--color-text-primary);
+  }
+
+  &[data-background-color="text-primary"] {
+    background-color: var(--color-text-primary);
+  }
+
+  &[data-border-color="text-primary"] {
+    border-color: var(--color-text-primary);
+  }
+
+  &[data-text-color="text-secondary"] {
+    color: var(--color-text-secondary);
+  }
+
+  &[data-background-color="text-secondary"] {
+    background-color: var(--color-text-secondary);
+  }
+
+  &[data-border-color="text-secondary"] {
+    border-color: var(--color-text-secondary);
+  }
+
+  &[data-text-color="accent"] {
+    color: var(--color-accent);
+  }
+
+  &[data-background-color="accent"] {
+    background-color: var(--color-accent);
+  }
+
+  &[data-border-color="accent"] {
+    border-color: var(--color-accent);
+  }
+
+  &[data-text-color="accent-hover"] {
+    color: var(--color-accent-hover);
+  }
+
+  &[data-background-color="accent-hover"] {
+    background-color: var(--color-accent-hover);
+  }
+
+  &[data-border-color="accent-hover"] {
+    border-color: var(--color-accent-hover);
+  }
+
+  &[data-text-color="stroke"] {
+    color: var(--color-stroke);
+  }
+
+  &[data-background-color="stroke"] {
+    background-color: var(--color-stroke);
+  }
+
+  &[data-border-color="stroke"] {
+    border-color: var(--color-stroke);
+  }
+
+  &[data-text-color="extra-1"] {
+    color: var(--custom-theme-color-extra-1);
+  }
+
+  &[data-background-color="extra-1"] {
+    background-color: var(--custom-theme-color-extra-1);
+  }
+
+  &[data-border-color="extra-1"] {
+    border-color: var(--custom-theme-color-extra-1);
+  }
+
+  &[data-text-color="extra-2"] {
+    color: var(--custom-theme-color-extra-2);
+  }
+
+  &[data-background-color="extra-2"] {
+    background-color: var(--custom-theme-color-extra-2);
+  }
+
+  &[data-border-color="extra-2"] {
+    border-color: var(--custom-theme-color-extra-2);
+  }
+  &[data-text-color="extra-3"] {
+    color: var(--custom-theme-color-extra-3);
+  }
+
+  &[data-background-color="extra-3"] {
+    background-color: var(--custom-theme-color-extra-3);
+  }
+
+  &[data-border-color="extra-3"] {
+    border-color: var(--custom-theme-color-extra-3);
+  }
+  &[data-text-color="extra-4"] {
+    color: var(--custom-theme-color-extra-4);
+  }
+
+  &[data-background-color="extra-4"] {
+    background-color: var(--custom-theme-color-extra-4);
+  }
+
+  &[data-border-color="extra-5"] {
+    border-color: var(--custom-theme-color-extra-4);
+  }
+
+  &[data-text-color="injected"] {
+    color: var(--text-color-injected);
+  }
+
+  &[data-background-color="injected"] {
+    background-color: var(--background-color-injected);
+  }
+
+  &[data-border-color="injected"] {
+    border-color: var(--border-color-injected);
+  }
+}
