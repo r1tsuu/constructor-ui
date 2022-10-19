@@ -1,6 +1,7 @@
 {
   "name": "constructor-pkg",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "dependencies": {
     "clsx": "^1.2.1",
