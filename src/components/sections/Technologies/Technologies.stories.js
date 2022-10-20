@@ -1,7 +1,5 @@
 import React from "react";
 
-import { UiKitContainerDecorator } from "../../../../.storybook/decorators";
-
 import i_1 from "./story-assets/1.svg";
 import i_2 from "./story-assets/2.svg";
 import i_3 from "./story-assets/3.svg";
@@ -15,169 +13,63 @@ import i_10 from "./story-assets/10.svg";
 import i_11 from "./story-assets/11.svg";
 
 import {
-  baseArgs,
-  baseArgTypes,
-  colorType,
-  radio,
-  typographyType,
+  cardArg,
+  createSection,
+  parseArgs,
+  radioArg,
+  textArg,
 } from "../../../utils/stories-utils";
 import { Technologies } from "./Technologies";
 
-const createCard = ({ title, subTitle, icon }) => ({
+const item = (title, subTitle, icon) => ({
   title,
   subTitle,
   icon,
 });
 
 const items = [
-  createCard({
-    title: "Кількість будинків",
-    subTitle: "1 будинок, 7 секцій",
-    icon: i_1,
-  }),
-  createCard({
-    title: "Кількість поверхів",
-    subTitle: "9 поверхів",
-    icon: i_2,
-  }),
-  createCard({
-    title: "Стіни",
-    subTitle: "Стіни з червоної цегли",
-    icon: i_3,
-  }),
-  createCard({
-    title: "Вікна",
-    subTitle: "Алюмінієві вікна",
-    icon: i_4,
-  }),
-  createCard({
-    title: "Конструкція",
-    subTitle: "Монолітно-каркасна технологія будівництва",
-    icon: i_5,
-  }),
-  createCard({
-    title: "Ліфти",
-    subTitle: "Ліфти кращих європейських виробників",
-    icon: i_6,
-  }),
-  createCard({
-    title: "Оздоблення",
-    subTitle: "Оздоблення квартир під ремонт",
-    icon: i_7,
-  }),
-  createCard({
-    title: "Фасад",
-    subTitle: "Навісний фасад, утеплення мінеральною ватою",
-    icon: i_8,
-  }),
-  createCard({
-    title: "Внутрішній простір",
-    subTitle: "Закрита територія з ландшафтним дизайном",
-    icon: i_9,
-  }),
-  createCard({
-    title: "Опалення",
-    subTitle: "Автономне опалення у будинку",
-    icon: i_10,
-  }),
-  createCard({
-    title: "Паркінг",
-    subTitle: "Підземний та наземний паркінги",
-    icon: i_11,
-  }),
+  item("Кількість будинків", "1 будинок, 7 секцій", i_1),
+  item("Кількість поверхів", "9 поверхів", i_2),
+  item("Стіни", "Стіни з червоної цегли", i_3),
+  item("Вікна", "Алюмінієві вікна", i_4),
+  item("Конструкція", "Монолітно-каркасна технологія будівництва", i_5),
+  item("Ліфти", "Ліфти кращих європейських виробників", i_6),
+  item("Оздоблення", "Оздоблення квартир під ремонт", i_7),
+  item("Фасад", "Навісний фасад, утеплення мінеральною ватою", i_8),
+  item("Внутрішній простір", "Закрита територія з ландшафтним дизайном", i_9),
+  item("Опалення", "Автономне опалення у будинку", i_10),
+  item("Паркінг", "Підземний та наземний паркінги", i_11),
 ];
 
-const argTypes = {
-  ...baseArgTypes,
-  subTitleTypography: typographyType(),
-  subTitleColor: colorType(),
-  titleTypography: typographyType(),
-  titleColor: colorType(),
-  gridCols: radio(["3", "4"]),
-  cardTitleTypography: typographyType(),
-  cardTitleColor: colorType(),
-  cardSubTitleTypography: typographyType(),
-  cardSubTitleColor: colorType(),
-  cardBackground: colorType(),
-  cardBorderColor: colorType(),
-};
-
-const args = {
-  ...baseArgs,
-  subTitle: "ми зібрали усе найкраще",
-  subTitleTypography: "h5",
-  subTitleColor: "accent",
-  title: "Технології будівництва",
-  titleTypography: "h2",
-  titleColor: "primary",
-  gridCols: "4",
-  items,
-  cardBackground: "background",
-  cardBorderColor: "stroke",
-  cardTitleTypography: "h4",
-  cardTitleColor: "primary",
-  cardSubTitleTypography: "p1",
-  cardSubTitleColor: "secondary",
-};
-
-export default {
-  title: "Sections/Technologies",
+export default createSection({
+  name: "Technologies",
   component: Technologies,
-  decorators: [UiKitContainerDecorator],
-  argTypes,
-  args,
-};
+  args: {
+    subTitle: textArg({
+      defaultValue: "ми зібрали усе найкраще",
+      typography: "h5",
+      color: "accent",
+    }),
+    title: textArg({
+      defaultValue: "Технології будівництва",
+      typography: "h2",
+      color: "text-primary",
+    }),
+    gridColumns: radioArg({
+      options: [3, 4],
+      defaultValue: 4,
+    }),
+    items,
+    card: cardArg({}),
+    "card.title": textArg({
+      typography: "h4",
+      color: "text-primary",
+    }),
+    "card.subTitle": textArg({
+      typography: "p1",
+      color: "text-secondary",
+    }),
+  },
+});
 
-export const Default = (args) => {
-  const {
-    backgroundColor,
-    theme,
-    subTitleTypography,
-    subTitleColor,
-    titleTypography,
-    titleColor,
-    cardBackground,
-    cardBorderColor,
-    cardTitleColor,
-    cardTitleTypography,
-    cardSubTitleColor,
-    cardSubTitleTypography,
-    gridCols,
-    ...rest
-  } = args;
-
-  return (
-    <Technologies
-      {...rest}
-      settings={{
-        gridCols,
-        section: {
-          theme,
-          bg: backgroundColor,
-        },
-        title: {
-          type: titleTypography,
-          color: titleColor,
-        },
-        subTitle: {
-          type: subTitleTypography,
-          color: subTitleColor,
-        },
-        card: {
-          props: {
-            borderColor: cardBorderColor,
-            bg: cardBackground,
-          },
-          title: {
-            type: cardTitleTypography,
-            color: cardTitleColor,
-          },
-          subTitle: {
-            type: cardSubTitleTypography,
-            color: cardSubTitleColor,
-          },
-        },
-      }}
-    />
-  );
-};
+export const Default = (args) => <Technologies {...parseArgs(args)} />;

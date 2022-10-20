@@ -9,22 +9,19 @@ export const Technologies = ({ subTitle, title, items, settings }) => {
   return (
     <Section {...settings.section}>
       <ContentContainer>
-        <Typography
-          as={"h3"}
-          className={styles.subTitle}
-          {...settings.subTitle}
-        >
-          {subTitle}
-        </Typography>
+        {subTitle && (
+          <Typography
+            as={"h3"}
+            className={styles.subTitle}
+            {...settings.subTitle}
+          >
+            {subTitle}
+          </Typography>
+        )}
         <Typography as={"h2"} className={styles.title} {...settings.title}>
           {title}
         </Typography>
-        <ul
-          className={clsx(
-            styles.grid,
-            settings.gridCols === "4" ? styles.grid_4 : styles.grid_3
-          )}
-        >
+        <ul data-grid-columns={settings.gridColumns} className={styles.grid}>
           {items.map(({ _id, title, subTitle, icon }, index) => (
             <Card
               as={"li"}

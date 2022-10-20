@@ -9,22 +9,19 @@ export const Characteristics = ({ title, subTitle, items, settings }) => {
   return (
     <Section {...settings.section}>
       <ContentContainer>
-        <Typography
-          className={styles.subTitle}
-          as={"h3"}
-          {...settings.subTitle}
-        >
-          {subTitle}
-        </Typography>
+        {subTitle && (
+          <Typography
+            className={styles.subTitle}
+            as={"h3"}
+            {...settings.subTitle}
+          >
+            {subTitle}
+          </Typography>
+        )}
         <Typography className={styles.title} as={"h3"} {...settings.title}>
           {title}
         </Typography>
-        <ul
-          className={clsx(
-            styles.grid,
-            settings.gridItems === "4" ? styles.cols_4 : styles.cols_3
-          )}
-        >
+        <ul data-grid-columns={settings.gridColumns} className={styles.grid}>
           {items.map(({ _id, title, subTitle }, index) => (
             <Card
               as={"li"}

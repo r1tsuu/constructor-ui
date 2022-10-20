@@ -2,11 +2,17 @@ import React from "react";
 
 import { UiKitContainerDecorator } from "../../../../.storybook/decorators";
 import {
+  arrowArg,
   arrowType,
   baseArgs,
   baseArgTypes,
+  buttonArg,
   buttonType,
+  cardArg,
   colorType,
+  createSection,
+  parseArgs,
+  textArg,
   typographyType,
 } from "../../../utils/stories-utils";
 
@@ -57,121 +63,41 @@ const items = [
   }),
 ];
 
-const argTypes = {
-  ...baseArgTypes,
-  subTitleTypography: typographyType(),
-  subTitleColor: colorType(),
-  titleTypography: typographyType(),
-  titleColor: colorType(),
-  arrowType: arrowType(),
-  buttonType: buttonType(),
-  cardBackground: colorType(),
-  cardBorderColor: colorType(),
-  cardTitleTypography: typographyType(),
-  cardTitleColor: colorType(),
-  cardSubTitleTypography: typographyType(),
-  cardSubTitleColor: colorType(),
-  cardDescriptionTypography: typographyType(),
-  cardDescriptionColor: typographyType(),
-  cardAdvantageTypography: typographyType(),
-  cardAdvantageColor: typographyType(),
-};
-
-const args = {
-  ...baseArgs,
-  subTitle: "КУПУВАТИ -ВИГІДНО",
-  subTitleTypography: "h5",
-  subTitleColor: "accent",
-  title: "УМОВИ ПРИДБАННЯ",
-  titleTypography: "h2",
-  titleColor: "primary",
-  arrowType: "cube-default",
-  buttonType: "default",
-  items,
-  cardBackground: "background",
-  cardBorderColor: "stroke",
-  cardTitleTypography: "h2",
-  cardTitleColor: "primary",
-  cardSubTitleTypography: "h5",
-  cardSubTitleColor: "accent",
-  cardDescriptionTypography: "p1",
-  cardDescriptionColor: "stroke",
-  cardAdvantageTypography: "h4",
-  cardAdvantageColor: "primary",
-};
-
-export default {
-  title: "Sections/Terms",
+export default createSection({
+  name: "Terms",
   component: Terms,
-  decorators: [UiKitContainerDecorator],
-  args,
-  argTypes,
-};
+  args: {
+    subTitle: textArg({
+      defaultValue: "КУПУВАТИ -ВИГІДНО",
+      typography: "h5",
+      color: "accent",
+    }),
+    title: textArg({
+      defaultValue: "УМОВИ ПРИДБАННЯ",
+      typography: "h2",
+      color: "text-primary",
+    }),
+    arrowType: arrowArg({}),
+    buttonType: buttonArg({}),
+    items,
+    card: cardArg({}),
+    "card.title": textArg({
+      typography: "h2",
+      color: "text-primary",
+    }),
+    "card.subTitle": textArg({
+      typography: "h5",
+      color: "accent",
+    }),
+    "card.description": textArg({
+      typography: "p1",
+      color: "stroke",
+    }),
+    "card.advantage": textArg({
+      typography: "h4",
+      color: "text-primary",
+    }),
+  },
+});
 
-export const Default = (args) => {
-  const {
-    backgroundColor,
-    theme,
-    subTitleTypography,
-    subTitleColor,
-    titleTypography,
-    titleColor,
-    arrowType,
-    buttonType,
-    cardBackground,
-    cardBorderColor,
-    cardTitleTypography,
-    cardTitleColor,
-    cardSubTitleTypography,
-    cardSubTitleColor,
-    cardDescriptionTypography,
-    cardDescriptionColor,
-    cardAdvantageTypography,
-    cardAdvantageColor,
-    ...restArgs
-  } = args;
-
-  return (
-    <Terms
-      {...restArgs}
-      settings={{
-        arrowType,
-        buttonType,
-        section: {
-          theme,
-          bg: backgroundColor,
-        },
-        title: {
-          type: titleTypography,
-          color: titleColor,
-        },
-        subTitle: {
-          type: subTitleTypography,
-          color: subTitleColor,
-        },
-        card: {
-          props: {
-            borderColor: cardBorderColor,
-            bg: cardBackground,
-          },
-          title: {
-            type: cardTitleTypography,
-            color: cardTitleColor,
-          },
-          subTitle: {
-            type: cardSubTitleTypography,
-            color: cardSubTitleColor,
-          },
-          description: {
-            type: cardDescriptionTypography,
-            color: cardDescriptionColor,
-          },
-          advantage: {
-            type: cardAdvantageTypography,
-            color: cardAdvantageColor,
-          },
-        },
-      }}
-    />
-  );
-};
+export const Default = (args) => <Terms {...parseArgs(args)} />;

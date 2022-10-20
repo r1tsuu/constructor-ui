@@ -12,33 +12,36 @@ export const ImageTextButton = ({
   photoSource,
   settings,
 }) => {
+  console.log(settings);
   return (
-    <Section bg={settings.backgroundColor} theme={settings.theme}>
+    <Section {...settings.section}>
       <ContentContainer
-        className={clsx(styles.grid, settings.isReverse && styles.reverse)}
+        data-is-reverse={settings.isReverse}
+        className={styles.grid}
       >
-        <Typography
-          as={"h3"}
-          className={styles.subTitle}
-          color={settings.subTitle.color}
-          type={settings.subTitle.type}
-        >
-          {subTitle}
-        </Typography>
+        {subTitle && (
+          <Typography
+            as={"h3"}
+            className={styles.subTitle}
+            {...settings.subTitle}
+          >
+            {subTitle}
+          </Typography>
+        )}
         <Typography as={"h2"} className={styles.title} {...settings.title}>
           {title}
         </Typography>
         <div className={styles.photoWrapper}>
           <img alt="" src={photoSource} />
         </div>
-        <Typography className={styles.description} {...settings.description}>
-          {description}
-        </Typography>
+        {description && (
+          <Typography className={styles.description} {...settings.description}>
+            {description}
+          </Typography>
+        )}
         <div
-          className={clsx(
-            styles.buttonWrapper,
-            styles[settings.buttonPosition]
-          )}
+          data-position={settings.buttonPosition}
+          className={styles.buttonWrapper}
         >
           <Button type={settings.buttonType} label={buttonName} />
         </div>

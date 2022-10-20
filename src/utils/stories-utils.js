@@ -1,3 +1,7 @@
+import { UiKitContainerDecorator } from "../../.storybook/decorators";
+
+import imagePlaceholder from "../stories-assets/img-placeholder.png";
+
 export const buttonType = () => {
   return {
     options: ["default", "primary", "secondary", "tertiary"],
@@ -47,6 +51,8 @@ export const colorType = () => {
   };
 };
 
+export const imageType = () => imagePlaceholder;
+
 export const radio = (options = []) => {
   return {
     options,
@@ -59,11 +65,11 @@ export const radio = (options = []) => {
 export const textArg = ({
   color = "text-primary",
   typography = "h3",
-  value,
+  defaultValue,
 }) => ({
   color,
   typography,
-  value,
+  defaultValue,
   type: "text",
 });
 
@@ -115,14 +121,14 @@ export const sectionArgs = (args) => {
   return Object.keys(withBaseArgs).reduce(
     (acc, argKey) => {
       const arg = withBaseArgs[argKey];
-      if (typeof arg !== "object")
+      if (typeof arg !== "object" || Array.isArray(arg))
         return {
           args: {
             ...acc.args,
-            args: {
-              [argKey]: arg,
-            },
+
+            [argKey]: arg,
           },
+          argTypes: acc.argTypes,
         };
       const argType = arg.type;
 
@@ -141,7 +147,9 @@ export const sectionArgs = (args) => {
           return {
             args: {
               ...acc.args,
-              [argKey]: arg.value,
+              ...(arg.defaultValue && {
+                [argKey]: arg.defaultValue,
+              }),
               [colorKey]: arg.color,
               [typeKey]: arg.typography,
             },
@@ -214,7 +222,7 @@ export const sectionArgs = (args) => {
   );
 };
 
-function parseArgs(obj) {
+export function parseArgs(obj) {
   const result = {};
 
   // For each object path (property key) in the object
@@ -236,23 +244,9 @@ function parseArgs(obj) {
   return result;
 }
 
-const test = sectionArgs({
-  title: textArg({
-    value: "some text",
-  }),
-  subTitle: textArg({
-    value: "some text2",
-  }),
+export const createSection = ({ name, args, component }) => ({
+  title: `Sections/${name}`,
+  decorators: [UiKitContainerDecorator],
+  ...sectionArgs(args),
+  component,
 });
-
-console.log(JSON.stringify(parseArgs(test.args)));
-
-export const baseArgTypes = {
-  theme: themeType(),
-  backgroundColor: colorType(),
-};
-
-export const baseArgs = {
-  theme: "dark",
-  backgroundColor: "background",
-};

@@ -4,15 +4,14 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-}
 
-@include laptop {
-  .cols_4 {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-
-  .cols_3 {
-    grid-template-columns: 1fr 1fr 1fr;
+  @include laptop {
+    &[data-grid-columns="4"] {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    &[data-grid-columns="3"] {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
   }
 }
 

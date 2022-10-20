@@ -19,15 +19,14 @@
   @include tablet {
     grid-template-columns: 1fr 1fr;
   }
-}
 
-@include laptop {
-  .grid_3 {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-
-  .grid_4 {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+  @include laptop {
+    &[data-grid-columns="3"] {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+    &[data-grid-columns="4"] {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
   }
 }
 

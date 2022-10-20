@@ -11,15 +11,15 @@
       "photoWrapper description"
       "photoWrapper buttonWrapper";
     column-gap: 73px;
-  }
 
-  .reverse {
-    column-gap: 125px;
-    grid-template-areas:
-      "subTitle photoWrapper"
-      "title photoWrapper"
-      "description photoWrapper"
-      "buttonWrapper photoWrapper";
+    &[data-is-reverse] {
+      column-gap: 125px;
+      grid-template-areas:
+        "subTitle photoWrapper"
+        "title photoWrapper"
+        "description photoWrapper"
+        "buttonWrapper photoWrapper";
+    }
   }
 }
 
@@ -59,16 +59,11 @@
     display: flex;
     margin-bottom: 37.5px;
   }
-}
 
-.left {
-  justify-content: flex-start;
-}
-
-.center {
-  justify-content: center;
-}
-
-.right {
-  justify-content: flex-end;
+  &[data-position="center"] {
+    justify-content: center;
+  }
+  &[data-position="right"] {
+    justify-content: flex-end;
+  }
 }

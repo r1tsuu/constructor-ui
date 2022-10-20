@@ -1,96 +1,43 @@
 import React from "react";
-import { UiKitContainerDecorator } from "../../../../.storybook/decorators";
 import {
-  baseArgs,
-  baseArgTypes,
-  buttonType,
-  colorType,
-  typographyType,
+  createSection,
+  textArg,
+  buttonArg,
+  radioArg,
+  parseArgs,
+  imageType,
 } from "../../../utils/stories-utils";
 
 import { ImageTextButton } from "./ImageTextButton";
 
-const argTypes = {
-  ...baseArgTypes,
-  buttonType: buttonType(),
-  buttonPosition: {
-    options: ["left", "center", "right"],
-    control: {
-      type: "radio",
-    },
-  },
-  subTitleTypography: typographyType(),
-  subTitleColor: colorType(),
-  titleTypography: typographyType(),
-  titleColor: colorType(),
-  descriptionTypography: typographyType(),
-  descriptionColor: colorType(),
-};
-
-export default {
-  title: "Sections/Image Text Button",
+export default createSection({
+  name: "Image Text Button",
   component: ImageTextButton,
-  decorators: [UiKitContainerDecorator],
-  argTypes,
   args: {
-    ...baseArgs,
-    subTitle: "будуємо з любов’ю",
-    subTitleTypography: "h5",
-    subTitleColor: "accent",
-    title: "Про комплекс",
-    titleColor: "text-primary",
-    titleTypography: "h2",
-    description: `Тут ви маєте розмістити необхідне описання блокуНайсухіше місце на Землі знаходиться в Антарктиді. Хоч як дивно це звучить, але деякі ділянки антарктичної долини Мак-Мердо не бачили опадів уже 2 мільйона років.`,
-    descriptionColor: "text-secondary",
-    descriptionTypography: "p1",
-    buttonName: "Текст кнопки",
-    photoSource: "https://i.imgur.com/bspeBw0.png",
+    photoSource: imageType(),
+    subTitle: textArg({
+      defaultValue: "будуємо з любов’ю",
+      typography: "h5",
+      color: "accent",
+    }),
+    title: textArg({
+      defaultValue: "Про комплекс",
+      color: "primary",
+      typography: "h2",
+    }),
+    description: textArg({
+      defaultValue: `Тут ви маєте розмістити необхідне описання блокуНайсухіше місце на Землі знаходиться в Антарктиді. Хоч як дивно це звучить, але деякі ділянки антарктичної долини Мак-Мердо не бачили опадів уже 2 мільйона років.`,
+      color: "text-secondary",
+      typography: "p1",
+    }),
     isReverse: false,
-    buttonType: "default",
-    buttonPosition: "left",
+    buttonType: buttonArg({}),
+    buttonName: "Текст кнопки",
+    buttonPosition: radioArg({
+      options: ["left", "center", "right"],
+      defaultValue: "left",
+    }),
   },
-};
+});
 
-export const Default = ({
-  subTitleTypography,
-  subTitleColor,
-  titleColor,
-  titleTypography,
-  descriptionColor,
-  descriptionTypography,
-  isReverse,
-  buttonType,
-  buttonPosition,
-  theme,
-  backgroundColor,
-  ...rest
-}) => {
-  return (
-    <ImageTextButton
-      settings={{
-        isReverse,
-        buttonType,
-        buttonPosition,
-        theme,
-        backgroundColor,
-        section: {
-          theme,
-          bg: backgroundColor,
-        },
-        subTitle: {
-          type: subTitleTypography,
-          color: subTitleColor,
-        },
-        title: {
-          type: titleTypography,
-          color: titleColor,
-        },
-        description: {
-          type: descriptionTypography,
-          color: descriptionColor,
-        },
-      }}
-      {...rest}
-    />
-  );
-};
+export const Default = (args) => <ImageTextButton {...parseArgs(args)} />;
