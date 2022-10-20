@@ -97,6 +97,8 @@ export default createSection({
       typography: "h4",
       color: "text-primary",
     }),
+    "card.buttonName": "Текст кнопки",
+    "card.buttonLink": "https://google.com",
   },
 });
 
