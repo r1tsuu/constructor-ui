@@ -1,5 +1,4 @@
 import React from "react";
-import clsx from "clsx";
 import { Button, Typography, ContentContainer, Section } from "../../shared";
 
 import styles from "./ImageTextButton.module.scss";
@@ -12,7 +11,6 @@ export const ImageTextButton = ({
   photoSource,
   settings,
 }) => {
-  console.log(settings);
   return (
     <Section {...settings.section}>
       <ContentContainer

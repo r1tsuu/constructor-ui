@@ -1,5 +1,6 @@
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import "../src/styles/ui-kit-vars.scss";
+import "@storybook/addon-console";
 import { InStorybookDecorator } from "./decorators";
 
 export const parameters = {

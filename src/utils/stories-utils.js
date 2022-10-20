@@ -227,7 +227,6 @@ export function parseArgs(obj) {
 
   // For each object path (property key) in the object
   for (const objectPath in obj) {
-    // Split path into component parts
     const parts = objectPath.split(".");
 
     // Create sub-objects along path as needed

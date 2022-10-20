@@ -33,32 +33,26 @@
 .card {
   padding: 25px;
   display: grid;
-  grid-template-columns: 45px 1fr;
-
-  grid-template-areas:
-    "cardIconWrapper cardTitle"
-    "cardIconWrapper cardSubTitle";
+  grid-template-columns: 40px 1fr;
   column-gap: 20px;
-  @include desktop {
-    grid-template-columns: 60px 1fr;
-    padding: 30px;
-    column-gap: 30px;
-  }
+  grid-template-areas:
+    "icon title"
+    "icon fileSize";
 }
 
-.cardIconWrapper {
-  grid-area: cardIconWrapper;
+.cardIcon {
+  grid-area: icon;
 }
 
 .cardTitle {
-  grid-area: cardTitle;
+  grid-area: title;
   margin-bottom: 5px;
-
-  @include desktop {
-    margin-bottom: 10px;
-  }
 }
 
-.cardSubTitle {
-  grid-area: cardSubTitle;
+.cardFileSize {
+  grid-area: fileSize;
+}
+
+.mobilePaginationButtonWrapper {
+  margin-top: 30px;
 }

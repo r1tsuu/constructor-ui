@@ -10,8 +10,8 @@ export const CubeIcon = () => (
   >
     <path
       d="M1.125 1.25L4.875 5L1.125 8.75"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );

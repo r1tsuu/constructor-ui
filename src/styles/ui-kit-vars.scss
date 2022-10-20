@@ -7,6 +7,9 @@ html {
   --button-width: 100%;
   --button-min-width: 0;
   --arrow-cube-dimensions: 50px;
+  --grid-cols-2: repeat(2, 1fr);
+  --grid-cols-3: repeat(3, 1fr);
+  --grid-cols-4: repeat(4, 1fr);
   // --arrow-long-font-size: 36px;
   --arrow-long-width: 34px;
   --arrow-long-height: 16px;
@@ -119,6 +122,7 @@ html {
   border-style: solid;
   border-color: initial;
   box-sizing: border-box;
+  text-decoration: none;
 }
 
 blockquote,

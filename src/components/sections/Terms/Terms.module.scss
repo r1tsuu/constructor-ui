@@ -12,24 +12,11 @@
   }
 }
 
-.slider {
-  margin-bottom: 30px;
-  :global {
-    .swiper-wrapper {
-      display: grid;
-      grid-auto-flow: column;
-      gap: 0px;
-    }
-    .swiper-slide {
-      width: auto;
-    }
-  }
-}
-
-.card {
-  width: 284px;
-  padding: 25px 35px;
+.slide {
+  width: auto;
+  height: auto;
   min-height: 284px;
+  width: 284px;
 
   @include tablet {
     min-height: 374px;
@@ -40,6 +27,13 @@
     width: 375px;
     min-height: 447px;
   }
+}
+
+.card {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  padding: 25px 35px;
 }
 
 .cardSubtitle {
@@ -58,11 +52,26 @@
   }
 }
 
-.cardAdvantage {
-  margin-bottom: auto;
-  padding-bottom: 15px;
+.cardBottom {
+  align-self: flex-end;
 }
 
-.cardButtonWrapper {
-  margin-bottom: auto;
+.cardAdvantage {
+  margin-bottom: 15px;
+}
+
+.titleArrowsWrapper {
+  @include tablet {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.arrows {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+  @include tablet {
+    margin-top: 0;
+  }
 }

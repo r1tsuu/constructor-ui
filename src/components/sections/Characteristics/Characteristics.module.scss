@@ -2,15 +2,15 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: var(--grid-cols-2);
   gap: 20px;
 
   @include laptop {
     &[data-grid-columns="4"] {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: var(--grid-cols-4);
     }
     &[data-grid-columns="3"] {
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: var(--grid-cols-3);
     }
   }
 }

@@ -1,30 +1,23 @@
 import React from "react";
 
-import { UiKitContainerDecorator } from "../../../../.storybook/decorators";
 import {
   arrowArg,
-  arrowType,
-  baseArgs,
-  baseArgTypes,
   buttonArg,
-  buttonType,
   cardArg,
-  colorType,
   createSection,
   parseArgs,
   textArg,
-  typographyType,
 } from "../../../utils/stories-utils";
 
 import { Terms } from "./Terms";
 
 const createCard = ({
-  title = "до xx років",
+  title = "xx",
   subTitle = null,
   description,
   advantage = null,
   buttonName = "Текст кнопки",
-  buttonLink = "https://https://www.google.com",
+  buttonLink = "https://google.com",
 }) => ({
   title,
   subTitle,
@@ -43,7 +36,7 @@ const items = [
     advantage: "Знижка Х %",
   }),
   createCard({
-    title: "до xx місяців",
+    title: "x м",
     subTitle: "розстрочка",
     description:
       "Придбати квартиру в розстрочку до вводу в експлуатацію – ідеальний варіант, коли є потреба в оплаті частинами.",
@@ -60,6 +53,19 @@ const items = [
     description:
       "Розрахунок має приблизний характер. Звяжіться з нашим відділом продажів, щоб підібрати оптимальний план оплати. ",
     advantage: "від x % компенсаційна ставка",
+  }),
+  createCard({
+    title: "x м",
+    subTitle: "розстрочка",
+    description:
+      "Придбати квартиру в розстрочку до вводу в експлуатацію – ідеальний варіант, коли є потреба в оплаті частинами.",
+    advantage: "перший внесок xx %",
+  }),
+  createCard({
+    subTitle: "кредит",
+    description:
+      "Скористайтесь програмами кредитування від наших банків-партнерів. ",
+    advantage: "під xx % річних",
   }),
 ];
 
@@ -91,10 +97,10 @@ export default createSection({
     }),
     "card.description": textArg({
       typography: "p1",
-      color: "stroke",
+      color: "text-secondary",
     }),
     "card.advantage": textArg({
-      typography: "h4",
+      typography: "h5",
       color: "text-primary",
     }),
     "card.buttonName": "Текст кнопки",
