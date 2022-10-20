@@ -1,4 +1,7 @@
-import { UiKitContainerDecorator } from "../../.storybook/decorators";
+import {
+  SectionDecorator,
+  UiKitContainerDecorator,
+} from "../../.storybook/decorators";
 
 import imagePlaceholder from "../stories-assets/img-placeholder.png";
 
@@ -128,7 +131,14 @@ export const sectionArgs = (args) => {
 
             [argKey]: arg,
           },
-          argTypes: acc.argTypes,
+          argTypes: {
+            ...acc.argTypes,
+            [argKey]: {
+              table: {
+                // disable: true,
+              },
+            },
+          },
         };
       const argType = arg.type;
 
@@ -245,7 +255,7 @@ export function parseArgs(obj) {
 
 export const createSection = ({ name, args, component }) => ({
   title: `Sections/${name}`,
-  decorators: [UiKitContainerDecorator],
+  decorators: [UiKitContainerDecorator, SectionDecorator],
   ...sectionArgs(args),
   component,
 });

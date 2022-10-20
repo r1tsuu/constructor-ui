@@ -68,4 +68,6 @@ export default createSection({
   },
 });
 
-export const Default = (args) => <Advantages {...parseArgs(args)} />;
+export const Default = (args) => (
+  <Advantages asd={"asd"} {...parseArgs(args)} />
+);

@@ -28,3 +28,13 @@ export const mediaQueries = {
   minLaptop: "(min-width: 1150px)",
   minDesktop: "(min-width: 1550px)",
 };
+
+export const SECTIONS = {
+  ADVANTAGES: "Advantages",
+  CHARACTERISTICS: "Characteristics",
+  DOCUMENTATION: "Documentation",
+  IMAGE_TEXT_BUTTON: "Photo Text Button",
+  PHOTO_QUOTE: "Photo Quote",
+  TECHNOLGIES: "Technologies",
+  TERMS: "Terms",
+};
