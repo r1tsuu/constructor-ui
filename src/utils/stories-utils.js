@@ -111,6 +111,11 @@ export const colorArg = ({ defaultValue }) => ({
   type: "color",
 });
 
+export const booleanArg = ({ defaultValue }) => ({
+  defaultValue,
+  type: "boolean",
+});
+
 export const sectionArgs = (args) => {
   const withBaseArgs = {
     ...args,
@@ -219,6 +224,15 @@ export const sectionArgs = (args) => {
               ...acc.argTypes,
               [settingsArgKey]: colorType(),
             },
+          };
+
+        case "boolean":
+          return {
+            args: {
+              ...acc.args,
+              [settingsArgKey]: arg.defaultValue,
+            },
+            argTypes: acc.argTypes,
           };
 
         default:
