@@ -1,7 +1,7 @@
 {
-  "name": "constructor-pkg",
+  "name": "r1tsu-constructor-pkg",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
   "babel": {
@@ -12,6 +12,7 @@
     ]
   },
   "dependencies": {
+    "bson": "^4.7.0",
     "clsx": "1.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",

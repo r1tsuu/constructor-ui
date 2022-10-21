@@ -22,13 +22,6 @@ const fileResolver = ({
   }));
 };
 
-const mapRepeat = ({ field, keys, }) => {
-  const arr = field.data.map(({ custom_fields, _id }) => ({
-    _id,
-    ...custom_fields,
-  }));
-};
-
 export const useFieldsResolver = () => {
   const { SITE_URL } = useEnvironment();
 
@@ -39,7 +32,22 @@ export const useFieldsResolver = () => {
       SITE_URL,
     });
 
-    
+  const mapRepeat = ({ field, keyResolvers }) => {
+    const arr = field.data.map((item) => item);
+    return arr.map(({ _id, ...currentFields }) =>
+      Object.keys(currentFields).reduce(
+        (acc, fieldKey) => ({
+          ...acc,
+          [fieldKey]: keyResolvers[fieldKey]({
+            field: currentFields[fieldKey],
+          }),
+        }),
+        {
+          _id,
+        }
+      )
+    );
+  };
 
   return {
     textResolver,

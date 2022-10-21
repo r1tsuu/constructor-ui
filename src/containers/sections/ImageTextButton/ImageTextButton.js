@@ -1,15 +1,15 @@
-import React from "react";
+// import React from "react";
 
-import { SectionComponents } from "../../../components";
+// import { SectionComponents } from "../../../components";
 
-export const ImageTextButton= ({
-  subTitle,
-  title,
-  description,
-  buttonName,
-  photo,
-  photoMobileSource,
-  settings,
-}) => {
+// export const ImageTextButton= ({
+//   subTitle,
+//   title,
+//   description,
+//   buttonName,
+//   photo,
+//   photoMobileSource,
+//   settings,
+// }) => {
 
-}
+// }
