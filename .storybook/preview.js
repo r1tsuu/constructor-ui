@@ -1,5 +1,5 @@
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
-import "../src/styles/ui-kit-vars.scss";
+import "../src/styles/index.scss";
 import "@storybook/addon-console";
 import { InStorybookDecorator } from "./decorators";
 

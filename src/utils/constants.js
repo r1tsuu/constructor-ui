@@ -38,3 +38,7 @@ export const SECTIONS = {
   TECHNOLGIES: "Technologies",
   TERMS: "Terms",
 };
+
+export const placeholderPhotoSrc = "https://i.imgur.com/sIL4ZIZ.png";
+
+export const placeholderPhotoMobileSrc = "https://i.imgur.com/EkjJcms.png";

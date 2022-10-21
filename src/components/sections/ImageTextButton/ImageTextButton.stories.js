@@ -5,7 +5,6 @@ import {
   buttonArg,
   radioArg,
   parseArgs,
-  imageType,
 } from "../../../utils/stories-utils";
 
 import { ImageTextButton } from "./ImageTextButton";
@@ -14,7 +13,6 @@ export default createSection({
   name: "Image Text Button",
   component: ImageTextButton,
   args: {
-    photoSource: imageType(),
     subTitle: textArg({
       defaultValue: "будуємо з любов’ю",
       typography: "h5",

@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Typography, ContentContainer, Section } from "../../shared";
 
+import photoPlaceholder from "../../../assets/img-placeholder.png";
 import styles from "./ImageTextButton.module.scss";
 
 export const ImageTextButton = ({
@@ -8,7 +9,7 @@ export const ImageTextButton = ({
   title,
   description,
   buttonName,
-  photoSource,
+  photoSource = photoPlaceholder,
   settings,
 }) => {
   return (
