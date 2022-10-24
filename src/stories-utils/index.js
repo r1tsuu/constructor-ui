@@ -144,7 +144,7 @@ export const sectionArgs = (args) => {
       const argType = arg.type;
 
       const resolveSettingsArgKey = () => {
-        if (typeof arg.prefix === "undefined") return `settings.${argKey}`;
+        if (typeof arg.prefix === "undefined") return `settings_${argKey}`;
         if (arg.prefix === null) return `${argKey}`;
         return `${arg.prefix}.${argKey}`;
       };
@@ -153,8 +153,8 @@ export const sectionArgs = (args) => {
 
       switch (argType) {
         case "text":
-          const colorKey = `${settingsArgKey}.color`;
-          const typeKey = `${settingsArgKey}.type`;
+          const colorKey = `${settingsArgKey}_color`;
+          const typeKey = `${settingsArgKey}_type`;
           return {
             args: {
               ...acc.args,
@@ -172,8 +172,8 @@ export const sectionArgs = (args) => {
           };
 
         case "card":
-          const borderColorKey = `${settingsArgKey}.props.borderColor`;
-          const bgKey = `${settingsArgKey}.props.bg`;
+          const borderColorKey = `${settingsArgKey}_props_borderColor`;
+          const bgKey = `${settingsArgKey}_props_bg`;
           return {
             args: {
               ...acc.args,
@@ -247,7 +247,7 @@ export function parseArgs(obj) {
 
   // For each object path (property key) in the object
   for (const objectPath in obj) {
-    const parts = objectPath.split(".");
+    const parts = objectPath.split("_");
 
     // Create sub-objects along path as needed
     let target = result;

@@ -56,12 +56,12 @@ export default createSection({
       options: [3, 4],
       defaultValue: 3,
     }),
-    items,
-    "card.title": textArg({
+
+    card_title: textArg({
       color: "text-primary",
       typography: "h4",
     }),
-    "card.subTitle": textArg({
+    card_subTitle: textArg({
       color: "text-secondary",
       typography: "p1",
     }),
@@ -71,3 +71,7 @@ export default createSection({
 export const Default = (args) => (
   <Advantages asd={"asd"} {...parseArgs(args)} />
 );
+
+Default.args = {
+  items,
+};

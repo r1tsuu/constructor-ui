@@ -1,4 +1,4 @@
-import { useEnvironment } from "../contexts/EnvironmentContext";
+// import { useEnvironment } from "../contexts/EnvironmentContext";
 
 const textResolver = ({ field }) => {
   return field.value;
@@ -14,6 +14,7 @@ const fileResolver = ({
   type = "compression",
   SITE_URL,
 }) => {
+  if (!Array.isArray(field)) return getSingleFileSource(field, type, SITE_URL);
   if (!isArray) return getSingleFileSource(field[0], type, SITE_URL);
 
   return field.map(({ _id, ...singleFile }) => ({
@@ -23,7 +24,9 @@ const fileResolver = ({
 };
 
 export const useFieldsResolver = () => {
-  const { SITE_URL } = useEnvironment();
+  // const { SITE_URL } = useEnvironment();
+
+  const SITE_URL = "https://google.com";
 
   /** @param {{type: "compression" | "preview" | "path" | undefined, field: object, isArray: boolean | undefined}} params */
   const fileResolverBinded = (params) =>
@@ -33,13 +36,13 @@ export const useFieldsResolver = () => {
     });
 
   const mapRepeat = ({ field, keyResolvers }) => {
-    const arr = field.data.map((item) => item);
-    return arr.map(({ _id, ...currentFields }) =>
+    return field.data.map(({ _id, custom_fields: currentFields }) =>
       Object.keys(currentFields).reduce(
         (acc, fieldKey) => ({
           ...acc,
-          [fieldKey]: keyResolvers[fieldKey]({
+          [fieldKey]: keyResolvers[fieldKey].resolver({
             field: currentFields[fieldKey],
+            ...keyResolvers[fieldKey],
           }),
         }),
         {
