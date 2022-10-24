@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import React from "react";
+import { useEffect, useMemo } from "react";
 
 const getButtonVars = (button, type) => {
   return {
@@ -39,6 +40,7 @@ const getArrowCubeVars = (arrowCube, type) => {
 };
 
 const getArrowLongVars = (arrowLong) => {
+  if (!arrowLong) return {};
   return {
     [`--arrow-long-custom-icon-color`]: arrowLong.iconColor,
   };
@@ -51,6 +53,7 @@ const getCustomColorVar = (color, type) => {
 };
 
 const resolveAllVars = ({ components, getVars }) => {
+  if (!components) return {};
   return Object.keys(components).reduce(
     (acc, type) => ({
       ...acc,
@@ -74,32 +77,49 @@ export const UiKitContainer = ({
   arrowsCube,
   arrowLong,
   children,
+  toHTML = true,
+  ...props
 }) => {
-  const jsonVars = JSON.stringify({ buttons, typographies, customColors });
-  useEffect(() => {
-    insertVariables(
-      Object.assign(
-        resolveAllVars({
-          components: buttons,
-          getVars: getButtonVars,
-        }),
-        resolveAllVars({
-          components: typographies,
-          getVars: getTypographyVars,
-        }),
-        resolveAllVars({
-          components: customColors,
-          getVars: getCustomColorVar,
-        }),
-        resolveAllVars({
-          components: arrowsCube,
-          getVars: getArrowCubeVars,
-        }),
-        getArrowLongVars(arrowLong)
-      )
+  const jsonVars = JSON.stringify({
+    buttons,
+    typographies,
+    customColors,
+    arrowsCube,
+    arrowLong,
+  });
+
+  const varsObject = useMemo(() => {
+    return Object.assign(
+      resolveAllVars({
+        components: buttons,
+        getVars: getButtonVars,
+      }),
+      resolveAllVars({
+        components: typographies,
+        getVars: getTypographyVars,
+      }),
+      resolveAllVars({
+        components: customColors,
+        getVars: getCustomColorVar,
+      }),
+      resolveAllVars({
+        components: arrowsCube,
+        getVars: getArrowCubeVars,
+      }),
+      getArrowLongVars(arrowLong)
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [jsonVars]);
 
-  return children;
+  useEffect(() => {
+    if (toHTML) insertVariables(varsObject);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [varsObject]);
+
+  if (toHTML) return children;
+  return (
+    <ui-kit-container style={varsObject} {...props}>
+      {children}
+    </ui-kit-container>
+  );
 };

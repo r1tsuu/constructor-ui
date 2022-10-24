@@ -116,19 +116,20 @@ export const booleanArg = ({ defaultValue }) => ({
   type: "boolean",
 });
 
-export const sectionArgs = (args) => {
-  const withBaseArgs = {
-    ...args,
-    section_theme: radioArg({
-      options: ["dark", "light", "custom"],
-      defaultValue: "dark",
+export const argsWithBase = ({ args, base }) => {
+  return Object.keys(args).reduce(
+    (acc, argKey) => ({
+      ...acc,
+      [`${base}_${argKey}`]: args[argKey],
     }),
-    section_bg: colorArg({ defaultValue: "background" }),
-  };
+    {}
+  );
+};
 
-  return Object.keys(withBaseArgs).reduce(
+export const args = (args, noPrefix = false) => {
+  return Object.keys(args).reduce(
     (acc, argKey) => {
-      const arg = withBaseArgs[argKey];
+      const arg = args[argKey];
       if (typeof arg !== "object" || Array.isArray(arg))
         return {
           args: {
@@ -148,7 +149,8 @@ export const sectionArgs = (args) => {
       const argType = arg.type;
 
       const resolveSettingsArgKey = () => {
-        if (typeof arg.prefix === "undefined") return `settings_${argKey}`;
+        if (typeof arg.prefix === "undefined")
+          return noPrefix ? argKey : `settings_${argKey}`;
         if (arg.prefix === null) return `${argKey}`;
         return `${arg.prefix}.${argKey}`;
       };
@@ -244,6 +246,17 @@ export const sectionArgs = (args) => {
       argTypes: {},
     }
   );
+};
+
+export const sectionArgs = (sectionArgs) => {
+  return args({
+    ...sectionArgs,
+    section_theme: radioArg({
+      options: ["dark", "light", "custom"],
+      defaultValue: "dark",
+    }),
+    section_bg: colorArg({ defaultValue: "background" }),
+  });
 };
 
 export function parseArgs(obj) {

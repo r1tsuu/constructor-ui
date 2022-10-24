@@ -1,6 +1,7 @@
 @import "./mixins.scss";
 
-html {
+html,
+ui-kit-container {
   --button-padding: 0 15px;
   --button-height: 50px;
   --button-font-size: 14px;
