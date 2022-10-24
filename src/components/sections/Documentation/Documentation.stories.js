@@ -54,11 +54,11 @@ export default createSection({
     paginationButtonType: buttonArg({}),
     items,
     card: cardArg({}),
-    "card.title": textArg({
+    card_title: textArg({
       color: "text-primary",
       typography: "h4",
     }),
-    "card.fileSize": textArg({
+    card_fileSize: textArg({
       color: "text-secondary",
       typography: "p1",
     }),

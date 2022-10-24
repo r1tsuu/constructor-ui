@@ -61,11 +61,11 @@ export default createSection({
     }),
     items,
     card: cardArg({}),
-    "card.title": textArg({
+    card_title: textArg({
       typography: "h4",
       color: "text-primary",
     }),
-    "card.subTitle": textArg({
+    card_subTitle: textArg({
       typography: "p1",
       color: "text-secondary",
     }),

@@ -87,24 +87,24 @@ export default createSection({
     buttonType: buttonArg({}),
     items,
     card: cardArg({}),
-    "card.title": textArg({
+    card_title: textArg({
       typography: "h2",
       color: "text-primary",
     }),
-    "card.subTitle": textArg({
+    card_subTitle: textArg({
       typography: "h5",
       color: "accent",
     }),
-    "card.description": textArg({
+    card_description: textArg({
       typography: "p1",
       color: "text-secondary",
     }),
-    "card.advantage": textArg({
+    card_advantage: textArg({
       typography: "h5",
       color: "text-primary",
     }),
-    "card.buttonName": "Текст кнопки",
-    "card.buttonLink": "https://google.com",
+    card_buttonName: "Текст кнопки",
+    card_buttonLink: "https://google.com",
   },
 });
 
