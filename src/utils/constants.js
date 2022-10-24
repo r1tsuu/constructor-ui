@@ -33,8 +33,8 @@ export const SECTIONS = {
   ADVANTAGES: "Advantages",
   CHARACTERISTICS: "Characteristics",
   DOCUMENTATION: "Documentation",
-  IMAGE_TEXT_BUTTON: "Photo Text Button",
-  PHOTO_QUOTE: "Photo Quote",
+  IMAGE_TEXT_BUTTON: "ImageTextButton",
+  PHOTO_QUOTE: "PhotoQuote",
   TECHNOLGIES: "Technologies",
   TERMS: "Terms",
 };

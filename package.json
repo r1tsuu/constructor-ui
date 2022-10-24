@@ -1,6 +1,6 @@
 {
-  "name": "r1tsu-constructor-pkg",
-  "version": "0.1.0",
+  "name": "constructor-ui-rossery",
+  "version": "0.1.1",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
