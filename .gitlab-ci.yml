@@ -16,7 +16,7 @@ setup:
     paths:
       - node_modules/
   script:
-    - npm install
+    - npx yarn
 
 # stage: build-and-test (here I run linter, unit tests, and everything I want to build or test)
 
@@ -26,7 +26,7 @@ build:
     paths:
       - dist/
   script:
-    - npm run build
+    - npx yarn build
 
 storybook:
   stage: build-and-test
@@ -36,7 +36,7 @@ storybook:
     paths:
       - storybook/
   script:
-    - npm run build-storybook --output-dir storybook
+    - npx yarn build-storybook --output-dir storybook
 
 # stage: deployment (here I deploy my app to specific stages or other artefacts like storybook)
 
