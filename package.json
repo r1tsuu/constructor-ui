@@ -4,6 +4,7 @@
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
+  "homepage": "http://r1tsuu.github.io/constructor-ui",
   "babel": {
     "presets": [
       "react",
@@ -25,6 +26,8 @@
     "build": "rm -rf dist && NODE_ENV=production babel src/ --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,.stories.js,__snapshots__",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build-storybook",
+    "deploy-storybook": "gh-pages -d storybook-static",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -70,6 +73,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "gh-pages": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
     "sass": "1.55.0"
   }
