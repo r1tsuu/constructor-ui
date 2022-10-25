@@ -1,6 +1,6 @@
 import React from "react";
-import { UiKitContainer } from "../../src/containers";
-import { testColors } from "../../src/utils/constants";
+import { UiKitContainer } from "../containers";
+import { testColors } from "../utils/constants";
 
 const createArrowCube = ({
   borderRadius = "10px",

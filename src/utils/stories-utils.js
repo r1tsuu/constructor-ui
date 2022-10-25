@@ -1,7 +1,4 @@
-import {
-  SectionDecorator,
-  UiKitContainerDecorator,
-} from "../../.storybook/decorators";
+import { UiKitContainerDecorator } from "../stories-decorators/UiKitContainerDecorator";
 
 import imagePlaceholder from "../stories-assets/img-placeholder.png";
 import { snakeToTitleCase } from "./utils";
@@ -292,7 +289,7 @@ const resoveTitle = (prefix, name) => {
 
 export const createSection = ({ name, args, component }) => ({
   title: resoveTitle("Sections", name),
-  decorators: [UiKitContainerDecorator, SectionDecorator],
+  decorators: [UiKitContainerDecorator],
   ...sectionArgs(args),
   component,
 });
