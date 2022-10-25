@@ -2,9 +2,9 @@ import React from "react";
 import { Button, Typography, ContentContainer, Section } from "../../shared";
 
 import photoPlaceholder from "../../../assets/img-placeholder.png";
-import styles from "./ImageTextButton.module.scss";
+import styles from "./PhotoTextButton.module.scss";
 
-export const ImageTextButton = ({
+export const PhotoTextButton = ({
   subTitle,
   title,
   description,

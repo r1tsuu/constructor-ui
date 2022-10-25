@@ -1,8 +1,10 @@
 import React from "react";
+import { COMPONENT_NAMES } from "../../../utils/constants";
 import {
   args,
   argsWithBase,
   colorArg,
+  createSetting,
   parseArgs,
 } from "../../../utils/stories-utils";
 import { Arrows } from "./Arrows";
@@ -23,19 +25,16 @@ const cubeArg = (type) => {
   return argsWithBase({ args, base });
 };
 
-export default {
-  title: "UI KIT Settings/Arrows",
+export default createSetting({
+  name: COMPONENT_NAMES.SETTINGS.DEFAULT_UI_KIT_ARROWS,
   component: Arrows,
-  ...args(
-    {
-      ...cubeArg("primary"),
-      ...cubeArg("secondary"),
-      ...cubeArg("tertiary"),
-      long_iconColor: colorArg({ defaultValue: "#28a745" }),
-    },
-    true
-  ),
-};
+  args: {
+    ...cubeArg("primary"),
+    ...cubeArg("secondary"),
+    ...cubeArg("tertiary"),
+    long_iconColor: colorArg({ defaultValue: "#28a745" }),
+  },
+});
 
 export const Default = (args) => {
   return <Arrows {...parseArgs(args)} />;

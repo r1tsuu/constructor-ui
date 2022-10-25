@@ -1,4 +1,5 @@
 import React from "react";
+import { COMPONENT_NAMES } from "../../../utils/constants";
 
 import {
   buttonArg,
@@ -33,7 +34,7 @@ const items = [
 ];
 
 export default createSection({
-  name: "Documentation",
+  name: COMPONENT_NAMES.SECTIONS.DEFAULT_BLOCK_DOCUMENTATION,
   component: Documentation,
   args: {
     subTitle: textArg({

@@ -1,4 +1,5 @@
 import React from "react";
+import { COMPONENT_NAMES } from "../../../utils/constants";
 import {
   createSection,
   textArg,
@@ -7,11 +8,11 @@ import {
   parseArgs,
 } from "../../../utils/stories-utils";
 
-import { ImageTextButton } from "./ImageTextButton";
+import { PhotoTextButton } from "./PhotoTextButton";
 
 export default createSection({
-  name: "Image Text Button",
-  component: ImageTextButton,
+  name: COMPONENT_NAMES.SECTIONS.DEFAULT_BLOCK_PHOTO_TEXT_BUTTON,
+  component: PhotoTextButton,
   args: {
     subTitle: textArg({
       defaultValue: "будуємо з любов’ю",
@@ -38,4 +39,4 @@ export default createSection({
   },
 });
 
-export const Default = (args) => <ImageTextButton {...parseArgs(args)} />;
+export const Default = (args) => <PhotoTextButton {...parseArgs(args)} />;

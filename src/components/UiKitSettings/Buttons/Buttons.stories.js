@@ -1,5 +1,10 @@
 import React from "react";
-import { args, argsWithBase, parseArgs } from "../../../utils/stories-utils";
+import { COMPONENT_NAMES } from "../../../utils/constants";
+import {
+  argsWithBase,
+  createSetting,
+  parseArgs,
+} from "../../../utils/stories-utils";
 import { Buttons } from "./Buttons";
 
 const buttonArg = (type) => {
@@ -17,17 +22,14 @@ const buttonArg = (type) => {
   return argsWithBase({ args, base: type });
 };
 
-export default {
-  title: "UI KIT Settings/Buttons",
+export default createSetting({
+  name: COMPONENT_NAMES.SETTINGS.DEFAULT_UI_KIT_BUTTONS,
   component: Buttons,
-  ...args(
-    {
-      ...buttonArg("primary"),
-      ...buttonArg("secondary"),
-      ...buttonArg("tertiary"),
-    },
-    true
-  ),
-};
+  args: {
+    ...buttonArg("primary"),
+    ...buttonArg("secondary"),
+    ...buttonArg("tertiary"),
+  },
+});
 
 export const Default = (args) => <Buttons {...parseArgs(args)} />;

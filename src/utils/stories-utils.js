@@ -4,6 +4,7 @@ import {
 } from "../../.storybook/decorators";
 
 import imagePlaceholder from "../stories-assets/img-placeholder.png";
+import { snakeToTitleCase } from "./utils";
 
 export const buttonType = () => {
   return {
@@ -280,9 +281,24 @@ export function parseArgs(obj) {
   return result;
 }
 
+const resoveTitle = (prefix, name) => {
+  return `${prefix}/${snakeToTitleCase(
+    name
+      .replace("DEFAULT_BLOCK", "")
+      .replace("DEFAULT_UI_KIT", "")
+      .toLowerCase()
+  )}`;
+};
+
 export const createSection = ({ name, args, component }) => ({
-  title: `Sections/${name}`,
+  title: resoveTitle("Sections", name),
   decorators: [UiKitContainerDecorator, SectionDecorator],
   ...sectionArgs(args),
+  component,
+});
+
+export const createSetting = ({ name, args: settingArgs, component }) => ({
+  title: resoveTitle("UI KIT Settings", name),
+  ...args(settingArgs, true),
   component,
 });

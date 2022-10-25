@@ -1,5 +1,10 @@
 import React from "react";
-import { args, argsWithBase, parseArgs } from "../../../utils/stories-utils";
+import { COMPONENT_NAMES } from "../../../utils/constants";
+import {
+  argsWithBase,
+  createSetting,
+  parseArgs,
+} from "../../../utils/stories-utils";
 
 import { Typographies } from "./Typographies";
 
@@ -18,20 +23,17 @@ const typographyArg = (type) => {
   return argsWithBase({ args, base: type });
 };
 
-export default {
-  title: "UI KIT Settings/Typographies",
+export default createSetting({
+  name: COMPONENT_NAMES.SETTINGS.DEFAULT_UI_KIT_TYPOGRAPHIES,
   component: Typographies,
-  ...args(
-    {
-      ...typographyArg("h2"),
-      ...typographyArg("h3"),
-      ...typographyArg("h4"),
-      ...typographyArg("h5"),
-      ...typographyArg("p1"),
-      ...typographyArg("p2"),
-    },
-    true
-  ),
-};
+  args: {
+    ...typographyArg("h2"),
+    ...typographyArg("h3"),
+    ...typographyArg("h4"),
+    ...typographyArg("h5"),
+    ...typographyArg("p1"),
+    ...typographyArg("p2"),
+  },
+});
 
 export const Default = (args) => <Typographies {...parseArgs(args)} />;

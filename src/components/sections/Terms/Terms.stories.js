@@ -1,4 +1,5 @@
 import React from "react";
+import { COMPONENT_NAMES } from "../../../utils/constants";
 
 import {
   arrowArg,
@@ -70,7 +71,7 @@ const items = [
 ];
 
 export default createSection({
-  name: "Terms",
+  name: COMPONENT_NAMES.SECTIONS.DEFAULT_BLOCK_TERMS,
   component: Terms,
   args: {
     subTitle: textArg({

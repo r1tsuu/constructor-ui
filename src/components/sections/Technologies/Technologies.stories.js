@@ -20,6 +20,7 @@ import {
   textArg,
 } from "../../../utils/stories-utils";
 import { Technologies } from "./Technologies";
+import { COMPONENT_NAMES } from "../../../utils/constants";
 
 const item = (title, subTitle, icon) => ({
   title,
@@ -42,7 +43,7 @@ const items = [
 ];
 
 export default createSection({
-  name: "Technologies",
+  name: COMPONENT_NAMES.SECTIONS.DEFAULT_BLOCK_TECHNOLOGIES,
   component: Technologies,
   args: {
     subTitle: textArg({

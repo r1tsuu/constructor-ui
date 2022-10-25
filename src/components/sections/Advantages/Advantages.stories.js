@@ -1,4 +1,5 @@
 import React from "react";
+import { COMPONENT_NAMES } from "../../../utils/constants";
 
 import {
   createSection,
@@ -39,7 +40,7 @@ const items = [
 ];
 
 export default createSection({
-  name: "Advantages",
+  name: COMPONENT_NAMES.SECTIONS.DEFAULT_BLOCK_ADVANTAGES,
   component: Advantages,
   args: {
     subTitle: textArg({
