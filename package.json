@@ -1,7 +1,6 @@
 {
   "name": "constructor-ui-rossery",
   "version": "0.1.4",
-  "type": "module",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -14,6 +13,8 @@
     ]
   },
   "dependencies": {
+    "@storybook/preview-web": "^6.5.13",
+    "@storybook/router": "^6.5.13",
     "bson": "^4.7.0",
     "clsx": "1.2.1",
     "react": "17.0.2",
