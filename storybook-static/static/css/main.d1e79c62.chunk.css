@@ -1,4 +1,5 @@
-html {
+html,
+ui-kit-container {
   --button-padding: 0 15px;
   --button-height: 50px;
   --button-font-size: 14px;
@@ -18,7 +19,8 @@ html {
   --typography-p2-font-size: var(--typography-p2-font-size-mobile);
 }
 @media (min-width: 768px) {
-  html {
+  html,
+ui-kit-container {
     --button-width: auto;
     --button-min-width: 220px;
     --button-font-size: 16px;
@@ -31,7 +33,8 @@ html {
   }
 }
 @media (min-width: 1150px) {
-  html {
+  html,
+ui-kit-container {
     --typography-h2-font-size: var(--typography-h2-font-size-laptop);
     --typography-h3-font-size: var(--typography-h3-font-size-laptop);
     --typography-h4-font-size: var(--typography-h4-font-size-laptop);
@@ -41,7 +44,8 @@ html {
   }
 }
 @media (min-width: 1550px) {
-  html {
+  html,
+ui-kit-container {
     --arrow-cube-dimensions: 60px;
     --typography-h2-font-size: var(--typography-h2-font-size-desktop);
     --typography-h3-font-size: var(--typography-h3-font-size-desktop);
@@ -991,5 +995,136 @@ video {
     margin-top: 0;
   }
 }
+.Arrows_wrapper__3nnIs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
 
-/*# sourceMappingURL=main.a7c589f1.chunk.css.map*/
+.Arrows_title__13ClI {
+  font-size: 55px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  font-family: Arial;
+}
+
+.Arrows_arrowsList__3afKN {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 20px;
+  gap: 20px;
+}
+
+.Arrows_arrowTypeWrapper__1cP_o {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-gap: 10px;
+  gap: 10px;
+  font-size: 35px;
+}
+
+.Arrows_arrowType__1RX7U {
+  display: flex;
+  grid-gap: 10px;
+  gap: 10px;
+}
+.Buttons_wrapper__2Ae5T {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.Buttons_title__NeSkf {
+  font-size: 55px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  font-family: Arial;
+}
+
+.Buttons_buttonsList__75MFG {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 20px;
+  gap: 20px;
+}
+
+.Buttons_buttonTypeWrapper__mBKIq {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-gap: 10px;
+  gap: 10px;
+  font-size: 35px;
+}
+.CustomThemeColors_wrapper__WERSo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.CustomThemeColors_title__stsRB {
+  font-size: 55px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  font-family: Arial;
+}
+
+.CustomThemeColors_colorsList__3fzPW {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 20px;
+  gap: 20px;
+  align-items: center;
+}
+
+.CustomThemeColors_color__30mBt {
+  display: flex;
+  grid-gap: 10px;
+  gap: 10px;
+  align-items: center;
+}
+
+.CustomThemeColors_colorBg__2EE6W {
+  background-color: var(--theme-color);
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+}
+
+.CustomThemeColors_colorText__zMMPj {
+  font-size: 35px;
+  font-family: Arial;
+  text-transform: uppercase;
+  color: var(--theme-color);
+}
+.Typographies_wrapper__v_bkB {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.Typographies_title__30q8x {
+  font-size: 55px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  font-family: Arial;
+}
+
+.Typographies_typographiesList__Ec6qm {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 20px;
+  gap: 20px;
+  align-items: center;
+}
+
+/*# sourceMappingURL=main.d1e79c62.chunk.css.map*/
