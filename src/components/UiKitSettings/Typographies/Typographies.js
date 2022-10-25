@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Typography } from "../../../components";
-import { UiKitContainer } from "../../UiKitContainer";
+import { Typography } from "../../shared";
+import { UiKitContainer } from "../../../containers";
 
 import styles from "./Typographies.module.scss";
 

@@ -1,6 +1,6 @@
 import React from "react";
-import { Arrow } from "../../../components";
-import { UiKitContainer } from "../../UiKitContainer";
+import { Arrow } from "../../shared";
+import { UiKitContainer } from "../../../containers";
 
 import styles from "./Arrows.module.scss";
 

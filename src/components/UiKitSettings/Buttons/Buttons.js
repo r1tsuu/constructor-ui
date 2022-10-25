@@ -1,6 +1,6 @@
 import React from "react";
-import { Button } from "../../../components";
-import { UiKitContainer } from "../../UiKitContainer";
+import { Button } from "../../shared";
+import { UiKitContainer } from "../../../containers";
 
 import styles from "./Buttons.module.scss";
 

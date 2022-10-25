@@ -1,5 +1,5 @@
 import React from "react";
-import { UiKitContainer } from "../../UiKitContainer";
+import { UiKitContainer } from "../../../containers";
 
 import styles from "./CustomThemeColors.module.scss";
 
