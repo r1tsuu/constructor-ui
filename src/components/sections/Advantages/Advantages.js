@@ -1,15 +1,11 @@
 import React from "react";
 
 import { Section, ContentContainer, Typography } from "../../shared";
-import { queryFromString, parsePath } from "@storybook/router";
-import { parseArgsParam } from "@storybook/preview-web/dist/modern/parseArgsParam";
+
 import defaultItemIcon from "./assets/default-icon.svg";
 import styles from "./Advantages.module.scss";
 
 export const Advantages = ({ subTitle = null, title, items, settings }) => {
-  console.log(
-    parseArgsParam("settings_gridColumns:4;settings_section_theme:light")
-  );
   return (
     <Section {...settings.section}>
       <ContentContainer>

@@ -1,3 +1,5 @@
+import { Advantages } from "../components";
+
 export const testColors = {
   blue: "#007bff",
   indigo: "#6610f2",
@@ -28,6 +30,8 @@ export const mediaQueries = {
   minLaptop: "(min-width: 1150px)",
   minDesktop: "(min-width: 1550px)",
 };
+
+export const IS_ADMIN_PARENT = window.parent.parent !== window.parent.self;
 
 export const COMPONENT_NAMES = {
   SECTIONS: {

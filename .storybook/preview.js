@@ -54,6 +54,6 @@ export const parameters = {
   },
 };
 
-console.log(window);
-
 export const decorators = [InStorybookDecorator];
+
+// window.addEventListener("message", (event) => console.log(event));

@@ -1,6 +1,5 @@
 import { queryFromString, parsePath, buildArgsParam } from "@storybook/router";
-import * as Components from "./components";
-export { Components };
+export { COMPONENTS, COMPONENT_KEYS } from "./components";
 export { COMPONENT_NAMES } from "./utils/constants";
 export { parseArgs } from "./utils/stories-utils";
 export { queryFromString, parsePath, buildArgsParam };

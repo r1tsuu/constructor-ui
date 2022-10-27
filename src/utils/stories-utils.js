@@ -2,6 +2,7 @@ import { UiKitContainerDecorator } from "../stories-decorators/UiKitContainerDec
 
 import imagePlaceholder from "../stories-assets/img-placeholder.png";
 import { snakeToTitleCase } from "./utils";
+import { ComponentDecorator } from "../stories-decorators/ComponentDecorator";
 
 export const buttonType = () => {
   return {
@@ -289,7 +290,7 @@ const resoveTitle = (prefix, name) => {
 
 export const createSection = ({ name, args, component }) => ({
   title: resoveTitle("Sections", name),
-  decorators: [UiKitContainerDecorator],
+  decorators: [UiKitContainerDecorator, ComponentDecorator],
   ...sectionArgs(args),
   component,
 });
@@ -297,5 +298,6 @@ export const createSection = ({ name, args, component }) => ({
 export const createSetting = ({ name, args: settingArgs, component }) => ({
   title: resoveTitle("UI KIT Settings", name),
   ...args(settingArgs, true),
+  decorators: [ComponentDecorator],
   component,
 });

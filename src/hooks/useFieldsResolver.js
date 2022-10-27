@@ -1,4 +1,26 @@
-// import { useEnvironment } from "../contexts/EnvironmentContext";
+import { useEnvironment } from "../contexts/EnvironmentContext";
+import React from "react";
+
+export function parseArgs(obj) {
+  const result = {};
+
+  // For each object path (property key) in the object
+  for (const objectPath in obj) {
+    const parts = objectPath.split("_");
+
+    // Create sub-objects along path as needed
+    let target = result;
+    while (parts.length > 1) {
+      const part = parts.shift();
+      target = target[part] = target[part] || {};
+    }
+
+    // Set value at end of path
+    target[parts[0]] = obj[objectPath];
+  }
+
+  return result;
+}
 
 const textResolver = ({ field }) => {
   return field.value;
@@ -23,10 +45,8 @@ const fileResolver = ({
   }));
 };
 
-export const useFieldsResolver = () => {
-  // const { SITE_URL } = useEnvironment();
-
-  const SITE_URL = "https://google.com";
+export const useFieldsResolver = (props, fields) => {
+  const { SITE_URL } = useEnvironment();
 
   /** @param {{type: "compression" | "preview" | "path" | undefined, field: object, isArray: boolean | undefined}} params */
   const fileResolverBinded = (params) =>
@@ -52,9 +72,38 @@ export const useFieldsResolver = () => {
     );
   };
 
+  const resolvers = {
+    file: fileResolverBinded,
+    text: textResolver,
+    repeat: mapRepeat,
+  };
+
+  const resolvedProps = props &&
+    fields && {
+      ...Object.keys(fields).reduce(
+        (acc, fieldKey) => ({
+          ...acc,
+          [fieldKey]: resolvers[fields[fieldKey.type]]({
+            field: props[fieldKey],
+            ...fields[fieldKey].args,
+          }),
+        }),
+        {}
+      ),
+      settings: parseArgs(props.settings),
+    };
+
   return {
     textResolver,
     fileResolver: fileResolverBinded,
     mapRepeat,
+    resolvedProps,
+  };
+};
+
+export const withResolvedProps = (Component, fields) => {
+  return (props) => {
+    const { resolvedProps } = useFieldsResolver(props, fields);
+    return <Component {...resolvedProps} />;
   };
 };

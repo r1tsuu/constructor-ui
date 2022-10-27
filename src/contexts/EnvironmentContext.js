@@ -12,10 +12,9 @@ export const EnvironmentProvider = ({ SITE_URL, children }) => {
 };
 
 export const useEnvironment = () => {
-  const context = useContext(EnvironmentContext);
-
-  if (!context)
-    throw Error("Use useEnvironment hook outside Environment Context.Provider");
+  const context = useContext(EnvironmentContext) ?? {
+    SITE_URL: "http://example.com",
+  };
 
   const { SITE_URL } = { context };
 

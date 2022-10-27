@@ -1,21 +1,16 @@
 {
   "name": "constructor-ui-rossery",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "private": false,
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "homepage": "http://r1tsuu.github.io/constructor-ui",
-  "babel": {
-    "presets": [
-      "react",
-      "env",
-      "stage-2"
-    ]
-  },
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
   "dependencies": {
+    "@rollup/plugin-image": "^3.0.1",
     "@storybook/preview-web": "^6.5.13",
     "@storybook/router": "^6.5.13",
-    "bson": "^4.7.0",
     "clsx": "1.2.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
@@ -31,7 +26,8 @@
     "predeploy": "npm run build-storybook",
     "deploy-storybook": "gh-pages -d storybook-static",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "rollup": "rollup -c"
   },
   "eslintConfig": {
     "extends": "react-app",
@@ -59,7 +55,9 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-transform-react-jsx": "^7.19.0",
+    "@rollup/plugin-babel": "^6.0.2",
+    "@rollup/plugin-commonjs": "^23.0.2",
+    "@rollup/plugin-node-resolve": "^15.0.1",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-console": "^1.2.3",
     "@storybook/addon-essentials": "^6.5.12",
@@ -72,12 +70,13 @@
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.5.12",
     "@storybook/testing-library": "0.0.13",
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-2": "^6.24.1",
     "gh-pages": "^4.0.0",
     "html-webpack-plugin": "^5.5.0",
+    "lodash": "^4.17.21",
+    "postcss": "^8.4.18",
+    "postcss-modules": "^5.0.0",
+    "rollup": "^3.2.3",
+    "rollup-plugin-postcss": "^4.0.2",
     "sass": "1.55.0"
   }
 }
