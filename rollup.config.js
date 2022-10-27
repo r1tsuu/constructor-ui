@@ -27,7 +27,7 @@ module.exports = [
         presets: ["@babel/env", "@babel/preset-react"],
       }),
       postcss({
-        extract: true,
+        extract: false,
         modules: true,
         use: ["sass"],
       }),
