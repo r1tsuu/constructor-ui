@@ -288,16 +288,28 @@ const resoveTitle = (prefix, name) => {
   )}`;
 };
 
-export const createSection = ({ name, args, component }) => ({
-  title: resoveTitle("Sections", name),
-  decorators: [UiKitContainerDecorator, ComponentDecorator],
-  ...sectionArgs(args),
-  component,
-});
+export const DEFAULT_ARGS = {};
 
-export const createSetting = ({ name, args: settingArgs, component }) => ({
-  title: resoveTitle("UI KIT Settings", name),
-  ...args(settingArgs, true),
-  decorators: [ComponentDecorator],
-  component,
-});
+export const createSection = ({ name, args, component }) => {
+  const { args: defaultArgs, argTypes } = sectionArgs(args);
+  DEFAULT_ARGS[name] = defaultArgs;
+  return {
+    title: resoveTitle("Sections", name),
+    decorators: [UiKitContainerDecorator, ComponentDecorator],
+    args: defaultArgs,
+    argTypes,
+    component,
+  };
+};
+
+export const createSetting = ({ name, args: settingArgs, component }) => {
+  const { args: defaultArgs, argTypes } = args(settingArgs, true);
+  DEFAULT_ARGS[name] = defaultArgs;
+  return {
+    title: resoveTitle("UI KIT Settings", name),
+    args: defaultArgs,
+    argTypes,
+    decorators: [ComponentDecorator],
+    component,
+  };
+};
