@@ -1,5 +1,5 @@
 import React from "react";
-import { UiKitContainerDecorator } from "../../../../.storybook/decorators";
+import { UiKitContainerDecorator } from "../../../stories-decorators/UiKitContainerDecorator";
 
 import { Section } from "./Section";
 

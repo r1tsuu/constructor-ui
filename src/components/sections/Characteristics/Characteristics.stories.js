@@ -1,61 +1,36 @@
 import React from "react";
-import { COMPONENT_NAMES } from "../../../utils/constants";
+import { parseArgs } from "../../../utils";
+import { COMPONENT_KEYS } from "../../../utils/constants";
 
-import {
-  createSection,
-  textArg,
-  radioArg,
-  cardArg,
-  parseArgs,
-} from "../../../utils/stories-utils";
+import { createSection } from "../../../utils/stories-utils";
 
 import { Characteristics } from "./Characteristics";
+import { characteristicsArgs } from "./characteristicsArgs";
 
-const item = (title, subTitle) => ({
+export default createSection({
+  name: COMPONENT_KEYS.CHARACTERISTICS,
+  component: Characteristics,
+  args: characteristicsArgs,
+});
+
+export const Default = (args) => <Characteristics {...parseArgs(args)} />;
+
+const _item = (title, subTitle) => ({
   title,
   subTitle,
 });
 
-const items = [
-  item("208", "комфортних квартир"),
-  item("50", "апартаментів з патіо"),
-  item("104", "автомобільних паркомісць"),
-  item("3", "дитячих майданчика"),
-  item("18", "мото паркомісць"),
-  item("5", "житлових секцій"),
-  item("2,4", "гектара території"),
-  item("7", "будівель різної висоти"),
-];
-
-export default createSection({
-  name: COMPONENT_NAMES.SECTIONS.DEFAULT_BLOCK_CHARACTERISTICS,
-  component: Characteristics,
-  args: {
-    items,
-    subTitle: textArg({
-      defaultValue: "переваги комплексу",
-      typography: "h5",
-      color: "accent",
-    }),
-    title: textArg({
-      defaultValue: "про нас в цифрах",
-      typography: "h2",
-      color: "text-primary",
-    }),
-    gridColumns: radioArg({
-      options: [3, 4],
-      defaultValue: 4,
-    }),
-    card: cardArg({}),
-    card_title: textArg({
-      typography: "h2",
-      color: "text-primary",
-    }),
-    card_subTitle: textArg({
-      typography: "p1",
-      color: "text-secondary",
-    }),
-  },
-});
-
-export const Default = (args) => <Characteristics {...parseArgs(args)} />;
+Default.args = {
+  subTitle: "переваги комплексу",
+  title: "про нас в цифрах",
+  items: [
+    _item("208", "комфортних квартир"),
+    _item("50", "апартаментів з патіо"),
+    _item("104", "автомобільних паркомісць"),
+    _item("3", "дитячих майданчика"),
+    _item("18", "мото паркомісць"),
+    _item("5", "житлових секцій"),
+    _item("2,4", "гектара території"),
+    _item("7", "будівель різної висоти"),
+  ],
+};

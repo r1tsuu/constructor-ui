@@ -14,7 +14,7 @@ export const Button = ({
 }) => {
   return (
     <As className={clsx(styles.base, styles[type], className)} {...props}>
-      <Typography as="span">{label}</Typography>
+      <Typography as="span">{label || children}</Typography>
     </As>
   );
 };

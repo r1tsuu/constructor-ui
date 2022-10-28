@@ -1,9 +1,0 @@
-import React from "react";
-import { Test } from "./Test";
-
-export default {
-  title: "Test",
-  component: Test,
-};
-
-export const Default = (args) => <Test {...args} />;

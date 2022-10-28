@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ContentContainer } from ".";
+import { ContentContainer } from "./ContentContainer";
 
 export default {
   title: "UI KIT/Content Container",

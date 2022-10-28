@@ -1,5 +1,3 @@
-import { Advantages } from "../components";
-
 export const testColors = {
   blue: "#007bff",
   indigo: "#6610f2",
@@ -32,6 +30,19 @@ export const mediaQueries = {
 };
 
 export const IS_ADMIN_PARENT = window.parent.parent !== window.parent.self;
+
+export const COMPONENT_KEYS = {
+  PHOTO_TEXT_BUTTON: "PHOTO_TEXT_BUTTON",
+  ADVANTAGES: "ADVANTAGES",
+  CHARACTERISTICS: "CHARACTERISTICS",
+  DOCUMENTATION: "DOCUMENTATION",
+  TECHNOLOGIES: "TECHNOLOGIES",
+  TERMS: "TERMS",
+  ARROWS: "ARROWS",
+  BUTTONS: "BUTTONS",
+  CUSTOM_THEME_COLORS: "CUSTOM_THEME_COLORS",
+  TYPOGRAPHIES: "TYPOGRAPHIES",
+};
 
 export const COMPONENT_NAMES = {
   SECTIONS: {

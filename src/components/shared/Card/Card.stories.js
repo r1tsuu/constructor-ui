@@ -1,6 +1,6 @@
 import React from "react";
 import { Section } from "..";
-import { UiKitContainerDecorator } from "../../../../.storybook/decorators";
+import { UiKitContainerDecorator } from "../../../stories-decorators/UiKitContainerDecorator";
 import { colorType, themeType } from "../../../utils/stories-utils";
 
 import { Card } from "./Card";
