@@ -7,13 +7,14 @@ export const photoTextButtonPropsResolver = ({
   photoSource,
   description,
   env,
-  settings,
+  args,
 }) => {
+  const { settings } = parseArgs(args);
   return {
     title: baseResolver({ field: title }),
     subTitle: baseResolver({ field: subTitle }),
     photoSource: fileResolver({ field: photoSource, env }),
     description: baseResolver({ field: description }),
-    ...parseArgs(settings),
+    settings,
   };
 };
