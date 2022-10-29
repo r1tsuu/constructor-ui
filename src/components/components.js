@@ -8,14 +8,8 @@ import {
 import { COMPONENT_KEYS } from "../utils/constants";
 import { parseArgs } from "../utils";
 
-const withPropsResolver = (Component, propsResolver) => {
-  return (props) => {
-    return <Component {...propsResolver(props)} />;
-  };
-};
-
-const section = (Component, allArgs, propResolver) => ({
-  Component: withPropsResolver(Component, propResolver),
+const section = (Component, allArgs, propsResolver) => ({
+  Component: (props) => <Component {...propsResolver(props)} />,
   defaultSettings: parseArgs(allArgs.args).settings,
   type: "section",
 });
