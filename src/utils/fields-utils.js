@@ -23,7 +23,7 @@ export const fileResolver = ({
 }) => {
   const { SITE_URL } = env;
   const { value } = field;
-  if (!Array.isArray(field)) return getSingleFileSource(value, type, SITE_URL);
+  if (!Array.isArray(value)) return getSingleFileSource(value, type, SITE_URL);
   if (!isArray) return getSingleFileSource(value[0], type, SITE_URL);
 
   return value.map(({ _id, ...singleFile }) => ({
