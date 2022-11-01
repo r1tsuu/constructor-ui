@@ -9,10 +9,6 @@ import { useEnvironment } from "../contexts/EnvironmentContext";
 import { COMPONENT_KEYS } from "../utils/constants";
 import { parseArgs } from "../utils";
 
-class X {
-  d = 3;
-}
-
 const section = (Component, allArgs, contentResolver) => {
   const defaultSettings = parseArgs(allArgs.args).settings;
   return {
