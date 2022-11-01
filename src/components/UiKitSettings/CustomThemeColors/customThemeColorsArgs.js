@@ -1,5 +1,5 @@
 import { testColors } from "../../../utils/constants";
-import { args, colorArg } from "../../../utils/stories-utils";
+import { args, colorArg } from "../../../utils";
 
 export const customThemeColorsArgs = args(
   {

@@ -6,15 +6,15 @@ export const getSingleFileSourceWithType = (singleFileWithType, SITE_URL) => {
   return `${SITE_URL}${singleFileWithType.replace("./", "/")}`;
 };
 
-export const getSingleFileSource = (
+export const getSingleFileSource = ({
   singleFile,
+  SITE_URL,
   type = "compression",
-  SITE_URL
-) => {
+}) => {
   return getSingleFileSourceWithType(singleFile[type], SITE_URL);
 };
 
-/** @param {{type: "compression" | "preview" | "path" | undefined, field: object, isArray: boolean | undefined, env: {SITE_URL: string}}} params */
+/** @param {{type: "compression" | "preview" | "path" | undefined, field: object, isArray: boolean | undefined, env: {SITE_URL: string}}} */
 export const fileResolver = ({
   field,
   isArray = false,
@@ -23,12 +23,15 @@ export const fileResolver = ({
 }) => {
   const { SITE_URL } = env;
   const { value } = field;
-  if (!Array.isArray(value)) return getSingleFileSource(value, type, SITE_URL);
-  if (!isArray) return getSingleFileSource(value[0], type, SITE_URL);
+
+  if (!Array.isArray(value))
+    return getSingleFileSource({ singleFile: value, type, SITE_URL });
+  if (!isArray)
+    return getSingleFileSource({ singleFile: value[0], type, SITE_URL });
 
   return value.map(({ _id, ...singleFile }) => ({
     _id,
-    source: getSingleFileSource(singleFile, type, SITE_URL),
+    source: getSingleFileSource({ singleFile, SITE_URL, type }),
   }));
 };
 

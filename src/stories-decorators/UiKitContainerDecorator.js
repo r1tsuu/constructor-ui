@@ -182,3 +182,9 @@ export const UiKitContainerDecorator = (Story) => {
     <UiKitContainer {...uiKitContainerDecoratorProps}>{Story()}</UiKitContainer>
   );
 };
+
+export const UiKitContainerMocker = (props) => (
+  <UiKitContainer {...uiKitContainerDecoratorProps}>
+    {props.children}
+  </UiKitContainer>
+);

@@ -5,12 +5,12 @@ export const photoTextButtonContentResolver = ({
   subTitle,
   photoSource,
   description,
+  buttonName,
   env,
-}) => {
-  return {
-    title: baseResolver({ field: title }),
-    subTitle: baseResolver({ field: subTitle }),
-    // photoSource: fileResolver({ field: photoSource, env }),
-    description: baseResolver({ field: description }),
-  };
-};
+}) => ({
+  title: baseResolver({ field: title }),
+  subTitle: baseResolver({ field: subTitle }),
+  // photoSource: fileResolver({ field: photoSource, env }),
+  description: baseResolver({ field: description }),
+  buttonName: baseResolver({ field: buttonName }),
+});

@@ -1,2 +1,2 @@
 export * from "./Arrows";
-export * from "./arrowsArgs.js";
+export * from "./arrowsArgs";

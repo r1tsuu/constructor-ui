@@ -12,7 +12,7 @@ export const Typographies = (typographies) => {
         <div className={styles.title}>Typographies</div>
         <div className={styles.typographiesList}>
           {["h2", "h3", "h4", "h5", "p1", "p2"].map((type) => (
-            <Typography isHTML={false} type={type} color={"#000"}>
+            <Typography isHTML={false} type={type} color={"#000"} key={type}>
               Typography {type}
             </Typography>
           ))}

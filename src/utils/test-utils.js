@@ -1,20 +1,30 @@
 import React from "react";
 import { EnvironmentProvider } from "../contexts/EnvironmentContext";
+import { ObjectID } from "bson";
+import { UiKitContainerMocker } from "../stories-decorators/UiKitContainerDecorator";
 
-export const createBaseField = (value) => ({
+export const baseField = (value) => ({
   value,
 });
 
-export const createFileField = (length = 1) => ({
+export const fileField = (length = 1) => ({
   value: Array(length).fill({
-    compression: "compression",
-    preview: "preview",
-    path: "path",
+    _id: new ObjectID().toString(),
+    compression: "./compression",
+    preview: "./preview",
+    path: "./path",
   }),
 });
 
-export const EnvMocker = (props) => (
+export const x1RepeatField = (dataFields = []) => ({
+  data: dataFields.map((fields) => ({
+    custom_fields: fields,
+    _id: new ObjectID().toString(),
+  })),
+});
+
+export const EnvUiKitMocker = (props) => (
   <EnvironmentProvider SITE_URL={"https://example.com"}>
-    {props.children}
+    <UiKitContainerMocker>{props.children}</UiKitContainerMocker>
   </EnvironmentProvider>
 );
