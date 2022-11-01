@@ -4,6 +4,7 @@ import { createContext } from "react";
 const EnvironmentContext = createContext(null);
 
 export const EnvironmentProvider = ({ SITE_URL, children }) => {
+  console.log(SITE_URL);
   return (
     <EnvironmentContext.Provider value={{ SITE_URL }}>
       {children}
@@ -16,7 +17,9 @@ export const useEnvironment = () => {
     SITE_URL: "http://example.com",
   };
 
-  const { SITE_URL } = { context };
+  console.log(context);
+
+  const { SITE_URL } = context;
 
   const API_URL = `${SITE_URL}/api`;
 

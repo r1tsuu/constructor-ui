@@ -1,6 +1,6 @@
 {
   "name": "@r1tsuu/constructor-ui",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -77,6 +77,7 @@
     "postcss-modules": "^5.0.0",
     "rollup": "^3.2.3",
     "rollup-plugin-postcss": "^4.0.2",
-    "sass": "1.55.0"
+    "sass": "1.55.0",
+    "bson": "^4.7.0"
   }
 }

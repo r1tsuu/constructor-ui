@@ -1,4 +1,4 @@
-import { args, argsWithBase } from "../../../utils/stories-utils";
+import { args, argsWithBase } from "../../../utils";
 
 const buttonArg = (type) => {
   const args = {

@@ -25,5 +25,3 @@ export const arrowsArgs = args(
   },
   true
 );
-
-console.log(arrowsArgs.args);

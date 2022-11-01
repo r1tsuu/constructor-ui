@@ -1,5 +1,5 @@
 export * from "./Arrow";
-export * from "./Button";
+export { Button } from "./Button";
 export * from "./ProgressNumbers";
 export * from "./Typography";
 export * from "./ContentContainer";

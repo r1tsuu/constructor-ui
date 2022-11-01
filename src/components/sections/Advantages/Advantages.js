@@ -18,27 +18,22 @@ export const Advantages = ({ subTitle = null, title, items, settings }) => {
           {title}
         </Typography>
         <ul className={styles.grid} data-grid-columns={settings.gridColumns}>
-          {items.map(
-            ({ _id, title, subTitle, icon = defaultItemIcon }, index) => (
-              <li key={_id || index} className={styles.card}>
-                <div className={styles.cardIconWrapper}>
-                  <img alt="" src={icon} />
-                </div>
-                <Typography
-                  className={styles.cardTitle}
-                  {...settings.card.title}
-                >
-                  {title}
-                </Typography>
-                <Typography
-                  className={styles.cardSubTitle}
-                  {...settings.card.subTitle}
-                >
-                  {subTitle}
-                </Typography>
-              </li>
-            )
-          )}
+          {items.map(({ _id, title, subTitle }, index) => (
+            <li key={_id || index} className={styles.card}>
+              <div className={styles.cardIconWrapper}>
+                <img alt="" src={defaultItemIcon} />
+              </div>
+              <Typography className={styles.cardTitle} {...settings.card.title}>
+                {title}
+              </Typography>
+              <Typography
+                className={styles.cardSubTitle}
+                {...settings.card.subTitle}
+              >
+                {subTitle}
+              </Typography>
+            </li>
+          ))}
         </ul>
       </ContentContainer>
     </Section>
