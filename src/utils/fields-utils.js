@@ -3,8 +3,6 @@ export const baseResolver = ({ field }) => {
 };
 
 export const getSingleFileSourceWithType = (singleFileWithType, SITE_URL) => {
-  if (process.env.NODE_ENV === "development")
-    return "https://i.imgur.com/4DWn4K7.png";
   return `${SITE_URL}${singleFileWithType.replace("./", "/")}`;
 };
 

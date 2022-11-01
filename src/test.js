@@ -5,8 +5,6 @@ import { components } from "./components";
 import { COMPONENT_KEYS } from "./utils/constants";
 import * as testUtils from "./utils/test-utils";
 
-import "./styles/index.scss";
-
 function Advantages() {
   const { Component } = components[COMPONENT_KEYS.ADVANTAGES];
   return (

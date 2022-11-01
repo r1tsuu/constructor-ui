@@ -1,3 +1,4 @@
+import "./styles/index.scss";
 export { COMPONENT_KEYS } from "./utils/constants";
 export { components } from "./components";
 
