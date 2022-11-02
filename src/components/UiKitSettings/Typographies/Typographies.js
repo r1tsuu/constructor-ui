@@ -4,10 +4,13 @@ import { Typography } from "../../shared";
 import { UiKitContainer } from "../../../containers";
 
 import styles from "./Typographies.module.scss";
+import { useInStorybook } from "../../../contexts/InStorybookContext";
 
 export const Typographies = (typographies) => {
-  return (
-    <UiKitContainer typographies={typographies} toHTML={false}>
+  const inStoryBook = useInStorybook();
+
+  const renderComponent = () => {
+    return (
       <div className={styles.wrapper}>
         <div className={styles.title}>Typographies</div>
         <div className={styles.typographiesList}>
@@ -18,6 +21,14 @@ export const Typographies = (typographies) => {
           ))}
         </div>
       </div>
+    );
+  };
+
+  return inStoryBook ? (
+    <UiKitContainer typographies={typographies} toHTML={false}>
+      {renderComponent()}
     </UiKitContainer>
+  ) : (
+    renderComponent()
   );
 };

@@ -3,10 +3,13 @@ import { Button } from "../../shared";
 import { UiKitContainer } from "../../../containers";
 
 import styles from "./Buttons.module.scss";
+import { useInStorybook } from "../../../contexts/InStorybookContext";
 
 export const Buttons = ({ primary, secondary, tertiary }) => {
-  return (
-    <UiKitContainer buttons={{ primary, secondary, tertiary }} toHTML={false}>
+  const inStoryBook = useInStorybook();
+
+  const renderComponent = () => {
+    return (
       <div className={styles.wrapper}>
         <div className={styles.title}>Buttons</div>
         <div className={styles.buttonsList}>
@@ -15,6 +18,14 @@ export const Buttons = ({ primary, secondary, tertiary }) => {
           ))}
         </div>
       </div>
+    );
+  };
+
+  return inStoryBook ? (
+    <UiKitContainer buttons={{ primary, secondary, tertiary }} toHTML={false}>
+      {renderComponent()}
     </UiKitContainer>
+  ) : (
+    renderComponent()
   );
 };

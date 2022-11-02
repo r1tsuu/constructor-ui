@@ -1,7 +1,7 @@
 import React from "react";
 import { Section } from "..";
 import { UiKitContainerDecorator } from "../../../stories-decorators/UiKitContainerDecorator";
-import { colorType, themeType } from "../../../utils/stories-utils";
+import { colorType, themeType } from "../../../utils/utils";
 
 import { Card } from "./Card";
 

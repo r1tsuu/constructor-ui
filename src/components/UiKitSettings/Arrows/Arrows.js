@@ -3,6 +3,7 @@ import { Arrow } from "../../shared";
 import { UiKitContainer } from "../../../containers";
 
 import styles from "./Arrows.module.scss";
+import { useInStorybook } from "../../../contexts/InStorybookContext";
 
 const ArrowType = ({ type }) => {
   return (
@@ -24,8 +25,10 @@ const types = [
 ];
 
 export const Arrows = ({ cube, long }) => {
-  return (
-    <UiKitContainer arrowLong={long} arrowsCube={cube} toHTML={false}>
+  const inStoryBook = useInStorybook();
+
+  const renderComponent = () => {
+    return (
       <div className={styles.wrapper}>
         <div className={styles.title}>Arrows</div>
         <div className={styles.arrowsList}>
@@ -34,6 +37,14 @@ export const Arrows = ({ cube, long }) => {
           ))}
         </div>
       </div>
+    );
+  };
+
+  return inStoryBook ? (
+    <UiKitContainer arrowLong={long} arrowsCube={cube} toHTML={false}>
+      {renderComponent()}
     </UiKitContainer>
+  ) : (
+    renderComponent()
   );
 };
