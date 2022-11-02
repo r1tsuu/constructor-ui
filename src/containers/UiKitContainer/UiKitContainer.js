@@ -77,32 +77,17 @@ export const UiKitContainer = ({
   customColors,
   arrowsCube,
   arrowLong,
-  settings = null,
   children,
   toHTML = true,
   ...props
 }) => {
-  const parseArrows = () => {
-    const { cube, long } = parseArgs(settings.arrows);
-    return {
-      arrowsCube: cube,
-      arrowLong: long,
-    };
-  };
-  const jsonVars = settings
-    ? JSON.stringify({
-        ...parseArrows(settings.arrows),
-        buttons: parseArgs(settings.buttons),
-        customColors: parseArgs(settings.customColors),
-        typographies: parseArgs(settings.typographies),
-      })
-    : JSON.stringify({
-        buttons,
-        typographies,
-        customColors,
-        arrowsCube,
-        arrowLong,
-      });
+  const jsonVars = JSON.stringify({
+    buttons,
+    typographies,
+    customColors,
+    arrowsCube,
+    arrowLong,
+  });
 
   const varsObject = useMemo(() => {
     return Object.assign(
