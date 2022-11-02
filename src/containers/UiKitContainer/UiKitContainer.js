@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useMemo } from "react";
+import { parseArgs } from "../../utils";
 
 const getButtonVars = (button, type) => {
   return {
@@ -76,17 +77,32 @@ export const UiKitContainer = ({
   customColors,
   arrowsCube,
   arrowLong,
+  settings = null,
   children,
   toHTML = true,
   ...props
 }) => {
-  const jsonVars = JSON.stringify({
-    buttons,
-    typographies,
-    customColors,
-    arrowsCube,
-    arrowLong,
-  });
+  const parseArrows = () => {
+    const { cube, long } = parseArgs(settings.arrows);
+    return {
+      arrowsCube: cube,
+      arrowLong: long,
+    };
+  };
+  const jsonVars = settings
+    ? JSON.stringify({
+        ...parseArrows(settings.arrows),
+        buttons: parseArgs(settings.buttons),
+        customColors: parseArgs(settings.customColors),
+        typographies: parseArgs(settings.typographies),
+      })
+    : JSON.stringify({
+        buttons,
+        typographies,
+        customColors,
+        arrowsCube,
+        arrowLong,
+      });
 
   const varsObject = useMemo(() => {
     return Object.assign(
