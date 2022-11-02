@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 
 import styles from "./Button.module.scss";
-import { Typography } from "..";
+import { Typography } from "../Typography";
 
 export const Button = ({
   type = "default",

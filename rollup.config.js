@@ -8,7 +8,6 @@ const babel = require("@rollup/plugin-babel");
 module.exports = [
   {
     input: "src/index.js",
-    inlineDynamicImports: true,
     output: [
       {
         file: packageJson.main,
