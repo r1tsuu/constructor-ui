@@ -1,7 +1,7 @@
 import React from "react";
 
-import { UiKitContainerDecorator } from "../../../.storybook/decorators";
-import { colorType, themeType } from "../../utils/stories-utils";
+import { UiKitContainerDecorator } from "../../stories-decorators/UiKitContainerDecorator";
+import { colorType, themeType } from "../../utils";
 
 import { ColorsInjector } from "./ColorsInjector";
 

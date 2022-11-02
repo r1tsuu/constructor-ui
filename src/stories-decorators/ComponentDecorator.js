@@ -7,15 +7,15 @@ export const ComponentDecorator = (Story, context) => {
   const listener = useRef(null);
   const [args, updateArgs] = useArgs();
 
-  useEffect(() => {
-    if (IS_ADMIN_PARENT) {
-      const layout =
-        JSON.parse(window.parent.sessionStorage.getItem("layout")) ?? {};
+  // useEffect(() => {
+  //   if (IS_ADMIN_PARENT) {
+  //     const layout =
+  //       JSON.parse(window.parent.sessionStorage.getItem("layout")) ?? {};
 
-      layout.showNav = false;
-      window.parent.sessionStorage.setItem("layout", JSON.stringify(layout));
-    }
-  }, []);
+  //     layout.showNav = false;
+  //     window.parent.sessionStorage.setItem("layout", JSON.stringify(layout));
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (IS_ADMIN_PARENT) {
@@ -28,19 +28,19 @@ export const ComponentDecorator = (Story, context) => {
         }
       );
     }
+
+    return () => window.parent.removeEventListener("message", listener.current);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     if (IS_ADMIN_PARENT) {
-      window.parent.parent.postMessage(
-        {
+      if (mounted.current) {
+        window.parent.parent.postMessage({
           payload: args,
-          type: mounted.current ? "ARGS_UPDATED" : "ARGS_DEFAULT",
-        },
-        "*"
-      );
-      if (!mounted.current) mounted.current = true;
+          type: "ARGS_UPDATED",
+        });
+      } else mounted.current = true;
     }
   }, [args]);
 
