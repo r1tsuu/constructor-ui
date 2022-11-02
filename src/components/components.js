@@ -24,7 +24,7 @@ import {
 import { Typographies, typographiesArgs } from "./UiKitSettings/Typographies";
 
 const section = (Component, allArgs, contentResolver) => {
-  const defaultSettings = parseArgs(allArgs.args).settings;
+  const defaultSettings = allArgs.args;
   return {
     defaultSettings,
     initSettings: (setSettings) => setSettings(defaultSettings),
@@ -33,7 +33,7 @@ const section = (Component, allArgs, contentResolver) => {
 
       return (
         <Component
-          settings={settings ?? defaultSettings}
+          settings={parseArgs(settings ?? defaultSettings)}
           {...contentResolver({ ...content, env })}
         />
       );
@@ -43,12 +43,12 @@ const section = (Component, allArgs, contentResolver) => {
 };
 
 export const setting = (Component, allArgs) => {
-  const defaultSettings = parseArgs(allArgs.args);
+  const defaultSettings = allArgs.args;
   return {
     defaultSettings,
     initSettings: (setSettings) => setSettings(defaultSettings),
     Component: ({ settings }) => (
-      <Component {...(settings ?? defaultSettings)} />
+      <Component {...parseArgs(settings ?? defaultSettings)} />
     ),
     type: "setting",
   };
