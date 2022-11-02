@@ -9,9 +9,6 @@
     "registry": "https://npm.pkg.github.com"
   },
   "dependencies": {
-    "@rollup/plugin-image": "^3.0.1",
-    "@storybook/preview-web": "^6.5.13",
-    "@storybook/router": "^6.5.13",
     "clsx": "1.2.1",
     "react-scripts": "3.1.1",
     "react-transition-group": "4.4.5",
@@ -60,6 +57,7 @@
     "@rollup/plugin-babel": "^6.0.2",
     "@rollup/plugin-commonjs": "^23.0.2",
     "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-image": "^3.0.1",
     "@storybook/addon-actions": "^6.5.12",
     "@storybook/addon-console": "^1.2.3",
     "@storybook/addon-essentials": "^6.5.12",
