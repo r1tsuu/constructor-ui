@@ -14,7 +14,6 @@ export default createSection({
 });
 
 export const Default = (args) => {
-  console.log(args);
   return <Advantages asd={"asd"} {...parseArgs(args)} />;
 };
 
