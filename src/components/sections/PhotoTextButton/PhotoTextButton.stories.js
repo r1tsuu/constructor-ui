@@ -4,7 +4,7 @@ import { createSection } from "../../../utils/stories-utils";
 import { parseArgs } from "../../../utils";
 
 import { PhotoTextButton } from "./PhotoTextButton";
-import { photoTextButtonArgs } from "./photoTextButtonArgs";
+import { photoTextButtonArgs } from "./args";
 
 export default createSection({
   name: COMPONENT_KEYS.PHOTO_TEXT_BUTTON,

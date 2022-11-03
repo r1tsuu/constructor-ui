@@ -23,21 +23,35 @@ import {
 } from "./UiKitSettings/CustomThemeColors";
 import { Typographies, typographiesArgs } from "./UiKitSettings/Typographies";
 
+const defaultResolver = (defaultArgs, isSettings = true) =>
+  Object.keys(defaultArgs)
+    .filter((key) =>
+      isSettings ? key.startsWith("settings_") : !key.startsWith("settings_")
+    )
+    .reduce(
+      (acc, key) => ({
+        ...acc,
+        [key.replace("settings_", "")]: defaultArgs[key],
+      }),
+      {}
+    );
+
 const section = (Component, allArgs, contentResolver) => {
-  const defaultSettings = allArgs.args;
+  const defaultArgs = allArgs.args;
   return {
-    defaultSettings,
-    initSettings: (setSettings) => setSettings(defaultSettings),
-    Component: ({ settings, ...content }) => {
+    defaultSettings: defaultResolver(defaultArgs),
+    defaultContent: defaultResolver(defaultArgs, false),
+    Component({ settings, ...content }) {
       const env = useEnvironment();
 
       return (
         <Component
-          settings={{
-            ...parseArgs(settings ?? defaultSettings).settings,
-            ...(settings ?? defaultSettings),
-          }}
-          {...contentResolver({ ...content, env })}
+          settings={parseArgs(settings ?? this.defaultSettings)}
+          {...contentResolver({
+            ...content,
+            env,
+            defaultContent: this.defaultContent,
+          })}
         />
       );
     },

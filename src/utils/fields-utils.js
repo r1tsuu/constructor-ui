@@ -14,6 +14,12 @@ export const getSingleFileSource = ({
   return getSingleFileSourceWithType(singleFile[type], SITE_URL);
 };
 
+export const getSourceFile = (file, env, type = "compression") => {
+  if (!file?.length) return "_";
+  if (!file[type]) return "_";
+  return `${env.SITE_URL}${file[type].replace("./", "/")}`;
+};
+
 /** @param {{type: "compression" | "preview" | "path" | undefined, field: object, isArray: boolean | undefined, env: {SITE_URL: string}}} */
 export const fileResolver = ({
   field,
@@ -50,4 +56,14 @@ export const repeatx1Resolver = ({ field, keyResolvers }) => {
       }
     )
   );
+};
+
+export const resolveField = (value, defaultValue) => {
+  if (typeof value === "undefined") return defaultValue;
+  if (Array.isArray(value)) return value.length ? value : defaultValue;
+  return value === "_" ? value : defaultValue;
+};
+
+export const resolveFieldMobile = (value, valueDesktop, defaulValue) => {
+  return resolveField(value, resolveField(valueDesktop, defaulValue));
 };

@@ -1,4 +1,12 @@
-import { textArg, buttonArg, radioArg, sectionArgs } from "../../../utils";
+import defaultImage from "../../../assets/img-placeholder.png";
+import defaultImageMobile from "../../../assets/img-placeholder-mobile.png";
+import {
+  textArg,
+  buttonArg,
+  radioArg,
+  sectionArgs,
+  booleanArg,
+} from "../../../utils";
 
 export const photoTextButtonArgs = sectionArgs({
   subTitle: textArg({
@@ -16,7 +24,11 @@ export const photoTextButtonArgs = sectionArgs({
     color: "text-secondary",
     typography: "p1",
   }),
-  isReverse: false,
+  photoSource: defaultImage,
+  photoSourceMobile: defaultImageMobile,
+  isReverse: booleanArg({
+    defaultValue: false,
+  }),
   buttonType: buttonArg({}),
   buttonName: "Текст кнопки",
   buttonPosition: radioArg({

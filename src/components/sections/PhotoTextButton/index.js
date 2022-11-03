@@ -1,3 +1,3 @@
 export * from "./PhotoTextButton";
-export * from "./photoTextButtonArgs";
-export * from "./photoTextButtonContentResolver";
+export * from "./args";
+export * from "./contentResolver";
