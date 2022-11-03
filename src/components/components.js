@@ -33,7 +33,10 @@ const section = (Component, allArgs, contentResolver) => {
 
       return (
         <Component
-          settings={parseArgs(settings ?? defaultSettings)}
+          settings={{
+            ...parseArgs(settings ?? defaultSettings).settings,
+            ...(settings ?? defaultSettings),
+          }}
           {...contentResolver({ ...content, env })}
         />
       );
