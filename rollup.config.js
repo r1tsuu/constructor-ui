@@ -1,3 +1,4 @@
+const peerDepsExternalPlugin = require("rollup-plugin-peer-deps-external");
 const resolve = require("@rollup/plugin-node-resolve");
 const commonjs = require("@rollup/plugin-commonjs");
 const image = require("@rollup/plugin-image");
@@ -21,6 +22,7 @@ module.exports = [
       },
     ],
     plugins: [
+      peerDepsExternalPlugin(),
       resolve(),
       babel({
         exclude: "node_modules/**",
