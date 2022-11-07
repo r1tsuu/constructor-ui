@@ -3,6 +3,8 @@ import { Button, Typography, ContentContainer, Section } from "../../shared";
 
 import photoPlaceholder from "../../../assets/img-placeholder.png";
 import styles from "./PhotoTextButton.module.scss";
+import useMediaQuery from "../../../hooks/useMediaQuery";
+import { mediaQueries } from "../../../utils/constants";
 
 export const PhotoTextButton = ({
   subTitle,
@@ -10,8 +12,10 @@ export const PhotoTextButton = ({
   description,
   buttonName,
   photoSource = photoPlaceholder,
+  photoSourceMobile,
   settings,
 }) => {
+  const isMobile = !useMediaQuery(mediaQueries.minTablet);
   return (
     <Section {...settings.section}>
       <ContentContainer
@@ -31,7 +35,7 @@ export const PhotoTextButton = ({
           {title}
         </Typography>
         <div className={styles.photoWrapper}>
-          <img alt="" src={photoSource} />
+          <img alt="" src={isMobile ? photoSourceMobile : photoSource} />
         </div>
         {description && (
           <Typography className={styles.description} {...settings.description}>
