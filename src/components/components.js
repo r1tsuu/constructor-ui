@@ -38,19 +38,20 @@ const defaultResolver = (defaultArgs, isSettings = true) =>
 
 const section = (Component, allArgs, contentResolver) => {
   const defaultArgs = allArgs.args;
+  const defaultSettings = defaultResolver(defaultArgs);
+  const defaultContent = defaultResolver(defaultArgs, false);
   return {
-    defaultSettings: defaultResolver(defaultArgs),
-    defaultContent: defaultResolver(defaultArgs, false),
+    defaultSettings,
+    defaultContent,
     Component({ settings, ...content }) {
       const env = useEnvironment();
-
       return (
         <Component
-          settings={parseArgs(settings ?? this.defaultSettings)}
+          settings={parseArgs(settings ?? defaultSettings)}
           {...contentResolver({
             ...content,
             env,
-            defaultContent: this.defaultContent,
+            defaultContent,
           })}
         />
       );
