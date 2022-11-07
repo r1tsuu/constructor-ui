@@ -61,7 +61,7 @@ export const repeatx1Resolver = ({ field, keyResolvers }) => {
 export const resolveField = (value, defaultValue) => {
   if (typeof value === "undefined") return defaultValue;
   if (Array.isArray(value)) return value.length ? value : defaultValue;
-  return value === "_" ? value : defaultValue;
+  return value === "_" ? defaultValue : value;
 };
 
 export const resolveFieldMobile = (value, valueDesktop, defaulValue) => {
