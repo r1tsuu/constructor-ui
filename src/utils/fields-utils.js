@@ -15,7 +15,7 @@ export const getSingleFileSource = ({
 };
 
 export const getSourceFile = (file, env, type = "compression") => {
-  if (!file?.length) return "_";
+  if (!file) return "_";
   if (!file[type]) return "_";
   return `${env.SITE_URL}${file[type].replace("./", "/")}`;
 };
