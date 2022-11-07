@@ -69,7 +69,7 @@ export const typographyType = () => {
 
 export const booleanType = () => {
   return {
-    control: { type: "boolean" },
+    control: "boolean",
   };
 };
 
@@ -166,7 +166,7 @@ export const args = (args, noPrefix = false) => {
             ...acc.argTypes,
             [argKey]: {
               table: {
-                // disable: true,
+                disable: true,
               },
             },
           },
@@ -199,6 +199,11 @@ export const args = (args, noPrefix = false) => {
               ...acc.argTypes,
               [colorKey]: colorType(),
               [typeKey]: typographyType(),
+              [argKey]: {
+                table: {
+                  disable: true,
+                },
+              },
             },
           };
 
@@ -261,7 +266,7 @@ export const args = (args, noPrefix = false) => {
             },
             argTypes: {
               ...acc.argTypes,
-              [settingsArgKey]: booleanType(),
+              // [settingsArgKey]: booleanType(),
             },
           };
 
