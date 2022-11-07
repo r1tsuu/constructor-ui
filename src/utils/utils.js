@@ -67,6 +67,12 @@ export const typographyType = () => {
   };
 };
 
+export const booleanType = () => {
+  return {
+    control: { type: "boolean" },
+  };
+};
+
 export const colorType = () => {
   return {
     control: "color",
@@ -253,7 +259,10 @@ export const args = (args, noPrefix = false) => {
               ...acc.args,
               [settingsArgKey]: arg.defaultValue,
             },
-            argTypes: acc.argTypes,
+            argTypes: {
+              ...acc.argTypes,
+              [settingsArgKey]: booleanType(),
+            },
           };
 
         default:
