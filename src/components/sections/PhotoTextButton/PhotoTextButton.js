@@ -16,6 +16,7 @@ export const PhotoTextButton = ({
   settings,
 }) => {
   const isMobile = !useMediaQuery(mediaQueries.minTablet);
+  console.log(settings);
   return (
     <Section {...settings.section}>
       <ContentContainer

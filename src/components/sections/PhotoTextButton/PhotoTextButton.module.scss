@@ -12,7 +12,7 @@
       "photoWrapper buttonWrapper";
     column-gap: 73px;
 
-    &[data-is-reverse] {
+    &[data-is-reverse="true"] {
       column-gap: 125px;
       grid-template-areas:
         "subTitle photoWrapper"
