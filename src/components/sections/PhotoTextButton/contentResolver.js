@@ -25,7 +25,7 @@ export const photoTextButtonContentResolver = ({
       srcDesktop,
       photoSourceMobile
     ),
-    description: resolveField(description.value, defaultContent.value),
+    description: resolveField(description.value, defaultContent.description),
     buttonName: resolveField(buttonName.value, defaultContent.buttonName),
   };
 };
