@@ -13,10 +13,3 @@ export default createSection({
 });
 
 export const Default = (args) => <PhotoTextButton {...parseArgs(args)} />;
-
-Default.args = {
-  subTitle: "будуємо з любов’ю",
-  title: "Про комплекс",
-  description: `Тут ви маєте розмістити необхідне описання блокуНайсухіше місце на Землі знаходиться в Антарктиді. Хоч як дивно це звучить, але деякі ділянки антарктичної долини Мак-Мердо не бачили опадів уже 2 мільйона років.`,
-  buttonName: "Текст кнопки",
-};

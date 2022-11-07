@@ -24,16 +24,17 @@ export const snakeToTitleCase = (string) => {
     .replace(/[-_]+(.)/g, (_, c) => " " + c.toUpperCase());
 };
 
-export const buttonType = () => {
+export const buttonType = (name) => {
   return {
     options: ["default", "primary", "secondary", "tertiary"],
     control: {
       type: "radio",
     },
+    name,
   };
 };
 
-export const arrowType = () => {
+export const arrowType = (name) => {
   return {
     options: [
       "cube-default",
@@ -46,6 +47,7 @@ export const arrowType = () => {
     control: {
       type: "radio",
     },
+    name,
   };
 };
 
@@ -58,35 +60,39 @@ export const themeType = () => {
   };
 };
 
-export const typographyType = () => {
+export const typographyType = (name) => {
   return {
     options: ["h2", "h3", "h4", "h5", "p1", "p2"],
     control: {
       type: "select",
     },
+    name: name && `${name} / Тип типографії`,
   };
 };
 
-export const booleanType = () => {
+export const booleanType = (name) => {
   return {
     control: "boolean",
+    name,
   };
 };
 
-export const colorType = () => {
+export const colorType = (name) => {
   return {
     control: "color",
+    name,
   };
 };
 
 export const imageType = () => imagePlaceholder;
 
-export const radio = (options = []) => {
+export const radio = (options = [], name) => {
   return {
     options,
     control: {
       type: "radio",
     },
+    name,
   };
 };
 
@@ -94,8 +100,10 @@ export const textArg = ({
   color = "text-primary",
   typography = "h3",
   defaultValue,
+  name,
 }) => ({
   color,
+  name,
   typography,
   defaultValue,
   type: "text",
@@ -105,40 +113,54 @@ export const cardArg = ({
   bg = "background",
   borderColor = "stroke",
   prefix,
+  name = "Картка",
 }) => ({
   bg,
   borderColor,
   type: "card",
   prefix,
+  name,
 });
 
-export const buttonArg = ({ buttonType = "default", prefix }) => ({
+export const buttonArg = ({
+  buttonType = "default",
+  prefix,
+  name = "Тип кнопки",
+}) => ({
   buttonType,
   type: "button",
   prefix,
+  name,
 });
 
-export const arrowArg = ({ arrowType = "default", prefix }) => ({
+export const arrowArg = ({
+  arrowType = "default",
+  prefix,
+  name = "Тип стрілок",
+}) => ({
   arrowType,
   type: "arrow",
   prefix,
+  name,
 });
 
-export const radioArg = ({ options, defaultValue, prefix }) => ({
+export const radioArg = ({ options, defaultValue, name }) => ({
   type: "radio",
   options,
   defaultValue,
-  prefix,
+  name,
 });
 
-export const colorArg = ({ defaultValue }) => ({
+export const colorArg = ({ defaultValue, name }) => ({
   defaultValue,
   type: "color",
+  name,
 });
 
-export const booleanArg = ({ defaultValue }) => ({
+export const booleanArg = ({ defaultValue, name }) => ({
   defaultValue,
   type: "boolean",
+  name,
 });
 
 export const argsWithBase = ({ args, base }) => {
@@ -197,8 +219,8 @@ export const args = (args, noPrefix = false) => {
             },
             argTypes: {
               ...acc.argTypes,
-              [colorKey]: colorType(),
-              [typeKey]: typographyType(),
+              [colorKey]: colorType(arg.name && `${arg.name} / Колір`),
+              [typeKey]: typographyType(arg.name),
               [argKey]: {
                 table: {
                   disable: true,
@@ -218,8 +240,10 @@ export const args = (args, noPrefix = false) => {
             },
             argTypes: {
               ...acc.argTypes,
-              [borderColorKey]: colorType(),
-              [bgKey]: colorType(),
+              [borderColorKey]: colorType(
+                arg.name && `${arg.name} / Колір бордеру`
+              ),
+              [bgKey]: colorType(arg.name && `${arg.name} / Колір фону`),
             },
           };
 
@@ -232,7 +256,9 @@ export const args = (args, noPrefix = false) => {
             },
             argTypes: {
               ...acc.argTypes,
-              [settingsArgKey]: isButton ? buttonType() : arrowType(),
+              [settingsArgKey]: isButton
+                ? buttonType(arg.name)
+                : arrowType(arg.name),
             },
           };
         case "radio":
@@ -243,7 +269,7 @@ export const args = (args, noPrefix = false) => {
             },
             argTypes: {
               ...acc.argTypes,
-              [settingsArgKey]: radio(arg.options),
+              [settingsArgKey]: radio(arg.options, arg.name),
             },
           };
         case "color":
@@ -254,7 +280,7 @@ export const args = (args, noPrefix = false) => {
             },
             argTypes: {
               ...acc.argTypes,
-              [settingsArgKey]: colorType(),
+              [settingsArgKey]: colorType(arg.name),
             },
           };
 
@@ -266,7 +292,7 @@ export const args = (args, noPrefix = false) => {
             },
             argTypes: {
               ...acc.argTypes,
-              // [settingsArgKey]: booleanType(),
+              [settingsArgKey]: booleanType(arg.name),
             },
           };
 
@@ -283,12 +309,13 @@ export const args = (args, noPrefix = false) => {
 
 export const sectionArgs = (sectionArgs) => {
   return args({
-    ...sectionArgs,
     section_theme: radioArg({
       options: ["dark", "light", "custom"],
       defaultValue: "dark",
+      name: "Тема секції",
     }),
-    section_bg: colorArg({ defaultValue: "background" }),
+    section_bg: colorArg({ defaultValue: "background", name: "Колір фону" }),
+    ...sectionArgs,
   });
 };
 
