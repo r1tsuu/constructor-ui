@@ -1,2 +1,3 @@
 export * from "./Terms";
-export * from "./termsArgs";
+export * from "./args";
+export * from "./contentResolver";

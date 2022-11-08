@@ -18,6 +18,8 @@ import {
   characteristicsContentResolver,
 } from "./sections/Characteristics";
 
+import { Terms, termsArgs, termsContentResolver } from "./sections/Terms";
+
 import { useEnvironment } from "../contexts/EnvironmentContext";
 
 import { COMPONENT_KEYS } from "../utils/constants";
@@ -28,19 +30,6 @@ import {
   customThemeColorsArgs,
 } from "./UiKitSettings/CustomThemeColors";
 import { Typographies, typographiesArgs } from "./UiKitSettings/Typographies";
-
-// const defaultResolver = (defaultArgs, isSettings = true) =>
-//   Object.keys(defaultArgs)
-//     .filter((key) =>
-//       isSettings ? key.startsWith("settings_") : !key.startsWith("settings_")
-//     )
-//     .reduce(
-//       (acc, key) => ({
-//         ...acc,
-//         [key.replace("settings_", "")]: defaultArgs[key],
-//       }),
-//       {}
-//     );
 
 const section = (Component, allArgs, contentResolver) => {
   const defaultArgs = allArgs.args;
@@ -98,4 +87,5 @@ export const components = {
     characteristicsArgs,
     characteristicsContentResolver
   ),
+  [COMPONENT_KEYS.TERMS]: section(Terms, termsArgs, termsContentResolver),
 };

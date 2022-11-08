@@ -10,11 +10,13 @@ export const characteristicsArgs = sectionArgs({
     typography: "h5",
     color: "accent",
     defaultValue: "переваги комплексу",
+    name: "Підзаголовок",
   }),
   title: textArg({
     typography: "h2",
     color: "text-primary",
     defaultValue: "про нас в цифрах",
+    name: "Заголовок",
   }),
   items: [
     _item("208", "комфортних квартир"),
@@ -30,14 +32,19 @@ export const characteristicsArgs = sectionArgs({
   gridColumns: radioArg({
     options: [3, 4],
     defaultValue: 4,
+    name: "Кількість колонок",
   }),
-  card: cardArg({}),
+  card: cardArg({
+    name: "Картка",
+  }),
   card_title: textArg({
     typography: "h2",
     color: "text-primary",
+    name: "Картка - Заголовок",
   }),
   card_subTitle: textArg({
     typography: "p1",
     color: "text-secondary",
+    name: "Картка - Підзаголовок",
   }),
 });

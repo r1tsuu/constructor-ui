@@ -1,7 +1,7 @@
 import { atOrFist } from "../../../utils";
 import * as fieldUtils from "../../../utils/fields-utils";
 
-export const characteristicsContentResolver = ({
+export const termsContentResolver = ({
   title,
   subTitle,
   items,
@@ -18,6 +18,22 @@ export const characteristicsContentResolver = ({
       subTitle: fieldUtils.resolveField(
         custom_fields.subTitle.value,
         atOrFist(defaultContent.items, index).subTitle
+      ),
+      description: fieldUtils.resolveField(
+        custom_fields.description.value,
+        atOrFist(defaultContent.items, index).description
+      ),
+      advantage: fieldUtils.resolveField(
+        custom_fields.advantage.value,
+        atOrFist(defaultContent.items, index).advantage
+      ),
+      buttonName: fieldUtils.resolveField(
+        custom_fields.buttonName.value,
+        atOrFist(defaultContent.items, index).buttonName
+      ),
+      buttonLink: fieldUtils.resolveField(
+        custom_fields.buttonLink.value,
+        atOrFist(defaultContent.items, index).buttonLink
       ),
       _id,
     })),
