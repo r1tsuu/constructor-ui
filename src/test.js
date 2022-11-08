@@ -30,6 +30,31 @@ function Advantages() {
   );
 }
 
+function Characteristics() {
+  const { Component } = components[COMPONENT_KEYS.CHARACTERISTICS];
+  return (
+    <Component
+      title={testUtils.baseField("Some Title")}
+      subTitle={testUtils.baseField("Some Subtitle")}
+      items={{
+        data: [
+          {
+            custom_fields: {
+              title: {
+                value: "_",
+              },
+              subTitle: {
+                value: "_",
+              },
+            },
+            _id: 1,
+          },
+        ],
+      }}
+    />
+  );
+}
+
 // function PhotoTextButton() {
 //   const { Component } = components[COMPONENT_KEYS.PHOTO_TEXT_BUTTON];
 //   return (
@@ -50,7 +75,7 @@ function renderToContainer(element) {
 function renderSecions() {
   renderToContainer(
     <testUtils.EnvUiKitMocker>
-      <Advantages />
+      <Characteristics />
     </testUtils.EnvUiKitMocker>
   );
 }

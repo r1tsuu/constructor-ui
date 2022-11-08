@@ -12,6 +12,12 @@ import {
   advantagesContentResolver,
 } from "./sections/Advantages";
 
+import {
+  Characteristics,
+  characteristicsArgs,
+  characteristicsContentResolver,
+} from "./sections/Characteristics";
+
 import { useEnvironment } from "../contexts/EnvironmentContext";
 
 import { COMPONENT_KEYS } from "../utils/constants";
@@ -86,5 +92,10 @@ export const components = {
     Advantages,
     advantagesArgs,
     advantagesContentResolver
+  ),
+  [COMPONENT_KEYS.CHARACTERISTICS]: section(
+    Characteristics,
+    characteristicsArgs,
+    characteristicsContentResolver
   ),
 };

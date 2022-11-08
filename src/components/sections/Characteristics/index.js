@@ -1,2 +1,3 @@
 export * from "./Characteristics";
-export * from "./characteristicsArgs";
+export * from "./args";
+export * from "./contentResolver";
