@@ -212,7 +212,12 @@ function PhotoTextButton() {
       title={testUtils.baseField("Some Title")}
       subTitle={testUtils.baseField("Some Subtitle")}
       description={testUtils.baseField("Some Description")}
-      photoSource={testUtils.fileField()}
+      photoSource={{
+        value: [],
+      }}
+      photoSourceMobile={{
+        value: [],
+      }}
       buttonName={testUtils.baseField("Button Name")}
     />
   );
@@ -226,24 +231,10 @@ function renderSecions() {
   renderToContainer(
     <testUtils.EnvUiKitMocker>
       <Video />
+      <PhotoTextButton />
     </testUtils.EnvUiKitMocker>
   );
 }
-
-// function renderSettings() {
-//   const arrows = components[COMPONENT_KEYS.ARROWS];
-//   const buttons = components[COMPONENT_KEYS.BUTTONS];
-//   const customThemeColors = components[COMPONENT_KEYS.CUSTOM_THEME_COLORS];
-//   const typographies = components[COMPONENT_KEYS.TYPOGRAPHIES];
-//   renderToContainer(
-//     <>
-//       <arrows.Component />
-//       <buttons.Component />
-//       <customThemeColors.Component />
-//       <typographies.Component />
-//     </>
-//   );
-// }
 
 export function run() {
   renderSecions();
