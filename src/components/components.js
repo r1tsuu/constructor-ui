@@ -32,6 +32,12 @@ import {
   documentationContentResolver,
 } from "./sections/Documentation";
 
+import {
+  PhotoQuote,
+  photoQuoteArgs,
+  photoQuoteContentResolver,
+} from "./sections/PhotoQuote";
+
 import { useEnvironment } from "../contexts/EnvironmentContext";
 
 import { COMPONENT_KEYS } from "../utils/constants";
@@ -109,5 +115,10 @@ export const components = {
     Documentation,
     documentationArgs,
     documentationContentResolver
+  ),
+  [COMPONENT_KEYS.PHOTO_QUOTE]: section(
+    PhotoQuote,
+    photoQuoteArgs,
+    photoQuoteContentResolver
   ),
 };

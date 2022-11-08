@@ -24,11 +24,13 @@ export const documentationArgs = sectionArgs({
     color: "accent",
     typography: "h5",
     defaultValue: "гарантія безпеки ваших інвестицій",
+    name: "Підзаголовок",
   }),
   title: textArg({
     color: "text-primary",
     typography: "h2",
     defaultValue: "документація",
+    name: "Заголовок",
   }),
   items: [
     _card("Договір оренди земельної ділянки від 12.06.2020р"),
@@ -41,17 +43,22 @@ export const documentationArgs = sectionArgs({
   gridColumns: radioArg({
     options: [2, 3, 4],
     defaultValue: 2,
+    name: "Кількість колонок",
   }),
   paginationButtonName: "Показати більше",
   paginationButtonType: buttonArg({}),
 
-  card: cardArg({}),
+  card: cardArg({
+    name: "Картка",
+  }),
   card_title: textArg({
     color: "text-primary",
     typography: "h4",
+    name: "Картка - Заголовок",
   }),
   card_fileSize: textArg({
     color: "text-secondary",
     typography: "p1",
+    name: "Картка - Розмір файлу",
   }),
 });

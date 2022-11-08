@@ -1,0 +1,82 @@
+@import "../../../styles/mixins";
+
+.grid {
+  align-items: center;
+  display: grid;
+
+  @include tablet {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+  }
+
+  @include laptop {
+    grid-template-columns: 0.5fr 1fr;
+  }
+}
+
+.photoWrapper {
+  margin-bottom: 30px;
+
+  &[data-is-full-width="true"] {
+    img {
+      width: 100%;
+    }
+  }
+
+  @include tablet {
+    margin-bottom: 0;
+  }
+}
+
+.sectionContent {
+  @include laptop {
+    padding: 0 209px;
+  }
+  @include desktop {
+    padding: 0 263px;
+  }
+}
+
+.quoteStartWrapper {
+  margin-bottom: 30px;
+}
+
+.description {
+  margin-bottom: 30px;
+}
+
+.quoteEndWrapper {
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 294px;
+
+  @include desktop {
+    max-width: 375px;
+  }
+}
+
+.quotesIcon {
+  width: 61px;
+  height: 48px;
+
+  @include tablet {
+    width: 73px;
+    height: 57px;
+  }
+
+  @include desktop {
+    width: 88px;
+    height: 69px;
+  }
+
+  &[data-is-end="true"] {
+    transform: rotate(-180deg);
+  }
+}

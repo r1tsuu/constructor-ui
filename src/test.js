@@ -5,6 +5,23 @@ import { components } from "./components";
 import { COMPONENT_KEYS } from "./utils/constants";
 import * as testUtils from "./utils/test-utils";
 
+function PhotoQuote() {
+  const { Component } = components[COMPONENT_KEYS.PHOTO_QUOTE];
+  return (
+    <Component
+      description={testUtils.baseField("description")}
+      name={testUtils.baseField("asdas")}
+      position={testUtils.baseField("dasdad")}
+      photoSource={{
+        value: [],
+      }}
+      photoSourceMobile={{
+        value: [],
+      }}
+    />
+  );
+}
+
 function Documentation() {
   const { Component } = components[COMPONENT_KEYS.DOCUMENTATION];
   return (
@@ -184,7 +201,7 @@ function renderToContainer(element) {
 function renderSecions() {
   renderToContainer(
     <testUtils.EnvUiKitMocker>
-      <Documentation />
+      <PhotoQuote />
     </testUtils.EnvUiKitMocker>
   );
 }
