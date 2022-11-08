@@ -5,7 +5,7 @@ import { COMPONENT_KEYS } from "../../../utils/constants";
 import { createSection } from "../../../utils/stories-utils";
 
 import { Characteristics } from "./Characteristics";
-import { characteristicsArgs } from "./characteristicsArgs";
+import { characteristicsArgs } from "./args";
 
 export default createSection({
   name: COMPONENT_KEYS.CHARACTERISTICS,
