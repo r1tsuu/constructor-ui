@@ -11,12 +11,11 @@ export const PhotoTextButton = ({
   title,
   description,
   buttonName,
-  photoSource = photoPlaceholder,
+  photoSource,
   photoSourceMobile,
   settings,
 }) => {
   const isMobile = !useMediaQuery(mediaQueries.minTablet);
-  console.log(settings);
   return (
     <Section {...settings.section}>
       <ContentContainer
