@@ -5,6 +5,38 @@ import { components } from "./components";
 import { COMPONENT_KEYS } from "./utils/constants";
 import * as testUtils from "./utils/test-utils";
 
+function Documentation() {
+  const { Component } = components[COMPONENT_KEYS.DOCUMENTATION];
+  return (
+    <Component
+      title={testUtils.baseField("Some Title")}
+      subTitle={testUtils.baseField("Some Subtitle")}
+      items={{
+        data: [
+          {
+            custom_fields: {
+              title: {
+                value: "asd",
+              },
+              icon: {
+                value: [],
+              },
+              file: {
+                value: [
+                  {
+                    path: "asd",
+                    size: 2332323,
+                  },
+                ],
+              },
+            },
+          },
+        ],
+      }}
+    />
+  );
+}
+
 function Technologies() {
   const { Component } = components[COMPONENT_KEYS.TECHNOLOGIES];
   return (
@@ -152,7 +184,7 @@ function renderToContainer(element) {
 function renderSecions() {
   renderToContainer(
     <testUtils.EnvUiKitMocker>
-      <Technologies />
+      <Documentation />
     </testUtils.EnvUiKitMocker>
   );
 }

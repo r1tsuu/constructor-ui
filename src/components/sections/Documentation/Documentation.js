@@ -9,7 +9,6 @@ import {
 } from "../../shared";
 import { useMobilePaginationButton } from "../../../hooks/useMobilePaginationButton";
 
-import defaultItemIcon from "./assets/default-icon.svg";
 import styles from "./Documentation.module.scss";
 
 export const Documentation = ({
@@ -36,10 +35,7 @@ export const Documentation = ({
         </Typography>
         <div className={styles.grid} data-grid-columns={settings.gridColumns}>
           {currentItems.map(
-            (
-              { _id, icon = defaultItemIcon, title, fileSize, fileLink },
-              index
-            ) => (
+            ({ _id, icon, title, fileSize, fileLink }, index) => (
               <Card
                 key={_id || index}
                 as={"a"}

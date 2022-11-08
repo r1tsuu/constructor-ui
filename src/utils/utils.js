@@ -344,3 +344,13 @@ export const atOrFist = (arr, index) => {
   const at = arr.at(index);
   return typeof at === "undefined" ? arr.at(0) : at;
 };
+
+const sufixes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+
+export const getBytes = (bytes) => {
+  const i = Math.floor(Math.log(bytes) / Math.log(1024));
+  return (
+    (!bytes && "0 Bytes") ||
+    (bytes / Math.pow(1024, i)).toFixed(2) + " " + sufixes[i]
+  );
+};

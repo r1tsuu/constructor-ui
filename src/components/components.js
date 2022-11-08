@@ -26,6 +26,12 @@ import {
   technologiesContentResolver,
 } from "./sections/Technologies";
 
+import {
+  Documentation,
+  documentationArgs,
+  documentationContentResolver,
+} from "./sections/Documentation";
+
 import { useEnvironment } from "../contexts/EnvironmentContext";
 
 import { COMPONENT_KEYS } from "../utils/constants";
@@ -98,5 +104,10 @@ export const components = {
     Technologies,
     technologiesArgs,
     technologiesContentResolver
+  ),
+  [COMPONENT_KEYS.DOCUMENTATION]: section(
+    Documentation,
+    documentationArgs,
+    documentationContentResolver
   ),
 };
