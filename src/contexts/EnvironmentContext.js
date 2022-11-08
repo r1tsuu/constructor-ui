@@ -17,8 +17,6 @@ export const useEnvironment = () => {
     SITE_URL: "http://example.com",
   };
 
-  console.log(context);
-
   const { SITE_URL } = context;
 
   const API_URL = `${SITE_URL}/api`;
