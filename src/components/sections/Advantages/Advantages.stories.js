@@ -5,7 +5,7 @@ import { COMPONENT_KEYS } from "../../../utils/constants";
 import { createSection } from "../../../utils/stories-utils";
 
 import { Advantages } from "./Advantages";
-import { advantagesArgs } from "./advantagesArgs";
+import { advantagesArgs } from "./args";
 
 export default createSection({
   name: COMPONENT_KEYS.ADVANTAGES,
@@ -14,5 +14,5 @@ export default createSection({
 });
 
 export const Default = (args) => {
-  return <Advantages asd={"asd"} {...parseArgs(args)} />;
+  return <Advantages {...parseArgs(args)} />;
 };

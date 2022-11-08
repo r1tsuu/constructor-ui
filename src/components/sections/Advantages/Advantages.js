@@ -6,6 +6,7 @@ import defaultItemIcon from "./assets/default-icon.svg";
 import styles from "./Advantages.module.scss";
 
 export const Advantages = ({ subTitle = null, title, items, settings }) => {
+  console.log(items);
   return (
     <Section {...settings.section}>
       <ContentContainer>

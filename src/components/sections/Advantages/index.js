@@ -1,3 +1,3 @@
 export * from "./Advantages";
-export * from "./advantagesArgs.js";
-export * from "./advantagesContentResolver";
+export * from "./args";
+export * from "./contentResolver";

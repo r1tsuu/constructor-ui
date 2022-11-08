@@ -339,3 +339,8 @@ export function parseArgs(obj) {
 
   return result;
 }
+
+export const atOrFist = (arr, index) => {
+  const at = arr.at(index);
+  return typeof at === "undefined" ? arr.at(0) : at;
+};

@@ -5,25 +5,30 @@ import { components } from "./components";
 import { COMPONENT_KEYS } from "./utils/constants";
 import * as testUtils from "./utils/test-utils";
 
-// function Advantages() {
-//   const { Component } = components[COMPONENT_KEYS.ADVANTAGES];
-//   return (
-//     <Component
-//       title={testUtils.baseField("Some Title")}
-//       subTitle={testUtils.baseField("Some Subtitle")}
-//       items={testUtils.x1RepeatField([
-//         {
-//           title: testUtils.baseField("title in repeat"),
-//           subTitle: testUtils.baseField("subtitle in repeat"),
-//         },
-//         {
-//           title: testUtils.baseField("title in repeat"),
-//           subTitle: testUtils.baseField("subtitle in repeat"),
-//         },
-//       ])}
-//     />
-//   );
-// }
+function Advantages() {
+  const { Component } = components[COMPONENT_KEYS.ADVANTAGES];
+  return (
+    <Component
+      title={testUtils.baseField("Some Title")}
+      subTitle={testUtils.baseField("Some Subtitle")}
+      items={{
+        data: [
+          {
+            custom_fields: {
+              title: {
+                value: "_",
+              },
+              subTitle: {
+                value: "_",
+              },
+            },
+            _id: 1,
+          },
+        ],
+      }}
+    />
+  );
+}
 
 // function PhotoTextButton() {
 //   const { Component } = components[COMPONENT_KEYS.PHOTO_TEXT_BUTTON];
@@ -38,18 +43,17 @@ import * as testUtils from "./utils/test-utils";
 //   );
 // }
 
-// function renderToContainer(element) {
-//   render(element, document.querySelector("testing-container"));
-// }
+function renderToContainer(element) {
+  render(element, document.querySelector("testing-container"));
+}
 
-// function renderSecions() {
-//   renderToContainer(
-//     <testUtils.EnvUiKitMocker>
-//       <PhotoTextButton />
-//       <Advantages />
-//     </testUtils.EnvUiKitMocker>
-//   );
-// }
+function renderSecions() {
+  renderToContainer(
+    <testUtils.EnvUiKitMocker>
+      <Advantages />
+    </testUtils.EnvUiKitMocker>
+  );
+}
 
 // function renderSettings() {
 //   const arrows = components[COMPONENT_KEYS.ARROWS];
@@ -67,7 +71,7 @@ import * as testUtils from "./utils/test-utils";
 // }
 
 export function run() {
-  console.log(components);
+  renderSecions();
 }
 
 //
