@@ -5,6 +5,30 @@ import { components } from "./components";
 import { COMPONENT_KEYS } from "./utils/constants";
 import * as testUtils from "./utils/test-utils";
 
+function Video() {
+  const { Component } = components[COMPONENT_KEYS.VIDEO];
+  return (
+    <Component
+      title={testUtils.baseField("asdasdsa")}
+      videoSource={{
+        value: "_",
+      }}
+      videoSourceMobile={{
+        value: "_",
+      }}
+      videoFile={{
+        value: [],
+      }}
+      videoFileMobile={{
+        value: [],
+      }}
+      previewPhotoSource={{
+        value: [],
+      }}
+    />
+  );
+}
+
 function PhotoQuote() {
   const { Component } = components[COMPONENT_KEYS.PHOTO_QUOTE];
   return (
@@ -201,7 +225,7 @@ function renderToContainer(element) {
 function renderSecions() {
   renderToContainer(
     <testUtils.EnvUiKitMocker>
-      <PhotoQuote />
+      <Video />
     </testUtils.EnvUiKitMocker>
   );
 }

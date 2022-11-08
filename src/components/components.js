@@ -38,6 +38,8 @@ import {
   photoQuoteContentResolver,
 } from "./sections/PhotoQuote";
 
+import { Video, videoArgs, videoContentResolver } from "./sections/Video";
+
 import { useEnvironment } from "../contexts/EnvironmentContext";
 
 import { COMPONENT_KEYS } from "../utils/constants";
@@ -121,4 +123,5 @@ export const components = {
     photoQuoteArgs,
     photoQuoteContentResolver
   ),
+  [COMPONENT_KEYS.VIDEO]: section(Video, videoArgs, videoContentResolver),
 };

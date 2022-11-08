@@ -27,3 +27,48 @@ export const resolveField = (value, defaultValue) => {
 export const resolveFieldMobile = (value, valueDesktop, defaulValue) => {
   return resolveField(value, resolveField(valueDesktop, defaulValue));
 };
+
+export const resolveVideoSource = ({
+  videoSource,
+  videoSourceMobile,
+  videoFile,
+  videoFileMobile,
+  defaultVideoSource,
+  defaultVideoSourceMobile,
+  previewPhoto,
+  defaultPreviewPhoto,
+  env,
+}) => {
+  const result = {
+    source: "",
+    sourceMobile: "",
+    preview: "",
+  };
+
+  if (videoFile.value.length) {
+    result.source = getSourceFile(videoFile.value[0], env, "path");
+  } else if (videoSource.value !== "_" && videoSource.value) {
+    result.source = videoSource.value;
+  } else {
+    result.source = defaultVideoSource;
+  }
+
+  if (videoFileMobile.value.length) {
+    result.sourceMobile = getSourceFile(videoFileMobile.value[0], env, "path");
+  } else if (videoSourceMobile.value !== "_" && videoSourceMobile.value) {
+    result.sourceMobile = videoSourceMobile.value;
+  } else if (result.source === defaultVideoSource) {
+    result.sourceMobile = defaultVideoSourceMobile;
+  } else {
+    result.sourceMobile = result.source;
+  }
+
+  if (previewPhoto.value.length) {
+    result.preview = getSourceFile(previewPhoto.value[0], env);
+  } else {
+    result.preview =
+      result.source === defaultVideoSource ? defaultPreviewPhoto : null;
+  }
+  console.log(result);
+  return result;
+};

@@ -1,0 +1,9 @@
+@import "../../../styles/mixins";
+
+.title {
+  margin-bottom: 30px;
+
+  @include desktop {
+    margin-bottom: 40px;
+  }
+}
