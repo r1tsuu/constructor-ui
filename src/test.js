@@ -5,6 +5,48 @@ import { components } from "./components";
 import { COMPONENT_KEYS } from "./utils/constants";
 import * as testUtils from "./utils/test-utils";
 
+function Technologies() {
+  const { Component } = components[COMPONENT_KEYS.TECHNOLOGIES];
+  return (
+    <Component
+      title={testUtils.baseField("Some Title")}
+      subTitle={testUtils.baseField("Some Subtitle")}
+      items={{
+        data: [
+          {
+            custom_fields: {
+              title: {
+                value: "asd",
+              },
+              subTitle: {
+                value: "asdsad",
+              },
+              icon: {
+                value: [],
+              },
+            },
+            _id: 3,
+          },
+          {
+            custom_fields: {
+              title: {
+                value: "asd",
+              },
+              subTitle: {
+                value: "asdsad",
+              },
+              icon: {
+                value: [],
+              },
+            },
+            _id: 4,
+          },
+        ],
+      }}
+    />
+  );
+}
+
 function Terms() {
   const { Component } = components[COMPONENT_KEYS.TERMS];
   return (
@@ -110,7 +152,7 @@ function renderToContainer(element) {
 function renderSecions() {
   renderToContainer(
     <testUtils.EnvUiKitMocker>
-      <Terms />
+      <Technologies />
     </testUtils.EnvUiKitMocker>
   );
 }

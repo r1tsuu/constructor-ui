@@ -1,2 +1,3 @@
 export * from "./Technologies";
-export * from "./technologiesArgs";
+export * from "./args";
+export * from "./contentResolver";

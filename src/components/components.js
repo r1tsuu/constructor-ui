@@ -20,6 +20,12 @@ import {
 
 import { Terms, termsArgs, termsContentResolver } from "./sections/Terms";
 
+import {
+  Technologies,
+  technologiesArgs,
+  technologiesContentResolver,
+} from "./sections/Technologies";
+
 import { useEnvironment } from "../contexts/EnvironmentContext";
 
 import { COMPONENT_KEYS } from "../utils/constants";
@@ -88,4 +94,9 @@ export const components = {
     characteristicsContentResolver
   ),
   [COMPONENT_KEYS.TERMS]: section(Terms, termsArgs, termsContentResolver),
+  [COMPONENT_KEYS.TECHNOLOGIES]: section(
+    Technologies,
+    technologiesArgs,
+    technologiesContentResolver
+  ),
 };
