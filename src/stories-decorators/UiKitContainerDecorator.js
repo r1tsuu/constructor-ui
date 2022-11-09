@@ -2,6 +2,26 @@ import React from "react";
 import { UiKitContainer } from "../containers";
 import { testColors } from "../utils/constants";
 
+const createInputField = ({
+  borderColor = testColors.themeDark.stroke,
+  borderWidth = "1px 1px 1px 1px",
+  padding = "0 20px",
+  height = "60px",
+  borderRadius = "0px",
+  errorColor = testColors.themeDark.error,
+  textColor = testColors.themeDark.textPrimary,
+  backgroundColor = "transparent",
+}) => ({
+  borderColor,
+  borderWidth,
+  padding,
+  borderRadius,
+  errorColor,
+  textColor,
+  backgroundColor,
+  height,
+});
+
 const createArrowCube = ({
   borderRadius = "10px",
   bgColor = testColors.gray,
@@ -169,12 +189,22 @@ const arrowsCube = {
 
 const arrowLong = createArrowLong({});
 
+const inputs = {
+  primary: createInputField({
+    borderWidth: "0 0 1px 0",
+    padding: "0",
+  }),
+  secondary: createInputField({}),
+  tertiary: createInputField({}),
+};
+
 export const uiKitContainerDecoratorProps = {
   customColors,
   buttons,
   typographies,
   arrowsCube,
   arrowLong,
+  inputs,
 };
 
 export const UiKitContainerDecorator = (Story) => {

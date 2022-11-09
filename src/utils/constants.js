@@ -20,6 +20,7 @@ export const testColors = {
     textPrimary: "#FCFCFC",
     textSecondary: "#9A9A9A",
     stroke: "#535353",
+    error: "#D64747",
   },
 };
 
@@ -40,6 +41,8 @@ export const COMPONENT_KEYS = {
   TECHNOLOGIES: "TECHNOLOGIES",
   TERMS: "TERMS",
   VIDEO: "VIDEO",
+  FORM_SECTION: "FORM_SECTION",
+  FORM_MODAL: "FORM_MODAL",
 
   // SETTINGS
   ARROWS: "ARROWS",

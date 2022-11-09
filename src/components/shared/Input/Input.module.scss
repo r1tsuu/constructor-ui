@@ -1,0 +1,129 @@
+@import "../../../styles/mixins";
+
+.default-1 {
+  --input-border-width: var(--input-default-1-border-width);
+  --input-border-color: var(--input-default-1-border-color);
+  --input-border-radius: var(--input-default-1-border-radius);
+  --input-padding: var(--input-default-1-padding);
+  --input-background-color: vavr(--input-default-1-background-color);
+  --input-text-color: var(--input-default-1-text-color);
+  --input-error-color: var(--input-default-1-error-color);
+  --input-height: var(--input-default-1-height);
+}
+
+.default-2 {
+  --input-border-width: var(--input-default-2-border-width);
+  --input-border-color: var(--input-default-2-border-color);
+  --input-border-radius: var(--input-default-2-border-radius);
+  --input-padding: var(--input-default-2-padding);
+  --input-background-color: vavr(--input-default-2-background-color);
+  --input-text-color: var(--input-default-2-text-color);
+  --input-error-color: var(--input-default-2-error-color);
+  --input-height: var(--input-default-2-height);
+}
+
+.primary {
+  --input-border-width: var(--input-primary-border-width);
+  --input-border-color: var(--input-primary-border-color);
+  --input-border-radius: var(--input-primary-border-radius);
+  --input-padding: var(--input-primary-padding);
+  --input-background-color: vavr(--input-primary-background-color);
+  --input-text-color: var(--input-primary-text-color);
+  --input-error-color: var(--input-primary-error-color);
+  --input-height: var(--input-primary-height);
+}
+
+.secondary {
+  --input-border-width: var(--input-secondary-border-width);
+  --input-border-color: var(--input-secondary-border-color);
+  --input-border-radius: var(--input-secondary-border-radius);
+  --input-padding: var(--input-secondary-padding);
+  --input-background-color: vavr(--input-secondary-background-color);
+  --input-text-color: var(--input-secondary-text-color);
+  --input-error-color: var(--input-secondary-error-color);
+  --input-height: var(--input-secondary-height);
+}
+
+.tertiary {
+  --input-border-width: var(--input-tertiary-border-width);
+  --input-border-color: var(--input-tertiary-border-color);
+  --input-border-radius: var(--input-tertiary-border-radius);
+  --input-padding: var(--input-tertiary-padding);
+  --input-background-color: vavr(--input-tertiary-background-color);
+  --input-text-color: var(--input-tertiary-text-color);
+  --input-error-color: var(--input-tertiary-error-color);
+  --input-height: var(--input-tertiary-height);
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  --input-height-calculated: calc(var(--input-height) - 10px);
+
+  @include laptop {
+    height: var(--input-height);
+  }
+
+  position: relative;
+  width: 100%;
+  border-width: var(--input-border-width);
+  border-color: var(--input-border-color);
+  border-radius: var(--input-border-radius);
+  padding: var(--input-padding);
+  background-color: var(--input-background-color);
+
+  height: var(--input-height-calculated);
+  outline: none;
+  color: var(--input-text-color);
+  line-height: var(--typography-p1-line-height);
+  letter-spacing: var(--typography-p1-letter-spacing);
+  font-family: var(--typography-p1-font-family);
+  text-transform: var(--typography-p1-text-transform);
+  font-size: var(--typography-p1-font-size);
+
+  @include laptop {
+    height: var(--input-height);
+  }
+
+  &[data-is-textarea="true"] {
+    overflow: hidden;
+    padding-top: 15px;
+    height: calc(var(--input-height-calculated) + 35px);
+  }
+
+  &::placeholder {
+    color: var(--input-text-color);
+    line-height: var(--typography-p1-line-height);
+    letter-spacing: var(--typography-p1-letter-spacing);
+    font-family: var(--typography-p1-font-family);
+    text-transform: var(--typography-p1-text-transform);
+    font-size: var(--typography-p1-font-size);
+  }
+
+  &:focus-visible {
+    &::placeholder {
+      opacity: 0;
+    }
+  }
+
+  &[data-is-error="true"] {
+    border-color: var(--input-error-color);
+  }
+}
+
+.errorMessage {
+  position: absolute;
+  bottom: -15px;
+  padding: var(--input-padding);
+}
+
+.required {
+  position: absolute;
+  right: 0;
+  padding: var(--input-padding);
+  top: 50%;
+  line-height: 8px !important;
+}

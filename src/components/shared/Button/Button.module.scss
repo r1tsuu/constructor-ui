@@ -12,6 +12,10 @@
   min-width: var(--button-min-width);
   font-size: var(--button-font-size);
 
+  &[data-full-width] {
+    width: 100%;
+  }
+
   &:hover {
     font-weight: 500;
   }

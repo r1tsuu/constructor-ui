@@ -59,6 +59,21 @@ ui-kit-container {
   --arrow-cube-default-icon-color: var(--color-text-primary);
   --button-default-text-color: var(--color-text-primary);
   --arrow-long-default-icon-color: var(--color-text-primary);
+  --input-default-1-border-color: var(--color-stroke);
+  --input-default-1-border-width: 0 0 1px 0;
+  --input-default-1-border-radius: 0;
+  --input-default-1-text-color: var(--color-text-primary);
+  --input-default-1-padding: 0;
+  --input-default-1-height: 60px;
+  --input-default-1-error-color: #d64747;
+  --input-default-1-background-color: transparent;
+  --input-default-2-border-color: var(--color-stroke);
+  --input-default-2-border-width: 1px 1px 1px 1px;
+  --input-default-2-text-color: var(--color-text-primary);
+  --input-default-2-padding: 0 20px;
+  --input-default-2-height: 60px;
+  --input-default-2-error-color: #d64747;
+  --input-default-2-background-color: transparent;
 }
 
 [data-theme="light"],
@@ -87,6 +102,7 @@ ui-kit-container {
   --arrow-cube-default-border: none;
   --arrow-cube-cube-default-border-radius: 0;
   --arrow-cube-default-hover-border: none;
+  --input-default-2-border-radius: 0;
 }
 
 [data-theme="light"] {
@@ -105,6 +121,7 @@ ui-kit-container {
   --arrow-cube-default-border: 1px solid var(--color-accent);
   --arrow-cube-default-border-radius: 10px;
   --arrow-cube-default-hover-border: 1px solid var(--color-accent-hover);
+  --input-default-2-border-radius: 10px;
 }
 
 [data-theme="custom"] {

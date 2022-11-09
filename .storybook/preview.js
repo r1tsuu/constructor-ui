@@ -14,6 +14,10 @@ export const parameters = {
     },
     presetColors: [
       {
+        color: "transparent",
+        title: "Transparent",
+      },
+      {
         color: "background",
         title: "theme background",
       },

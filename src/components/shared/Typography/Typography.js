@@ -24,6 +24,7 @@ export const Typography = ({
   className,
   isHTML = true,
   style,
+  editableInStorybook = true,
   ...props
 }) => {
   const isInStorybook = useInStorybook();
@@ -36,9 +37,9 @@ export const Typography = ({
         isThemeColor ? styles[color.replace("text-", "")] : styles.injected,
         className
       )}
-      contentEditable={isInStorybook}
+      // contentEditable={editableInStorybook && isInStorybook}
       style={
-        !isThemeColor
+        !isThemeColor && color
           ? {
               "--injected-color": color,
 

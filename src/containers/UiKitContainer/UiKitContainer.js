@@ -1,6 +1,16 @@
 import React from "react";
 import { useEffect, useMemo } from "react";
-import { parseArgs } from "../../utils";
+
+const getInputVars = (input, type) => ({
+  [`--input-${type}-border-width`]: input.borderWidth,
+  [`--input-${type}-border-radius`]: input.borderRadius,
+  [`--input-${type}-border-color`]: input.borderColor,
+  [`--input-${type}-text-color`]: input.textColor,
+  [`--input-${type}-padding`]: input.padding,
+  [`--input-${type}-error-color`]: input.errorColor,
+  [`--input-${type}-background-color`]: input.backgroundColor,
+  [`--input-${type}-height`]: input.height,
+});
 
 const getButtonVars = (button, type) => {
   return {
@@ -77,6 +87,7 @@ export const UiKitContainer = ({
   customColors,
   arrowsCube,
   arrowLong,
+  inputs,
   children,
   toHTML = true,
   ...props
@@ -91,6 +102,10 @@ export const UiKitContainer = ({
 
   const varsObject = useMemo(() => {
     return Object.assign(
+      resolveAllVars({
+        components: inputs,
+        getVars: getInputVars,
+      }),
       resolveAllVars({
         components: buttons,
         getVars: getButtonVars,

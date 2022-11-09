@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "clsx": "1.2.1",
+    "react-hook-form": "^7.39.1",
+    "react-phone-input-2": "^2.15.1",
     "react-player": "^2.11.0",
     "react-scripts": "3.1.1",
     "react-transition-group": "4.4.5",

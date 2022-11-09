@@ -96,6 +96,16 @@ export const radio = (options = [], name) => {
   };
 };
 
+export const inputType = (name) => {
+  return {
+    options: ["default-1", "default-2", "primary", "secondary", "tertiary"],
+    control: {
+      type: "radio",
+    },
+    name,
+  };
+};
+
 export const textArg = ({
   color = "text-primary",
   typography = "h3",
@@ -163,6 +173,21 @@ export const booleanArg = ({ defaultValue, name }) => ({
   name,
 });
 
+export const inputArg = ({
+  defaultValue = "default-1",
+  name = "Тип поле введення",
+}) => ({
+  defaultValue,
+  type: "input",
+  name,
+});
+
+export const arg = ({ defaultValue, name }) => ({
+  defaultValue,
+  type: "arg",
+  name,
+});
+
 export const argsWithBase = ({ args, base }) => {
   return Object.keys(args).reduce(
     (acc, argKey) => ({
@@ -205,6 +230,19 @@ export const args = (args, noPrefix = false) => {
       const settingsArgKey = resolveSettingsArgKey();
 
       switch (argType) {
+        case "arg":
+          return {
+            args: {
+              ...acc.args,
+              [settingsArgKey]: arg.defaultValue,
+            },
+            argTypes: {
+              ...acc.argTypes,
+              [settingsArgKey]: {
+                name: arg.name,
+              },
+            },
+          };
         case "text":
           const colorKey = `${settingsArgKey}_color`;
           const typeKey = `${settingsArgKey}_type`;
@@ -293,6 +331,18 @@ export const args = (args, noPrefix = false) => {
             argTypes: {
               ...acc.argTypes,
               [settingsArgKey]: booleanType(arg.name),
+            },
+          };
+
+        case "input":
+          return {
+            args: {
+              ...acc.args,
+              [settingsArgKey]: arg.defaultValue,
+            },
+            argTypes: {
+              ...acc.argTypes,
+              [settingsArgKey]: inputType(arg.name),
             },
           };
 
