@@ -1,0 +1,116 @@
+@import "../../../styles/mixins";
+
+.subTitle {
+  margin-bottom: 15px;
+}
+
+.title {
+  margin-bottom: 30px;
+
+  @include desktop {
+    margin-bottom: 40px;
+  }
+}
+
+.itemPhotoWrapper {
+  height: 200px;
+
+  @include tablet {
+    height: 420px;
+  }
+
+  @include laptop {
+    height: 500px;
+    transform: scale(0.43, 0.5) translate(-66.5%, -50%);
+  }
+
+  overflow: hidden;
+  transition: transform 0.8s;
+}
+
+.itemPhoto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.itemTextWrapper {
+  display: flex;
+  justify-content: space-between;
+  transition: transform 0.8s;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 30px;
+
+  @include tablet {
+    flex-direction: row;
+  }
+
+  @include laptop {
+    margin-bottom: 0;
+    transform: translate(0, -250px);
+  }
+
+  @include desktop {
+    margin-top: 30px;
+    transform: translate(0, -250px);
+  }
+}
+
+.itemTitle {
+  margin-bottom: 20px;
+
+  @include tablet {
+    margin-bottom: 0;
+    max-width: 50%;
+  }
+}
+
+.itemDescription {
+  @include tablet {
+    max-width: 345px;
+  }
+
+  @include laptop {
+    max-width: 350px;
+  }
+
+  @include desktop {
+    max-width: 440px;
+  }
+  opacity: 0;
+  transition: opacity 0.8s;
+}
+
+.swiper {
+  max-width: 100%;
+  display: flex;
+
+  @include laptop {
+    padding-right: 420px;
+    overflow: visible;
+  }
+
+  @include desktop {
+    padding-right: 526px;
+  }
+
+  :global(.swiper-slide-active) .itemPhotoWrapper {
+    transform: scale(1) translate(0, 0);
+  }
+  :global(.swiper-slide-active) .itemTextWrapper {
+    transform: translate(0, 0);
+  }
+  :global(.swiper-slide-active) .itemDescription {
+    opacity: 1;
+  }
+}
+
+.arrowsWrapper {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  position: absolute;
+  bottom: 100px;
+}
