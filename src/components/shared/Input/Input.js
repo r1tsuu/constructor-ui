@@ -14,20 +14,23 @@ export const Input = forwardRef(
       isRequired = false,
       isTextarea = false,
       className,
-
+      style,
       ...props
     },
     ref
   ) => {
     const Tag = isTextarea ? "textarea" : "input";
     return (
-      <div className={clsx(styles.wrapper, styles[type], className)}>
+      <div
+        className={clsx(styles.wrapper, styles[type], className)}
+        style={style}
+      >
         <input
           ref={ref}
           placeholder={placeholder}
           data-is-error={Boolean(errorMessage)}
           data-is-textarea={isTextarea}
-          className={styles.input}
+          className={clsx(styles.input, className)}
           {...props}
         />
 
@@ -89,6 +92,8 @@ export const ControlledInput = ({
   inputType = "default-1",
   isRequired = false,
   name,
+  order,
+  className,
 }) => {
   const {
     field: { onChange, onBlur, value, ref },
@@ -117,6 +122,10 @@ export const ControlledInput = ({
       isTextarea={fieldType === "message"}
       placeholder={placeholder}
       isRequired={isRequired}
+      style={{
+        order,
+      }}
+      className={className}
     />
   );
 };

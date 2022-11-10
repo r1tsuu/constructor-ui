@@ -132,7 +132,6 @@ const FormFeedback = ({
           noValidate
           onSubmit={handleSubmit((form) => {
             reset();
-            console.log(form);
             if (onSubmit) {
               onSubmit(form);
             }
@@ -145,21 +144,25 @@ const FormFeedback = ({
             {settings.enableName && (
               <ControlledInput
                 {...baseInputProps}
+                {...settings.name}
                 name="name"
                 fieldType="default"
                 placeholder={t("FORM_NAME")}
               />
             )}
-            <ControlledInput
-              {...baseInputProps}
-              name="phone"
-              isRequired
-              fieldType="phone"
-              placeholder={t("FORM_PHONE")}
-            />
+            {settings.enablePhone && (
+              <ControlledInput
+                {...baseInputProps}
+                {...settings.phone}
+                name="phone"
+                fieldType="phone"
+                placeholder={t("FORM_PHONE")}
+              />
+            )}
             {settings.enableEmail && (
               <ControlledInput
                 {...baseInputProps}
+                {...settings.email}
                 name="email"
                 fieldType="email"
                 placeholder={t("FORM_EMAIL")}
@@ -168,6 +171,7 @@ const FormFeedback = ({
             {settings.enableMessage && (
               <ControlledInput
                 {...baseInputProps}
+                {...settings.message}
                 name="message"
                 fieldType="message"
                 placeholder={t("FORM_MESSAGE")}

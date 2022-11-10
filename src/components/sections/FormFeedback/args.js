@@ -50,13 +50,54 @@ const baseFormFeedbackArgs = {
     defaultValue: true,
     name: "Вимкнути/Увімкнути поле Name",
   }),
+  name_isRequired: booleanArg({
+    defaultValue: false,
+    name: "Обов'язкове/Необв'язкове поле Name",
+  }),
+  name_order: radioArg({
+    options: [1, 2, 3, 4],
+    defaultValue: 1,
+    name: "Порядок виводу поле Name",
+  }),
+  enablePhone: booleanArg({
+    defaultValue: true,
+    name: "Вимкнути/Увімкнути поле Phone",
+  }),
+  phone_isRequired: booleanArg({
+    defaultValue: true,
+    name: "Обов'язкове/Необв'язкове поле Phone",
+  }),
+  phone_order: radioArg({
+    options: [1, 2, 3, 4],
+    defaultValue: 2,
+    name: "Порядок виводу поле Phone",
+  }),
   enableEmail: booleanArg({
     defaultValue: true,
     name: "Вимкнути/Увімкнути поле Email",
   }),
+
+  email_isRequired: booleanArg({
+    defaultValue: false,
+    name: "Обов'язкове/Необв'язкове поле Email",
+  }),
+  email_order: radioArg({
+    options: [1, 2, 3, 4],
+    defaultValue: 3,
+    name: "Порядок виводу поле Email",
+  }),
   enableMessage: booleanArg({
     defaultValue: true,
     name: "Вимкнути/Увімкнути поле Message",
+  }),
+  message_isRequired: booleanArg({
+    defaultValue: false,
+    name: "Обов'язкове/Необв'язкове поле Message",
+  }),
+  message_order: radioArg({
+    options: [1, 2, 3, 4],
+    defaultValue: 4,
+    name: "Порядок виводу поле Message",
   }),
 };
 
