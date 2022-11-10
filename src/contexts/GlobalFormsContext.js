@@ -1,12 +1,12 @@
 import React, { useState, createContext, useContext } from "react";
 
-const GlobalComponentsContext = createContext({
+const GlobalFormsContext = createContext({
   handleOpenForm: (index) => {},
   handleCloseForm: () => {},
   openedFormIndex: null,
 });
 
-export const GlobalComponentsProvider = ({ globalConstructor, children }) => {
+export const GlobalFormsProvider = ({ children }) => {
   const [openedFormIndex, setOpenedFormIndex] = useState(null);
 
   const handleOpenForm = (index) => setOpenedFormIndex(index);
@@ -14,12 +14,12 @@ export const GlobalComponentsProvider = ({ globalConstructor, children }) => {
   const handleCloseForm = () => setOpenedFormIndex(null);
 
   return (
-    <GlobalComponentsContext.Provider
+    <GlobalFormsContext.Provider
       value={{ handleOpenForm, openedFormIndex, handleCloseForm }}
     >
       {children}
-    </GlobalComponentsContext.Provider>
+    </GlobalFormsContext.Provider>
   );
 };
 
-export const useGlobalComponents = () => useContext(GlobalComponentsContext);
+export const useGlobalForms = () => useContext(GlobalFormsContext);

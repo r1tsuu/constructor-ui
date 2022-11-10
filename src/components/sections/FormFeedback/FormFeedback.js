@@ -1,15 +1,17 @@
 import React, { cloneElement, useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
+import { CSSTransition } from "react-transition-group";
 import { ColorsInjector } from "../../../containers";
 import { useTranslation } from "../../../contexts/LanguageContext";
-import { useGlobalComponents } from "../../../contexts/GlobalComponentsContext";
+import { useGlobalForms } from "../../../contexts/GlobalFormsContext";
 import { useSection } from "../../../contexts/SectionContext";
 import { sendForm } from "../../../services/api";
 import { Button, Modal, Section, Typography } from "../../shared";
 import { ControlledInput } from "../../shared/Input";
 
 import styles from "./FormFeedback.module.scss";
-import { CSSTransition } from "react-transition-group";
+
+const THANK_YOU_CLOSE_DELAY = 1500;
 
 const FormFeedback = ({
   title,
@@ -255,7 +257,10 @@ const FormFeedbackSubmitContainer = ({ SITE_URL, children }) => {
 
   useEffect(() => {
     if (!submitted) {
-      timeout.current = setTimeout(() => setSubmitted(false), 1500);
+      timeout.current = setTimeout(
+        () => setSubmitted(false),
+        THANK_YOU_CLOSE_DELAY
+      );
     }
   }, [submitted]);
 
@@ -280,7 +285,7 @@ export const FormFeedbackSectionContainer = ({ SITE_URL, title, settings }) => {
 
 export const FormFeedbackModalContainer = ({ SITE_URL, title, settings }) => {
   const { globalFormIndex } = useSection();
-  const { openedFormIndex, handleCloseForm } = useGlobalComponents();
+  const { openedFormIndex, handleCloseForm } = useGlobalForms();
 
   return (
     <FormFeedbackSubmitContainer SITE_URL={SITE_URL}>

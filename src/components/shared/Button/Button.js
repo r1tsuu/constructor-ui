@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 import styles from "./Button.module.scss";
 import { Typography } from "../Typography";
-import { useGlobalComponents } from "../../../contexts/GlobalComponentsContext";
+import { useGlobalForms } from "../../../contexts/GlobalFormsContext";
 
 export const Button = ({
   type = "default",
@@ -17,7 +17,7 @@ export const Button = ({
   htmlType,
   ...props
 }) => {
-  const { handleOpenForm } = useGlobalComponents();
+  const { handleOpenForm } = useGlobalForms();
 
   if (href) {
     As = "a";
