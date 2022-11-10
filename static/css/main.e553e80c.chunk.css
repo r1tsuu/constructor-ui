@@ -1279,6 +1279,7 @@ video {
   position: absolute;
   top: 0;
   bottom: 0;
+  right: 0;
   bottom: none;
   cursor: pointer;
   transition: background-color 0.25s;
@@ -1607,4 +1608,4 @@ video {
   }
 }
 
-/*# sourceMappingURL=main.c3da00b5.chunk.css.map*/
+/*# sourceMappingURL=main.e553e80c.chunk.css.map*/
