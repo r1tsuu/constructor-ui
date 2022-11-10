@@ -253,7 +253,7 @@ const FormFeedbackSubmitContainer = ({ children }) => {
   };
 
   useEffect(() => {
-    if (!submitted) {
+    if (submitted) {
       timeout.current = setTimeout(
         () => setSubmitted(false),
         THANK_YOU_CLOSE_DELAY
