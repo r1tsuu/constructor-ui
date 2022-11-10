@@ -7,6 +7,12 @@
     background-color: var(--color-background);
   }
 
+  &[data-before-background-color="background"] {
+    &::before {
+      background-color: var(--color-background);
+    }
+  }
+
   &[data-border-color="background"] {
     border-color: var(--color-background);
   }
@@ -17,6 +23,12 @@
 
   &[data-background-color="text-primary"] {
     background-color: var(--color-text-primary);
+  }
+
+  &[data-before-background-color="text-primary"] {
+    &::before {
+      background-color: var(--color-text-primary);
+    }
   }
 
   &[data-border-color="text-primary"] {
@@ -31,6 +43,12 @@
     background-color: var(--color-text-secondary);
   }
 
+  &[data-before-background-color="text-secondary"] {
+    &::before {
+      background-color: var(--color-text-secondary);
+    }
+  }
+
   &[data-border-color="text-secondary"] {
     border-color: var(--color-text-secondary);
   }
@@ -41,6 +59,12 @@
 
   &[data-background-color="accent"] {
     background-color: var(--color-accent);
+  }
+
+  &[data-before-background-color="accent"] {
+    &::before {
+      background-color: var(--color-accent);
+    }
   }
 
   &[data-border-color="accent"] {
@@ -55,6 +79,12 @@
     background-color: var(--color-accent-hover);
   }
 
+  &[data-before-background-color="accent-hover"] {
+    &::before {
+      background-color: var(--color-accent-hover);
+    }
+  }
+
   &[data-border-color="accent-hover"] {
     border-color: var(--color-accent-hover);
   }
@@ -65,6 +95,12 @@
 
   &[data-background-color="stroke"] {
     background-color: var(--color-stroke);
+  }
+
+  &[data-before-background-color="stroke"] {
+    &::before {
+      background-color: var(--color-stroke);
+    }
   }
 
   &[data-border-color="stroke"] {
@@ -79,6 +115,12 @@
     background-color: var(--custom-theme-color-extra-1);
   }
 
+  &[data-before-background-color="extra-1"] {
+    &::before {
+      background-color: var(--custom-theme-color-extra-1);
+    }
+  }
+
   &[data-border-color="extra-1"] {
     border-color: var(--custom-theme-color-extra-1);
   }
@@ -89,6 +131,12 @@
 
   &[data-background-color="extra-2"] {
     background-color: var(--custom-theme-color-extra-2);
+  }
+
+  &[data-before-background-color="extra-2"] {
+    &::before {
+      background-color: var(--custom-theme-color-extra-2);
+    }
   }
 
   &[data-border-color="extra-2"] {
@@ -102,6 +150,12 @@
     background-color: var(--custom-theme-color-extra-3);
   }
 
+  &[data-before-background-color="extra-3"] {
+    &::before {
+      background-color: var(--custom-theme-color-extra-3);
+    }
+  }
+
   &[data-border-color="extra-3"] {
     border-color: var(--custom-theme-color-extra-3);
   }
@@ -111,6 +165,12 @@
 
   &[data-background-color="extra-4"] {
     background-color: var(--custom-theme-color-extra-4);
+  }
+
+  &[data-before-background-color="extra-4"] {
+    &::before {
+      background-color: var(--custom-theme-color-extra-4);
+    }
   }
 
   &[data-border-color="extra-5"] {
@@ -123,6 +183,12 @@
 
   &[data-background-color="injected"] {
     background-color: var(--background-color-injected);
+  }
+
+  &[data-before-background-color="injected"] {
+    &::before {
+      background-color: var(--before-background-color-injected);
+    }
   }
 
   &[data-border-color="injected"] {

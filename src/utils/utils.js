@@ -357,14 +357,16 @@ export const args = (args, noPrefix = false) => {
   );
 };
 
-export const sectionArgs = (sectionArgs) => {
+export const sectionArgs = (sectionArgs, withBg = true) => {
   return args({
     section_theme: radioArg({
       options: ["dark", "light", "custom"],
       defaultValue: "dark",
       name: "Тема секції",
     }),
-    section_bg: colorArg({ defaultValue: "background", name: "Колір фону" }),
+    ...(withBg && {
+      section_bg: colorArg({ defaultValue: "background", name: "Колір фону" }),
+    }),
     ...sectionArgs,
   });
 };
@@ -402,5 +404,17 @@ export const getBytes = (bytes) => {
   return (
     (!bytes && "0 Bytes") ||
     (bytes / Math.pow(1024, i)).toFixed(2) + " " + sufixes[i]
+  );
+};
+
+export const omitEmpties = (object) => {
+  return Object.keys(object).reduce(
+    (acc, key) => ({
+      ...acc,
+      ...((object[key] !== "" || object[key] !== undefined) && {
+        [key]: object[key],
+      }),
+    }),
+    {}
   );
 };

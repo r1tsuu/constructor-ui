@@ -1,4 +1,10 @@
-import { atOrFist, getBytes } from "../../../utils";
-import { resolveField, getSourceFile } from "../../../utils/fields-utils";
+import { resolveField } from "../../../utils/fields-utils";
 
-export const contentResolver = ({}) => {};
+export const formFeedbackContentResolver = ({
+  title,
+  env: { SITE_URL },
+  defaultContent,
+}) => ({
+  title: resolveField(title.value, defaultContent.title),
+  SITE_URL,
+});

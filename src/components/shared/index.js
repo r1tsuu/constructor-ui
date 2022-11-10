@@ -6,3 +6,4 @@ export * from "./ContentContainer";
 export * from "./Section";
 export * from "./Card";
 export * from "./ResponsiveVideoPlayer";
+export * from "./Modal";

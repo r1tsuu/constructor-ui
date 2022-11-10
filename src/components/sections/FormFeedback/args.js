@@ -10,7 +10,7 @@ import {
   textArg,
 } from "../../../utils";
 
-export const formFeedbackArgs = sectionArgs({
+const baseFormFeedbackArgs = {
   formBackground: colorArg({
     defaultValue: "background",
     name: "Колір фону форми",
@@ -39,6 +39,11 @@ export const formFeedbackArgs = sectionArgs({
     typography: "p2",
     name: "Privacy текст - Друга частина",
   }),
+  submittedMessage: textArg({
+    color: "text-primary",
+    typography: "h3",
+    name: "Thank you текст",
+  }),
   inputType: inputArg({}),
   buttonType: buttonArg({}),
   enableName: booleanArg({
@@ -53,4 +58,29 @@ export const formFeedbackArgs = sectionArgs({
     defaultValue: true,
     name: "Вимкнути/Увімкнути поле Message",
   }),
-});
+};
+
+export const formFeedbackSectionArgs = sectionArgs(baseFormFeedbackArgs);
+
+export const formFeedbackModalArgs = sectionArgs(
+  {
+    modal_animationDurationEnter: arg({
+      defaultValue: 200,
+      name: "Modal animation duration (enter)",
+    }),
+    modal_animationDurationExit: arg({
+      defaultValue: 100,
+      name: "Modal animation duration (exit)",
+    }),
+    modal_backgroundColor: colorArg({
+      defaultValue: "background",
+      name: "Modal background color",
+    }),
+    modal_backgroundOpacity: arg({
+      defaultValue: "0.9",
+      name: "Modal opacity",
+    }),
+    ...baseFormFeedbackArgs,
+  },
+  false
+);

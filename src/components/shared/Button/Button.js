@@ -3,6 +3,7 @@ import clsx from "clsx";
 
 import styles from "./Button.module.scss";
 import { Typography } from "../Typography";
+import { useGlobalComponents } from "../../../contexts/GlobalComponentsContext";
 
 export const Button = ({
   type = "default",
@@ -16,12 +17,14 @@ export const Button = ({
   htmlType,
   ...props
 }) => {
+  const { handleOpenForm } = useGlobalComponents();
+
   if (href) {
     As = "a";
     if (href.startsWith("popup-form-")) {
       As = "button";
       onClick = () => {
-        console.log(props.href.replace("popup-form-", ""));
+        handleOpenForm(Number(props.href.replace("popup-form-", "")));
       };
     }
   }

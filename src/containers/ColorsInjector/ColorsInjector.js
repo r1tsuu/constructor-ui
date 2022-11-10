@@ -20,8 +20,10 @@ const isThemeColor = (value) => themeColors.includes(value);
 export const ColorsInjector = ({
   textColor,
   background,
+  beforeBackground,
   borderColor,
   children,
+  className,
 }) => {
   const { props: childProps } = children;
 
@@ -34,6 +36,7 @@ export const ColorsInjector = ({
   const isThemeText = isThemeColor(textColor);
   const isThemeBackground = isThemeColor(background);
   const isThemeBorderColor = isThemeColor(borderColor);
+  const isThemeBeforeBackground = isThemeColor(beforeBackground);
 
   const dataAttributes = {
     ...(textColor && {
@@ -44,6 +47,11 @@ export const ColorsInjector = ({
     }),
     ...(borderColor && {
       "data-border-color": isThemeBorderColor ? borderColor : "injected",
+    }),
+    ...(beforeBackground && {
+      "data-before-background-color": isThemeBeforeBackground
+        ? beforeBackground
+        : "injected",
     }),
   };
 
@@ -57,6 +65,9 @@ export const ColorsInjector = ({
     ...(!isThemeBorderColor && {
       "--border-color-injected": borderColor,
     }),
+    ...(!isThemeBeforeBackground && {
+      "--before-background-color-injected": beforeBackground,
+    }),
   };
 
   const styleMerged = {
@@ -64,7 +75,7 @@ export const ColorsInjector = ({
     ...childStyle,
   };
 
-  const classNameMerged = clsx(styles.colors, childClassname);
+  const classNameMerged = clsx(styles.colors, childClassname, className);
 
   return cloneElement(children, {
     style: styleMerged,

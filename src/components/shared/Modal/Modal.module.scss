@@ -1,0 +1,38 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100%;
+  min-height: 100vh;
+
+  &::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: var(--overlay-background-opacity);
+  }
+}
+
+.overlayEnter {
+  opacity: 0;
+}
+
+.overlayEnterActive {
+  transition: opacity var(--animation-duration-enter);
+  opacity: 1;
+}
+
+.overlayExit {
+  opacity: 1;
+}
+
+.overlayExitActive {
+  transition: opacity var(--animation-duration-exit);
+  opacity: 0;
+}

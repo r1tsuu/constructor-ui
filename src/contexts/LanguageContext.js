@@ -9,6 +9,8 @@ const translations = {
     FORM_PRIVACY_1: "Натискаючи “Надіслати” ви погоджуєтесь на обробку ",
     FORM_PRIVACY_2: "персональних даних",
     FORM_SEND: "Надіслати",
+    FORM_SENDED_SUCCESS: "Дякуємо! заявка успішно надіслана",
+    FORM_SENDED_ERROR: "Заявка не була надіслана. Спробуйте ще раз",
   },
   ru: {
     FORM_NAME: "Имя:",
@@ -18,6 +20,8 @@ const translations = {
     FORM_PRIVACY_1: "Нажимая “Отправить” вы соглашаетесь на обработку ",
     FORM_PRIVACY_2: "персональных данных",
     FORM_SEND: "Отправить",
+    FORM_SENDED_SUCCESS: "Спасибо! заявка успешно отправлена",
+    FORM_SENDED_ERROR: "Заявка не была отправлена. Попробуйте еще раз",
   },
   en: {
     FORM_NAME: "Name:",
@@ -27,6 +31,8 @@ const translations = {
     FORM_PRIVACY_1: 'By clicking "Send" you agree to the processing of ',
     FORM_PRIVACY_2: "personal data",
     FORM_SEND: "Send",
+    FORM_SENDED_SUCCESS: "Thank you! Application successfully sent",
+    FORM_SENDED_ERROR: "The application was not sent. Try again",
   },
 };
 
