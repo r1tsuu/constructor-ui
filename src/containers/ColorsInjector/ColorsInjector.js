@@ -24,16 +24,8 @@ export const ColorsInjector = ({
   borderColor,
   children,
   className,
-  injectedVar,
+  ...props
 }) => {
-  const { props: childProps } = children;
-
-  const {
-    style: childStyle,
-    className: childClassname,
-    ...restChildProps
-  } = childProps;
-
   const isThemeText = isThemeColor(textColor);
   const isThemeBackground = isThemeColor(background);
   const isThemeBorderColor = isThemeColor(borderColor);
@@ -71,17 +63,22 @@ export const ColorsInjector = ({
     }),
   };
 
+  const {
+    props: { style: childStyle, className: childClassName, ...restProps },
+  } = children;
+
   const styleMerged = {
     ...style,
+    ...props.style,
     ...childStyle,
   };
 
-  const classNameMerged = clsx(styles.colors, childClassname, className);
+  const classNameMerged = clsx(styles.colors, childClassName, className);
 
   return cloneElement(children, {
     style: styleMerged,
     className: classNameMerged,
     ...dataAttributes,
-    ...restChildProps,
+    ...restProps,
   });
 };

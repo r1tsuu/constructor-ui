@@ -1,8 +1,8 @@
 import clsx from "clsx";
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
-import { CSSTransition } from "react-transition-group";
 import { ColorsInjector } from "../../../containers";
+import { Fade } from "../Fade";
 
 import styles from "./Modal.module.scss";
 
@@ -34,26 +34,15 @@ const ModalOverlay = ({
   }, []);
 
   return (
-    <CSSTransition
-      in={isOpen}
-      timeout={{
-        enter: animationDurationEnter,
-        exit: animationDurationExit,
-      }}
-      classNames={{
-        enter: styles.overlayEnter,
-        enterActive: styles.overlayEnterActive,
-        exit: styles.overlayExit,
-        exitActive: styles.overlayExitActive,
-      }}
-      unmountOnExit
+    <Fade
+      isActive={isOpen}
+      durationEnter={animationDurationEnter}
+      durationExit={animationDurationExit}
     >
       <ColorsInjector beforeBackground={backgroundColor}>
         <div
           style={{
             zIndex,
-            "--animation-duration-enter": animationDurationEnter + "ms",
-            "--animation-duration-exit": animationDurationExit + "ms",
             "--overlay-background-opacity": backgroundOpacity,
           }}
           onClick={handleOutsideClick}
@@ -63,7 +52,7 @@ const ModalOverlay = ({
           {children}
         </div>
       </ColorsInjector>
-    </CSSTransition>
+    </Fade>
   );
 };
 

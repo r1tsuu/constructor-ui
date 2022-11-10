@@ -7,3 +7,4 @@ export * from "./Section";
 export * from "./Card";
 export * from "./ResponsiveVideoPlayer";
 export * from "./Modal";
+export * from "./Fade";

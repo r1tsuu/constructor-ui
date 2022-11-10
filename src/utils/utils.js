@@ -144,7 +144,7 @@ export const buttonArg = ({
 });
 
 export const arrowArg = ({
-  arrowType = "default",
+  arrowType = "cube-default",
   prefix,
   name = "Тип стрілок",
 }) => ({
@@ -218,6 +218,7 @@ export const args = (args, noPrefix = false) => {
             },
           },
         };
+
       const argType = arg.type;
 
       const resolveSettingsArgKey = () => {
@@ -285,20 +286,30 @@ export const args = (args, noPrefix = false) => {
             },
           };
 
-        case "button" || "arrow":
-          const isButton = argType === "button";
+        case "button":
           return {
             args: {
               ...acc.args,
-              [settingsArgKey]: isButton ? arg.buttonType : arg.arrowType,
+              [settingsArgKey]: arg.buttonType,
             },
             argTypes: {
               ...acc.argTypes,
-              [settingsArgKey]: isButton
-                ? buttonType(arg.name)
-                : arrowType(arg.name),
+              [settingsArgKey]: buttonType(arg.name),
             },
           };
+
+        case "arrow":
+          return {
+            args: {
+              ...acc.args,
+              [settingsArgKey]: arg.arrowType,
+            },
+            argTypes: {
+              ...acc.argTypes,
+              [settingsArgKey]: arrowType(arg.name),
+            },
+          };
+
         case "radio":
           return {
             args: {

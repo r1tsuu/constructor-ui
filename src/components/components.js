@@ -49,6 +49,12 @@ import {
   formFeedbackContentResolver,
 } from "./sections/FormFeedback";
 
+import {
+  WelcomeSlider,
+  welcomeSliderArgs,
+  welcomeSliderContentResolver,
+} from "./sections/WelcomeSlider";
+
 import { useEnvironment } from "../contexts/EnvironmentContext";
 
 import { COMPONENT_KEYS } from "../utils/constants";
@@ -142,5 +148,10 @@ export const components = {
     FormFeedbackModalContainer,
     formFeedbackModalArgs,
     formFeedbackContentResolver
+  ),
+  [COMPONENT_KEYS.WELCOME_SLIDER]: section(
+    WelcomeSlider,
+    welcomeSliderArgs,
+    welcomeSliderContentResolver
   ),
 };

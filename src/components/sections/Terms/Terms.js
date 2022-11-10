@@ -21,7 +21,7 @@ import styles from "./Terms.module.scss";
 export const Terms = ({ subTitle = null, title, items, settings }) => {
   const minTablet = useMediaQuery(mediaQueries.minTablet);
   const { swiperProps, arrowProps } = useSwiperNavigation({
-    type: settings.arrowsType,
+    type: settings.arrowType,
   });
 
   const arrowsElement = (

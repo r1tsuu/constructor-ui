@@ -12,7 +12,7 @@
   min-width: var(--button-min-width);
   font-size: var(--button-font-size);
 
-  &[data-full-width] {
+  &[data-full-width="true"] {
     width: 100%;
   }
 
