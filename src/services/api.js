@@ -34,7 +34,7 @@ function utmMarks() {
  */
 export const sendForm = async ({ form, type, SITE_URL }) => {
   try {
-    return await axios.post(`${SITE_URL}/api/${type}`, {
+    return await axios.post(`${SITE_URL}/api/form/${type}`, {
       ...omitEmpties(form),
       ...utmMarks(),
       id: type,
