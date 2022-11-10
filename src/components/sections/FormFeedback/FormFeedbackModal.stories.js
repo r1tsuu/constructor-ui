@@ -32,5 +32,13 @@ export default createSection({
 });
 
 export const Default = ({ isOpen, ...args }) => (
-  <FormFeedbackModal isOpen={isOpen} {...parseArgs(args)} />
+  <div
+    style={{
+      width: "100%",
+      height: "100%",
+      background: "red",
+    }}
+  >
+    <FormFeedbackModal isOpen={isOpen} {...parseArgs(args)} />
+  </div>
 );

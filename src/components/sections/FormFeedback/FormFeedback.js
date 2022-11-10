@@ -225,28 +225,19 @@ export const FormFeedbackModal = ({
   isOpen,
 }) => {
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        background: "red",
-      }}
+    <Modal
+      {...modal}
+      data-theme={section.theme}
+      isOpen={isOpen}
+      onClose={onClose}
     >
-      /
-      <Modal
-        {...modal}
-        data-theme={section.theme}
-        isOpen={isOpen}
-        onClose={onClose}
-      >
-        <FormFeedback
-          title={title}
-          settings={restSettings}
-          onSubmit={onSubmit}
-          submitted={submitted}
-        />
-      </Modal>
-    </div>
+      <FormFeedback
+        title={title}
+        settings={restSettings}
+        onSubmit={onSubmit}
+        submitted={submitted}
+      />
+    </Modal>
   );
 };
 
