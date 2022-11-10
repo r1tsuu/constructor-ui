@@ -41,6 +41,14 @@ import {
 
 import { Video, videoArgs, videoContentResolver } from "./sections/Video";
 
+import {
+  FormFeedbackModalContainer,
+  FormFeedbackSectionContainer,
+  formFeedbackModalArgs,
+  formFeedbackSectionArgs,
+  formFeedbackContentResolver,
+} from "./sections/FormFeedback";
+
 import { useEnvironment } from "../contexts/EnvironmentContext";
 
 import { COMPONENT_KEYS } from "../utils/constants";
@@ -125,4 +133,14 @@ export const components = {
     photoQuoteContentResolver
   ),
   [COMPONENT_KEYS.VIDEO]: section(Video, videoArgs, videoContentResolver),
+  [COMPONENT_KEYS.FORM_SECTION]: section(
+    FormFeedbackSectionContainer,
+    formFeedbackSectionArgs,
+    formFeedbackContentResolver
+  ),
+  [COMPONENT_KEYS.FORM_MODAL]: section(
+    FormFeedbackModalContainer,
+    formFeedbackModalArgs,
+    formFeedbackContentResolver
+  ),
 };

@@ -10,6 +10,7 @@ import { Button, Modal, Section, Typography } from "../../shared";
 import { ControlledInput } from "../../shared/Input";
 
 import styles from "./FormFeedback.module.scss";
+import { useEnvironment } from "../../../contexts/EnvironmentContext";
 
 const THANK_YOU_CLOSE_DELAY = 1500;
 
@@ -245,7 +246,8 @@ export const FormFeedbackModal = ({
   );
 };
 
-const FormFeedbackSubmitContainer = ({ SITE_URL, children }) => {
+const FormFeedbackSubmitContainer = ({ children }) => {
+  const { SITE_URL } = useEnvironment();
   const [submitted, setSubmitted] = useState(false);
   const timeout = useRef(null);
   const handleSubmit = async (form) => {
@@ -275,20 +277,20 @@ const FormFeedbackSubmitContainer = ({ SITE_URL, children }) => {
   });
 };
 
-export const FormFeedbackSectionContainer = ({ SITE_URL, title, settings }) => {
+export const FormFeedbackSectionContainer = ({ title, settings }) => {
   return (
-    <FormFeedbackSubmitContainer SITE_URL={SITE_URL}>
+    <FormFeedbackSubmitContainer>
       <FormFeedbackSection title={title} settings={settings} />
     </FormFeedbackSubmitContainer>
   );
 };
 
-export const FormFeedbackModalContainer = ({ SITE_URL, title, settings }) => {
+export const FormFeedbackModalContainer = ({ title, settings }) => {
   const { globalFormIndex } = useSection();
   const { openedFormIndex, handleCloseForm } = useGlobalForms();
 
   return (
-    <FormFeedbackSubmitContainer SITE_URL={SITE_URL}>
+    <FormFeedbackSubmitContainer>
       <FormFeedbackModal
         title={title}
         settings={settings}

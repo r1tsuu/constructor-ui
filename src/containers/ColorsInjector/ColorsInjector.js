@@ -24,6 +24,7 @@ export const ColorsInjector = ({
   borderColor,
   children,
   className,
+  injectedVar,
 }) => {
   const { props: childProps } = children;
 

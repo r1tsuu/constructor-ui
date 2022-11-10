@@ -1,10 +1,5 @@
 import { resolveField } from "../../../utils/fields-utils";
 
-export const formFeedbackContentResolver = ({
-  title,
-  env: { SITE_URL },
-  defaultContent,
-}) => ({
+export const formFeedbackContentResolver = ({ title, defaultContent }) => ({
   title: resolveField(title.value, defaultContent.title),
-  SITE_URL,
 });
