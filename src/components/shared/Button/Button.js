@@ -24,7 +24,7 @@ export const Button = ({
     if (href.startsWith("popup-form-")) {
       As = "button";
       onClick = () => {
-        handleOpenForm(Number(props.href.replace("popup-form-", "")));
+        handleOpenForm(Number(href.replace("popup-form-", "")));
       };
     }
   }
