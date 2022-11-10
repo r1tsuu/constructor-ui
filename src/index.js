@@ -5,8 +5,8 @@ export { components } from "./components";
 export { parseArgs } from "./utils";
 export { EnvironmentProvider } from "./contexts/EnvironmentContext";
 export { GlobalFormsProvider } from "./contexts/GlobalFormsContext";
-export { LanguageContext } from "./contexts/LanguageContext";
-export { SectionContext } from "./contexts/SectionContext";
+export { LanguageProvider } from "./contexts/LanguageContext";
+export { SectionProvider } from "./contexts/SectionContext";
 
 // import { run } from "./test";
 // run();
