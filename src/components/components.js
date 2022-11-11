@@ -61,6 +61,12 @@ import {
   advantagesSliderContentResolver,
 } from "./sections/AdvantagesSlider";
 
+import {
+  FormSubscribeContainer,
+  formSubscribeArgs,
+  formSubscribeContentResolver,
+} from "./sections/FormSubcribe";
+
 import { useEnvironment } from "../contexts/EnvironmentContext";
 
 import { COMPONENT_KEYS } from "../utils/constants";
@@ -164,5 +170,10 @@ export const components = {
     AdvantagesSlider,
     advantagesSliderArgs,
     advantagesSliderContentResolver
+  ),
+  [COMPONENT_KEYS.FORM_SUBSCRIBE]: section(
+    FormSubscribeContainer,
+    formSubscribeArgs,
+    formSubscribeContentResolver
   ),
 };

@@ -18,6 +18,9 @@ export default createSection({
           type: "radio",
         },
       },
+      onSubmit: {
+        action: "Form submitted",
+      },
       ...formFeedbackSectionArgs.argTypes,
     },
     args: {

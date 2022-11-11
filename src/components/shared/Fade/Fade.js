@@ -19,7 +19,7 @@ export const Fade = ({
   });
   return (
     <CSSTransition
-      in={isActive}
+      in={Boolean(isActive)}
       classNames={{
         enter: styles.enter,
         enterActive: styles.enterActive,

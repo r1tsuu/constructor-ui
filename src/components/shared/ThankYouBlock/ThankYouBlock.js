@@ -6,21 +6,33 @@ import { Typography } from "../Typography";
 import { Modal } from "../Modal";
 
 import styles from "./ThankYouBlock.module.scss";
+import clsx from "clsx";
+import { useTranslation } from "../../../contexts/LanguageContext";
+import { PopupCloseButton } from "../PopupCloseButton";
 
 const ThankYouBlockContent = ({
   background,
-  successMessage,
-  errorMessage,
+  borderRadius,
+  borderColor,
   submitted,
   submittedMessageSettings,
+  onModalClose,
+  isModal,
 }) => {
+  const t = useTranslation();
   const isSuccess = submitted === "success";
 
   if (!submitted) return <div />;
 
   return (
-    <ColorsInjector background={background}>
-      <div className={styles.submitted}>
+    <ColorsInjector borderColor={borderColor} background={background}>
+      <div
+        style={{
+          borderRadius,
+        }}
+        className={clsx(styles.submitted, isModal && styles.modal)}
+      >
+        {onModalClose && <PopupCloseButton onClick={onModalClose} />}
         {isSuccess ? (
           <svg
             width="100"
@@ -53,7 +65,7 @@ const ThankYouBlockContent = ({
           className={styles.submittedMessage}
           as={"h3"}
         >
-          {isSuccess ? successMessage : errorMessage}
+          {t(isSuccess ? "FORM_SENDED_SUCCESS" : "FORM_SENDED_ERROR")}
         </Typography>
       </div>
     </ColorsInjector>
@@ -62,8 +74,9 @@ const ThankYouBlockContent = ({
 
 export const ThankYouBlock = ({
   background,
-  successMessage,
-  errorMessage,
+  borderRadius,
+  borderColor,
+  theme,
   submitted,
   submittedMessageSettings,
   onModalClose,
@@ -71,21 +84,19 @@ export const ThankYouBlock = ({
 }) => {
   const thankYouBlockContentElement = (
     <ThankYouBlockContent
+      submitted={submitted}
       background={background}
-      successMessage={successMessage}
-      errorMessage={errorMessage}
+      borderColor={borderColor}
+      borderRadius={borderRadius}
       submittedMessageSettings={submittedMessageSettings}
+      isModal={isModal}
+      onModalClose={onModalClose}
     />
   );
 
   if (isModal) {
     return (
-      <Modal
-        isOpen={submitted}
-        onClose={onModalClose}
-        animationDurationEnter={250}
-        animationDurationExit={0}
-      >
+      <Modal isOpen={submitted} onClose={onModalClose} overlayTheme={theme}>
         {thankYouBlockContentElement}
       </Modal>
     );
@@ -101,7 +112,7 @@ export const ThankYouBlock = ({
         enter: styles.submittedEnter,
         enterActive: styles.submittedEnterActive,
       }}
-      in={submitted}
+      in={Boolean(submitted)}
       unmountOnExit
     >
       {thankYouBlockContentElement}

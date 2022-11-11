@@ -1,6 +1,6 @@
 {
   "name": "@r1tsuu/constructor-ui",
-  "version": "0.3.14",
+  "version": "0.3.15",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -27,6 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build-storybook",
+    "build-admin": "IS_ADMIN=true npm run build-storybook",
     "deploy-storybook": "gh-pages -d storybook-static",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",

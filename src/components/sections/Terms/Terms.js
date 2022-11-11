@@ -1,7 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import "swiper/swiper-bundle.css";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 
 import { useSwiperNavigation } from "../../../hooks/useSwiperNavigation";
@@ -18,18 +17,22 @@ import {
 
 import styles from "./Terms.module.scss";
 
+import "swiper/swiper.min.css";
+
+const Arrows = ({ next, prev }) => {
+  return (
+    <div className={styles.arrows}>
+      <Arrow {...prev} />
+      <Arrow {...next} />
+    </div>
+  );
+};
+
 export const Terms = ({ subTitle = null, title, items, settings }) => {
   const minTablet = useMediaQuery(mediaQueries.minTablet);
   const { swiperProps, arrowProps } = useSwiperNavigation({
     type: settings.arrowType,
   });
-
-  const arrowsElement = (
-    <div className={styles.arrows}>
-      <Arrow {...arrowProps.prev} />
-      <Arrow {...arrowProps.next} />
-    </div>
-  );
 
   return (
     <Section {...settings.section}>
@@ -47,7 +50,7 @@ export const Terms = ({ subTitle = null, title, items, settings }) => {
           <Typography as={"h2"} className={styles.title} {...settings.title}>
             {title}
           </Typography>
-          {minTablet && arrowsElement}
+          {minTablet && <Arrows {...arrowProps} />}
         </div>
         <Swiper
           {...swiperProps}
@@ -109,8 +112,10 @@ export const Terms = ({ subTitle = null, title, items, settings }) => {
             )
           )}
         </Swiper>
-        {!minTablet && arrowsElement}
+        {!minTablet && <Arrows {...arrowProps} />}
       </ContentContainer>
     </Section>
   );
 };
+
+export default Terms;

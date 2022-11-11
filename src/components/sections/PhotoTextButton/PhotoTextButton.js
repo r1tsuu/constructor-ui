@@ -56,3 +56,5 @@ export const PhotoTextButton = ({
     </Section>
   );
 };
+
+export default PhotoTextButton;

@@ -1,13 +1,17 @@
-import { cloneElement, useState, useRef } from "react";
+import { cloneElement, useState, useEffect, useRef } from "react";
 import { useEnvironment } from "../../contexts/EnvironmentContext";
 import { sendForm } from "../../services/api";
 
-const FormFeedbackSubmitContainer = ({ children, closeDelay = 1500 }) => {
+export const FormContainer = ({
+  children,
+  closeThankYouDelay = 1500,
+  type,
+}) => {
   const { SITE_URL } = useEnvironment();
   const [submitted, setSubmitted] = useState(false);
   const timeout = useRef(null);
   const handleSubmit = async (form) => {
-    const response = await sendForm({ form, type: "feedback", SITE_URL });
+    const response = await sendForm({ form, type, SITE_URL });
 
     if (response.status === 200) setSubmitted("success");
     else setSubmitted("error");
@@ -16,11 +20,13 @@ const FormFeedbackSubmitContainer = ({ children, closeDelay = 1500 }) => {
   useEffect(() => {
     if (submitted) {
       timeout.current = setTimeout(() => {
-        setSubmitted(false);
+        if (submitted) {
+          setSubmitted(false);
+        }
         if (children.props.onClose) {
           children.props.onClose();
         }
-      }, closeDelay);
+      }, closeThankYouDelay);
     }
   }, [submitted]);
 
@@ -32,5 +38,7 @@ const FormFeedbackSubmitContainer = ({ children, closeDelay = 1500 }) => {
     ...children.props,
     onSubmit: handleSubmit,
     submitted: submitted,
+    onClosePopupButtonClick: () => setSubmitted(false),
+    onThankYouModalClose: () => setSubmitted(false),
   });
 };

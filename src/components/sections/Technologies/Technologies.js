@@ -47,3 +47,5 @@ export const Technologies = ({ subTitle, title, items, settings }) => {
     </Section>
   );
 };
+
+export default Technologies;

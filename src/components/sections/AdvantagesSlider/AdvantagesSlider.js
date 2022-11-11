@@ -15,6 +15,8 @@ import {
 
 import styles from "./AdvantagesSlider.module.scss";
 
+import "swiper/swiper.min.css";
+
 const AdvantagesSliderArrowsProgress = ({
   realIndex,
   itemsLength,

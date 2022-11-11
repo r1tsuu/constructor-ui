@@ -57,3 +57,5 @@ export const PhotoQuote = ({
     </Section>
   );
 };
+
+export default PhotoQuote;

@@ -19,6 +19,12 @@ export default createSection({
           type: "radio",
         },
       },
+      onClose: {
+        action: "Modal closed",
+      },
+      onSubmit: {
+        action: "Form submitted",
+      },
       ...formFeedbackModalArgs.argTypes,
     },
     args: {

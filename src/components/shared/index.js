@@ -9,3 +9,4 @@ export * from "./ResponsiveVideoPlayer";
 export * from "./Modal";
 export * from "./Fade";
 export * from "./ThankYouBlock";
+export * from "./PopupCloseButton";

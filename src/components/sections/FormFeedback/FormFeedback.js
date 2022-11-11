@@ -1,24 +1,20 @@
-import React, { cloneElement, useEffect, useRef, useState } from "react";
+import React from "react";
 import { useForm } from "react-hook-form";
-import { CSSTransition } from "react-transition-group";
-import { ColorsInjector } from "../../../containers";
+import { ColorsInjector, FormContainer } from "../../../containers";
 import { useTranslation } from "../../../contexts/LanguageContext";
 import { useGlobalForms } from "../../../contexts/GlobalFormsContext";
 import { useSection } from "../../../contexts/SectionContext";
-import { sendForm } from "../../../services/api";
 import {
   Button,
   Modal,
   Section,
   Typography,
   ThankYouBlock,
+  PopupCloseButton,
 } from "../../shared";
 import { ControlledInput } from "../../shared/Input";
 
 import styles from "./FormFeedback.module.scss";
-import { useEnvironment } from "../../../contexts/EnvironmentContext";
-
-const THANK_YOU_CLOSE_DELAY = 1500;
 
 const FormFeedback = ({
   title,
@@ -54,32 +50,16 @@ const FormFeedback = ({
         className={styles.wrapper}
       >
         <ThankYouBlock
+          // borderRadius={settings.formBorderRadius}
           submitted={submitted}
-          background={settings.formBackground}
           submittedMessageSettings={settings.submittedMessage}
-          successMessage={t("FORM_SENDED_SUCCESS")}
-          errorMessage={t("FORM_SENDED_ERROR")}
         />
 
         {onClosePopupButtonClick && (
-          <button
-            className={styles.popupCloseButton}
+          <PopupCloseButton
+            borderRadius={settings.formBorderRadius}
             onClick={onClosePopupButtonClick}
-          >
-            <svg
-              width="12"
-              height="12"
-              viewBox="0 0 12 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1 1L11 10.8209M1 11L11 1.17907"
-                stroke="#FCFCFC"
-                stroke-width="1.5"
-              />
-            </svg>
-          </button>
+          />
         )}
         <form
           autoComplete="off"
@@ -179,53 +159,20 @@ export const FormFeedbackModal = ({
   isOpen,
 }) => {
   return (
-    <Modal
-      {...modal}
-      data-theme={section.theme}
-      isOpen={isOpen}
-      onClose={onClose}
-    >
+    <Modal data-theme={section.theme} isOpen={isOpen} onClose={onClose}>
       <FormFeedback
         title={title}
         settings={restSettings}
         onSubmit={onSubmit}
         submitted={submitted}
+        onClosePopupButtonClick={onClose}
       />
     </Modal>
   );
 };
 
-const FormFeedbackSubmitContainer = ({ children }) => {
-  const { SITE_URL } = useEnvironment();
-  const [submitted, setSubmitted] = useState(false);
-  const timeout = useRef(null);
-  const handleSubmit = async (form) => {
-    const response = await sendForm({ form, type: "feedback", SITE_URL });
-
-    if (response.status === 200) setSubmitted("success");
-    else setSubmitted("error");
-  };
-
-  useEffect(() => {
-    if (submitted) {
-      timeout.current = setTimeout(() => {
-        setSubmitted(false);
-        if (children.props.onClose) {
-          children.props.onClose();
-        }
-      }, THANK_YOU_CLOSE_DELAY);
-    }
-  }, [submitted]);
-
-  useEffect(() => {
-    return () => clearTimeout(timeout.current);
-  }, []);
-
-  return cloneElement(children, {
-    ...children.props,
-    onSubmit: handleSubmit,
-    submitted: submitted,
-  });
+export const FormFeedbackSubmitContainer = ({ children }) => {
+  return <FormContainer type={"feedback"}>{children}</FormContainer>;
 };
 
 export const FormFeedbackSectionContainer = ({ title, settings }) => {

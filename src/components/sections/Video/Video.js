@@ -34,3 +34,5 @@ export const Video = ({
     </Section>
   );
 };
+
+export default Video;

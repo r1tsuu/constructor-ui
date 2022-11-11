@@ -12,6 +12,7 @@ export const Input = forwardRef(
       errorMessage = "",
       placeholder,
       isRequired = false,
+      hideRequiredLabel = false,
       isTextarea = false,
       className,
       style,
@@ -34,18 +35,7 @@ export const Input = forwardRef(
           {...props}
         />
 
-        {false && (
-          <Typography
-            type={"p2"}
-            as={"div"}
-            color={"var(--input-error-color"}
-            className={styles.errorMessage}
-          >
-            {errorMessage}
-          </Typography>
-        )}
-
-        {isRequired && (
+        {isRequired && !hideRequiredLabel && (
           <Typography
             editableInStorybook={false}
             className={styles.required}
@@ -91,6 +81,7 @@ export const ControlledInput = ({
   control,
   inputType = "default-1",
   isRequired = false,
+  hideRequiredLabel = false,
   name,
   order,
   className,
@@ -122,6 +113,7 @@ export const ControlledInput = ({
       isTextarea={fieldType === "message"}
       placeholder={placeholder}
       isRequired={isRequired}
+      hideRequiredLabel={hideRequiredLabel}
       style={{
         order,
       }}

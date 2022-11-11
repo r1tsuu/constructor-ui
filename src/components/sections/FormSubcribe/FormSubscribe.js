@@ -11,6 +11,7 @@ import { useTranslation } from "../../../contexts/LanguageContext";
 
 import styles from "./FormSubscribe.module.scss";
 import { ControlledInput } from "../../shared/Input";
+import { ColorsInjector, FormContainer } from "../../../containers";
 
 const FormSubscribeContent = ({
   onSubmit,
@@ -18,6 +19,7 @@ const FormSubscribeContent = ({
   submitted,
   onThankYouModalClose,
   settings,
+  themeThankYou,
 }) => {
   const { control, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -26,50 +28,53 @@ const FormSubscribeContent = ({
   });
   const t = useTranslation();
   return (
-    <div className={styles.wrapper}>
-      <ThankYouBlock
-        isModal
-        background={settings.thankYouBackground}
-        submitted={submitted}
-        onModalClose={onThankYouModalClose}
-        successMessage={t("FORM_SENDED_SUCCESS")}
-        errorMessage={t("FORM_SENDED_ERROR")}
-        submittedMessageSettings={settings.submittedMessage}
-      />
-      <Typography {...settings.title} as={"h2"}>
-        {title}
-      </Typography>
-      <form
-        onSubmit={handleSubmit((form) => {
-          reset();
-          if (onSubmit) {
-            onSubmit(form);
-          }
-        })}
-        noValidate
-        autoComplete="off"
-        className={styles.form}
-      >
-        <div className={styles.formInputButtonWrapper}>
-          <ControlledInput
-            name={"phone"}
-            inputType={settings.inputType}
-            fieldType={"phone"}
-            control={control}
-            placeholder={t("FORM_PHONE")}
-          />
-          <Button htmlType={"submit"} label={t("FORM_SEND")} />
-        </div>
-        <div>
-          <Typography as={"span"} {...settings.privacy.first}>
-            {t("FORM_PRIVACY_1")}
-          </Typography>
-          <Typography as={"span"} {...settings.privacy.second}>
-            {t("FORM_PRIVACY_2")}
-          </Typography>
-        </div>
-      </form>
-    </div>
+    <ColorsInjector background={settings.backgroundColor}>
+      <div className={styles.wrapper}>
+        <ThankYouBlock
+          isModal
+          theme={themeThankYou}
+          background={"background"}
+          submitted={submitted}
+          onModalClose={onThankYouModalClose}
+          {...settings.submittedModal}
+        />
+        <Typography {...settings.title} as={"h2"}>
+          {title}
+        </Typography>
+        <form
+          onSubmit={handleSubmit((form) => {
+            reset();
+            if (onSubmit) {
+              onSubmit(form);
+            }
+          })}
+          noValidate
+          autoComplete="off"
+          className={styles.form}
+        >
+          <div className={styles.formInputButtonWrapper}>
+            <ControlledInput
+              isRequired
+              hideRequiredLabel
+              name={"phone"}
+              inputType={settings.inputType}
+              fieldType={"phone"}
+              control={control}
+              placeholder={t("FORM_PHONE")}
+            />
+            <Button htmlType={"submit"} label={t("FORM_SEND")} />
+          </div>
+          <div>
+            <Typography as={"span"} {...settings.privacy.first}>
+              {t("FORM_PRIVACY_1")}
+            </Typography>
+            <Typography as={"span"} {...settings.privacy.second}>
+              {t("FORM_PRIVACY_2")}
+            </Typography>
+          </div>
+        </form>
+      </div>
+    </ColorsInjector>
   );
 };
 
@@ -80,10 +85,11 @@ export const FormSubscribe = ({
   submitted,
   onThankYouModalClose,
   settings,
-  isSection,
+  themeThankYou,
 }) => {
   const formSubcsribeElement = (
     <FormSubscribeContent
+      themeThankYou={settings.theme ?? themeThankYou}
       onSubmit={onSubmit}
       title={title}
       submitted={submitted}
@@ -104,8 +110,15 @@ export const FormSubscribe = ({
 };
 
 export const FormSubscribeContainer = ({
-  isSection,
+  isSection = true,
   title,
   settings,
-  isSection,
-}) => {};
+}) => {
+  return (
+    <FormContainer type={"subscribe"}>
+      <FormSubscribe isSection={isSection} title={title} settings={settings} />
+    </FormContainer>
+  );
+};
+
+export default FormSubscribeContainer;

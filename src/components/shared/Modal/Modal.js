@@ -16,6 +16,7 @@ const ModalOverlay = ({
   backgroundOpacity,
   className,
   children,
+  theme,
   ...props
 }) => {
   const handleOutsideClick = ({ target, currentTarget }) => {
@@ -47,6 +48,7 @@ const ModalOverlay = ({
           }}
           onClick={handleOutsideClick}
           className={clsx(styles.overlay, className)}
+          data-theme={theme}
           {...props}
         >
           {children}
@@ -62,10 +64,11 @@ export const Modal = ({
   zIndex = 10,
   animationDurationEnter = 150,
   animationDurationExit = 75,
-  backgroundColor = "background",
+  backgroundColor = "#2D2D2D",
   backgroundOpacity = 0.9,
   className,
   children,
+  overlayTheme,
   ...props
 }) => {
   return ReactDOM.createPortal(
@@ -78,6 +81,7 @@ export const Modal = ({
       backgroundColor={backgroundColor}
       backgroundOpacity={backgroundOpacity}
       className={className}
+      theme={overlayTheme}
       {...props}
     >
       {children}

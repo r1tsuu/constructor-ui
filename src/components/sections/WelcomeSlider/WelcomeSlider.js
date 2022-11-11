@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { CSSTransition } from "react-transition-group";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import { useSwiperNavigation } from "../../../hooks/useSwiperNavigation";
 import { mediaQueries } from "../../../utils/constants";
@@ -14,6 +14,8 @@ import {
 } from "../../shared";
 
 import styles from "./WelcomeSlider.module.scss";
+
+import "swiper/swiper.min.css";
 
 const WelcomeSliderProgress = ({ isMobile, arrowProps, value, maxValue }) => {
   if (isMobile)
@@ -119,3 +121,5 @@ export const WelcomeSlider = ({ items, settings }) => {
     </Section>
   );
 };
+
+export default WelcomeSlider;
