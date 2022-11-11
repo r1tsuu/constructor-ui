@@ -45,6 +45,7 @@ export const AdvantagesSlider = ({ title, subTitle, items, settings }) => {
           onActiveIndexChange={(swiper) => setSlideIndex(swiper.activeIndex)}
           slidesPerView={"auto"}
           loop
+          spaceBetween={40}
           breakpoints={{
             1150: {
               spaceBetween: 73,
@@ -110,6 +111,13 @@ export const AdvantagesSlider = ({ title, subTitle, items, settings }) => {
             )
           )}
         </Swiper>
+        {!isMinLaptop && (
+          <div className={styles.arrowsWrapper}>
+            <Arrow {...arrowProps.prev} />
+            <ProgressNumbers value={realIndex + 1} maxValue={items.length} />
+            <Arrow {...arrowProps.next} />
+          </div>
+        )}
       </ContentContainer>
     </Section>
   );

@@ -11,6 +11,7 @@ export const PhotoTextButton = ({
   title,
   description,
   buttonName,
+  buttonLink,
   photoSource,
   photoSourceMobile,
   settings,
@@ -46,7 +47,11 @@ export const PhotoTextButton = ({
           data-position={settings.buttonPosition}
           className={styles.buttonWrapper}
         >
-          <Button type={settings.buttonType} label={buttonName} />
+          <Button
+            href={buttonLink}
+            type={settings.buttonType}
+            label={buttonName}
+          />
         </div>
       </ContentContainer>
     </Section>

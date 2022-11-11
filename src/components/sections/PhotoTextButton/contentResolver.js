@@ -11,6 +11,7 @@ export const photoTextButtonContentResolver = ({
   photoSourceMobile,
   description,
   buttonName,
+  buttonLink,
   defaultContent,
   env,
 }) => {
@@ -27,5 +28,6 @@ export const photoTextButtonContentResolver = ({
     ),
     description: resolveField(description.value, defaultContent.description),
     buttonName: resolveField(buttonName.value, defaultContent.buttonName),
+    buttonLink: resolveField(buttonLink.value, defaultContent.buttonLink),
   };
 };

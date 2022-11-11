@@ -35,6 +35,7 @@ export const photoTextButtonArgs = sectionArgs({
   }),
   buttonType: buttonArg({}),
   buttonName: "Текст кнопки",
+  buttonLink: "https://google.com",
   buttonPosition: radioArg({
     options: ["left", "center", "right"],
     defaultValue: "left",
