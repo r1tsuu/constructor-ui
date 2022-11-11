@@ -1,5 +1,34 @@
 @import "../../../styles/mixins";
 
+.section {
+  overflow: hidden;
+  .swiper {
+    max-width: 100%;
+    display: flex;
+
+    @include laptop {
+      padding-right: 420px;
+      overflow: visible;
+    }
+
+    @include desktop {
+      padding-right: 526px;
+    }
+  }
+
+  .item.isActive {
+    .itemPhotoWrapper {
+      transform: scale(1) translate(0, 0);
+    }
+    .itemTextWrapper {
+      transform: translate(0, 0);
+    }
+    .itemDescription {
+      opacity: 1;
+    }
+  }
+}
+
 .subTitle {
   margin-bottom: 15px;
 }
@@ -80,30 +109,6 @@
   }
   opacity: 0;
   transition: opacity 0.8s;
-}
-
-.swiper {
-  max-width: 100%;
-  display: flex;
-
-  @include laptop {
-    padding-right: 420px;
-    overflow: visible;
-  }
-
-  @include desktop {
-    padding-right: 526px;
-  }
-
-  :global(.swiper-slide-active) .itemPhotoWrapper {
-    transform: scale(1) translate(0, 0);
-  }
-  :global(.swiper-slide-active) .itemTextWrapper {
-    transform: translate(0, 0);
-  }
-  :global(.swiper-slide-active) .itemDescription {
-    opacity: 1;
-  }
 }
 
 .arrowsWrapper {

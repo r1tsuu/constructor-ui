@@ -55,6 +55,12 @@ import {
   welcomeSliderContentResolver,
 } from "./sections/WelcomeSlider";
 
+import {
+  AdvantagesSlider,
+  advantagesSliderArgs,
+  advantagesSliderContentResolver,
+} from "./sections/AdvantagesSlider";
+
 import { useEnvironment } from "../contexts/EnvironmentContext";
 
 import { COMPONENT_KEYS } from "../utils/constants";
@@ -153,5 +159,10 @@ export const components = {
     WelcomeSlider,
     welcomeSliderArgs,
     welcomeSliderContentResolver
+  ),
+  [COMPONENT_KEYS.ADVANTAGES_SLIDER]: section(
+    AdvantagesSlider,
+    advantagesSliderArgs,
+    advantagesSliderContentResolver
   ),
 };

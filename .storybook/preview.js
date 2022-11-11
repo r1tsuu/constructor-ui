@@ -6,6 +6,10 @@ export const parameters = {
   viewport: {
     viewports: INITIAL_VIEWPORTS,
   },
+  layout: "fullscreen",
+  sidebar: {
+    disable: "true",
+  },
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
     matchers: {
@@ -58,5 +62,3 @@ export const parameters = {
 };
 
 export const decorators = [InStorybookDecorator];
-
-// window.addEventListener("message", (event) => console.log(event));

@@ -28,7 +28,7 @@ const WelcomeSliderProgress = ({ isMobile, arrowProps, value, maxValue }) => {
   return <ProgressNumbers value={value} maxValue={maxValue} />;
 };
 
-export const WelcomeSlider = ({ items, itemsMobile, buttonName, settings }) => {
+export const WelcomeSlider = ({ items, settings }) => {
   const [realIndex, setRealIndex] = useState(0);
   const isMobile = !useMediaQuery(mediaQueries.minTablet);
   const isMinLaptop = useMediaQuery(mediaQueries.minLaptop);
@@ -38,8 +38,6 @@ export const WelcomeSlider = ({ items, itemsMobile, buttonName, settings }) => {
   });
 
   const handleRealIndexChange = (swiper) => setRealIndex(swiper.realIndex);
-
-  const responsiveItems = isMobile ? itemsMobile : items;
 
   return (
     <Section {...settings.section}>
@@ -63,35 +61,45 @@ export const WelcomeSlider = ({ items, itemsMobile, buttonName, settings }) => {
           loop
           loopedSlides={2}
         >
-          {responsiveItems.map(({ source, _id }, index) => (
-            <SwiperSlide key={_id ?? index}>
-              <div className={styles.slideContent}>
-                <img className={styles.slidePhoto} src={source} alt="" />
-                {!isMobile && (
-                  <Fade
-                    isActive={index === realIndex}
-                    durationEnter={450}
-                    durationExit={150}
-                  >
-                    <div>
-                      <div className={styles.arrowsWrapper}>
-                        <Arrow {...arrowProps.prev} />
-                        <Arrow {...arrowProps.next} />
-                      </div>
-                      {isMinLaptop && (
-                        <div className={styles.minLaptopButtonWrapper}>
-                          <Button
-                            type={settings.buttonType}
-                            label={buttonName}
-                          />
+          {items.map(
+            (
+              { photoSource, photoSourceMobile, buttonName, buttonLink, _id },
+              index
+            ) => (
+              <SwiperSlide key={_id ?? index}>
+                <div className={styles.slideContent}>
+                  <img
+                    className={styles.slidePhoto}
+                    src={isMobile ? photoSourceMobile : photoSource}
+                    alt=""
+                  />
+                  {!isMobile && (
+                    <Fade
+                      isActive={index === realIndex}
+                      durationEnter={450}
+                      durationExit={150}
+                    >
+                      <div>
+                        <div className={styles.arrowsWrapper}>
+                          <Arrow {...arrowProps.prev} />
+                          <Arrow {...arrowProps.next} />
                         </div>
-                      )}
-                    </div>
-                  </Fade>
-                )}
-              </div>
-            </SwiperSlide>
-          ))}
+                        {isMinLaptop && (
+                          <div className={styles.minLaptopButtonWrapper}>
+                            <Button
+                              href={buttonLink}
+                              type={settings.buttonType}
+                              label={buttonName}
+                            />
+                          </div>
+                        )}
+                      </div>
+                    </Fade>
+                  )}
+                </div>
+              </SwiperSlide>
+            )
+          )}
         </Swiper>
       </div>
       <ContentContainer className={styles.container}>
@@ -102,7 +110,10 @@ export const WelcomeSlider = ({ items, itemsMobile, buttonName, settings }) => {
           arrowProps={arrowProps}
         />
         {!isMinLaptop && (
-          <Button type={settings.buttonType} label={buttonName} />
+          <Button
+            type={settings.buttonType}
+            label={items[realIndex].buttonName}
+          />
         )}
       </ContentContainer>
     </Section>

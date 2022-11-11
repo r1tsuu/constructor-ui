@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import clsx from "clsx";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import { useSwiperNavigation } from "../../../hooks/useSwiperNavigation";
 import { mediaQueries } from "../../../utils/constants";
@@ -18,11 +19,12 @@ export const AdvantagesSlider = ({ title, subTitle, items, settings }) => {
   const isMobile = !useMediaQuery(mediaQueries.minTablet);
   const isMinLaptop = useMediaQuery(mediaQueries.minLaptop);
   const [realIndex, setRealIndex] = useState(0);
+  const [slideIndex, setSlideIndex] = useState(0);
   const { swiperProps, arrowProps } = useSwiperNavigation({
     type: settings.arrowType,
   });
   return (
-    <Section {...settings.section}>
+    <Section className={styles.section} {...settings.section}>
       <ContentContainer>
         {subTitle && (
           <Typography
@@ -40,6 +42,7 @@ export const AdvantagesSlider = ({ title, subTitle, items, settings }) => {
           {...swiperProps}
           className={styles.swiper}
           onRealIndexChange={(swiper) => setRealIndex(swiper.realIndex)}
+          onActiveIndexChange={(swiper) => setSlideIndex(swiper.activeIndex)}
           slidesPerView={"auto"}
           loop
           breakpoints={{
@@ -56,7 +59,13 @@ export const AdvantagesSlider = ({ title, subTitle, items, settings }) => {
               { title, description, photoSource, photoSourceMobile, _id },
               index
             ) => (
-              <SwiperSlide key={_id ?? index}>
+              <SwiperSlide
+                className={clsx(
+                  styles.item,
+                  index === realIndex && styles.isActive
+                )}
+                key={_id ?? index}
+              >
                 <div className={styles.itemPhotoWrapper}>
                   <img
                     className={styles.itemPhoto}

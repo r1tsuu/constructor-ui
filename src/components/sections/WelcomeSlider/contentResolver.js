@@ -1,31 +1,43 @@
-import { getSourceFile, resolveField } from "../../../utils/fields-utils";
+import {
+  getSourceFile,
+  resolveField,
+  resolveFieldMobile,
+} from "../../../utils/fields-utils";
 
 export const welcomeSliderContentResolver = ({
   items,
-  itemsMobile,
   env,
-  buttonName,
   defaultContent,
 }) => {
-  const itemsDesktop = resolveField(
-    items.value.map((item) => ({
-      source: getSourceFile(item, env),
-      _id: item._id,
-    })),
-    defaultContent.items
-  );
-
   return {
-    items: itemsDesktop,
-    itemsMobile: resolveField(
-      itemsMobile.value.map(
-        (item) => ({
-          source: getSourceFile(item, env),
-          _id: item._id,
-        }),
-        itemsDesktop
-      )
+    items: resolveField(
+      items.data.map(({ custom_fields, _id }, index) => {
+        const photoSource = getSourceFile(
+          custom_fields.photoSource.value[0],
+          env
+        );
+        return {
+          photoSource: resolveField(
+            photoSource,
+            defaultContent.items[index].photoSource
+          ),
+          photoSourceMobile: resolveFieldMobile(
+            getSourceFile(custom_fields.photoSource.value[0], env),
+            photoSource,
+            defaultContent.items[index].photoSourceMobile
+          ),
+          buttonName: resolveField(
+            custom_fields.buttonName.value,
+            defaultContent.items[index].buttonName
+          ),
+          buttonLink: resolveField(
+            custom_fields.buttonLink.value,
+            defaultContent.items[index].buttonLink
+          ),
+          _id,
+        };
+      }),
+      defaultContent.items
     ),
-    buttonName: resolveField(buttonName.value, defaultContent.buttonName),
   };
 };
