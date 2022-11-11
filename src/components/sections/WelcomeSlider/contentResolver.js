@@ -3,6 +3,7 @@ import {
   resolveField,
   resolveFieldMobile,
 } from "../../../utils/fields-utils";
+import { atOrFist } from "../../../utils";
 
 export const welcomeSliderContentResolver = ({
   items,
@@ -19,20 +20,20 @@ export const welcomeSliderContentResolver = ({
         return {
           photoSource: resolveField(
             photoSource,
-            defaultContent.items[index].photoSource
+            atOrFist(defaultContent.items, index).photoSource
           ),
           photoSourceMobile: resolveFieldMobile(
             getSourceFile(custom_fields.photoSource.value[0], env),
             photoSource,
-            defaultContent.items[index].photoSourceMobile
+            atOrFist(defaultContent.items, index).photoSourceMobile
           ),
           buttonName: resolveField(
             custom_fields.buttonName.value,
-            defaultContent.items[index].buttonName
+            atOrFist(defaultContent.items, index).buttonName
           ),
           buttonLink: resolveField(
             custom_fields.buttonLink.value,
-            defaultContent.items[index].buttonLink
+            atOrFist(defaultContent.items, index).buttonLink
           ),
           _id,
         };

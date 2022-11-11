@@ -1,3 +1,4 @@
+import { atOrFist } from "../../../utils";
 import {
   getSourceFile,
   resolveField,
@@ -23,20 +24,20 @@ export const advantagesSliderContentResolver = ({
         return {
           photoSource: resolveField(
             photoSource,
-            defaultContent.items[index].photoSource
+            atOrFist(defaultContent.items, index).photoSource
           ),
           photoSourceMobile: resolveFieldMobile(
             getSourceFile(custom_fields.photoSource.value[0], env),
             photoSource,
-            defaultContent.items[index].photoSourceMobile
+            atOrFist(defaultContent.items, index).photoSourceMobile
           ),
           title: resolveField(
             custom_fields.title.value,
-            defaultContent.items[index].title
+            atOrFist(defaultContent.items, index).title
           ),
           description: resolveField(
             custom_fields.description.value,
-            defaultContent.items[index].description
+            atOrFist(defaultContent.items, index).description
           ),
           _id,
         };
