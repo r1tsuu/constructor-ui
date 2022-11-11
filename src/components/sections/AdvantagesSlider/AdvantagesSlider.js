@@ -15,11 +15,24 @@ import {
 
 import styles from "./AdvantagesSlider.module.scss";
 
+const AdvantagesSliderArrowsProgress = ({
+  realIndex,
+  itemsLength,
+  arrowProps,
+}) => {
+  return (
+    <div className={styles.arrowsWrapper}>
+      <Arrow {...arrowProps.prev} />
+      <ProgressNumbers value={realIndex + 1} maxValue={itemsLength} />
+      <Arrow {...arrowProps.next} />
+    </div>
+  );
+};
+
 export const AdvantagesSlider = ({ title, subTitle, items, settings }) => {
   const isMobile = !useMediaQuery(mediaQueries.minTablet);
   const isMinLaptop = useMediaQuery(mediaQueries.minLaptop);
   const [realIndex, setRealIndex] = useState(0);
-  const [slideIndex, setSlideIndex] = useState(0);
   const { swiperProps, arrowProps } = useSwiperNavigation({
     type: settings.arrowType,
   });
@@ -42,7 +55,6 @@ export const AdvantagesSlider = ({ title, subTitle, items, settings }) => {
           {...swiperProps}
           className={styles.swiper}
           onRealIndexChange={(swiper) => setRealIndex(swiper.realIndex)}
-          onActiveIndexChange={(swiper) => setSlideIndex(swiper.activeIndex)}
           slidesPerView={"auto"}
           loop
           spaceBetween={40}
@@ -97,14 +109,11 @@ export const AdvantagesSlider = ({ title, subTitle, items, settings }) => {
                     durationEnter={450}
                     durationExit={150}
                   >
-                    <div className={styles.arrowsWrapper}>
-                      <Arrow {...arrowProps.prev} />
-                      <ProgressNumbers
-                        value={realIndex + 1}
-                        maxValue={items.length}
-                      />
-                      <Arrow {...arrowProps.next} />
-                    </div>
+                    <AdvantagesSliderArrowsProgress
+                      itemsLength={items.length}
+                      arrowProps={arrowProps}
+                      realIndex={realIndex}
+                    />
                   </Fade>
                 )}
               </SwiperSlide>
@@ -112,11 +121,11 @@ export const AdvantagesSlider = ({ title, subTitle, items, settings }) => {
           )}
         </Swiper>
         {!isMinLaptop && (
-          <div className={styles.arrowsWrapper}>
-            <Arrow {...arrowProps.prev} />
-            <ProgressNumbers value={realIndex + 1} maxValue={items.length} />
-            <Arrow {...arrowProps.next} />
-          </div>
+          <AdvantagesSliderArrowsProgress
+            itemsLength={items.length}
+            arrowProps={arrowProps}
+            realIndex={realIndex}
+          />
         )}
       </ContentContainer>
     </Section>

@@ -1,7 +1,6 @@
 import React from "react";
 import { Button, Typography, ContentContainer, Section } from "../../shared";
 
-import photoPlaceholder from "../../../assets/img-placeholder.png";
 import styles from "./PhotoTextButton.module.scss";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import { mediaQueries } from "../../../utils/constants";
