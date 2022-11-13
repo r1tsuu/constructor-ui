@@ -73,26 +73,6 @@
   z-index: 5;
   top: 50%;
   width: 100%;
-  // width: calc(100% - 60px);
-  width: 100%;
-}
-
-.slideStaticEnter {
-  opacity: 0;
-}
-
-.slideStaticEnterActive {
-  opacity: 1;
-  transition: opacity var(--animation-enter-duration);
-}
-
-.slideStaticExit {
-  opacity: 1;
-}
-
-.slideStaticExitActive {
-  opacity: 0;
-  transition: opacity var(--animation-exit-duration);
 }
 
 .arrow {

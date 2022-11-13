@@ -21,9 +21,11 @@ const AdvantagesSliderArrowsProgress = ({
   realIndex,
   itemsLength,
   arrowProps,
+  style,
+  className,
 }) => {
   return (
-    <div className={styles.arrowsWrapper}>
+    <div style={style} className={clsx(styles.arrowsWrapper, className)}>
       <Arrow {...arrowProps.prev} />
       <ProgressNumbers value={realIndex + 1} maxValue={itemsLength} />
       <Arrow {...arrowProps.next} />
@@ -58,7 +60,7 @@ export const AdvantagesSlider = ({ title, subTitle, items, settings }) => {
           className={styles.swiper}
           onRealIndexChange={(swiper) => setRealIndex(swiper.realIndex)}
           slidesPerView={"auto"}
-          loop
+          rewind
           spaceBetween={40}
           breakpoints={{
             1150: {
@@ -77,7 +79,8 @@ export const AdvantagesSlider = ({ title, subTitle, items, settings }) => {
               <SwiperSlide
                 className={clsx(
                   styles.item,
-                  index === realIndex && styles.isActive
+                  index === realIndex && styles.isActive,
+                  index === items.length - 1 && styles.isLast
                 )}
                 key={_id ?? index}
               >
@@ -107,9 +110,11 @@ export const AdvantagesSlider = ({ title, subTitle, items, settings }) => {
                 </div>
                 {isMinLaptop && (
                   <Fade
-                    isActive={index !== realIndex}
-                    durationEnter={450}
-                    durationExit={150}
+                    isActive={
+                      index === realIndex + 1 || realIndex === items.length - 1
+                    }
+                    durationEnter={600}
+                    durationExit={300}
                   >
                     <AdvantagesSliderArrowsProgress
                       itemsLength={items.length}

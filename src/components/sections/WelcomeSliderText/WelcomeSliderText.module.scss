@@ -1,0 +1,119 @@
+@import "../../../styles/mixins";
+
+.swiperWrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  gap: 20px;
+  width: 100%;
+
+  @include tablet {
+    gap: 30px;
+  }
+}
+
+.swiper {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+  display: flex;
+
+  @include tablet {
+    padding: 0 30px;
+  }
+
+  @include laptop {
+    max-width: 1030px;
+  }
+
+  @include desktop {
+    max-width: 1296px;
+  }
+
+  overflow: visible;
+
+  :global(.swiper-slide) {
+    width: auto;
+    height: auto;
+  }
+
+  :global(.swiper-wrapper) {
+    height: auto;
+  }
+}
+
+.slideContent {
+  position: relative;
+}
+
+.slidePhoto {
+  width: 100%;
+  max-height: 655px;
+  height: 100%;
+}
+
+.block {
+  min-height: calc(var(--block-min-height) - 44px);
+  padding: 20px;
+  width: 100%;
+  position: relative;
+
+  &::before {
+    content: "";
+    opacity: var(--block-background-opacity);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  @include tablet {
+    padding: 30px;
+  }
+
+  @include laptop {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+}
+
+.blockTextWrapper {
+  width: 100%;
+  max-width: calc(100% - 135px);
+
+  @include laptop {
+    max-width: 300px;
+  }
+}
+
+.blockDescription {
+  margin-top: 12px;
+
+  @include laptop {
+    margin-top: 20px;
+  }
+}
+
+.blockBottom {
+  display: flex;
+  margin-top: 25px;
+  justify-content: space-between;
+  width: 100%;
+
+  @include tablet {
+    padding-right: 10px;
+  }
+}
+
+.blockButton {
+  text-decoration-line: underline;
+  line-height: 100%;
+  font-size: var(--block-button-font-size);
+  text-transform: var(--block-button-text-transform);
+}
+
+.arrows {
+  display: flex;
+  gap: 40px;
+}

@@ -10,7 +10,7 @@ export const ComponentDecorator = (Story, context) => {
     if (IS_ADMIN_PARENT) {
       if (mounted.current) {
         window.parent.parent.postMessage({
-          payload: args,
+          payload: JSON.parse(JSON.stringify(args)),
           type: "ARGS_UPDATED",
         });
       } else mounted.current = true;

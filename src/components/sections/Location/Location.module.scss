@@ -1,0 +1,62 @@
+@import "../../../styles/mixins";
+
+.minLaptopTopPanel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 65px;
+}
+
+.tabButtonsButtonWrapperContainer {
+  display: flex;
+  gap: 100px;
+  align-items: center;
+}
+
+.subTitle {
+  margin-bottom: 10px;
+}
+
+.title {
+  margin-bottom: 15px;
+
+  @include laptop {
+    margin-bottom: 0;
+  }
+}
+
+.tabButtons {
+  display: flex;
+  margin-bottom: 30px;
+
+  @include laptop {
+    margin-bottom: 0;
+  }
+}
+
+.tabButton {
+  padding: 0 40px;
+  height: var(--button-height);
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  line-height: 22px;
+  font-family: var(--typography-h2-font-family);
+  letter-spacing: -0.01em;
+  transition: background-color 0.25s, color 0.25s, border-color 0.25s;
+  &:enabled {
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+  }
+}
+
+.tabContentWrapper {
+  margin: 30px 0;
+}
+
+.tabContent {
+  img {
+    width: 100%;
+  }
+}

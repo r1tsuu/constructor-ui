@@ -16,19 +16,30 @@
     }
   }
 
-  .item {
-    height: auto;
-  }
+  @include laptop {
+    .item {
+      height: auto;
 
-  .item.isActive {
-    .itemPhotoWrapper {
-      transform: scale(1) translate(0, 0);
-    }
-    .itemTextWrapper {
-      transform: translate(0, 0);
-    }
-    .itemDescription {
-      opacity: 1;
+      &.isActive {
+        .itemPhotoWrapper {
+          transform: scale(1) translate(0, 0);
+        }
+        .itemTextWrapper {
+          transform: translate(0, 0);
+        }
+        .itemDescription {
+          opacity: 1;
+        }
+
+        &.isLast {
+          .arrowsWrapper {
+            right: -326px;
+            @include desktop {
+              right: -338px;
+            }
+          }
+        }
+      }
     }
   }
 }

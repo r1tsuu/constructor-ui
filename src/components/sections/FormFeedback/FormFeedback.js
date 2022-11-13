@@ -53,6 +53,7 @@ const FormFeedback = ({
           // borderRadius={settings.formBorderRadius}
           submitted={submitted}
           submittedMessageSettings={settings.submittedMessage}
+          background={settings.formBackground}
         />
 
         {onClosePopupButtonClick && (

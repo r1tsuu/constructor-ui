@@ -1,6 +1,6 @@
 .base {
   pointer-events: auto;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   transition: all 0.25s;
@@ -11,6 +11,7 @@
   width: var(--button-width);
   min-width: var(--button-min-width);
   font-size: var(--button-font-size);
+  font-family: var(--typography-h2-font-family);
 
   &[data-full-width="true"] {
     width: 100%;

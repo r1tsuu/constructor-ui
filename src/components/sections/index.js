@@ -1,0 +1,1 @@
+import WelcomeSlider from "./WelcomeSlider";
