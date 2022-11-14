@@ -107,7 +107,7 @@ const Planning = ({
                 {...roomBlockProps}
                 staticTexts={staticTexts}
                 settings={settings}
-                initedPlanIndex={initedPlanIndex}
+                initedPlanIndex={index === initedRoomIndex && initedPlanIndex}
               />
             </Tabs.Content>
           ))}
