@@ -1,9 +1,14 @@
+@import "../../../styles/mixins";
+
 .h2 {
   line-height: var(--typography-h2-line-height);
   letter-spacing: var(--typography-h2-letter-spacing);
   font-family: var(--typography-h2-font-family);
   text-transform: var(--typography-h2-text-transform);
-  font-size: var(--typography-h2-font-size);
+  --font-size-mobile: var(--typography-h2-font-size-mobile);
+  --font-size-tablet: var(--typography-h2-font-size-tablet);
+  --font-size-laptop: var(--typography-h2-font-size-laptop);
+  --font-size-desktop: var(--typography-h2-font-size-desktop);
 }
 
 .h3 {
@@ -11,7 +16,10 @@
   letter-spacing: var(--typography-h3-letter-spacing);
   font-family: var(--typography-h3-font-family);
   text-transform: var(--typography-h3-text-transform);
-  font-size: var(--typography-h3-font-size);
+  --font-size-mobile: var(--typography-h3-font-size-mobile);
+  --font-size-tablet: var(--typography-h3-font-size-tablet);
+  --font-size-laptop: var(--typography-h3-font-size-laptop);
+  --font-size-desktop: var(--typography-h3-font-size-desktop);
 }
 
 .h4 {
@@ -19,7 +27,10 @@
   letter-spacing: var(--typography-h4-letter-spacing);
   font-family: var(--typography-h4-font-family);
   text-transform: var(--typography-h4-text-transform);
-  font-size: var(--typography-h4-font-size);
+  --font-size-mobile: var(--typography-h4-font-size-mobile);
+  --font-size-tablet: var(--typography-h4-font-size-tablet);
+  --font-size-laptop: var(--typography-h4-font-size-laptop);
+  --font-size-desktop: var(--typography-h4-font-size-desktop);
 }
 
 .h5 {
@@ -27,7 +38,10 @@
   letter-spacing: var(--typography-h5-letter-spacing);
   font-family: var(--typography-h5-font-family);
   text-transform: var(--typography-h5-text-transform);
-  font-size: var(--typography-h5-font-size);
+  --font-size-mobile: var(--typography-h5-font-size-mobile);
+  --font-size-tablet: var(--typography-h5-font-size-tablet);
+  --font-size-laptop: var(--typography-h5-font-size-laptop);
+  --font-size-desktop: var(--typography-h5-font-size-desktop);
 }
 
 .p1 {
@@ -35,7 +49,10 @@
   letter-spacing: var(--typography-p1-letter-spacing);
   font-family: var(--typography-p1-font-family);
   text-transform: var(--typography-p1-text-transform);
-  font-size: var(--typography-p1-font-size);
+  --font-size-mobile: var(--typography-p1-font-size-mobile);
+  --font-size-tablet: var(--typography-p1-font-size-tablet);
+  --font-size-laptop: var(--typography-p1-font-size-laptop);
+  --font-size-desktop: var(--typography-p1-font-size-desktop);
 }
 
 .p2 {
@@ -43,37 +60,21 @@
   letter-spacing: var(--typography-p2-letter-spacing);
   font-family: var(--typography-p2-font-family);
   text-transform: var(--typography-p2-text-transform);
-  font-size: var(--typography-p2-font-size);
+  --font-size-mobile: var(--typography-p2-font-size-mobile);
+  --font-size-tablet: var(--typography-p2-font-size-tablet);
+  --font-size-laptop: var(--typography-p2-font-size-laptop);
+  --font-size-desktop: var(--typography-p2-font-size-desktop);
 }
 
-.accent {
-  color: var(--color-accent);
-}
-
-.primary {
-  color: var(--color-text-primary);
-}
-
-.secondary {
-  color: var(--color-text-secondary);
-}
-
-.extra-1 {
-  color: var(--custom-theme-color-extra-1);
-}
-
-.extra-2 {
-  color: var(--custom-theme-color-extra-2);
-}
-
-.extra-3 {
-  color: var(--custom-theme-color-extra-3);
-}
-
-.extra-4 {
-  color: var(--custom-theme-color-extra-4);
-}
-
-.injected {
-  color: var(--injected-color);
+.fontSize {
+  font-size: var(--font-size-injected-mobile, var(--font-size-mobile));
+  @include tablet {
+    font-size: var(--font-size-injected-tablet, var(--font-size-tablet));
+  }
+  @include laptop {
+    font-size: var(--font-size-injected-laptop, var(--font-size-laptop));
+  }
+  @include desktop {
+    font-size: var(--font-size-injected-desktop, var(--font-size-desktop));
+  }
 }

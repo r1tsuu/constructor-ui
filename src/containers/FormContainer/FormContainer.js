@@ -5,13 +5,21 @@ import { sendForm } from "../../services/api";
 export const FormContainer = ({
   children,
   closeThankYouDelay = 1500,
+  queryParams,
+  sectionId,
   type,
 }) => {
   const { SITE_URL } = useEnvironment();
   const [submitted, setSubmitted] = useState(false);
   const timeout = useRef(null);
   const handleSubmit = async (form) => {
-    const response = await sendForm({ form, type, SITE_URL });
+    const response = await sendForm({
+      form,
+      type,
+      SITE_URL,
+      queryParams,
+      sectionId,
+    });
 
     if (response.status === 200) setSubmitted("success");
     else setSubmitted("error");

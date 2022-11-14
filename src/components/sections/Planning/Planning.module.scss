@@ -1,0 +1,93 @@
+@import "../../../styles/mixins";
+
+.subTitle {
+  margin-bottom: 20px;
+}
+
+.title {
+  margin-bottom: 30px;
+  @include tablet {
+    margin-bottom: 40px;
+  }
+
+  @include laptop {
+    margin-bottom: 50px;
+  }
+
+  @include desktop {
+    margin-bottom: 60px;
+  }
+}
+
+.roomTabs {
+  margin-bottom: 60px;
+}
+
+.roomTabsList {
+  gap: 40px;
+  display: flex;
+  overflow: auto;
+}
+
+.roomTabTrigger {
+  background: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.roomTabContent {
+  margin-bottom: 20px;
+}
+
+.roomPlansSliderWrapper {
+  margin-bottom: 50px;
+}
+
+.roomTitle {
+  margin-bottom: 35px;
+}
+
+.roomDescription {
+  margin-bottom: 50px;
+}
+
+.roomCharacteristics {
+  margin-bottom: 25px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.roomCharacteristic {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.roomAdvantages {
+  padding: 25px 0;
+  border-color: var(--color-stroke);
+  border-style: solid;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 16px;
+}
+
+.roomAdvantage {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.roomAdvantageIconWrapper {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 100%;
+  }
+}

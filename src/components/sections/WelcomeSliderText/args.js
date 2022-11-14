@@ -8,6 +8,7 @@ import {
   colorArg,
   radioArg,
   sectionArgs,
+  textArg,
 } from "../../../utils";
 
 const _item = {
@@ -18,19 +19,41 @@ const _item = {
   photoSourceMobile: defaultImage,
 };
 
-export const welcomeSliderArgs = sectionArgs({
-  arrowType: arrowArg({}),
+export const welcomeSliderTextArgs = sectionArgs({
+  arrowType: arrowArg({ arrowType: "long-default" }),
   items: Array(6).fill(_item),
   buttonName: "Детальніше",
+  block_titleSettings: textArg({
+    typography: "h2",
+    color: "text-primary",
+    name: "Блок - заголовок",
+  }),
+  block_descriptionSettings: textArg({
+    typography: "p1",
+    color: "text-secondary",
+    name: "Блок - опис",
+  }),
   block_minHeight: arg({
     defaultValue: "225px",
     name: "Мінімальна висота блоку",
   }),
+  // block_maxWidth: arg({
+  //   defaultValue: ""
+  // })
+  block_paddingY: arg({
+    defaultValue: "40px",
+    name: "Відступ блоку Top Bottom",
+  }),
+  block_paddingX: arg({
+    defaultValue: "50px",
+    name: "Відступ блоку Left Right",
+  }),
+
   block_backgroundColor: colorArg({
     defaultValue: "#343434",
     name: "Колір фону блоку",
   }),
-  block_backgroundOpacity: colorArg({
+  block_backgroundOpacity: arg({
     defaultValue: "0.9",
     name: "Прозорість фону блоку",
   }),

@@ -49,7 +49,7 @@ export const ProgressNumbers = ({ value, maxValue, className, ...props }) => {
         /
       </Typography>
 
-      <Typography as={"span"} type={"h4"} color={"secondary"}>
+      <Typography as={"span"} type={"h4"} color={"text-secondary"}>
         {toStrZeroes(maxValue)}
       </Typography>
     </div>

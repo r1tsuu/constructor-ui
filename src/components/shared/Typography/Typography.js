@@ -2,23 +2,20 @@ import React from "react";
 import clsx from "clsx";
 
 import styles from "./Typography.module.scss";
-import { useInStorybook } from "../../../contexts/InStorybookContext";
 
-const themeColors = [
-  "text-primary",
-  "text-secondary",
-  "primary",
-  "secondary",
-  "accent",
-  "extra-1",
-  "extra-2",
-  "extra-3",
-  "extra-4",
-];
+import { ColorsInjector } from "../../../containers";
+
+const indexVarsMap = {
+  0: "--font-size-injected-mobile",
+  1: "--font-size-injected-tablet",
+  2: "--font-size-injected-laptop",
+  3: "--font-size-injected-desktop",
+};
 
 export const Typography = ({
   type,
   as: As = "p",
+  fontSize = "",
   color,
   children,
   className,
@@ -27,36 +24,33 @@ export const Typography = ({
   editableInStorybook = true,
   ...props
 }) => {
-  const isInStorybook = useInStorybook();
-  const isThemeColor = themeColors.includes(color);
+  const fontSizes = fontSize.split(" ").reduce(
+    (acc, value, index) => ({
+      ...acc,
+      [indexVarsMap[index]]: value,
+    }),
+    {}
+  );
 
   return (
-    <As
-      className={clsx(
-        styles[type],
-        isThemeColor ? styles[color.replace("text-", "")] : styles.injected,
-        className
-      )}
-      // contentEditable={editableInStorybook && isInStorybook}
-      style={
-        !isThemeColor && color
+    <ColorsInjector textColor={color}>
+      <As
+        className={clsx(styles[type], styles.fontSize, className)}
+        style={{
+          ...fontSizes,
+          ...style,
+        }}
+        {...(isHTML
           ? {
-              "--injected-color": color,
-
-              ...style,
+              dangerouslySetInnerHTML: {
+                __html: children,
+              },
             }
-          : style
-      }
-      {...(isHTML
-        ? {
-            dangerouslySetInnerHTML: {
-              __html: children,
-            },
-          }
-        : {
-            children,
-          })}
-      {...props}
-    />
+          : {
+              children,
+            })}
+        {...props}
+      />
+    </ColorsInjector>
   );
 };

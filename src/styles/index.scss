@@ -14,42 +14,18 @@ ui-kit-container {
   // --arrow-long-font-size: 36px;
   --arrow-long-width: 34px;
   --arrow-long-height: 16px;
-  --typography-h2-font-size: var(--typography-h2-font-size-mobile);
-  --typography-h3-font-size: var(--typography-h3-font-size-mobile);
-  --typography-h4-font-size: var(--typography-h4-font-size-mobile);
-  --typography-h5-font-size: var(--typography-h5-font-size-mobile);
-  --typography-p1-font-size: var(--typography-p1-font-size-mobile);
-  --typography-p2-font-size: var(--typography-p2-font-size-mobile);
 
   @include tablet {
     --button-width: auto;
     --button-min-width: 220px;
     --button-font-size: 16px;
-    --typography-h2-font-size: var(--typography-h2-font-size-tablet);
-    --typography-h3-font-size: var(--typography-h3-font-size-tablet);
-    --typography-h4-font-size: var(--typography-h4-font-size-tablet);
-    --typography-h5-font-size: var(--typography-h5-font-size-tablet);
-    --typography-p1-font-size: var(--typography-p1-font-size-tablet);
-    --typography-p2-font-size: var(--typography-p2-font-size-tablet);
   }
 
   @include laptop {
-    --typography-h2-font-size: var(--typography-h2-font-size-laptop);
-    --typography-h3-font-size: var(--typography-h3-font-size-laptop);
-    --typography-h4-font-size: var(--typography-h4-font-size-laptop);
-    --typography-h5-font-size: var(--typography-h5-font-size-laptop);
-    --typography-p1-font-size: var(--typography-p1-font-size-laptop);
-    --typography-p2-font-size: var(--typography-p2-font-size-laptop);
   }
 
   @include desktop {
     --arrow-cube-dimensions: 60px;
-    --typography-h2-font-size: var(--typography-h2-font-size-desktop);
-    --typography-h3-font-size: var(--typography-h3-font-size-desktop);
-    --typography-h4-font-size: var(--typography-h4-font-size-desktop);
-    --typography-h5-font-size: var(--typography-h5-font-size-desktop);
-    --typography-p1-font-size: var(--typography-p1-font-size-desktop);
-    --typography-p2-font-size: var(--typography-p2-font-size-desktop);
   }
 }
 

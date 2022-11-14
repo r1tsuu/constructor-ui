@@ -9,6 +9,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "dependencies": {
+    "@radix-ui/react-tabs": "^1.0.1",
     "clsx": "1.2.1",
     "react-hook-form": "^7.39.1",
     "react-phone-input-2": "^2.15.1",

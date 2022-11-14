@@ -1,21 +1,32 @@
 import React, { useState, createContext, useContext } from "react";
 
 const GlobalFormsContext = createContext({
-  handleOpenForm: (index) => {},
+  handleOpenForm: ({ index, ...queryParams }) => {},
   handleCloseForm: () => {},
-  openedFormIndex: null,
+  openedForm: {
+    index: null,
+    queryParams: {},
+  },
 });
 
 export const GlobalFormsProvider = ({ children }) => {
-  const [openedFormIndex, setOpenedFormIndex] = useState(null);
+  const [openedForm, setOpenedForm] = useState({
+    index: null,
+    queryParams: {},
+  });
 
-  const handleOpenForm = (index) => setOpenedFormIndex(index);
+  const handleOpenForm = ({ index, ...queryParams }) =>
+    setOpenedForm({ index, queryParams });
 
-  const handleCloseForm = () => setOpenedFormIndex(null);
+  const handleCloseForm = () =>
+    setOpenedForm({
+      ...openedForm,
+      queryParams: {},
+    });
 
   return (
     <GlobalFormsContext.Provider
-      value={{ handleOpenForm, openedFormIndex, handleCloseForm }}
+      value={{ handleOpenForm, openedForm, handleCloseForm }}
     >
       {children}
     </GlobalFormsContext.Provider>

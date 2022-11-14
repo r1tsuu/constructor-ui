@@ -32,7 +32,7 @@ function utmMarks() {
 /**
  * @param {{type: 'feedback' | 'subscribe', SITE_URL: string}}
  */
-export const sendForm = async ({ form, type, SITE_URL }) => {
+export const sendForm = async ({ form, type, SITE_URL, queryParams }) => {
   try {
     return await axios.post(`${SITE_URL}/api/frontend/form/${type}`, {
       ...omitEmpties(form),

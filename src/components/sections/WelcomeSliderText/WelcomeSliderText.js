@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import clsx from "clsx";
 import { ColorsInjector } from "../../../containers";
 import { Arrow, Fade, Section, Typography } from "../../shared";
 
-import styles from "./WelcomeSliderText.module.scss";
-
-import "swiper/swiper.min.css";
 import { useSwiperNavigation } from "../../../hooks/useSwiperNavigation";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import { mediaQueries } from "../../../utils/constants";
 
-const Block = ({
+import styles from "./WelcomeSliderText.module.scss";
+
+import "swiper/swiper.min.css";
+
+const SlideBlock = ({
   title,
   description,
   arrowProps,
+  iconSource,
   titleSettings,
   descriptionSettings,
   buttonName,
@@ -24,6 +27,10 @@ const Block = ({
   buttonTextColor,
   buttonFontSize,
   buttonTextTransform,
+  paddingY,
+  paddingX,
+  style,
+  className,
 }) => {
   return (
     <ColorsInjector beforeBackground={backgroundColor}>
@@ -33,47 +40,66 @@ const Block = ({
           "--block-background-opacity": backgroundOpacity,
           "--block-button-font-size": buttonFontSize,
           "--block-button-text-transform": buttonTextTransform,
+          "--block-padding-y": paddingY,
+          "--block-padding-x": paddingX,
+          ...style,
         }}
-        className={styles.block}
+        className={clsx(styles.block, iconSource && styles.withIcon, className)}
       >
-        <div className={styles.blockTextWrapper}>
-          <Typography {...titleSettings} as={"h4"}>
-            {title}
-          </Typography>
-          {description && (
-            <Typography
-              className={styles.blockDescription}
-              {...descriptionSettings}
-              as={"p"}
-            >
-              {description}
-            </Typography>
-          )}
-        </div>
-        <div className={styles.blockBottom}>
-          <ColorsInjector textColor={buttonTextColor}>
-            <a href={buttonLink} className={styles.blockButton}>
-              {buttonName}
-            </a>
-          </ColorsInjector>
-          <div className={styles.arrows}>
-            <Arrow {...arrowProps.prev} />
-            <Arrow {...arrowProps.next} />
+        <div className={clsx(styles.blockContent)}>
+          <div className={styles.blockLeft}>
+            <div className={styles.blockTextWrapper}>
+              <Typography {...titleSettings} as={"h4"}>
+                {title}
+              </Typography>
+              {description && (
+                <Typography
+                  className={styles.blockDescription}
+                  {...descriptionSettings}
+                  as={"p"}
+                >
+                  {description}
+                </Typography>
+              )}
+            </div>
+            <div className={styles.blockBottom}>
+              <ColorsInjector textColor={buttonTextColor}>
+                <a href={buttonLink} className={styles.blockButton}>
+                  {buttonName}
+                </a>
+              </ColorsInjector>
+              <div className={styles.arrows}>
+                <Arrow {...arrowProps.prev} />
+                <Arrow {...arrowProps.next} />
+              </div>
+            </div>
           </div>
+          {iconSource && (
+            <div className={styles.blockIconWrapper}>
+              <img src={iconSource} alt="" />
+            </div>
+          )}
         </div>
       </div>
     </ColorsInjector>
   );
 };
 
-export const WelcomeSliderText = ({ buttonName, items, settings }) => {
+export const WelcomeSliderText = ({
+  buttonName,
+  items,
+  settings,
+  iconSource,
+}) => {
   const isMobile = !useMediaQuery(mediaQueries.minTablet);
+  const isMinLaptop = useMediaQuery(mediaQueries.minLaptop);
   const [realIndex, setRealIndex] = useState(0);
   const { swiperProps, arrowProps } = useSwiperNavigation({
     type: settings.arrowType,
   });
 
   const handleRealIndexChange = (swiper) => setRealIndex(swiper.realIndex);
+
   return (
     <Section {...settings.section}>
       <div className={styles.swiperWrapper}>
@@ -108,15 +134,14 @@ export const WelcomeSliderText = ({ buttonName, items, settings }) => {
                   <Fade
                     durationEnter={600}
                     durationExit={300}
-                    isActive={index === realIndex}
+                    isActive={index === realIndex || !isMinLaptop}
                   >
-                    <Block
+                    <SlideBlock
                       {...block}
                       {...settings.block}
+                      iconSource={iconSource}
                       arrowProps={arrowProps}
                       buttonName={buttonName}
-                      titleSettings={settings.title}
-                      descriptionSettings={settings.description}
                     />
                   </Fade>
                 </div>

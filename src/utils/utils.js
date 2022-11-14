@@ -108,14 +108,19 @@ export const inputType = (name) => {
 
 export const textArg = ({
   color = "text-primary",
+
   typography = "h3",
+  fontSize = "",
+
   defaultValue,
   name,
 }) => ({
   color,
   name,
   typography,
+
   defaultValue,
+  fontSize,
   type: "text",
 });
 
@@ -247,17 +252,28 @@ export const args = (args, noPrefix = false) => {
         case "text":
           const colorKey = `${settingsArgKey}_color`;
           const typeKey = `${settingsArgKey}_type`;
+          const fontSizeKey = `${settingsArgKey}_fontSize`;
+
           return {
             args: {
               ...acc.args,
               ...(arg.defaultValue && {
                 [argKey]: arg.defaultValue,
               }),
+
               [colorKey]: arg.color,
               [typeKey]: arg.typography,
+              [fontSizeKey]: arg.fontSize,
             },
             argTypes: {
               ...acc.argTypes,
+              [fontSizeKey]: {
+                name: arg.name && (
+                  <>
+                    <div>{arg.name} / Розмір тексту, (10px 20px 30px 40px)</div>{" "}
+                  </>
+                ),
+              },
               [colorKey]: colorType(arg.name && `${arg.name} / Колір`),
               [typeKey]: typographyType(arg.name),
               [argKey]: {

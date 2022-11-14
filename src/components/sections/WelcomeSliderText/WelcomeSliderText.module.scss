@@ -24,18 +24,21 @@
   }
 
   @include laptop {
-    max-width: 1030px;
+    max-width: calc(100% - 360px);
   }
 
   @include desktop {
-    max-width: 1296px;
+  }
+
+  @media screen and (min-width: 2000px) {
+    max-width: calc(100% - 468px);
   }
 
   overflow: visible;
 
   :global(.swiper-slide) {
-    width: auto;
-    height: auto;
+    // width: auto !important;
+    height: auto !important;
   }
 
   :global(.swiper-wrapper) {
@@ -49,41 +52,87 @@
 
 .slidePhoto {
   width: 100%;
-  max-height: 655px;
-  height: 100%;
+  object-fit: cover;
 }
 
 .block {
   min-height: calc(var(--block-min-height) - 44px);
-  padding: 20px;
   width: 100%;
   position: relative;
 
   &::before {
     content: "";
+    left: 0;
+    bottom: 0;
     opacity: var(--block-background-opacity);
     position: absolute;
     width: 100%;
     height: 100%;
   }
 
+  @include laptop {
+    min-height: var(--block-min-height);
+    position: absolute;
+    left: 0;
+    max-width: 516px;
+    bottom: 0;
+  }
+
+  @include desktop {
+    max-width: 578px;
+  }
+
+  &.withIcon {
+    @include laptop {
+      max-width: 836px;
+    }
+    .blockLeft {
+      @include laptop {
+        max-width: 457px;
+      }
+    }
+
+    .blockTextWrapper {
+      @include laptop {
+        max-width: unset;
+      }
+    }
+  }
+}
+
+.blockContent {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  padding: 20px;
+
+  display: flex;
+  gap: 88px;
+
   @include tablet {
     padding: 30px;
   }
 
   @include laptop {
-    position: absolute;
-    left: 0;
-    bottom: 0;
+    padding: var(--block-padding-y) var(--block-padding-x);
   }
+}
+
+.blockLeft {
+  height: 100%;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  // width: 457px;
 }
 
 .blockTextWrapper {
   width: 100%;
-  max-width: calc(100% - 135px);
 
   @include laptop {
     max-width: 300px;
+    max-width: calc(100% - 135px);
   }
 }
 
@@ -97,9 +146,11 @@
 
 .blockBottom {
   display: flex;
-  margin-top: 25px;
+  align-items: flex-end;
+  margin-bottom: auto;
   justify-content: space-between;
   width: 100%;
+  height: 100%;
 
   @include tablet {
     padding-right: 10px;
@@ -111,6 +162,13 @@
   line-height: 100%;
   font-size: var(--block-button-font-size);
   text-transform: var(--block-button-text-transform);
+  font-family: var(--typography-h2-font-family);
+}
+
+.blockIconWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .arrows {

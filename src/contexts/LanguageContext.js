@@ -11,6 +11,12 @@ const translations = {
     FORM_SEND: "Надіслати",
     FORM_SENDED_SUCCESS: "Дякуємо! заявка успішно надіслана",
     FORM_SENDED_ERROR: "Заявка не була надіслана. Спробуйте ще раз",
+
+    PLANNING_GO_TO_MARKET: "Перейти в маркетплейс",
+    PLANNING_INTERIORS: "Інтер’єри",
+    PLANNING_CHECK_PRICE: "Дізнатись ціну",
+    PLANNING_RESERVE: "Забронювати",
+    PLANNING_TOTAL_AREA: "Загальна площа",
   },
   ru: {
     FORM_NAME: "Имя:",
@@ -22,6 +28,12 @@ const translations = {
     FORM_SEND: "Отправить",
     FORM_SENDED_SUCCESS: "Спасибо! заявка успешно отправлена",
     FORM_SENDED_ERROR: "Заявка не была отправлена. Попробуйте еще раз",
+
+    PLANNING_GO_TO_MARKET: "Перейти в маркетплейс",
+    PLANNING_INTERIORS: "Інтерьеры",
+    PLANNING_CHECK_PRICE: "Узнать цену",
+    PLANNING_RESERVE: "Забронировать",
+    PLANNING_TOTAL_AREA: "Общая площадь",
   },
   en: {
     FORM_NAME: "Name:",
@@ -33,6 +45,12 @@ const translations = {
     FORM_SEND: "Send",
     FORM_SENDED_SUCCESS: "Thank you! Application successfully sent",
     FORM_SENDED_ERROR: "The application was not sent. Try again",
+
+    PLANNING_GO_TO_MARKET: "Go to the marketplace",
+    PLANNING_INTERIORS: "Interiors",
+    PLANNING_CHECK_PRICE: "Check the price",
+    PLANNING_RESERVE: "Reserve",
+    PLANNING_TOTAL_AREA: "Total area",
   },
 };
 

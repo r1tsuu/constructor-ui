@@ -172,28 +172,44 @@ export const FormFeedbackModal = ({
   );
 };
 
-export const FormFeedbackSubmitContainer = ({ children }) => {
-  return <FormContainer type={"feedback"}>{children}</FormContainer>;
+export const FormFeedbackSubmitContainer = ({
+  children,
+  id: sectionId,
+  queryParams,
+}) => {
+  return (
+    <FormContainer
+      sectionId={sectionId}
+      queryParams={queryParams}
+      type={"feedback"}
+    >
+      {children}
+    </FormContainer>
+  );
 };
 
 export const FormFeedbackSectionContainer = ({ title, settings }) => {
+  const { id } = useSection();
   return (
-    <FormFeedbackSubmitContainer>
+    <FormFeedbackSubmitContainer id={id}>
       <FormFeedbackSection title={title} settings={settings} />
     </FormFeedbackSubmitContainer>
   );
 };
 
 export const FormFeedbackModalContainer = ({ title, settings }) => {
-  const { globalFormIndex } = useSection();
-  const { openedFormIndex, handleCloseForm } = useGlobalForms();
+  const { globalFormIndex, id } = useSection();
+  const {
+    openedForm: { index, queryParams },
+    handleCloseForm,
+  } = useGlobalForms();
 
   return (
-    <FormFeedbackSubmitContainer>
+    <FormFeedbackSubmitContainer id={id} queryParams={queryParams}>
       <FormFeedbackModal
         title={title}
         settings={settings}
-        isOpen={openedFormIndex === globalFormIndex}
+        isOpen={index === globalFormIndex}
         onClose={handleCloseForm}
       />
     </FormFeedbackSubmitContainer>

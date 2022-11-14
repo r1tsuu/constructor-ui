@@ -1,12 +1,18 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const SectionContext = createContext({
   globalFormIndex: null,
+  id: null,
+  formQueryParams: {},
+  setFormQueryParams: () => {},
 });
 
-export const SectionProvider = ({ children, globalFormIndex }) => {
+export const SectionProvider = ({ children, globalFormIndex, id }) => {
+  const [formQueryParams, setFormQueryParams] = useState({});
   return (
-    <SectionContext.Provider value={{ globalFormIndex }}>
+    <SectionContext.Provider
+      value={{ globalFormIndex, id, formQueryParams, setFormQueryParams }}
+    >
       {children}
     </SectionContext.Provider>
   );
