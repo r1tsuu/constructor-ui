@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
 import { ColorsInjector } from "../../../containers";
 import { Fade } from "../Fade";
+import { PopupCloseButton } from "../PopupCloseButton";
 
 import styles from "./Modal.module.scss";
 
@@ -15,6 +16,7 @@ const ModalOverlay = ({
   backgroundColor,
   backgroundOpacity,
   className,
+  withCloseButton,
   children,
   theme,
   ...props
@@ -51,6 +53,14 @@ const ModalOverlay = ({
           data-theme={theme}
           {...props}
         >
+          {withCloseButton && (
+            <PopupCloseButton
+              className={styles.buttonClose}
+              onClick={() => {
+                if (typeof onClose === "function") onClose();
+              }}
+            />
+          )}
           {children}
         </div>
       </ColorsInjector>
@@ -66,6 +76,7 @@ export const Modal = ({
   animationDurationExit = 75,
   backgroundColor = "#2D2D2D",
   backgroundOpacity = 0.9,
+  withCloseButton = false,
   className,
   children,
   overlayTheme,
@@ -82,6 +93,7 @@ export const Modal = ({
       backgroundOpacity={backgroundOpacity}
       className={className}
       theme={overlayTheme}
+      withCloseButton={withCloseButton}
       {...props}
     >
       {children}

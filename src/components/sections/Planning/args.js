@@ -8,6 +8,7 @@ import {
   sectionArgs,
   booleanArg,
   colorArg,
+  arrowArg,
 } from "../../../utils";
 
 const rooms = [
@@ -211,6 +212,8 @@ export const planningArgs = sectionArgs({
   goToMarketButtonType: buttonArg({
     name: "Перейти до маркетплейсу",
   }),
+  plansArrowType: arrowArg({}),
+  modalSlideArrowType: arrowArg({}),
   roomTitle: textArg({
     typography: "h4",
     color: "text-primary",
@@ -219,5 +222,25 @@ export const planningArgs = sectionArgs({
   roomTitle_activeColor: colorArg({
     defaultValue: "accent",
     name: "Кімната таб - колір active",
+  }),
+  block_title: textArg({
+    typography: "h4",
+    color: "text-primary",
+  }),
+  block_description: textArg({
+    typography: "p1",
+    color: "text-secondary",
+  }),
+  block_characteristic_title: textArg({
+    typography: "h5",
+    color: "text-primary",
+  }),
+  block_characteristic_value: textArg({
+    typography: "h3",
+    color: "text-primary",
+  }),
+  block_advantageTitle: textArg({
+    typography: "h5",
+    color: "text-primary",
   }),
 });

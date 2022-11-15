@@ -17,6 +17,12 @@
     width: 100%;
     opacity: var(--overlay-background-opacity);
   }
+
+  .buttonClose {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
 }
 
 .overlayEnter {
