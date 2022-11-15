@@ -71,7 +71,12 @@ const rooms = [
         area: "120,3 м²",
       },
     ],
-    interiors: [defaultImage, defaultImage, defaultImage, defaultImage],
+    interiors: [
+      { photo: defaultImage },
+      { photo: defaultImage },
+      { photo: defaultImage },
+      { photo: defaultImage },
+    ],
   },
   {
     roomTitle: "2-кімнатні",
@@ -119,16 +124,13 @@ const rooms = [
         photo: defaultImage,
         area: "10,3 м²",
       },
-      {
-        photo: defaultImage,
-        area: "30,3 м²",
-      },
-      {
-        photo: defaultImage,
-        area: "20,3 м²",
-      },
     ],
-    interiors: [defaultImage, defaultImage, defaultImage, defaultImage],
+    interiors: [
+      { photo: defaultImage },
+      { photo: defaultImage },
+      { photo: defaultImage },
+      { photo: defaultImage },
+    ],
   },
   {
     roomTitle: "3-кімнатні",
@@ -193,7 +195,12 @@ const rooms = [
         area: "20,3 м²",
       },
     ],
-    interiors: [defaultImage, defaultImage, defaultImage, defaultImage],
+    interiors: [
+      { photo: defaultImage },
+      { photo: defaultImage },
+      { photo: defaultImage },
+      { photo: defaultImage },
+    ],
   },
 ];
 
@@ -203,44 +210,109 @@ export const planningArgs = sectionArgs({
     defaultValue: "продуманi",
     typography: "h5",
     color: "accent",
+    name: "Підзаголовок",
   }),
   title: textArg({
     defaultValue: "планування",
     typography: "h2",
     color: "text-primary",
+    name: "Заголовок",
   }),
   goToMarketButtonType: buttonArg({
-    name: "Перейти до маркетплейсу",
+    name: "Перейти до маркетплейсу тип кнопки",
   }),
-  plansArrowType: arrowArg({}),
-  modalSlideArrowType: arrowArg({}),
+  roomReserveButtonType: buttonArg({
+    name: "Кімната забронювати тип кнопки",
+  }),
+  roomInteriorsButtonType: buttonArg({
+    name: "Кімната інтер'єри тип кнопки",
+  }),
+  plansArrowType: arrowArg({
+    name: "Планування слайдер тип стрілок",
+  }),
+  modalSlideArrowType: arrowArg({
+    name: "Слайдер попап тип стрілок",
+  }),
   roomTitle: textArg({
     typography: "h4",
     color: "text-primary",
     name: "Кімната таб",
   }),
-  roomTitle_activeColor: colorArg({
+  roomTitleActiveColor: colorArg({
     defaultValue: "accent",
     name: "Кімната таб - колір active",
   }),
-  block_title: textArg({
+  blockTitle: textArg({
     typography: "h4",
     color: "text-primary",
+    name: "Блок - Заголовок",
   }),
-  block_description: textArg({
+  blockDescription: textArg({
     typography: "p1",
-    color: "text-secondary",
+    color: "text-primary",
+    name: "Блок - заголовок",
   }),
-  block_characteristic_title: textArg({
+  blockCharacteristicTitle: textArg({
     typography: "h5",
     color: "text-primary",
+    name: "Блок характеристика - назва",
   }),
-  block_characteristic_value: textArg({
-    typography: "h3",
-    color: "text-primary",
-  }),
-  block_advantageTitle: textArg({
+  blockCharacteristicValue: textArg({
     typography: "h5",
     color: "text-primary",
+    name: "Блок характеристика - значення",
+  }),
+  blockCharacteristicSeparatorColor: colorArg({
+    defaultValue: "accent",
+    name: "Блок характеристика - колір сепаратору",
+  }),
+  blockAdvantageTitle: textArg({
+    typography: "h5",
+    color: "text-primary",
+    name: "Блок перевага - назва",
+  }),
+  blockAdvantagesBorderColor: colorArg({
+    defaultValue: "stroke",
+    name: "Блок переваги - колір обводки зверху знизу",
+  }),
+  blockPlansTotalAreaValue: textArg({
+    typography: "h5",
+    color: "text-primary",
+    name: "Блок планування слайдер площадь значення",
+  }),
+  blockPlansTotalAreaTitle: textArg({
+    typography: "h5",
+    color: "text-primary",
+    name: "Блок планування слайдер площадь назва",
+  }),
+  zoomButtonBackground: colorArg({
+    defaultValue: "transparent",
+    name: "Кнопка планування Zoom - колір фону",
+  }),
+  zoomButtonBorderColor: colorArg({
+    defaultValue: "accent",
+    name: "Кнопка планування Zoom - колір обводки",
+  }),
+  zoomButtonStroke: colorArg({
+    defaultValue: "#F3F2F1",
+    name: "Кнопка планування Zoom - іконка stroke",
+  }),
+  zoomButtonFill: colorArg({
+    defaultValue: "#FCFCFC",
+    name: "Кнопка планування Zoom - іконка fill",
+  }),
+  modalSliderArea: textArg({
+    typography: "h5",
+    color: "text-primary",
+    name: "Слайдер попап - площадь",
+  }),
+  sliderProgress: textArg({
+    typography: "h5",
+    color: "text-primary",
+    name: "Слайдери прогресс - текст",
+  }),
+  sliderProgressSeparatorBg: colorArg({
+    defaultValue: "accent",
+    name: "Слайдери прогресс - колір сепаратора",
   }),
 });

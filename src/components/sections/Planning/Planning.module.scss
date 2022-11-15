@@ -20,13 +20,25 @@
 }
 
 .roomTabs {
-  margin-bottom: 60px;
 }
 
 .roomTabsList {
   gap: 40px;
   display: flex;
   overflow: auto;
+  margin-bottom: 60px;
+
+  @include tablet {
+    margin-bottom: 45px;
+  }
+
+  @include laptop {
+    margin-bottom: 60px;
+  }
+
+  @include desktop {
+    margin-bottom: 65px;
+  }
 }
 
 .roomTabTrigger {
@@ -37,29 +49,22 @@
 
 .roomTabContent {
   margin-bottom: 20px;
-
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
   @include laptop {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas: "left right";
-    column-gap: 133px;
+    flex-direction: row;
+    gap: 133px;
   }
 
   @include desktop {
-    column-gap: 150px;
+    gap: 150px;
   }
 }
 
 .roomRight {
-  grid-area: right;
-  margin-top: 62px;
-
-  @include tablet {
-    margin-top: 42px;
-  }
-
   @include laptop {
-    margin-top: 0;
+    width: 50%;
     display: flex;
     gap: 48px;
   }
@@ -67,6 +72,12 @@
   @include desktop {
     gap: 72px;
   }
+}
+
+.roomRightContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .roomPlansZoomButton {
@@ -78,6 +89,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  align-self: center;
+  cursor: pointer;
 }
 
 .roomPlansTotalArea {
@@ -91,18 +104,6 @@
 .roomPlansSliderWrapper {
   margin-top: 24px;
   margin-bottom: 40px;
-
-  @include tablet {
-    margin-bottom: 24px;
-  }
-
-  @include desktop {
-    margin-top: 50px;
-    margin-bottom: 55px;
-  }
-}
-
-.roomPlanPhoto {
   width: 225px;
   height: 334px;
 
@@ -120,17 +121,40 @@
     width: 410px;
     height: 572px;
   }
+
+  @include tablet {
+    margin-bottom: 24px;
+  }
+
+  @include desktop {
+    margin-top: 50px;
+    margin-bottom: 55px;
+  }
+
+  :global(.swiper) {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.roomPlanPhoto {
+  width: 100%;
+  height: 100%;
 }
 
 .arrowsProgress {
   display: flex;
   justify-content: center;
   position: relative;
-
-  @include tablet {
-    max-width: 325px;
-    gap: 36px;
-  }
+  width: 100%;
+  align-items: center;
+  max-width: 325px;
+  gap: 36px;
 
   .arrow {
     position: absolute;
@@ -159,7 +183,15 @@
 }
 
 .roomLeft {
-  grid-area: left;
+  margin-top: 50px;
+
+  @include tablet {
+    margin-top: 70px;
+  }
+  @include laptop {
+    width: 50%;
+    margin: 0;
+  }
 }
 
 .roomTitle {
@@ -181,24 +213,37 @@
 .roomCharacteristics {
   margin-bottom: 25px;
   display: flex;
-  gap: 20px;
+  column-gap: 20px;
   flex-direction: column;
 
   @include laptop {
     display: grid;
+    row-gap: 40px;
     grid-template-columns: 1fr 1fr 1fr;
   }
+}
+
+.roomCharacteristicSeparator {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  height: 1px;
 }
 
 .roomCharacteristic {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @include laptop {
+    position: relative;
+    flex-direction: column;
+    gap: 28px;
+  }
 }
 
 .roomAdvantages {
   padding: 25px 0;
-  border-color: var(--color-stroke);
   border-style: solid;
   border-top-width: 1px;
   border-bottom-width: 1px;
@@ -257,9 +302,31 @@
   }
 }
 
-.modalSliderWrapper {
+.modalSliderContent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  img {
+    width: 100%;
+  }
+  padding: 20px;
+
+  @include tablet {
+    padding: 30px;
+  }
+
+  @include laptop {
+    padding: 40px;
+  }
 }
 
 .modalSliderArea {
   margin-bottom: 20px;
+  width: 100%;
+  justify-content: center;
+
+  display: flex;
 }

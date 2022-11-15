@@ -28,7 +28,7 @@ export const buttonType = (name) => {
   return {
     options: ["default", "primary", "secondary", "tertiary"],
     control: {
-      type: "radio",
+      type: "select",
     },
     name,
   };
@@ -45,7 +45,7 @@ export const arrowType = (name) => {
       "long-custom",
     ],
     control: {
-      type: "radio",
+      type: "select",
     },
     name,
   };

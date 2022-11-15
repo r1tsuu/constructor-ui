@@ -18,10 +18,15 @@ export const useSwiperNavigation = ({
     if (swiperRef.current) swiperRef.current.slidePrev();
   };
 
+  const goTo = (index) => {
+    if (swiperRef.current) swiperRef.current.slideTo(index);
+  };
+
   return {
     swiperProps: {
       onBeforeInit: handleSwiper,
     },
+    goTo,
     arrowProps: {
       prev: {
         isPrev: true,

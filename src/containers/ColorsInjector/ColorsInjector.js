@@ -22,6 +22,8 @@ export const ColorsInjector = ({
   background,
   beforeBackground,
   borderColor,
+  fill,
+  stroke,
   children,
   className,
   ...props
@@ -30,6 +32,8 @@ export const ColorsInjector = ({
   const isThemeBackground = isThemeColor(background);
   const isThemeBorderColor = isThemeColor(borderColor);
   const isThemeBeforeBackground = isThemeColor(beforeBackground);
+  const isThemeFill = isThemeColor(fill);
+  const isThemeStroke = isThemeColor(stroke);
 
   const dataAttributes = {
     ...(textColor && {
@@ -46,6 +50,12 @@ export const ColorsInjector = ({
         ? beforeBackground
         : "injected",
     }),
+    ...(fill && {
+      "data-fill-color": isThemeFill ? fill : "injected",
+    }),
+    ...(stroke && {
+      "data-stroke-color": isThemeStroke ? stroke : "injected",
+    }),
   };
 
   const style = {
@@ -60,6 +70,12 @@ export const ColorsInjector = ({
     }),
     ...(!isThemeBeforeBackground && {
       "--before-background-color-injected": beforeBackground,
+    }),
+    ...(!isThemeFill && {
+      "--fill-color-injected": fill,
+    }),
+    ...(!isThemeStroke && {
+      "--stroke-color-injected": stroke,
     }),
   };
 
