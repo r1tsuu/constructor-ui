@@ -2,9 +2,18 @@ import React, { useState } from "react";
 import * as Tabs from "@radix-ui/react-tabs";
 
 import { useTranslation } from "../../../contexts/LanguageContext";
-import { ContentContainer, Section, Typography } from "../../shared";
+import {
+  ContentContainer,
+  Section,
+  Typography,
+  Arrow,
+  Button,
+} from "../../shared";
 
 import styles from "./Planning.module.scss";
+import { useSwiperNavigation } from "../../../hooks/useSwiperNavigation";
+import { toStrZeroes } from "../../../utils";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const ZoomIcon = () => (
   <svg
@@ -39,10 +48,106 @@ const RoomBlock = ({
   interiors,
   staticTexts,
   initedPlanIndex,
-  settings,
+  settings: { block: blockSettings, ...settings },
   index,
 }) => {
-  return <div>{index}</div>;
+  const { swiperProps, arrowProps } = useSwiperNavigation({
+    type: settings.arrowType,
+    arrowClassName: styles.arrow,
+  });
+  const [activePlanIndex, setActivePlanIndex] = useState(initedPlanIndex ?? 0);
+
+  const handleActiveIndexChange = (swiper) =>
+    setActivePlanIndex(swiper.realIndex);
+
+  const activePlan = plans[activePlanIndex];
+
+  return (
+    <div className={styles.roomTabContent}>
+      <div className={styles.roomLeft}>
+        <Typography
+          as={"h3"}
+          {...blockSettings.title}
+          className={styles.roomTitle}
+        >
+          {title}
+        </Typography>
+        {description && (
+          <Typography
+            as={"p"}
+            {...blockSettings.description}
+            className={styles.roomDescription}
+          >
+            {description}
+          </Typography>
+        )}
+        <ul className={styles.roomCharacteristics}>
+          {characteristics.map(({ title, value, _id }, index) => (
+            <li className={styles.roomCharacteristic} key={_id ?? index}>
+              <Typography as={"h5"} {...settings.characteristic.title}>
+                {title}
+              </Typography>
+              <Typography as={"span"} {...settings.characteristic.value}>
+                {value}
+              </Typography>
+            </li>
+          ))}
+        </ul>
+        <ui className={styles.roomAdvantages}>
+          {advantages.map(({ icon, title, _id }, index) => (
+            <li key={_id ?? index}>
+              <div className={styles.roomAdvantageIconWrapper}>
+                <img src={icon} alt="" />
+              </div>
+              <Typography as={"span"} {...settings.advantageTitle}>
+                {title}
+              </Typography>
+            </li>
+          ))}
+        </ui>
+      </div>
+      <div className={styles.roomRight}>
+        <Typography
+          {...blockSettings.totalArea}
+          as={"p"}
+          className={styles.roomPlansTotalArea}
+        >
+          {activePlan.area}
+        </Typography>
+        <Typography as={"h4"} {...blockSettings.totalAreaTitle}>
+          {staticTexts.totalArea}
+        </Typography>
+        <div className={styles.roomPlansSliderWrapper}>
+          <Swiper
+            {...swiperProps}
+            lazy
+            initialSlide={initedPlanIndex ?? 0}
+            onRealIndexChange={handleActiveIndexChange}
+          >
+            {plans.map(({ photo, _id }, index) => (
+              <SwiperSlide key={_id ?? index}>
+                <div>
+                  <img className={styles.roomPlanPhoto} src={photo} alt="" />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+        <div className={styles.roomPlansArrowsProgressWrapper}>
+          <Arrow {...arrowProps.prev} />
+          <div className={styles.roomPlansProgress}>
+            <Typography as={"span"} {...blockSettings.progressNumber}>
+              {toStrZeroes(activePlanIndex + 1)}
+            </Typography>
+            <div className={styles.roomPlansProgressSeparator} />
+            <Typography as={"span"} {...blockSettings.progressNumber}>
+              {toStrZeroes(plans.length)}
+            </Typography>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 const Planning = ({
@@ -50,7 +155,7 @@ const Planning = ({
   subTitle,
   rooms,
   settings,
-  buttonName,
+  goToMarketLink,
   staticTexts,
   initedRoomIndex,
   initedPlanIndex,
@@ -112,6 +217,13 @@ const Planning = ({
             </Tabs.Content>
           ))}
         </Tabs.Root>
+        <div className={styles.goToMarketButtonWrapper}>
+          <Button
+            label={staticTexts.goToMarket}
+            href={goToMarketLink}
+            type={settings.goToMarketButtonType}
+          />
+        </div>
       </ContentContainer>
     </Section>
   );

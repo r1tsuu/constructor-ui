@@ -445,3 +445,8 @@ export const omitEmpties = (object) => {
     {}
   );
 };
+
+export const toStrZeroes = (num, places = 2) => {
+  if (!num) return "";
+  return String(num).padStart(places, "0");
+};

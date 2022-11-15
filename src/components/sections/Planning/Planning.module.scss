@@ -37,18 +37,145 @@
 
 .roomTabContent {
   margin-bottom: 20px;
+
+  @include laptop {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "left right";
+    column-gap: 133px;
+  }
+
+  @include desktop {
+    column-gap: 150px;
+  }
+}
+
+.roomRight {
+  grid-area: right;
+  margin-top: 62px;
+
+  @include tablet {
+    margin-top: 42px;
+  }
+
+  @include laptop {
+    margin-top: 0;
+    display: flex;
+    gap: 48px;
+  }
+
+  @include desktop {
+    gap: 72px;
+  }
+}
+
+.roomPlansZoomButton {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border-width: 1px;
+  border-style: solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.roomPlansTotalArea {
+  margin-bottom: 8px;
+
+  @include tablet {
+    margin-bottom: 10px;
+  }
 }
 
 .roomPlansSliderWrapper {
-  margin-bottom: 50px;
+  margin-top: 24px;
+  margin-bottom: 40px;
+
+  @include tablet {
+    margin-bottom: 24px;
+  }
+
+  @include desktop {
+    margin-top: 50px;
+    margin-bottom: 55px;
+  }
+}
+
+.roomPlanPhoto {
+  width: 225px;
+  height: 334px;
+
+  @include tablet {
+    width: 439px;
+    height: 586px;
+  }
+
+  @include laptop {
+    width: 336px;
+    height: 468px;
+  }
+
+  @include desktop {
+    width: 410px;
+    height: 572px;
+  }
+}
+
+.roomPlansArrowsProgressWrapper {
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  @include tablet {
+    max-width: 325px;
+    gap: 36px;
+  }
+
+  .arrow {
+    position: absolute;
+    &[data-direction="prev"] {
+      left: 0;
+    }
+    &[data-direction="next"] {
+      right: 0;
+    }
+
+    @include tablet {
+      position: static;
+    }
+  }
+}
+
+.roomPlansProgress {
+  display: flex;
+  gap: 12px;
+}
+
+.roomPlansProgressSeparator {
+  width: 59px;
+  height: 1px;
+  align-self: center;
+}
+
+.roomLeft {
+  grid-area: left;
 }
 
 .roomTitle {
-  margin-bottom: 35px;
+  margin-bottom: 30px;
+
+  @include laptop {
+    margin-bottom: 35px;
+  }
 }
 
 .roomDescription {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+
+  @include laptop {
+    margin-bottom: 50px;
+  }
 }
 
 .roomCharacteristics {
@@ -56,6 +183,11 @@
   display: flex;
   gap: 20px;
   flex-direction: column;
+
+  @include laptop {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .roomCharacteristic {
@@ -73,6 +205,10 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 16px;
+
+  @include laptop {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .roomAdvantage {
@@ -89,5 +225,34 @@
   align-items: center;
   img {
     width: 100%;
+  }
+}
+
+.roomButtonsWrapper {
+  margin-top: 60px;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+
+  @include tablet {
+    flex-direction: row;
+  }
+
+  @include laptop {
+    gap: 30px;
+  }
+}
+
+.goToMarketButtonWrapper {
+  margin-top: 20px;
+
+  @include tablet {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+  }
+
+  @include laptop {
+    margin-top: 60px;
   }
 }

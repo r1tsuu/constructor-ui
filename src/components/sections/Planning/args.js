@@ -208,6 +208,9 @@ export const planningArgs = sectionArgs({
     typography: "h2",
     color: "text-primary",
   }),
+  goToMarketButtonType: buttonArg({
+    name: "Перейти до маркетплейсу",
+  }),
   roomTitle: textArg({
     typography: "h4",
     color: "text-primary",
