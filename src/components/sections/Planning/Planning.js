@@ -56,6 +56,7 @@ const ModalSliderContent = ({
     setActiveIndex(swiper.realIndex);
     onIndexChange(swiper.realIndex);
   };
+
   return (
     <div className={styles.modalSliderContent}>
       <Swiper
