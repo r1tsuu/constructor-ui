@@ -16,6 +16,8 @@ const _item = (title, description) => ({
   photoSourceMobile: defaultPhoto,
 });
 
+const photos = [defaultPhoto, defaultPhoto, defaultPhoto, defaultPhoto];
+
 const description = `Період зимових свят — це час мріяти, будувати плани та приміряти нові образи. Тому напередодні Нового року бренд Anna Mi радий презентувати свою нову колекцію, яка об'єднала в собі головні тренди прийдешнього 2022-го року. Як створити свій особливий образ і на які деталі звернути особливу увагу — читайте в нашому блозі.
 Період зимових свят — це час мріяти, будувати плани та приміряти нові образи. Тому напередодні Нового року бренд Anna Mi радий презентувати свою нову колекцію, яка об'єднала в собі головні тренди прийдешнього 2022-го року. Як створити свій особливий образ і на які деталі звернути особливу увагу — читайте в нашому блозі.
 Період зимових свят — це час мріяти, будувати плани та приміряти нові образи. Тому напередодні Нового року бренд Anna Mi радий презентувати свою нову колекцію, яка об'єднала в собі головні тренди прийдешнього 2022-го року. Як створити свій особливий образ і на які деталі звернути особливу увагу — читайте в нашому блозі.
@@ -37,24 +39,42 @@ const tabItems = [
     title: "Головний заголовок в 2 ряди, не більше, або в 1",
     description,
     price: "5 000 грн",
+    photos,
     tabsPopup,
   },
   {
     title: "Якщо загаловок в 1 стрічку то так",
     description,
     price: "4 000 грн",
+    photos,
     tabsPopup,
   },
   {
     title: "Головний заголовок в 2 ряди, не більше, або в 1",
     description,
     price: "5 000 грн",
+    photos,
     tabsPopup,
   },
   {
     title: "Головний заголовок в 2 ряди, не більше, або в 1",
     description,
     price: "5 000 грн",
+    photos,
+    tabsPopup,
+  },
+  {
+    title: "Головний заголовок в 2 ряди, не більше, або в 1",
+    description,
+    price: "5 000 грн",
+    photos,
+    tabsPopup,
+  },
+  {
+    title: "Головний заголовок в 2 ряди, не більше, або в 1",
+    description,
+    price: "5 000 грн",
+    photos,
     tabsPopup,
   },
 ];
@@ -75,16 +95,24 @@ export const catalogArgs = sectionArgs({
     defaultValue: "text-secondary",
     name: "Таб - колір назви активний",
   }),
-  tabSeparatorColor: colorArg({
+  tabProgressColor: colorArg({
     defaultValue: "stroke",
-    name: "Таб - колір сепаратору",
+    name: "Таб - колір прогрессу",
   }),
-  tabActiveSeparatorColor: colorArg({
+  tabProgressColorActive: colorArg({
     defaultValue: "accent",
-    name: "Таб - колір сепаратору активний ",
+    name: "Таб - колір прогрессу активний ",
   }),
   cardsArrowType: arrowArg({
-    name: "Тип стрілок слайдер карток",
+    name: "Тип стрілок",
+  }),
+  cardBackground: colorArg({
+    defaultValue: "background",
+    name: "Картка - колір фону",
+  }),
+  cardBorderColor: colorArg({
+    defaultValue: "stroke",
+    name: "Картка - колір обводки",
   }),
   cardTitle: textArg({
     color: "text-primary",
@@ -104,8 +132,13 @@ export const catalogArgs = sectionArgs({
   cardPopupButtonType: buttonArg({
     name: "Картка - тип кнопки Детальніше",
   }),
-  cardLinkButtonType: buttonArg({
-    name: "Картка - тип кнопки посилання",
+  cardLinkButtonBg: colorArg({
+    defaultValue: "transparent",
+    name: "Картка - фон кнопки посилання",
+  }),
+  cardLinkButtonTextColor: colorArg({
+    defaultValue: "text-primary",
+    name: "Картка - колір тексту кнопки посилання",
   }),
   list: [
     {
@@ -121,4 +154,36 @@ export const catalogArgs = sectionArgs({
       tabItems,
     },
   ],
+  cardPopupTitle: textArg({
+    typography: "h2",
+    color: "text-primary",
+    name: "Попап - заголовок",
+  }),
+  cardPopupTabTitle: textArg({
+    typography: "h4",
+    color: "text-secondary",
+    name: "Попап - назва табу",
+  }),
+  cardPopupDescription: textArg({
+    typography: "p1",
+    color: "text-secondary",
+    name: "Попап - опис",
+  }),
+  cardLinkButtonType: buttonArg({
+    name: "Попап - тип кнопки посилання",
+  }),
+  cardPopupPrice: textArg({
+    typography: "h2",
+    color: "text-primary",
+    name: "Попап - ціна",
+  }),
+
+  paginationBg: colorArg({
+    defaultValue: "stroke",
+    name: "Пагінація - фон",
+  }),
+  paginationActiveBg: colorArg({
+    defaultValue: "accent",
+    name: "Пагінація - фон активний",
+  }),
 });

@@ -17,6 +17,10 @@ const translations = {
     PLANNING_CHECK_PRICE: "Дізнатись ціну",
     PLANNING_RESERVE: "Забронювати",
     PLANNING_TOTAL_AREA: "Загальна площа",
+
+    CATALOG_DETAILS: "Детальніше",
+    CATALOG_CALLBACK: "Зв’язатись з нами",
+    CATALOG_DESCRIPTION: "Опис",
   },
   ru: {
     FORM_NAME: "Имя:",
@@ -34,6 +38,10 @@ const translations = {
     PLANNING_CHECK_PRICE: "Узнать цену",
     PLANNING_RESERVE: "Забронировать",
     PLANNING_TOTAL_AREA: "Общая площадь",
+
+    CATALOG_DETAILS: "Подробнее",
+    CATALOG_CALLBACK: "Связаться с нами",
+    CATALOG_DESCRIPTION: "Описание",
   },
   en: {
     FORM_NAME: "Name:",
@@ -51,6 +59,10 @@ const translations = {
     PLANNING_CHECK_PRICE: "Check the price",
     PLANNING_RESERVE: "Reserve",
     PLANNING_TOTAL_AREA: "Total area",
+
+    CATALOG_DETAILS: "More details",
+    CATALOG_CALLBACK: "Contact us",
+    CATALOG_DESCRIPTION: "Description",
   },
 };
 
