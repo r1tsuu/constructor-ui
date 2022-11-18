@@ -7,6 +7,18 @@
     background-color: var(--color-background);
   }
 
+  &[data-background-hover-color="background"] {
+    &:hover {
+      background-color: var(--color-background);
+    }
+  }
+
+  &[data-border-hover-color="background"] {
+    &:hover {
+      border-color: var(--color-background);
+    }
+  }
+
   &[data-before-background-color="background"] {
     &::before {
       background-color: var(--color-background);
@@ -31,6 +43,18 @@
 
   &[data-background-color="text-primary"] {
     background-color: var(--color-text-primary);
+  }
+
+  &[data-background-hover-color="text-primary"] {
+    &:hover {
+      background-color: var(--color-text-primary);
+    }
+  }
+
+  &[data-border-hover-color="text-primary"] {
+    &:hover {
+      border-color: var(--color-text-primary);
+    }
   }
 
   &[data-before-background-color="text-primary"] {
@@ -59,6 +83,18 @@
     background-color: var(--color-text-secondary);
   }
 
+  &[data-background-hover-color="text-secondary"] {
+    &:hover {
+      background-color: var(--color-text-secondary);
+    }
+  }
+
+  &[data-border-hover-color="text-secondary"] {
+    &:hover {
+      border-color: var(--color-text-secondary);
+    }
+  }
+
   &[data-before-background-color="text-secondary"] {
     &::before {
       background-color: var(--color-text-secondary);
@@ -83,6 +119,18 @@
 
   &[data-background-color="accent"] {
     background-color: var(--color-accent);
+  }
+
+  &[data-background-hover-color="accennt"] {
+    &:hover {
+      background-color: var(--color-accent);
+    }
+  }
+
+  &[data-border-hover-color="accent"] {
+    &:hover {
+      border-color: var(--color-accent);
+    }
   }
 
   &[data-before-background-color="accent"] {
@@ -111,6 +159,18 @@
     background-color: var(--color-accent-hover);
   }
 
+  &[data-background-hover-color="accent-hover"] {
+    &:hover {
+      background-color: var(--color-accent-hover);
+    }
+  }
+
+  &[data-border-hover-color="accent-hover"] {
+    &:hover {
+      border-color: var(--color-accent-hover);
+    }
+  }
+
   &[data-before-background-color="accent-hover"] {
     &::before {
       background-color: var(--color-accent-hover);
@@ -135,6 +195,18 @@
 
   &[data-background-color="stroke"] {
     background-color: var(--color-stroke);
+  }
+
+  &[data-background-hover-color="stroke"] {
+    &:hover {
+      background-color: var(--color-stroke);
+    }
+  }
+
+  &[data-border-hover-color="stroke"] {
+    &:hover {
+      border-color: var(--color-stroke);
+    }
   }
 
   &[data-before-background-color="stroke"] {
@@ -163,6 +235,18 @@
     background-color: var(--custom-theme-color-extra-1);
   }
 
+  &[data-background-hover-color="extra-1"] {
+    &:hover {
+      background-color: var(--custom-theme-color-extra-1);
+    }
+  }
+
+  &[data-border-hover-color="extra-1"] {
+    &:hover {
+      border-color: var(--custom-theme-color-extra-1);
+    }
+  }
+
   &[data-before-background-color="extra-1"] {
     &::before {
       background-color: var(--custom-theme-color-extra-1);
@@ -187,6 +271,18 @@
 
   &[data-background-color="extra-2"] {
     background-color: var(--custom-theme-color-extra-2);
+  }
+
+  &[data-background-hover-color="extra-2"] {
+    &:hover {
+      background-color: var(--custom-theme-color-extra-2);
+    }
+  }
+
+  &[data-border-hover-color="extra-2"] {
+    &:hover {
+      border-color: var(--custom-theme-color-extra-2);
+    }
   }
 
   &[data-before-background-color="extra-2"] {
@@ -215,6 +311,18 @@
     background-color: var(--custom-theme-color-extra-3);
   }
 
+  &[data-background-hover-color="extra-3"] {
+    &:hover {
+      background-color: var(--custom-theme-color-extra-3);
+    }
+  }
+
+  &[data-border-hover-color="extra-3"] {
+    &:hover {
+      border-color: var(--custom-theme-color-extra-3);
+    }
+  }
+
   &[data-before-background-color="extra-3"] {
     &::before {
       background-color: var(--custom-theme-color-extra-3);
@@ -241,6 +349,18 @@
     background-color: var(--custom-theme-color-extra-4);
   }
 
+  &[data-background-hover-color="extra-4"] {
+    &:hover {
+      background-color: var(--custom-theme-color-extra-4);
+    }
+  }
+
+  &[data-border-hover-color="extra-4"] {
+    &:hover {
+      border-color: var(--custom-theme-color-extra-4);
+    }
+  }
+
   &[data-before-background-color="extra-4"] {
     &::before {
       background-color: var(--custom-theme-color-extra-4);
@@ -265,6 +385,18 @@
 
   &[data-background-color="injected"] {
     background-color: var(--background-color-injected);
+  }
+
+  &[data-background-hover-color="injected"] {
+    &:hover {
+      background-color: var(--background-hover-color-injected);
+    }
+  }
+
+  &[data-border-hover-color="injected"] {
+    &:hover {
+      border-color: var(--border-hover-color-injected);
+    }
   }
 
   &[data-before-background-color="injected"] {

@@ -19,6 +19,7 @@ const ModalOverlay = ({
   withCloseButton,
   children,
   theme,
+  style,
   ...props
 }) => {
   const handleOutsideClick = ({ target, currentTarget }) => {
@@ -47,6 +48,7 @@ const ModalOverlay = ({
           style={{
             zIndex,
             "--overlay-background-opacity": backgroundOpacity,
+            ...style,
           }}
           onClick={handleOutsideClick}
           className={clsx(styles.overlay, className)}

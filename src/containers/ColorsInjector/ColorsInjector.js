@@ -8,6 +8,7 @@ const themeColors = [
   "text-primary",
   "text-secondary",
   "accent",
+  "accent-hover",
   "extra-1",
   "extra-2",
   "extra-3",
@@ -20,8 +21,10 @@ const isThemeColor = (value) => themeColors.includes(value);
 export const ColorsInjector = ({
   textColor,
   background,
+  backgroundHover,
   beforeBackground,
   borderColor,
+  borderHoverColor,
   fill,
   stroke,
   children,
@@ -34,6 +37,8 @@ export const ColorsInjector = ({
   const isThemeBeforeBackground = isThemeColor(beforeBackground);
   const isThemeFill = isThemeColor(fill);
   const isThemeStroke = isThemeColor(stroke);
+  const isThemeBackgroundHover = isThemeColor(backgroundHover);
+  const isThemeBorderHover = isThemeColor(borderHoverColor);
 
   const dataAttributes = {
     ...(textColor && {
@@ -56,6 +61,16 @@ export const ColorsInjector = ({
     ...(stroke && {
       "data-stroke-color": isThemeStroke ? stroke : "injected",
     }),
+    ...(backgroundHover && {
+      "data-background-hover-color": isThemeBackgroundHover
+        ? backgroundHover
+        : "injected",
+    }),
+    ...(borderHoverColor && {
+      "data-border-hover-color": isThemeBorderColor
+        ? borderHoverColor
+        : "injected",
+    }),
   };
 
   const style = {
@@ -76,6 +91,12 @@ export const ColorsInjector = ({
     }),
     ...(!isThemeStroke && {
       "--stroke-color-injected": stroke,
+    }),
+    ...(!isThemeBackgroundHover && {
+      "--background-hover-color-injected": backgroundHover,
+    }),
+    ...(!isThemeBorderHover && {
+      "--border-hover-color-injected": borderHoverColor,
     }),
   };
 
