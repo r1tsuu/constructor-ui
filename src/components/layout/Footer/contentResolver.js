@@ -19,13 +19,13 @@ export const footerContentResolver = ({
   defaultContent,
 }) => ({
   socials: fieldUtils.resolveField(
-    socials.map(({ icon, link }, index) => ({
+    socials.map(({ custom_fields }, index) => ({
       icon: fieldUtils.resolveField(
-        fieldUtils.getSourceFile(icon[0].value, env),
+        fieldUtils.getSourceFile(custom_fields.icon[0].value, env),
         atOrFist(defaultContent, index).icon
       ),
       link: fieldUtils.resolveField(
-        link.value,
+        custom_fields.link.value,
         atOrFist(defaultContent, index).link
       ),
     })),
