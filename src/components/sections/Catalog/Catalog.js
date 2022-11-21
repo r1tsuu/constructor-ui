@@ -441,9 +441,9 @@ export const CatalogTranslationsContainer = ({
     <Catalog
       {...props}
       staticTexts={{
-        popupBtn: staticTexts.popupBtn ?? t("CATALOG_DETAILS"),
-        linkBtn: staticTexts.linkBtn ?? t("CATALOG_CALLBACK"),
-        description: staticTexts.description ?? t("CATALOG_DESCRIPTION"),
+        popupBtn: staticTexts.popupBtn || t("CATALOG_DETAILS"),
+        linkBtn: staticTexts.linkBtn || t("CATALOG_CALLBACK"),
+        description: staticTexts.description || t("CATALOG_DESCRIPTION"),
       }}
     />
   );

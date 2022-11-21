@@ -415,10 +415,10 @@ export const PlanningStaticContainer = ({ staticTexts = {}, ...props }) => {
     <Planning
       {...props}
       staticTexts={{
-        goToMarket: staticTexts.gotToMarket ?? t("PLANNING_GO_TO_MARKET"),
-        reserve: staticTexts.reserve ?? t("PLANNING_RESERVE"),
-        interiors: staticTexts.interiors ?? t("PLANNING_INTERIORS"),
-        totalArea: staticTexts.totalArea ?? t("PLANNING_TOTAL_AREA"),
+        goToMarket: staticTexts.gotToMarket || t("PLANNING_GO_TO_MARKET"),
+        reserve: staticTexts.reserve || t("PLANNING_RESERVE"),
+        interiors: staticTexts.interiors || t("PLANNING_INTERIORS"),
+        totalArea: staticTexts.totalArea || t("PLANNING_TOTAL_AREA"),
       }}
     />
   );

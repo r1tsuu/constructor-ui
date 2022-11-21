@@ -1,0 +1,104 @@
+@import "../../../styles/mixins";
+
+.footer {
+  padding-top: 40px;
+  padding-bottom: 10px;
+
+  @include tablet {
+    padding-top: 50px;
+  }
+
+  @include desktop {
+    padding-top: 60px;
+  }
+}
+
+.upperContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  @include laptop {
+    gap: 35px;
+  }
+
+  @include desktop {
+    gap: 75px;
+  }
+}
+
+.upperItem {
+  width: 162px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @include tablet {
+    width: 220px;
+  }
+
+  @include desktop {
+    width: 250px;
+    gap: 15px;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+
+.socials {
+  margin-top: 5px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.subscribeWrapper {
+  margin: 40px 0;
+}
+
+.privacy {
+  display: flex;
+  gap: 40px;
+
+  @include tablet {
+    gap: 50px;
+  }
+
+  @include desktop {
+    gap: 60px;
+  }
+}
+
+.handcrafted {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.toUp {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border: none;
+  background: inherit;
+  padding: 0;
+  cursor: pointer;
+}
+
+.preBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.bottom {
+  border-top-width: 1px;
+  border-style: solid;
+  padding-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

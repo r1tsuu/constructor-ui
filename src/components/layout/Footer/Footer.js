@@ -1,5 +1,9 @@
 import React from "react";
 import { ColorsInjector } from "../../../containers";
+import useMediaQuery from "../../../hooks/useMediaQuery";
+import { mediaQueries } from "../../../utils/constants";
+import FormSubscribeContainer from "../../sections/FormSubcribe/FormSubscribe";
+import { Button, ContentContainer, Typography } from "../../shared";
 
 import styles from "./Footer.module.scss";
 
@@ -43,6 +47,140 @@ const RosseryLogo = ({ fill }) => (
   </svg>
 );
 
-export const Footer = {
+export const Footer = ({
   socials,
+  firstText,
+  secondText,
+  thirdText,
+  downTextFirst,
+  downTextSecond,
+  downTextThird,
+  handcraftedText,
+  scrollUpText,
+  socialsTitle,
+  settings,
+  buttonName,
+  buttonLink,
+  subscribe,
+}) => {
+  const isMobile = !useMediaQuery(mediaQueries.minTablet);
+  const upperItems = [
+    {
+      ...firstText,
+      props: settings.firstText,
+    },
+    {
+      ...secondText,
+      props: settings.secondText,
+    },
+    {
+      ...thirdText,
+      props: settings.thirdText,
+    },
+  ].filter(({ title }) => Boolean(title));
+
+  const scrollToTop = () =>
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+
+  const privacyEl = (
+    <div className={styles.privacy}>
+      <Typography {...settings.downTextSecond} as={"span"}>
+        {downTextSecond}
+      </Typography>
+      <Typography {...settings.downTextThird} as={"span"}>
+        {downTextThird}
+      </Typography>
+    </div>
+  );
+
+  return (
+    <ColorsInjector background={settings.section.bg}>
+      <footer className={styles.footer} data-theme={settings.section.theme}>
+        <ContentContainer>
+          <div className={styles.upperContainer}>
+            {upperItems.map(({ title, description, props }, index) => (
+              <div className={styles.upperItem} key={index}>
+                <Typography {...props.title} as={"h4"}>
+                  {title}
+                </Typography>
+                <Typography {...props.description} as={"p"}>
+                  {description}
+                </Typography>
+              </div>
+            ))}
+            <div className={styles.upperItem}>
+              <Typography {...settings.socialsTitle} as={"h4"}>
+                {socialsTitle}
+              </Typography>
+              <div className={styles.socials}>
+                {socials.map(({ link, icon }, index) => (
+                  <a target={"_blank"} href={link} key={index}>
+                    <img src={icon} alt="" />
+                  </a>
+                ))}
+              </div>
+            </div>
+            <div className={styles.upperItem}>
+              <Button
+                className={styles.button}
+                type={settings.buttonType}
+                href={buttonLink}
+                label={buttonName}
+              />
+            </div>
+          </div>
+          {settings.enableSubscribe && (
+            <div className={styles.subscribeWrapper}>
+              <FormSubscribeContainer
+                isSection={false}
+                settings={settings.subscribe}
+                {...subscribe}
+              />
+            </div>
+          )}
+          {
+            <div className={styles.preBottom}>
+              <div>{isMobile && privacyEl}</div>
+              <button onClick={scrollToTop} className={styles.toUp}>
+                <svg
+                  width="10"
+                  height="12"
+                  viewBox="0 0 10 12"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <ColorsInjector stroke={settings.toUpIconColor}>
+                    <path d="M5 12V1M5 1L1 4.66667M5 1L9 4.66667" />
+                  </ColorsInjector>
+                </svg>
+                <Typography {...settings.scrollUpText} as={"span"}>
+                  {scrollUpText}
+                </Typography>
+              </button>
+            </div>
+          }
+          <ColorsInjector borderColor={settings.borderColor}>
+            <div className={styles.bottom}>
+              <Typography {...settings.downTextFirst} as={"span"}>
+                {downTextFirst}
+              </Typography>
+              {!isMobile && privacyEl}
+              <a
+                href={"https://rossery.com"}
+                target={"_blank"}
+                className={styles.handcrafted}
+              >
+                <Typography {...settings.handcraftedText} as={"span"}>
+                  {handcraftedText}
+                </Typography>
+                <RosseryLogo fill={settings.rosseryColor} />
+              </a>
+            </div>
+          </ColorsInjector>
+        </ContentContainer>
+      </footer>
+    </ColorsInjector>
+  );
 };

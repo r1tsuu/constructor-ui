@@ -67,6 +67,10 @@ import {
   formSubscribeContentResolver,
 } from "./sections/FormSubcribe";
 
+import { Header, headerArgs, headerContentResolver } from "./layout/Header";
+
+import { Footer, footerArgs, footerContentResolver } from "./layout/Footer";
+
 import { useEnvironment } from "../contexts/EnvironmentContext";
 
 import { COMPONENT_KEYS } from "../utils/constants";
@@ -176,4 +180,6 @@ export const components = {
     formSubscribeArgs,
     formSubscribeContentResolver
   ),
+  [COMPONENT_KEYS.HEADER]: section(Header, headerArgs, headerContentResolver),
+  [COMPONENT_KEYS.FOOTER]: section(Footer, footerArgs, footerContentResolver),
 };

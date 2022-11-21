@@ -1,3 +1,9 @@
+import icon_1 from "./assets/inst.svg";
+import icon_2 from "./assets/tel.svg";
+import icon_3 from "./assets/f.svg";
+import icon_4 from "./assets/v.svg";
+import icon_5 from "./assets/y.svg";
+
 import {
   buttonArg,
   colorArg,
@@ -5,6 +11,7 @@ import {
   sectionArgs,
   textArg,
   arg,
+  booleanArg,
 } from "../../../utils";
 
 export const footerArgs = sectionArgs({
@@ -79,16 +86,30 @@ export const footerArgs = sectionArgs({
     name: "Текст знизу - Handcrafted",
     defaultValue: "Handcrafted by ",
   }),
+  scrollUpText: textArg({
+    typography: "p1",
+    color: "text-secondary",
+    name: "Текст Вгору",
+    defaultValue: "Вгору",
+  }),
   rosseryColor: colorArg({
     defaultValue: "text-primary",
     name: "Rossery Logo - color",
+  }),
+  toUpIconColor: colorArg({
+    defaultValue: "accent",
+    name: "Scroll to Top Icon Color",
+  }),
+  enableSubscribe: booleanArg({
+    defaultValue: true,
+    name: "Увімкнути / Вимкнути Subcribe",
   }),
   subscribe_backgroundColor: colorArg({
     defaultValue: "background",
     name: "Subscribe - Колір фону блоку форми",
   }),
   subscribe_title: textArg({
-    color: "primary",
+    color: "text-primary",
     typography: "h3",
     defaultValue: "Підписуйся на наш e-mail для отримання новин",
     name: "Subscribe - Заголовок форми",
@@ -127,4 +148,28 @@ export const footerArgs = sectionArgs({
     defaultValue: "stroke",
     name: "Subcribe - Thank you попап - колір обводки блоку",
   }),
+  socials: [
+    {
+      icon: icon_1,
+      link: "https://google.com",
+    },
+    {
+      icon: icon_2,
+      link: "https://google.com",
+    },
+    {
+      icon: icon_3,
+      link: "https://google.com",
+    },
+    {
+      icon: icon_4,
+      link: "https://google.com",
+    },
+    {
+      icon: icon_5,
+      link: "https://google.com",
+    },
+  ],
+  buttonName: "Замовити дзвінок",
+  buttonLink: "https://google.com",
 });

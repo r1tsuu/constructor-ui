@@ -21,6 +21,8 @@ const translations = {
     CATALOG_DETAILS: "Детальніше",
     CATALOG_CALLBACK: "Зв’язатись з нами",
     CATALOG_DESCRIPTION: "Опис",
+
+    FOOTER_SCROOL_UP: "Вгору",
   },
   ru: {
     FORM_NAME: "Имя:",
@@ -42,6 +44,8 @@ const translations = {
     CATALOG_DETAILS: "Подробнее",
     CATALOG_CALLBACK: "Связаться с нами",
     CATALOG_DESCRIPTION: "Описание",
+
+    FOOTER_SCROOL_UP: "Вгору",
   },
   en: {
     FORM_NAME: "Name:",
@@ -63,6 +67,8 @@ const translations = {
     CATALOG_DETAILS: "More details",
     CATALOG_CALLBACK: "Contact us",
     CATALOG_DESCRIPTION: "Description",
+
+    FOOTER_SCROOL_UP: "Вгору",
   },
 };
 

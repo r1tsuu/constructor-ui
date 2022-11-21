@@ -32,6 +32,9 @@ export const Header = ({
   email,
   phone,
   callbackLink,
+  callbackButtonName,
+  menu,
+  cancelButtonName,
   settings,
   currentLanguage,
   languages,
@@ -106,6 +109,9 @@ export const Header = ({
                   <Typography
                     key={code}
                     as={"button"}
+                    style={{
+                      textTransform: "uppercase",
+                    }}
                     className={styles.languageButton}
                     {...settings.language}
                     color={
@@ -119,7 +125,7 @@ export const Header = ({
                   </Typography>
                 ))}
               </div>
-              {isMinTablet && (
+              {isMinTablet && email && (
                 <div className={styles.flex}>
                   <svg
                     width="17"
@@ -156,7 +162,7 @@ export const Header = ({
                 <Button
                   href={callbackLink}
                   type={settings.callbackButtonType}
-                  label={"Замовити дзвінок"}
+                  label={callbackButtonName}
                 />
               ) : (
                 <ColorsInjector
@@ -177,8 +183,8 @@ export const Header = ({
                 </ColorsInjector>
               )}
               <div className={styles.menuContainer}>
-                {isMinLaptop && (
-                  <Typography {...settings.menu}>Меню</Typography>
+                {isMinLaptop && menu && (
+                  <Typography {...settings.menu}>{menu}</Typography>
                 )}
                 <MenuButton onClick={handleMenuOpen} settings={settings}>
                   <svg
@@ -216,12 +222,12 @@ export const Header = ({
           <Button
             type={settings.callbackPopupLinkButtonType}
             href={callbackLink}
-            label={"Замовити дзвінок"}
+            label={callbackButtonName}
           />
           <Button
             onClick={handleMobileCallbackPopupClose}
             type={settings.callbackPopupCancelButtonType}
-            label="Cancel"
+            label={cancelButtonName}
           />
         </div>
       </Modal>

@@ -50,6 +50,7 @@ export const headerArgs = sectionArgs({
     typography: "p1",
     color: "text-primary",
     name: "Меню",
+    defaultValue: "Меню",
   }),
   menuButtonBackground: colorArg({
     defaultValue: "accent",
@@ -99,6 +100,8 @@ export const headerArgs = sectionArgs({
   callbackButtonType: buttonArg({
     name: "Тип кнопка callback (Desktop, Laptop)",
   }),
+  callbackButtonName: "Замовити дзвінок",
+  cancelButtonName: "Відмінити",
   callbackPopupPhoneButtonType: buttonArg({
     name: "Мобільний callback popup - тип кнопки телефону",
   }),
