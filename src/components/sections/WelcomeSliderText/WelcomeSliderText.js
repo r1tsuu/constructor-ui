@@ -29,6 +29,7 @@ const SlideBlock = ({
   buttonTextTransform,
   paddingY,
   paddingX,
+  enableIcon,
   style,
   className,
 }) => {
@@ -74,7 +75,7 @@ const SlideBlock = ({
               </div>
             </div>
           </div>
-          {settings.enableIcon && (
+          {enableIcon && (
             <div className={styles.blockIconWrapper}>
               <img src={iconSource} alt="" />
             </div>
@@ -139,6 +140,7 @@ export const WelcomeSliderText = ({
                     <SlideBlock
                       {...block}
                       {...settings.block}
+                      enableIcon={settings.enableIcon}
                       iconSource={iconSource}
                       arrowProps={arrowProps}
                       buttonName={buttonName}
