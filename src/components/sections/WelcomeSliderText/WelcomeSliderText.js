@@ -45,7 +45,7 @@ const SlideBlock = ({
           "--block-padding-x": paddingX,
           ...style,
         }}
-        className={clsx(styles.block, iconSource && styles.withIcon, className)}
+        className={clsx(styles.block, enableIcon && styles.withIcon, className)}
       >
         <div className={clsx(styles.blockContent)}>
           <div className={styles.blockLeft}>
