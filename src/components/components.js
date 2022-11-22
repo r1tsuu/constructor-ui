@@ -115,13 +115,16 @@ const section = (Component, allArgs, contentResolver) => {
   };
 };
 
-export const setting = (Component, allArgs) => {
+export const setting = (Component, allArgs, isSpreadSettings = false) => {
   const defaultSettings = allArgs.args;
   return {
     defaultSettings,
     initSettings: (setSettings) => setSettings(defaultSettings),
-    Component: ({ settings }) => (
-      <Component {...parseArgs(settings ?? defaultSettings)} />
+    Component: ({ settings, ...spreadSettings }) => (
+      <Component
+        {...parseArgs(settings ?? defaultSettings)}
+        {...parseArgs(spreadSettings)}
+      />
     ),
     type: "setting",
   };
