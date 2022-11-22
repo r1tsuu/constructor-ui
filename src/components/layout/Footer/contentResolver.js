@@ -22,7 +22,7 @@ export const footerContentResolver = ({
   defaultContent,
 }) => ({
   socials: fieldUtils.resolveField(
-    socials.map(({ custom_fields, _id }, index) => ({
+    socials.data.map(({ custom_fields, _id }, index) => ({
       _id,
       icon: fieldUtils.resolveField(
         fieldUtils.getSourceFile(custom_fields.icon[0].value, env),
