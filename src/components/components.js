@@ -77,6 +77,12 @@ import { Header, headerArgs, headerContentResolver } from "./layout/Header";
 
 import { Footer, footerArgs, footerContentResolver } from "./layout/Footer";
 
+import {
+  WelcomeSliderText,
+  welcomeSliderTextArgs,
+  welcomeSliderTextContentResolver,
+} from "./sections/WelcomeSliderText";
+
 import { useEnvironment } from "../contexts/EnvironmentContext";
 
 import { COMPONENT_KEYS } from "../utils/constants";
@@ -192,5 +198,10 @@ export const components = {
     CatalogTranslationsContainer,
     catalogArgs,
     catalogContentResolver
+  ),
+  [COMPONENT_KEYS.WELCOME_SLIDER_TEXT]: section(
+    WelcomeSliderText,
+    welcomeSliderTextArgs,
+    welcomeSliderTextContentResolver
   ),
 };
