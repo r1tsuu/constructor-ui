@@ -15,6 +15,7 @@ export const Button = ({
   onClick,
   href,
   htmlType,
+  formQueryParams = {},
   ...props
 }) => {
   const { handleOpenForm } = useGlobalForms();
@@ -24,7 +25,10 @@ export const Button = ({
     if (href.startsWith("popup-form-")) {
       As = "button";
       onClick = () => {
-        handleOpenForm(Number(href.replace("popup-form-", "")));
+        handleOpenForm({
+          index: Number(href.replace("popup-form-", "")),
+          ...formQueryParams,
+        });
       };
     }
   }
