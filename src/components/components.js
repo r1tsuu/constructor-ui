@@ -67,6 +67,12 @@ import {
   formSubscribeContentResolver,
 } from "./sections/FormSubcribe";
 
+import {
+  Catalog,
+  catalogArgs,
+  catalogContentResolver,
+} from "./sections/Catalog";
+
 import { Header, headerArgs, headerContentResolver } from "./layout/Header";
 
 import { Footer, footerArgs, footerContentResolver } from "./layout/Footer";
@@ -182,4 +188,9 @@ export const components = {
   ),
   [COMPONENT_KEYS.HEADER]: section(Header, headerArgs, headerContentResolver),
   [COMPONENT_KEYS.FOOTER]: section(Footer, footerArgs, footerContentResolver),
+  [COMPONENT_KEYS.CATALOG]: section(
+    Catalog,
+    catalogArgs,
+    catalogContentResolver
+  ),
 };

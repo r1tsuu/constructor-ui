@@ -64,10 +64,7 @@ export const catalogContentResolver = ({
                 ),
                 defaultContent[0].tabItems[0].photos
               ),
-              tabsPopup: fieldUtils.resolveField(
-                tabsPopup,
-                defaultContent[0].tabItems[0].tabsPopup
-              ),
+              tabsPopup,
             };
           }),
           atOrFist(defaultContent.list, index).tabItems
