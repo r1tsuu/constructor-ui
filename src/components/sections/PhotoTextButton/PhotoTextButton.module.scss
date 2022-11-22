@@ -48,9 +48,6 @@
 .description {
   grid-area: description;
   margin-bottom: 30px;
-  @include tablet {
-    max-width: 400px;
-  }
 }
 
 .buttonWrapper {

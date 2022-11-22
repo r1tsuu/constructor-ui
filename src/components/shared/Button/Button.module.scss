@@ -22,6 +22,12 @@
   }
 }
 
+a.base {
+  &:hover {
+    color: inherit;
+  }
+}
+
 .default {
   background-color: var(--button-default-bg-color);
   border: var(--button-default-border);

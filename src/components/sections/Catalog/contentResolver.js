@@ -5,6 +5,7 @@ export const catalogContentResolver = ({
   title,
   list,
   env,
+  buttonLink,
   static_popupBtn,
   static_linkBtn,
   static_description,
@@ -16,6 +17,10 @@ export const catalogContentResolver = ({
       linkBtn: static_linkBtn.value,
       description: static_description.value,
     },
+    buttonLink: fieldUtils.resolveField(
+      buttonLink.value,
+      defaultContent.buttonLink
+    ),
     title: fieldUtils.resolveField(title.value, defaultContent.title),
     list: fieldUtils.resolveField(
       list.data.map(({ custom_fields, data_repeat_x2, _id }, index) => ({

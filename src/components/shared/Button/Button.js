@@ -20,9 +20,13 @@ export const Button = ({
 }) => {
   const { handleOpenForm } = useGlobalForms();
 
+  let resolvedHref;
+
   if (href) {
     As = "a";
+    resolvedHref = href;
     if (href.startsWith("popup-form-")) {
+      resolvedHref = undefined;
       As = "button";
       onClick = () => {
         handleOpenForm({
@@ -37,7 +41,7 @@ export const Button = ({
     <As
       data-full-width={fullWidth}
       className={clsx(styles.base, styles[type], className)}
-      href={href}
+      href={resolvedHref}
       onClick={onClick}
       type={htmlType}
       {...props}

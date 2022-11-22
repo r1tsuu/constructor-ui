@@ -53,6 +53,7 @@ const CardModalContent = ({
   title,
   description,
   price,
+  buttonLink,
   photos,
   tabsPopup,
   staticTexts,
@@ -188,6 +189,7 @@ const CardModalContent = ({
           {price}
         </Typography>
         <Button
+          href={buttonLink}
           type={settings.cardLinkButtonType}
           label={staticTexts.linkBtn}
         />
@@ -205,6 +207,7 @@ const Card = ({
   settings,
   staticTexts,
   isMinDesktop,
+  buttonLink,
 }) => {
   const [isPopupOpened, setPopupOpened] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -287,6 +290,7 @@ const Card = ({
             borderColor={settings.cardBorderColor}
           >
             <button
+              href={buttonLink}
               className={styles.linkButton}
               type={settings.cardLinkButtonType}
             >
@@ -302,6 +306,7 @@ const Card = ({
           backgroundOpacity={1}
         >
           <CardModalContent
+            buttonLink={buttonLink}
             onClose={handleClosePopup}
             title={title}
             settings={settings}
@@ -319,7 +324,7 @@ const Card = ({
   );
 };
 
-const CatalogTabItem = ({ settings, tabItems, staticTexts }) => {
+const CatalogTabItem = ({ settings, tabItems, staticTexts, buttonLink }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { goTo, arrowProps, swiperProps } = useSwiperNavigation({
     type: settings.cardsArrowType,
@@ -347,6 +352,7 @@ const CatalogTabItem = ({ settings, tabItems, staticTexts }) => {
             key={card._id ?? index}
           >
             <Card
+              buttonLink={buttonLink}
               isMinDesktop={isMinDesktop}
               staticTexts={staticTexts}
               settings={settings}
@@ -374,7 +380,13 @@ const CatalogTabItem = ({ settings, tabItems, staticTexts }) => {
   );
 };
 
-export const Catalog = ({ title, list, settings, staticTexts = {} }) => {
+export const Catalog = ({
+  title,
+  list,
+  settings,
+  staticTexts = {},
+  buttonLink,
+}) => {
   const [tabIndex, setTabIndex] = useState(0);
 
   const handleTabIndexChange = (index) => setTabIndex(index);
@@ -419,6 +431,7 @@ export const Catalog = ({ title, list, settings, staticTexts = {} }) => {
           {list.map(({ tabItems, _id }, index) => (
             <Tabs.Content value={index} key={_id ?? index}>
               <CatalogTabItem
+                buttonLink={buttonLink}
                 staticTexts={staticTexts}
                 settings={settings}
                 tabItems={tabItems}

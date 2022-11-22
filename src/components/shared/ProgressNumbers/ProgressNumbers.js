@@ -10,7 +10,7 @@ export const ProgressNumbers = ({ value, maxValue, className, ...props }) => {
   return (
     <div className={clsx(styles.wrapper, className)} {...props}>
       <Typography color={"text-primary"} as={"span"} type={"h3"}>
-        {`${toStrZeroes(value)}`}
+        {`${toStrZeroes(value)}/`}
       </Typography>
       <Typography color={"text-primary"} as={"span"} type={"h3"}></Typography>
       <Typography as={"span"} type={"h4"} color={"text-secondary"}>

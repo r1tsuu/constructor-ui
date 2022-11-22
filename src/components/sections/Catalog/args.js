@@ -86,6 +86,7 @@ export const catalogArgs = sectionArgs({
     typography: "h2",
     name: "Заголовок",
   }),
+  buttonLink: "https://google.com",
   tab: textArg({
     color: "text-secondary",
     typography: "h4",
