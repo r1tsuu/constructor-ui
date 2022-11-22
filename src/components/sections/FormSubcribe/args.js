@@ -13,7 +13,7 @@ export const formSubscribeArgs = sectionArgs({
     name: "Колір фону блоку форми",
   }),
   title: textArg({
-    color: "primary",
+    color: "text-primary",
     typography: "h3",
     defaultValue: "Підписуйся на наш e-mail для отримання новин",
     name: "Заголовок",
