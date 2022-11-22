@@ -17,7 +17,7 @@ export const photoTextButtonArgs = sectionArgs({
   }),
   title: textArg({
     defaultValue: "Про комплекс",
-    color: "primary",
+    color: "text-primary",
     typography: "h2",
     name: "Заголовок",
   }),
