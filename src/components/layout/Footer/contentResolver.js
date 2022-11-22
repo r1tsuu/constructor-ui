@@ -85,7 +85,7 @@ export const footerContentResolver = ({
     scrollUpText.value,
     defaultContent.scrollUpText
   ),
-  socials: fieldUtils.resolveField(
+  socialsTitle: fieldUtils.resolveField(
     socialsTitle.value,
     defaultContent.socialsTitle
   ),
