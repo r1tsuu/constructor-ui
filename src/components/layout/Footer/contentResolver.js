@@ -38,31 +38,31 @@ export const footerContentResolver = ({
   firstText: {
     title: fieldUtils.resolveField(
       firstText_title.value,
-      defaultContent.firstText.title
+      defaultContent.firstText_title
     ),
     description: fieldUtils.resolveField(
       firstText_description.value,
-      defaultContent.firstText.description
+      defaultContent.firstText_description
     ),
   },
   secondText: {
     title: fieldUtils.resolveField(
       secondText_title.value,
-      defaultContent.secondText.title
+      defaultContent.secondText_title
     ),
     description: fieldUtils.resolveField(
       secondText_description.value,
-      defaultContent.secondText.description
+      defaultContent.secondText_description
     ),
   },
   thirdText: {
     title: fieldUtils.resolveField(
       thirdText_title.value,
-      defaultContent.thirdText.title
+      defaultContent.thirdText_title
     ),
     description: fieldUtils.resolveField(
       thirdText_description.value,
-      defaultContent.thirdText.description
+      defaultContent.thirdText_description
     ),
   },
   downTextFirst: fieldUtils.resolveField(
