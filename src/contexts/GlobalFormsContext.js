@@ -20,7 +20,7 @@ export const GlobalFormsProvider = ({ children }) => {
 
   const handleCloseForm = () =>
     setOpenedForm({
-      openedForm: index,
+      openedForm: null,
       queryParams: {},
     });
 
