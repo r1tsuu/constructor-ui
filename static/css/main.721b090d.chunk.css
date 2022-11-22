@@ -3305,7 +3305,6 @@ video {
 }
 @media (min-width: 1150px) {
   .WelcomeSliderText_blockTextWrapper__24YRL {
-    max-width: 300px;
     max-width: calc(100% - 135px);
   }
 }
@@ -3354,4 +3353,4 @@ video {
   gap: 40px;
 }
 
-/*# sourceMappingURL=main.9bc86d8b.chunk.css.map*/
+/*# sourceMappingURL=main.721b090d.chunk.css.map*/
