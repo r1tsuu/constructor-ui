@@ -7,6 +7,7 @@ import styles from "./Typographies.module.scss";
 import { useInStorybook } from "../../../contexts/InStorybookContext";
 
 export const Typographies = (typographies) => {
+  console.log(typographies);
   const inStoryBook = useInStorybook();
 
   const renderComponent = () => {

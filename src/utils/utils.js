@@ -216,11 +216,6 @@ export const args = (args, noPrefix = false) => {
           },
           argTypes: {
             ...acc.argTypes,
-            [argKey]: {
-              table: {
-                disable: true,
-              },
-            },
           },
         };
 

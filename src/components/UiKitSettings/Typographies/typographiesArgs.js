@@ -87,3 +87,5 @@ export const typographiesArgs = args(
   },
   true
 );
+
+console.log(typographiesArgs);
