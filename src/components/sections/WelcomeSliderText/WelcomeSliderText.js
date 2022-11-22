@@ -74,7 +74,7 @@ const SlideBlock = ({
               </div>
             </div>
           </div>
-          {iconSource && (
+          {settings.enableIcon && (
             <div className={styles.blockIconWrapper}>
               <img src={iconSource} alt="" />
             </div>

@@ -1,9 +1,11 @@
 import defaultImage from "../../../assets/img-placeholder.png";
 import defaultImageMobile from "../../../assets/img-placeholder-mobile.png";
+import defaultIcon from "./defaultIcon.svg";
 
 import {
   arg,
   arrowArg,
+  booleanArg,
   buttonArg,
   colorArg,
   radioArg,
@@ -23,6 +25,11 @@ export const welcomeSliderTextArgs = sectionArgs({
   arrowType: arrowArg({ arrowType: "long-default" }),
   items: Array(6).fill(_item),
   buttonName: "Детальніше",
+  iconSource: defaultIcon,
+  enableIcon: booleanArg({
+    defaultValue: true,
+    name: "Увімкнути / Вимкнути іконку",
+  }),
   block_titleSettings: textArg({
     typography: "h2",
     color: "text-primary",

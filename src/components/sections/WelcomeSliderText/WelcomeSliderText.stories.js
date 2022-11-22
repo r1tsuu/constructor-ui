@@ -9,19 +9,8 @@ import { parseArgs } from "../../../utils";
 
 export default createSection({
   name: COMPONENT_KEYS.WELCOME_SLIDER_TEXT,
-  args: {
-    ...welcomeSliderTextArgs,
-    args: {
-      ...welcomeSliderTextArgs.args,
-      withIcon: true,
-    },
-  },
+  args: welcomeSliderTextArgs,
   component: WelcomeSliderText,
 });
 
-export const Default = (args) => (
-  <WelcomeSliderText
-    iconSource={args.withIcon && defaultIcon}
-    {...parseArgs(args)}
-  />
-);
+export const Default = (args) => <WelcomeSliderText {...parseArgs(args)} />;

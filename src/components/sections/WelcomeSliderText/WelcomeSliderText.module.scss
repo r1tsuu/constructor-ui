@@ -131,7 +131,6 @@
   width: 100%;
 
   @include laptop {
-    max-width: 300px;
     max-width: calc(100% - 135px);
   }
 }

@@ -9,8 +9,13 @@ export const welcomeSliderTextContentResolver = ({
   buttonName,
   items,
   defaultContent,
+  iconSource,
   env,
 }) => ({
+  iconSource: resolveField(
+    getSourceFile(iconSource.value[0], env),
+    defaultContent.iconSource
+  ),
   buttonName: resolveField(buttonName.value, defaultContent.buttonName),
   items: resolveField(
     items.data.map(({ custom_fields, _id }, index) => {
