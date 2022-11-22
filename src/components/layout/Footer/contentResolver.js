@@ -26,11 +26,12 @@ export const footerContentResolver = ({
       _id,
       icon: fieldUtils.resolveField(
         fieldUtils.getSourceFile(custom_fields.icon.value[0], env),
-        atOrFist(defaultContent, index).icon
+        atOrFist(defaultContent.socials, index).icon,
+        "path"
       ),
       link: fieldUtils.resolveField(
         custom_fields.link.value,
-        atOrFist(defaultContent, index).link
+        atOrFist(defaultContent.socials, index).link
       ),
     })),
     defaultContent.socials

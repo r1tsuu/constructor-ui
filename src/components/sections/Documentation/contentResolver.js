@@ -17,7 +17,7 @@ export const documentationContentResolver = ({
         atOrFist(defaultContent.items, index).title
       ),
       icon: resolveField(
-        getSourceFile(custom_fields.icon.value[0], env),
+        getSourceFile(custom_fields.icon.value[0], env, "path"),
         atOrFist(defaultContent.items, index).icon
       ),
       fileLink: resolveField(

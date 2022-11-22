@@ -14,7 +14,8 @@ export const welcomeSliderTextContentResolver = ({
 }) => ({
   iconSource: resolveField(
     getSourceFile(iconSource.value[0], env),
-    defaultContent.iconSource
+    defaultContent.iconSource,
+    "path"
   ),
   buttonName: resolveField(buttonName.value, defaultContent.buttonName),
   items: resolveField(
