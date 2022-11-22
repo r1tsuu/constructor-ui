@@ -25,7 +25,7 @@ export const footerContentResolver = ({
     socials.data.map(({ custom_fields, _id }, index) => ({
       _id,
       icon: fieldUtils.resolveField(
-        fieldUtils.getSourceFile(custom_fields.icon[0].value, env),
+        fieldUtils.getSourceFile(custom_fields.icon.value[0], env),
         atOrFist(defaultContent, index).icon
       ),
       link: fieldUtils.resolveField(
@@ -85,7 +85,7 @@ export const footerContentResolver = ({
     scrollUpText.value,
     defaultContent.scrollUpText
   ),
-  socialsTitle: fieldUtils.resolveField(
+  socials: fieldUtils.resolveField(
     socialsTitle.value,
     defaultContent.socialsTitle
   ),
@@ -97,8 +97,10 @@ export const footerContentResolver = ({
     buttonLink.value,
     defaultContent.buttonLink
   ),
-  subscribeTitle: fieldUtils.resolveField(
-    subscribeTitle.value,
-    defaultContent.subscribeTitle
-  ),
+  subscribe: {
+    title: fieldUtils.resolveField(
+      subscribeTitle.value,
+      defaultContent.subscribe_title
+    ),
+  },
 });
