@@ -68,7 +68,7 @@ import {
 } from "./sections/FormSubcribe";
 
 import {
-  Catalog,
+  CatalogTranslationsContainer,
   catalogArgs,
   catalogContentResolver,
 } from "./sections/Catalog";
@@ -189,7 +189,7 @@ export const components = {
   [COMPONENT_KEYS.HEADER]: section(Header, headerArgs, headerContentResolver),
   [COMPONENT_KEYS.FOOTER]: section(Footer, footerArgs, footerContentResolver),
   [COMPONENT_KEYS.CATALOG]: section(
-    Catalog,
+    CatalogTranslationsContainer,
     catalogArgs,
     catalogContentResolver
   ),

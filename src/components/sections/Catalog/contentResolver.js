@@ -48,21 +48,21 @@ export const catalogContentResolver = ({
               _id,
               title: fieldUtils.resolveField(
                 custom_fields.title.value,
-                defaultContent[0].tabItems[0].title
+                defaultContent.list[0].tabItems[0].title
               ),
               description: fieldUtils.resolveField(
                 custom_fields.description.value,
-                defaultContent[0].tabItems[0].description
+                defaultContent.list[0].tabItems[0].description
               ),
               price: fieldUtils.resolveField(
                 custom_fields.price.value,
-                defaultContent[0].tabItems[0].price
+                defaultContent.list[0].tabItems[0].price
               ),
               photos: fieldUtils.resolveField(
                 custom_fields.photos.value.map((file) =>
                   fieldUtils.getSourceFile(file, env)
                 ),
-                defaultContent[0].tabItems[0].photos
+                defaultContent.list[0].tabItems[0].photos
               ),
               tabsPopup,
             };
