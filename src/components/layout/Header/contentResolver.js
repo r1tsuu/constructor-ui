@@ -26,5 +26,6 @@ export const headerContentResolver = ({
     callbackButtonName.value,
     defaultContent.callbackButtonName
   ),
+  menuList: defaultContent.menuList,
   ...rest,
 });

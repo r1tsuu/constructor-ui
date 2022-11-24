@@ -286,7 +286,7 @@ export const Header = ({
                     <Typography as={"a"} {...settings.menuLink} href={link}>
                       {title}
                     </Typography>
-                    {!isMinLaptop && (
+                    {/* {!isMinLaptop && (
                       <svg
                         width="16"
                         height="8"
@@ -303,7 +303,7 @@ export const Header = ({
                           />
                         </ColorsInjector>
                       </svg>
-                    )}
+                    )} */}
                   </div>
                 </ColorsInjector>
               ))}
