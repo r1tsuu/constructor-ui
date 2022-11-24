@@ -379,7 +379,14 @@ export const args = (args, noPrefix = false) => {
   );
 };
 
-export const sectionArgs = (sectionArgs, withBg = true) => {
+export const sectionArgs = (
+  sectionArgs,
+  withBg = true,
+  params = {
+    paddingTop: "40px 60px 80px 80px",
+    paddingBottom: "40px 60px 80px 80px",
+  }
+) => {
   return args({
     section_theme: radioArg({
       options: ["dark", "light", "custom"],
@@ -388,6 +395,22 @@ export const sectionArgs = (sectionArgs, withBg = true) => {
     }),
     ...(withBg && {
       section_bg: colorArg({ defaultValue: "background", name: "Колір фону" }),
+    }),
+    section_bgImage: arg({
+      defaultValue: "",
+      name: "Посилання на зображення фону",
+    }),
+    section_bgPosition: arg({
+      defaultValue: "initial",
+      name: "Позиція зображення фону",
+    }),
+    section_paddingTop: arg({
+      defaultValue: params.paddingTop,
+      name: "Padding top (mobile tablet laptop desktop)",
+    }),
+    section_paddingBottom: arg({
+      defaultValue: params.paddingBottom,
+      name: "Padding bottom (mobile tablet laptop desktop)",
     }),
     ...sectionArgs,
   });

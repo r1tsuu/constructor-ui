@@ -1,15 +1,22 @@
 @import "../../../styles/mixins";
 
 .footer {
-  padding-top: 40px;
-  padding-bottom: 10px;
+  padding-top: var(--padding-top-mobile);
+  padding-bottom: var(--padding-bottom-mobile);
 
   @include tablet {
-    padding-top: 50px;
+    padding-top: var(--padding-top-tablet);
+    padding-bottom: var(--padding-bottom-tablet);
+  }
+
+  @include laptop {
+    padding-top: var(--padding-top-laptop);
+    padding-bottom: var(--padding-bottom-laptop);
   }
 
   @include desktop {
-    padding-top: 60px;
+    padding-top: var(--padding-top-desktop);
+    padding-bottom: var(--padding-bottom-desktop);
   }
 }
 

@@ -2,6 +2,7 @@ import React from "react";
 import { ColorsInjector } from "../../../containers";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import { mediaQueries } from "../../../utils/constants";
+import { resolvePaddings } from "../../../utils/resolvePaddings";
 import FormSubscribeContainer from "../../sections/FormSubcribe/FormSubscribe";
 import { Button, ContentContainer, Typography } from "../../shared";
 
@@ -98,7 +99,16 @@ export const Footer = ({
 
   return (
     <ColorsInjector background={settings.section.bg}>
-      <footer className={styles.footer} data-theme={settings.section.theme}>
+      <footer
+        style={{
+          ...resolvePaddings(settings.section),
+          backgroundImage:
+            settings.section.bgImage && `url("${settings.section.bgImage}")`,
+          backgroundPosition: settings.section.bgPosition,
+        }}
+        className={styles.footer}
+        data-theme={settings.section.theme}
+      >
         <ContentContainer>
           <div className={styles.upperContainer}>
             {upperItems.map(({ title, description, props }, index) => (

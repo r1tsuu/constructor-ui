@@ -19,11 +19,6 @@
 
   &:hover {
     font-weight: 500;
-  }
-}
-
-a.base {
-  &:hover {
     color: inherit;
   }
 }
@@ -36,6 +31,7 @@ a.base {
   &:hover {
     background-color: var(--button-default-hover-bg);
     border: var(--button-default-hover-border);
+    color: var(--button-default-text-color);
   }
 }
 

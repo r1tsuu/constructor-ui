@@ -15,6 +15,8 @@ const ModalOverlay = ({
   animationDurationExit,
   backgroundColor,
   backgroundOpacity,
+  backgroundImage,
+  backgroundPosition,
   className,
   withCloseButton,
   children,
@@ -48,6 +50,8 @@ const ModalOverlay = ({
           style={{
             zIndex,
             "--overlay-background-opacity": backgroundOpacity,
+            backgroundImage: backgroundImage && `url("${backgroundImage}")`,
+            backgroundPosition,
             ...style,
           }}
           onClick={handleOutsideClick}
@@ -78,6 +82,8 @@ export const Modal = ({
   animationDurationExit = 75,
   backgroundColor = "#2D2D2D",
   backgroundOpacity = 0.9,
+  backgroundImage,
+  backgroundPosition,
   withCloseButton = false,
   className,
   children,
@@ -93,6 +99,8 @@ export const Modal = ({
       animationDurationExit={animationDurationExit}
       backgroundColor={backgroundColor}
       backgroundOpacity={backgroundOpacity}
+      backgroundImage={backgroundImage}
+      backgroundPosition={backgroundPosition}
       className={className}
       theme={overlayTheme}
       withCloseButton={withCloseButton}

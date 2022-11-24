@@ -31,6 +31,7 @@ const createArrowCube = ({
   hoverBgColor = testColors.grayDark,
   hoverTextColor = testColors.blue,
   hoverBorderColor = testColors.orange,
+  hoverIconColor = testColors.cyan,
 }) => {
   return {
     borderRadius,
@@ -41,6 +42,7 @@ const createArrowCube = ({
     hoverBgColor,
     hoverTextColor,
     hoverBorderColor,
+    hoverIconColor,
   };
 };
 

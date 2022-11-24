@@ -6,6 +6,7 @@
   transition: 0.25s;
   path {
     stroke: var(--arrow-icon-color);
+    transition: stroke 0.25s;
   }
 }
 
@@ -22,12 +23,12 @@
   background-color: var(--arrow-cube-default-bg-color);
   border: var(--arrow-cube-default-border);
   border-radius: var(--arrow-cube-default-border-radius);
+  --arrow-icon-color: var(--arrow-cube-default-icon-color);
   &:hover {
     background-color: var(--arrow-cube-default-hover-bg);
     border: var(--arrow-cube-default-hover-border);
+    --arrow-icon-color: var(--arrow-cube-default-icon-color-hover);
   }
-
-  --arrow-icon-color: var(--arrow-cube-default-icon-color);
 }
 
 .cubePrimary {
@@ -36,44 +37,43 @@
   border-color: var(--arrow-cube-primary-border-color);
   border-width: var(--arrow-cube-primary-border-width);
   border-style: solid;
+  --arrow-icon-color: var(--arrow-cube-primary-icon-color);
   &:hover {
     background-color: var(--arrow-cube-primary-hover-bg-color);
     border-color: var(--arrow-cube-primary-hover-border-color);
+    --arrow-icon-color: var(--arrow-cube-primary-hover-icon-color);
   }
-
-  --arrow-icon-color: var(--arrow-cube-primary-icon-color);
 }
 
 .cubeSecondary {
   border-radius: var(--arrow-cube-secondary-border-radius);
   background-color: var(--arrow-cube-secondary-bg-color);
-  color: var(--arrow-cube-secondary-text-color);
+
   border-color: var(--arrow-cube-secondary-border-color);
   border-width: var(--arrow-cube-secondary-border-width);
   border-style: solid;
+  --arrow-icon-color: var(--arrow-cube-secondary-icon-color);
   &:hover {
     background-color: var(--arrow-cube-secondary-hover-bg-color);
-    color: var(--arrow-cube-secondary-hover-text-color);
-    border-color: var(--arrow-cube-secondary-hover-border-color);
-  }
 
-  --arrow-icon-color: var(--arrow-cube-secondary-icon-color);
+    border-color: var(--arrow-cube-secondary-hover-border-color);
+    --arrow-icon-color: var(--arrow-cube-secondary-hover-icon-color);
+  }
 }
 
 .cubeTertiary {
   border-radius: var(--arrow-cube-tertiary-border-radius);
   background-color: var(--arrow-cube-tertiary-bg-color);
-  color: var(--arrow-cube-tertiary-text-color);
   border-color: var(--arrow-cube-tertiary-border-color);
   border-width: var(--arrow-cube-tertiary-border-width);
   border-style: solid;
+  --arrow-icon-color: var(--arrow-cube-tertiary-icon-color);
+
   &:hover {
     background-color: var(--arrow-cube-tertiary-hover-bg-color);
-    color: var(--arrow-cube-tertiary-hover-text-color);
     border-color: var(--arrow-cube-tertiary-hover-border-color);
+    --arrow-icon-color: var(--arrow-cube-tertiary-hover-icon-color);
   }
-
-  --arrow-icon-color: var(--arrow-cube-tertiary-icon-color);
 }
 
 .long {

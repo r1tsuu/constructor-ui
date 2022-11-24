@@ -1,5 +1,9 @@
 @import "./mixins.scss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 ui-kit-container {
   --button-padding: 0 15px;
@@ -34,6 +38,7 @@ ui-kit-container {
 [data-theme="dark"],
 [data-theme="custom"] {
   --arrow-cube-default-icon-color: var(--color-text-primary);
+  --arrow-cube-default-icon-color-hover: var(--color-text-primary);
   --button-default-text-color: var(--color-text-primary);
   --arrow-long-default-icon-color: var(--color-text-primary);
   --input-default-1-border-color: var(--color-stroke);

@@ -7,6 +7,7 @@ import useMediaQuery from "../../../hooks/useMediaQuery";
 import { mediaQueries } from "../../../utils/constants";
 
 import styles from "./Header.module.scss";
+import { resolvePaddings } from "../../../utils/resolvePaddings";
 
 const MenuButton = ({ children, onClick, settings }) => {
   return (
@@ -87,6 +88,12 @@ export const Header = ({
     <>
       <ColorsInjector background={settings.section.bg}>
         <header
+          style={{
+            ...resolvePaddings(settings.section),
+            backgroundImage:
+              settings.section.bgImage && `url("${settings.section.bgImage}")`,
+            backgroundPosition: settings.section.bgPosition,
+          }}
           className={styles.header}
           data-is-sticky={isSticky}
           data-theme={settings.section.theme}
@@ -242,6 +249,8 @@ export const Header = ({
         overlayTheme={settings.section.theme}
         backgroundColor={settings.menuPopupBackgroundColor}
         backgroundOpacity={settings.menuPopupBackgroundOpacity}
+        backgroundImage={settings.menuPopupBackgroundImage}
+        backgroundPosition={settings.menuPopupBackgroundPosition}
         style={{
           justifyContent: "flex-end",
         }}
@@ -268,19 +277,34 @@ export const Header = ({
               </MenuButton>
             </div>
             <div className={styles.menuList}>
-              {menuList.map(({ link, label }, index) => (
+              {menuList.map(({ link, title }, index) => (
                 <ColorsInjector
                   key={index}
                   borderColor={settings.menuBorderColor}
                 >
-                  <Typography
-                    as={"a"}
-                    className={styles.menuItem}
-                    {...settings.menuLink}
-                    href={link}
-                  >
-                    {label}
-                  </Typography>
+                  <div className={styles.menuItem}>
+                    <Typography as={"a"} {...settings.menuLink} href={link}>
+                      {title}
+                    </Typography>
+                    {!isMinLaptop && (
+                      <svg
+                        width="16"
+                        height="8"
+                        viewBox="0 0 16 8"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <ColorsInjector stroke={settings.menuDropdownIconColor}>
+                          <path
+                            d="M1 1L8 7L15 1"
+                            stroke-width="1.5"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </ColorsInjector>
+                      </svg>
+                    )}
+                  </div>
                 </ColorsInjector>
               ))}
             </div>

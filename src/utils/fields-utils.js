@@ -7,7 +7,7 @@ export const getSingleFileSource = ({
   SITE_URL,
   type = "compression",
 }) => {
-  return getSingleFileSourceWithType(singleFile[type], SITE_URL);
+  return getSingleFileSourceWithType(singleFile.path, SITE_URL);
 };
 
 export const getSourceFile = (file, env, type = "compression") => {

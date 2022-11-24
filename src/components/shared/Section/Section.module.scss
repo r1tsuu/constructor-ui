@@ -4,13 +4,22 @@
   margin: 0 auto;
   position: relative;
   letter-spacing: normal;
-  padding: 40px 0;
+
+  padding-top: var(--padding-top-mobile);
+  padding-bottom: var(--padding-bottom-mobile);
 
   @include tablet {
-    padding: 60px 0;
+    padding-top: var(--padding-top-tablet);
+    padding-bottom: var(--padding-bottom-tablet);
   }
 
   @include laptop {
-    padding: 80px 0;
+    padding-top: var(--padding-top-laptop);
+    padding-bottom: var(--padding-bottom-laptop);
+  }
+
+  @include desktop {
+    padding-top: var(--padding-top-desktop);
+    padding-bottom: var(--padding-bottom-desktop);
   }
 }

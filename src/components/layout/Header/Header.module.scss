@@ -1,10 +1,27 @@
 @import "../../../styles/mixins";
 
 .header {
-  padding: 20px 0;
   &[data-is-sticky="true"] {
     position: sticky;
     top: 0;
+  }
+
+  padding-top: var(--padding-top-mobile);
+  padding-bottom: var(--padding-bottom-mobile);
+
+  @include tablet {
+    padding-top: var(--padding-top-tablet);
+    padding-bottom: var(--padding-bottom-tablet);
+  }
+
+  @include laptop {
+    padding-top: var(--padding-top-laptop);
+    padding-bottom: var(--padding-bottom-laptop);
+  }
+
+  @include desktop {
+    padding-top: var(--padding-top-desktop);
+    padding-bottom: var(--padding-bottom-desktop);
   }
 }
 
@@ -133,8 +150,19 @@
   border-bottom-width: 1px;
   border-style: solid;
   padding: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
   @include tablet {
     padding: 20px 0;
+  }
+
+  @include laptop {
+    flex-direction: column;
+    gap: 15px;
+  }
+  @include desktop {
+    gap: 20px;
   }
 }

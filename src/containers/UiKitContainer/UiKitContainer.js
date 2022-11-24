@@ -47,6 +47,7 @@ const getArrowCubeVars = (arrowCube, type) => {
     [`--arrow-cube-${type}-border-width`]: arrowCube.borderWidth,
     [`--arrow-cube-${type}-hover-bg-color`]: arrowCube.hoverBgColor,
     [`--arrow-cube-${type}-hover-border-color`]: arrowCube.hoverBorderColor,
+    [`--arrow-cube-${type}-hover-icon-color`]: arrowCube.hoverIconColor,
   };
 };
 

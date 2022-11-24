@@ -11,6 +11,7 @@ const cubeArg = (type) => {
     borderWidth: "1px",
     hoverBgColor: colorArg({ defaultValue: "#343a40" }),
     hoverBorderColor: colorArg({ defaultValue: "#fd7e14" }),
+    hoverIconColor: colorArg({ defaultValue: "#17a2b8" }),
   };
 
   return argsWithBase({ args, base });
