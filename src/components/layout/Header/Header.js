@@ -40,6 +40,7 @@ export const Header = ({
   languages,
   onLanguageChange,
   menuList,
+  isSticky,
 }) => {
   const [isMobileCallbackPopupOpened, setMobileCallbackPopupOpened] =
     useState(false);
@@ -85,7 +86,11 @@ export const Header = ({
   return (
     <>
       <ColorsInjector background={settings.section.bg}>
-        <header data-theme={settings.section.theme}>
+        <header
+          className={styles.header}
+          data-is-sticky={isSticky}
+          data-theme={settings.section.theme}
+        >
           <ContentContainer className={styles.container}>
             {logoElement}
             <div className={styles.right}>

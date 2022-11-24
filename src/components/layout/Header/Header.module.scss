@@ -1,5 +1,13 @@
 @import "../../../styles/mixins";
 
+.header {
+  padding: 20px 0;
+  &[data-is-sticky="true"] {
+    position: sticky;
+    top: 0;
+  }
+}
+
 .container {
   display: flex;
   justify-content: space-between;

@@ -12,9 +12,8 @@ export const headerContentResolver = ({
   ...rest
 }) => ({
   logoSource: fieldUtils.resolveField(
-    fieldUtils.getSourceFile(logoSource.value[0], env),
-    defaultContent.logoSource,
-    "path"
+    fieldUtils.getSourceFile(logoSource.value[0], env, "path"),
+    defaultContent.logoSource
   ),
   email: fieldUtils.resolveField(email.value, defaultContent.email),
   phone: fieldUtils.resolveField(phone.value, defaultContent.phone),
