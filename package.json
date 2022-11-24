@@ -1,6 +1,6 @@
 {
   "name": "@r1tsuu/constructor-ui",
-  "version": "0.5.18",
+  "version": "0.5.19",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -16,7 +16,7 @@
     "react-player": "^2.11.0",
     "react-scripts": "3.1.1",
     "react-transition-group": "4.4.5",
-    "swiper": "6.8.4"
+    "swiper": "8.4.5"
   },
   "peerDependencies": {
     "axios": ">=0.19.0",

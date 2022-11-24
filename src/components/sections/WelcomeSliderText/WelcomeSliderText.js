@@ -10,8 +10,6 @@ import { mediaQueries } from "../../../utils/constants";
 
 import styles from "./WelcomeSliderText.module.scss";
 
-import "swiper/swiper.min.css";
-
 const SlideBlock = ({
   title,
   description,

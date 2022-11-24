@@ -1,5 +1,6 @@
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import "../src/styles/index.scss";
+import "../src/styles/swiper.css";
 import { InStorybookDecorator } from "./decorators";
 
 export const parameters = {

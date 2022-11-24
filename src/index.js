@@ -1,4 +1,5 @@
 import "./styles/index.scss";
+import "./styles/swiper.css";
 export { UiKitContainer } from "./containers/UiKitContainer/UiKitContainer";
 export { GlobalComponentsContainer } from "./containers/GlobalComponentsContainer";
 export { COMPONENT_KEYS } from "./utils/constants";

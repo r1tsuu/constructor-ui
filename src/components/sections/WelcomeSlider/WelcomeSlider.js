@@ -15,8 +15,6 @@ import {
 
 import styles from "./WelcomeSlider.module.scss";
 
-import "swiper/swiper.min.css";
-
 const WelcomeSliderProgress = ({ isMobile, arrowProps, value, maxValue }) => {
   if (isMobile)
     return (

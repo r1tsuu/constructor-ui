@@ -17,8 +17,6 @@ import {
 
 import styles from "./Terms.module.scss";
 
-import "swiper/swiper.min.css";
-
 const Arrows = ({ next, prev }) => {
   return (
     <div className={styles.arrows}>
