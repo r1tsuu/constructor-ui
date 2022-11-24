@@ -89,7 +89,11 @@ export const Header = ({
       <ColorsInjector background={settings.section.bg}>
         <header
           style={{
-            ...resolvePaddings(settings.section),
+            ...resolvePaddings({
+              ...settings.section,
+              defaultPaddingTop: "20px 20px 20px 20px",
+              defaultPaddingBottom: "20px 20px 20px 20px",
+            }),
             backgroundImage:
               settings.section.bgImage && `url("${settings.section.bgImage}")`,
             backgroundPosition: settings.section.bgPosition,

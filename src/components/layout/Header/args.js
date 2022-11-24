@@ -181,6 +181,6 @@ export const headerArgs = sectionArgs(
   true,
   {
     paddingTop: "20px 20px 20px 20px",
-    paddingBottom: " 20px 20px 20px 20px",
+    paddingBottom: "20px 20px 20px 20px",
   }
 );

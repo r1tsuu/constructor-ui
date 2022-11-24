@@ -1,4 +1,16 @@
-export const resolvePaddings = ({ paddingTop, paddingBottom }) => {
+export const resolvePaddings = ({
+  paddingTop,
+  paddingBottom,
+  defaultPaddingTop = "40px 60px 80px 80px",
+  defaultPaddingBottom = "40px 60px 80px 80px",
+}) => {
+  if (!paddingTop) {
+    paddingTop = defaultPaddingTop;
+  }
+
+  if (!paddingBottom) {
+    paddingBottom = defaultPaddingBottom;
+  }
   const paddingVars = (prefix) => ({
     0: `--${prefix}-mobile`,
     1: `--${prefix}-tablet`,
