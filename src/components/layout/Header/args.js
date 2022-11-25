@@ -164,17 +164,10 @@ export const headerArgs = sectionArgs(
       {
         title: "Головна",
         link: "https://google.com",
-        list: [],
       },
       {
         title: "Про нас",
         link: "https://google.com",
-        list: [
-          {
-            title: "Каталог",
-            link: "https://google.com",
-          },
-        ],
       },
     ],
   },

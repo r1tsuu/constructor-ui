@@ -1,3 +1,4 @@
+import { atOrFist } from "../../../utils";
 import * as fieldUtils from "../../../utils/fields-utils";
 
 export const headerContentResolver = ({
@@ -9,6 +10,7 @@ export const headerContentResolver = ({
   callbackButtonName,
   defaultContent,
   env,
+  menuList,
   ...rest
 }) => ({
   logoSource: fieldUtils.resolveField(
@@ -26,6 +28,19 @@ export const headerContentResolver = ({
     callbackButtonName.value,
     defaultContent.callbackButtonName
   ),
-  menuList: defaultContent.menuList,
+  menuList: fieldUtils.resolveField(
+    menuList.data.map(({ custom_fields, _id }, index) => ({
+      _id,
+      title: fieldUtils.resolveField(
+        custom_fields.title.value,
+        atOrFist(defaultContent.menuList, index).title
+      ),
+      link: fieldUtils.resolveField(
+        custom_fields.link.value,
+        atOrFist(defaultContent.menuList, index).link
+      ),
+    })),
+    defaultContent.menuList
+  ),
   ...rest,
 });

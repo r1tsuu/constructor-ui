@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { useEnvironment } from "../../../contexts/EnvironmentContext";
 
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import { useSwiperNavigation } from "../../../hooks/useSwiperNavigation";
@@ -30,6 +31,7 @@ const WelcomeSliderProgress = ({ isMobile, arrowProps, value, maxValue }) => {
 
 export const WelcomeSlider = ({ items, settings }) => {
   const [realIndex, setRealIndex] = useState(0);
+  const { Image } = useEnvironment();
   const isMobile = !useMediaQuery(mediaQueries.minTablet);
   const isMinLaptop = useMediaQuery(mediaQueries.minLaptop);
   const { swiperProps, arrowProps } = useSwiperNavigation({
@@ -68,7 +70,7 @@ export const WelcomeSlider = ({ items, settings }) => {
             ) => (
               <SwiperSlide key={_id ?? index}>
                 <div className={styles.slideContent}>
-                  <img
+                  <Image
                     className={styles.slidePhoto}
                     src={isMobile ? photoSourceMobile : photoSource}
                     alt=""

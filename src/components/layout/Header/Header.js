@@ -8,6 +8,7 @@ import { mediaQueries } from "../../../utils/constants";
 
 import styles from "./Header.module.scss";
 import { resolvePaddings } from "../../../utils/resolvePaddings";
+import { useEnvironment } from "../../../contexts/EnvironmentContext";
 
 const MenuButton = ({ children, onClick, settings }) => {
   return (
@@ -43,6 +44,7 @@ export const Header = ({
   menuList,
   isSticky,
 }) => {
+  const { Link } = useEnvironment();
   const [isMobileCallbackPopupOpened, setMobileCallbackPopupOpened] =
     useState(false);
   const [isMenuOpened, setMenuOpened] = useState(false);
@@ -91,8 +93,6 @@ export const Header = ({
           style={{
             ...resolvePaddings({
               ...settings.section,
-              defaultPaddingTop: "20px 20px 20px 20px",
-              defaultPaddingBottom: "20px 20px 20px 20px",
             }),
             backgroundImage:
               settings.section.bgImage && `url("${settings.section.bgImage}")`,
@@ -281,33 +281,15 @@ export const Header = ({
               </MenuButton>
             </div>
             <div className={styles.menuList}>
-              {menuList.map(({ link, title }, index) => (
+              {menuList.map(({ link, title, _id }, index) => (
                 <ColorsInjector
-                  key={index}
+                  key={_id ?? index}
                   borderColor={settings.menuBorderColor}
                 >
                   <div className={styles.menuItem}>
-                    <Typography as={"a"} {...settings.menuLink} href={link}>
-                      {title}
-                    </Typography>
-                    {/* {!isMinLaptop && (
-                      <svg
-                        width="16"
-                        height="8"
-                        viewBox="0 0 16 8"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <ColorsInjector stroke={settings.menuDropdownIconColor}>
-                          <path
-                            d="M1 1L8 7L15 1"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          />
-                        </ColorsInjector>
-                      </svg>
-                    )} */}
+                    <Link href={link}>
+                      <Typography {...settings.menuLink}>{title}</Typography>
+                    </Link>
                   </div>
                 </ColorsInjector>
               ))}

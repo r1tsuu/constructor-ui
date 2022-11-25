@@ -150,19 +150,8 @@
   border-bottom-width: 1px;
   border-style: solid;
   padding: 15px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 
   @include tablet {
     padding: 20px 0;
-  }
-
-  @include laptop {
-    flex-direction: column;
-    gap: 15px;
-  }
-  @include desktop {
-    gap: 20px;
   }
 }
