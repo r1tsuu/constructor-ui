@@ -289,7 +289,7 @@ export const Header = ({
                   borderColor={settings.menuBorderColor}
                 >
                   <div className={styles.menuItem}>
-                    <Link href={link}>
+                    <Link className={styles.lin} href={link}>
                       <Typography {...settings.menuLink}>{title}</Typography>
                     </Link>
                   </div>

@@ -26,6 +26,34 @@
     right: 20px;
   }
 
+  *,
+  ::before,
+  ::after {
+    border-width: 0;
+    border-style: solid;
+    border-color: initial;
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+
+  blockquote,
+  dl,
+  body,
+  html,
+  dd,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  hr,
+  figure,
+  p,
+  pre {
+    margin: 0;
+  }
+
   h1,
   h2,
   h3,

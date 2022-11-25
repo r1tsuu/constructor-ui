@@ -35,7 +35,7 @@ export const Typography = ({
   return (
     <ColorsInjector textColor={color}>
       <As
-        className={clsx(styles[type], styles.fontSize, className)}
+        className={clsx(styles.list, styles[type], styles.fontSize, className)}
         style={{
           ...fontSizes,
           ...style,
