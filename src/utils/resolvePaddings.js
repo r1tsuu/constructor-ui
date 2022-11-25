@@ -19,7 +19,7 @@ export const resolvePaddings = ({
     pb = defaultPaddingBottom;
   }
 
-  const paddingsTop = paddingTop.split(" ").reduce(
+  const paddingsTop = pt.split(" ").reduce(
     (acc, value, index) => ({
       ...acc,
       [paddingVars("padding-top")[index]]: value,
@@ -27,7 +27,7 @@ export const resolvePaddings = ({
     {}
   );
 
-  const paddingsBottom = paddingBottom.split(" ").reduce(
+  const paddingsBottom = pb.split(" ").reduce(
     (acc, value, index) => ({
       ...acc,
       [paddingVars("padding-bottom")[index]]: value,
