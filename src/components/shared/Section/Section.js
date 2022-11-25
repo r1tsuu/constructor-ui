@@ -32,6 +32,8 @@ export const Section = ({
           ...resolvePaddings({
             paddingTop,
             paddingBottom,
+            defaultPaddingTop: "40px 60px 80px 80px",
+            defaultPaddingBottom: "40px 60px 80px 80px",
           }),
         }}
         data-theme={theme}

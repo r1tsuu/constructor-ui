@@ -103,6 +103,8 @@ export const Footer = ({
         style={{
           ...resolvePaddings({
             ...settings.section,
+            defaultPaddingTop: "40px 50px 60px 60px",
+            defaultPaddingBottom: "10px 10px 10px 10px",
           }),
           backgroundImage:
             settings.section.bgImage && `url("${settings.section.bgImage}")`,

@@ -93,6 +93,8 @@ export const Header = ({
           style={{
             ...resolvePaddings({
               ...settings.section,
+              defaultPaddingTop: "20px 20px 20px 20px",
+              defaultPaddingBottom: "20px 20px 20px 20px",
             }),
             backgroundImage:
               settings.section.bgImage && `url("${settings.section.bgImage}")`,
