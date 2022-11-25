@@ -25,24 +25,6 @@
     top: 20px;
     right: 20px;
   }
-}
-
-.overlayEnter {
-  opacity: 0;
-}
-
-.overlayEnterActive {
-  transition: opacity var(--animation-duration-enter);
-  opacity: 1;
-}
-
-.overlayExit {
-  opacity: 1;
-}
-
-.overlayExitActive {
-  transition: opacity var(--animation-duration-exit);
-  opacity: 0;
 
   h1,
   h2,
@@ -82,4 +64,22 @@
     max-width: 100%;
     height: auto;
   }
+}
+
+.overlayEnter {
+  opacity: 0;
+}
+
+.overlayEnterActive {
+  transition: opacity var(--animation-duration-enter);
+  opacity: 1;
+}
+
+.overlayExit {
+  opacity: 1;
+}
+
+.overlayExitActive {
+  transition: opacity var(--animation-duration-exit);
+  opacity: 0;
 }

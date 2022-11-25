@@ -102,11 +102,6 @@ export const headerArgs = sectionArgs(
       color: "text-primary",
       name: "Меню - посилання",
     }),
-    menuLinkInner: textArg({
-      typography: "h4",
-      color: "text-secondary",
-      name: "Меню - посилання внутрішнє",
-    }),
     menuDropdownIconColor: colorArg({
       defaultValue: "text-primary",
       name: "Меню дропдаун mobile іконка колір",
