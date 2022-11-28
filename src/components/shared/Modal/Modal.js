@@ -96,7 +96,7 @@ export const Modal = ({
     setIsSSR(false);
   }, []);
 
-  if (isSSR) return null;
+  if (typeof window === "undefined") return null;
 
   return ReactDOM.createPortal(
     <ModalOverlay
