@@ -190,7 +190,7 @@ const CardModalContent = ({
         </Typography>
         <Button
           href={buttonLink}
-          type={settings.cardLinkButtonType}
+          type={settings.cardPopupLinkButtoType}
           label={staticTexts.linkBtn}
         />
       </div>

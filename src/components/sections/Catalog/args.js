@@ -177,7 +177,7 @@ export const catalogArgs = sectionArgs({
     color: "text-secondary",
     name: "Попап - опис",
   }),
-  cardLinkButtonType: buttonArg({
+  cardPopupLinkButtoType: buttonArg({
     name: "Попап - тип кнопки посилання",
   }),
   cardPopupPrice: textArg({
