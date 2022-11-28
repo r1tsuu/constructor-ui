@@ -1,21 +1,17 @@
 import React, { useContext } from "react";
 import { createContext } from "react";
 
-const DefaultLink = ({ children, ...elementProps }) => {
-  return children;
-};
-
 const DefaultImage = (props) => <img {...props} />;
 
 const EnvironmentContext = createContext({
-  Link: DefaultLink,
-  Image: DefaultImage,
+  NextLink: null,
+  NextImage: DefaultImage,
 });
 
 export const EnvironmentProvider = ({
   SITE_URL,
   children,
-  Link = DefaultLink,
+  Link = null,
   Image = DefaultImage,
 }) => {
   return (
