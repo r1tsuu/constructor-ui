@@ -4,14 +4,14 @@ import { createContext } from "react";
 const DefaultImage = (props) => <img {...props} />;
 
 const EnvironmentContext = createContext({
-  Link: null,
+  Link: "a",
   NextImage: DefaultImage,
 });
 
 export const EnvironmentProvider = ({
   SITE_URL,
   children,
-  Link = null,
+  Link = "a",
   Image = DefaultImage,
 }) => {
   return (

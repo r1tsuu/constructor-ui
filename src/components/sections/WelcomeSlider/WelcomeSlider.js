@@ -31,7 +31,6 @@ const WelcomeSliderProgress = ({ isMobile, arrowProps, value, maxValue }) => {
 
 export const WelcomeSlider = ({ items, settings }) => {
   const [realIndex, setRealIndex] = useState(0);
-  const { Image } = useEnvironment();
   const isMobile = !useMediaQuery(mediaQueries.minTablet);
   const isMinLaptop = useMediaQuery(mediaQueries.minLaptop);
   const { swiperProps, arrowProps } = useSwiperNavigation({
@@ -70,7 +69,7 @@ export const WelcomeSlider = ({ items, settings }) => {
             ) => (
               <SwiperSlide key={_id ?? index}>
                 <div className={styles.slideContent}>
-                  <Image
+                  <img
                     className={styles.slidePhoto}
                     src={isMobile ? photoSourceMobile : photoSource}
                     alt=""
