@@ -55,9 +55,9 @@ export const Button = ({
 
   if (isLink) {
     return (
-      <Link {...elementProps}>
+      <Link href={elementProps.href}>
         <a data-full-width={fullWidth} className={elementProps.className}>
-          {children}
+          {elementProps.children}
         </a>
       </Link>
     );
