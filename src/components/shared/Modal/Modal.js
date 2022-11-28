@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { ColorsInjector } from "../../../containers";
 import { Fade } from "../Fade";
@@ -90,6 +90,14 @@ export const Modal = ({
   overlayTheme,
   ...props
 }) => {
+  const [isSSR, setIsSSR] = useState(null);
+
+  useEffect(() => {
+    setIsSSR(false);
+  }, []);
+
+  if (isSSR) return null;
+
   return ReactDOM.createPortal(
     <ModalOverlay
       isOpen={isOpen}
