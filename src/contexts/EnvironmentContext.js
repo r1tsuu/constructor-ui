@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { createContext } from "react";
 
 const DefaultLink = ({ children, ...elementProps }) => {
-  return <a {...elementProps}>{children}</a>;
+  return children;
 };
 
 const DefaultImage = (props) => <img {...props} />;

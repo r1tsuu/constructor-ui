@@ -54,7 +54,13 @@ export const Button = ({
   };
 
   if (isLink) {
-    return <Link {...elementProps} />;
+    return (
+      <Link {...elementProps}>
+        <a data-full-width={fullWidth} className={elementProps.className}>
+          {children}
+        </a>
+      </Link>
+    );
   }
 
   return <As {...elementProps} />;
