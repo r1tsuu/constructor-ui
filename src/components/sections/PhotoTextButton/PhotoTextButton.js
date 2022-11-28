@@ -19,6 +19,9 @@ export const PhotoTextButton = ({
   return (
     <Section {...settings.section}>
       <ContentContainer
+        style={{
+          "--grid-template-columns": settings.gridTemplateColumns,
+        }}
         data-is-reverse={settings.isReverse}
         className={styles.grid}
       >

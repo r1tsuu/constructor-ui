@@ -123,25 +123,26 @@ export const Header = ({
                     />
                   </ColorsInjector>
                 </svg>
-                {languages.map((code) => (
-                  <Typography
-                    key={code}
-                    as={"button"}
-                    style={{
-                      textTransform: "uppercase",
-                    }}
-                    className={styles.languageButton}
-                    {...settings.language}
-                    color={
-                      code === currentLanguage
-                        ? settings.language.color
-                        : settings.languageActiveColor
-                    }
-                    onClick={onLanguageChange.bind(null, code)}
-                  >
-                    {code}
-                  </Typography>
-                ))}
+                {languages.length > 1 &&
+                  languages.map((code) => (
+                    <Typography
+                      key={code}
+                      as={"button"}
+                      style={{
+                        textTransform: "uppercase",
+                      }}
+                      className={styles.languageButton}
+                      {...settings.language}
+                      color={
+                        code === currentLanguage
+                          ? settings.language.color
+                          : settings.languageActiveColor
+                      }
+                      onClick={onLanguageChange.bind(null, code)}
+                    >
+                      {code}
+                    </Typography>
+                  ))}
               </div>
               {isMinTablet && email && (
                 <div className={styles.flex}>

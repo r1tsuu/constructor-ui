@@ -73,6 +73,12 @@ import {
   catalogContentResolver,
 } from "./sections/Catalog";
 
+import {
+  Location,
+  locationArgs,
+  locationContentResolver,
+} from "./sections/Location";
+
 import { Header, headerArgs, headerContentResolver } from "./layout/Header";
 
 import { Footer, footerArgs, footerContentResolver } from "./layout/Footer";
@@ -206,5 +212,10 @@ export const components = {
     WelcomeSliderText,
     welcomeSliderTextArgs,
     welcomeSliderTextContentResolver
+  ),
+  [COMPONENT_KEYS.LOCATION]: section(
+    Location,
+    locationArgs,
+    locationContentResolver
   ),
 };

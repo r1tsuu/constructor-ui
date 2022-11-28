@@ -133,6 +133,9 @@ export const catalogArgs = sectionArgs({
   cardPopupButtonType: buttonArg({
     name: "Картка - тип кнопки Детальніше",
   }),
+  cardLinkButtonType: buttonArg({
+    name: "Картка - тип кнопки посилання",
+  }),
   cardLinkButtonBg: colorArg({
     defaultValue: "transparent",
     name: "Картка - фон кнопки посилання",
@@ -155,6 +158,10 @@ export const catalogArgs = sectionArgs({
       tabItems,
     },
   ],
+  cardPopupBackgroundColor: colorArg({
+    defaultValue: "#2D2D2D",
+    name: "Попап - колір фону",
+  }),
   cardPopupTitle: textArg({
     typography: "h2",
     color: "text-primary",

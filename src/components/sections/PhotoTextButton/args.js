@@ -6,9 +6,14 @@ import {
   radioArg,
   sectionArgs,
   booleanArg,
+  arg,
 } from "../../../utils";
 
 export const photoTextButtonArgs = sectionArgs({
+  gridTemplateColumns: arg({
+    defaultValue: "1fr 1fr",
+    name: "grid-template-columns",
+  }),
   subTitle: textArg({
     defaultValue: "будуємо з любов’ю",
     typography: "h5",

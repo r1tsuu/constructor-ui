@@ -4,7 +4,7 @@
   .grid {
     align-items: center;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: var(--grid-template-columns);
     grid-template-areas:
       "photoWrapper subTitle"
       "photoWrapper title"

@@ -274,7 +274,10 @@
 }
 
 .cardPopupDescription {
-  max-height: 700px;
+  height: 345px;
+
+  @include tablet {
+  }
   overflow: auto;
 }
 
@@ -332,19 +335,19 @@
   }
 }
 
-.linkButton {
-  height: var(--button-height);
-  padding: var(--button-padding);
-  width: var(--button-width);
-  min-width: var(--button-min-width);
-  font-size: var(--button-font-size);
-  font-family: var(--typography-h2-font-family);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border-top-width: 1px;
-  border-bottom-width: 1px;
-  border-right-width: 1px;
-  border-style: solid;
-}
+// .linkButton {
+//   height: var(--button-height);
+//   padding: var(--button-padding);
+//   width: var(--button-width);
+//   min-width: var(--button-min-width);
+//   font-size: var(--button-font-size);
+//   font-family: var(--typography-h2-font-family);
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   cursor: pointer;
+//   border-top-width: 1px;
+//   border-bottom-width: 1px;
+//   border-right-width: 1px;
+//   border-style: solid;
+// }

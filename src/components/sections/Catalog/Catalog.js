@@ -284,19 +284,9 @@ const Card = ({
             label={staticTexts.popupBtn}
             type={settings.cardPopupButtonType}
           />
-          <ColorsInjector
-            textColor={settings.cardLinkButtonTextColor}
-            background={settings.cardLinkButtonBg}
-            borderColor={settings.cardBorderColor}
-          >
-            <button
-              href={buttonLink}
-              className={styles.linkButton}
-              type={settings.cardLinkButtonType}
-            >
-              {staticTexts.linkBtn}
-            </button>
-          </ColorsInjector>
+          <Button href={buttonLink} type={settings.cardLinkButtonType}>
+            {staticTexts.linkBtn}
+          </Button>
         </div>
 
         <Modal
@@ -304,6 +294,7 @@ const Card = ({
           isOpen={isPopupOpened}
           onClose={handleClosePopup}
           backgroundOpacity={1}
+          backgroundColor={settings.cardPopupBackgroundColor}
         >
           <CardModalContent
             buttonLink={buttonLink}
