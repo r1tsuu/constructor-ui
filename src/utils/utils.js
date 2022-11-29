@@ -1,6 +1,8 @@
 import React from "react";
 import clsx from "clsx";
 
+import { useEnvironment } from "../contexts/EnvironmentContext";
+
 import imagePlaceholder from "../stories-assets/img-placeholder.png";
 
 export const cloneWithClass = ({ className, element }) => {
