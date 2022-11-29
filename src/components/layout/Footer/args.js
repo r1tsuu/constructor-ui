@@ -105,6 +105,7 @@ export const footerArgs = sectionArgs(
       defaultValue: true,
       name: "Увімкнути / Вимкнути Subcribe",
     }),
+
     subscribe_backgroundColor: colorArg({
       defaultValue: "background",
       name: "Subscribe - Колір фону блоку форми",
@@ -131,7 +132,13 @@ export const footerArgs = sectionArgs(
       typography: "p2",
       name: "Subcribe - Privacy текст - Друга частина",
     }),
-
+    subscribe_submittedModal_errorMessage: arg({ defaultValue: "Error" }),
+    subscribe_submittedModal_successMessage: arg({ defaultValue: "Success" }),
+    subscribe_submittedModal_messageSettings: textArg({
+      color: "text-primary",
+      typography: "h3",
+      name: "Thank you попап - Текст",
+    }),
     subscribe_submittedModal_submittedMessageSettings: textArg({
       color: "text-primary",
       typography: "h3",

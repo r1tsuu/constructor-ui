@@ -30,8 +30,9 @@ export const formSubscribeArgs = sectionArgs({
     typography: "p2",
     name: "Privacy текст - Друга частина",
   }),
-
-  submittedModal_submittedMessageSettings: textArg({
+  submittedModal_errorMessage: arg({ defaultValue: "Error" }),
+  submittedModal_successMessage: arg({ defaultValue: "Success" }),
+  submittedModal_messageSettings: textArg({
     color: "text-primary",
     typography: "h3",
     name: "Thank you попап - Текст",

@@ -52,7 +52,7 @@ const FormFeedback = ({
         <ThankYouBlock
           // borderRadius={settings.formBorderRadius}
           submitted={submitted}
-          submittedMessageSettings={settings.submittedMessage}
+          {...settings.submittedModal}
           background={settings.formBackground}
         />
 

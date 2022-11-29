@@ -1,5 +1,12 @@
 import { resolveField } from "../../../utils/fields-utils";
 
-export const formSubscribeContentResolver = ({ title, defaultContent }) => ({
+export const formSubscribeContentResolver = ({
+  title,
+  _errorMessage,
+  _successMessage,
+  defaultContent,
+}) => ({
   title: resolveField(title.value, defaultContent.title),
+  errorMessage: resolveField(_errorMessage.value, "Error"),
+  successMessage: resolveField(_successMessage.value, "Success"),
 });

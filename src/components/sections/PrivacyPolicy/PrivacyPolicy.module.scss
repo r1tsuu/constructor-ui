@@ -1,0 +1,23 @@
+@import "../../../styles/mixins";
+
+.container {
+  @include laptop {
+    max-width: 1140px;
+  }
+
+  @include desktop {
+    max-width: 1190px;
+  }
+}
+
+.title {
+  margin-bottom: 35px;
+
+  @include tablet {
+    margin-bottom: 50px;
+  }
+
+  @include laptop {
+    margin-bottom: 60px;
+  }
+}

@@ -15,7 +15,9 @@ const ThankYouBlockContent = ({
   borderRadius,
   borderColor,
   submitted,
-  submittedMessageSettings,
+  errorMessage,
+  successMessage,
+  messageSettings,
   onModalClose,
   isModal,
 }) => {
@@ -60,13 +62,23 @@ const ThankYouBlockContent = ({
             />
           </svg>
         )}
-        <Typography
-          {...submittedMessageSettings}
-          className={styles.submittedMessage}
-          as={"h3"}
-        >
-          {t(isSuccess ? "FORM_SENDED_SUCCESS" : "FORM_SENDED_ERROR")}
-        </Typography>
+        {isSuccess ? (
+          <Typography
+            className={styles.submittedMessage}
+            {...messageSettings}
+            as={"h3"}
+          >
+            {successMessage}
+          </Typography>
+        ) : (
+          <Typography
+            className={styles.submittedMessage}
+            as={"h3"}
+            {...messageSettings}
+          >
+            {errorMessage}
+          </Typography>
+        )}
       </div>
     </ColorsInjector>
   );
@@ -78,17 +90,21 @@ export const ThankYouBlock = ({
   borderColor,
   theme,
   submitted,
-  submittedMessageSettings,
+  errorMessage,
+  successMessage,
+  messageSettings,
   onModalClose,
   isModal = false,
 }) => {
   const thankYouBlockContentElement = (
     <ThankYouBlockContent
+      errorMessage={errorMessage}
       submitted={submitted}
       background={background}
       borderColor={borderColor}
       borderRadius={borderRadius}
-      submittedMessageSettings={submittedMessageSettings}
+      messageSettings={messageSettings}
+      successMessage={successMessage}
       isModal={isModal}
       onModalClose={onModalClose}
     />

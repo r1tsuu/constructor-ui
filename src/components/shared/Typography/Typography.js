@@ -14,7 +14,7 @@ const indexVarsMap = {
 
 export const Typography = ({
   type,
-  as: As = "p",
+  as: As = "div",
   fontSize = "",
   color,
   children,

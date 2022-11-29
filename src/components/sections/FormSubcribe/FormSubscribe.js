@@ -26,6 +26,7 @@ const FormSubscribeContent = ({
       phone: "",
     },
   });
+  console.log(settings);
   const t = useTranslation();
   return (
     <ColorsInjector background={settings.backgroundColor}>
@@ -37,6 +38,7 @@ const FormSubscribeContent = ({
           submitted={submitted}
           onModalClose={onThankYouModalClose}
           {...settings.submittedModal}
+          errorMessage="asd"
         />
         <Typography {...settings.title} as={"h2"}>
           {title}

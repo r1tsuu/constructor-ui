@@ -19,8 +19,12 @@ export const footerContentResolver = ({
   buttonLink,
   subscribeTitle,
   env,
+  _errorMessage,
+  _successMessage,
   defaultContent,
 }) => ({
+  errorMessage: fieldUtils.resolveField(_errorMessage.value, "error"),
+  successMessage: fieldUtils.resolveField(_successMessage.value, "success"),
   socials: fieldUtils.resolveField(
     socials.data.map(({ custom_fields, _id }, index) => ({
       _id,

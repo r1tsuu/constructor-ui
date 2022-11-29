@@ -38,10 +38,12 @@ const baseFormFeedbackArgs = {
     typography: "p2",
     name: "Privacy текст - Друга частина",
   }),
-  submittedMessage: textArg({
+  submittedModal_errorMessage: arg({ defaultValue: "Error" }),
+  submittedModal_successMessage: arg({ defaultValue: "Success" }),
+  submittedModal_messageSettings: textArg({
     color: "text-primary",
     typography: "h3",
-    name: "Thank you текст",
+    name: "Thank you попап - Текст",
   }),
   inputType: inputArg({}),
   buttonType: buttonArg({}),
