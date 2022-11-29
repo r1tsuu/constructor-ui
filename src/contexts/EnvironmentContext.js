@@ -4,7 +4,7 @@ import { createContext } from "react";
 const DefaultImage = (props) => <img {...props} />;
 
 const EnvironmentContext = createContext({
-  Link: "a",
+  Link: null,
   NextImage: DefaultImage,
 });
 

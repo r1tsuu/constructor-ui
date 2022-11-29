@@ -101,17 +101,21 @@ const CardModalContent = ({
             </SwiperSlide>
           ))}
         </Swiper>
-        <Pagination
-          settings={settings}
-          className={styles.cardPhotosPagination}
-          currentIndex={currentIndex}
-          maxIndex={photos.length}
-          onButtonClick={handlePaginationButtonClick}
-        />
-        <div className={styles.cardPhotosArrows}>
-          <Arrow {...arrowProps.prev} />
-          <Arrow {...arrowProps.next} />
-        </div>
+        {photos.length > 1 && (
+          <Pagination
+            settings={settings}
+            className={styles.cardPhotosPagination}
+            currentIndex={currentIndex}
+            maxIndex={photos.length}
+            onButtonClick={handlePaginationButtonClick}
+          />
+        )}
+        {photos.length > 1 && (
+          <div className={styles.cardPhotosArrows}>
+            <Arrow {...arrowProps.prev} />
+            <Arrow {...arrowProps.next} />
+          </div>
+        )}
       </div>
       <div className={styles.cardPopupContent}>
         <div className={styles.cardPopupTitleButton}>
@@ -239,14 +243,16 @@ const Card = ({
               </SwiperSlide>
             ))}
           </Swiper>
-          <Pagination
-            className={styles.cardPhotosPagination}
-            currentIndex={currentIndex}
-            maxIndex={photos.length}
-            onButtonClick={handlePaginationButtonClick}
-            settings={settings}
-          />
-          {isMinDesktop && (
+          {photos.length > 1 && (
+            <Pagination
+              className={styles.cardPhotosPagination}
+              currentIndex={currentIndex}
+              maxIndex={photos.length}
+              onButtonClick={handlePaginationButtonClick}
+              settings={settings}
+            />
+          )}
+          {isMinDesktop && photos.length > 1 && (
             <div className={styles.cardPhotosArrows}>
               <Arrow {...arrowProps.prev} />
               <Arrow {...arrowProps.next} />

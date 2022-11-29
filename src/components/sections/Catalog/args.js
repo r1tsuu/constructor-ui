@@ -74,7 +74,7 @@ const tabItems = [
     title: "Головний заголовок в 2 ряди, не більше, або в 1",
     description,
     price: "5 000 грн",
-    photos,
+    photos: [defaultPhoto],
     tabsPopup,
   },
 ];
