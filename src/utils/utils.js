@@ -468,3 +468,39 @@ export const toStrZeroes = (num, places = 2) => {
   if (!num) return "";
   return String(num).padStart(places, "0");
 };
+
+export const section = (Component, allArgs, contentResolver) => {
+  const defaultArgs = allArgs.args;
+  return {
+    defaultSettings: defaultArgs,
+    Component({ settings, ...content }) {
+      const env = useEnvironment();
+      return (
+        <Component
+          settings={parseArgs(settings ?? defaultArgs).settings}
+          {...contentResolver({
+            ...content,
+            env,
+            defaultContent: defaultArgs,
+          })}
+        />
+      );
+    },
+    type: "section",
+  };
+};
+
+export const setting = (Component, allArgs, isSpreadSettings = false) => {
+  const defaultSettings = allArgs.args;
+  return {
+    defaultSettings,
+    initSettings: (setSettings) => setSettings(defaultSettings),
+    Component: ({ settings, ...spreadSettings }) => (
+      <Component
+        {...parseArgs(settings ?? defaultSettings)}
+        {...parseArgs(spreadSettings)}
+      />
+    ),
+    type: "setting",
+  };
+};
