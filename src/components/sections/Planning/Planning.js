@@ -70,7 +70,14 @@ const ModalSliderContent = ({
       >
         {data.map(({ photo, area, _id }, index) => (
           <SwiperSlide key={_id ?? index}>
-            <div>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+              }}
+            >
               {area && (
                 <Typography
                   as={"div"}
@@ -81,12 +88,10 @@ const ModalSliderContent = ({
                 </Typography>
               )}
               <img
-                src={photo}
                 style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
+                  width: "auto",
                 }}
+                src={photo}
                 alt=""
               />
             </div>
@@ -256,16 +261,7 @@ const RoomBlock = ({
                   onClick={handleModalPlansOpen}
                   key={_id ?? index}
                 >
-                  <img
-                    className={styles.roomPlanPhoto}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
-                    src={photo}
-                    alt=""
-                  />
+                  <img className={styles.roomPlanPhoto} src={photo} alt="" />
                 </SwiperSlide>
               ))}
             </Swiper>
