@@ -1,5 +1,6 @@
 import defaultImage from "../../../assets/img-placeholder-height.png";
 import defaultImage2 from "../../../assets/img-placeholder-mobile.png";
+import { assets } from "../../../assets";
 import {
   booleanArg,
   buttonArg,
@@ -39,9 +40,9 @@ export const locationArgs = sectionArgs({
   buttonName: "Переглянути на карті",
   buttonLink: "https://google.com",
   firstTab_name: "Інфраструктура",
-  firstTab_photoSource: defaultImage,
-  firstTab_photoSourceMobile: defaultImage,
+  firstTab_photoSource: assets.imgPlaceholder,
+  firstTab_photoSourceMobile: assets.imgPlaceholderHeight,
   secondTab_name: "Генплан",
-  secondTab_photoSource: defaultImage2,
-  secondTab_photoSourceMobile: defaultImage,
+  secondTab_photoSource: assets.imgPlaceholder,
+  secondTab_photoSourceMobile: assets.imgPlaceholderHeight,
 });

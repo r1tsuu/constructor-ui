@@ -1,5 +1,4 @@
-import defaultImage from "../../../assets/img-placeholder.png";
-import defaultImageMobile from "../../../assets/img-placeholder-mobile.png";
+import { assets } from "../../../assets";
 import {
   textArg,
   buttonArg,
@@ -32,8 +31,8 @@ export const photoTextButtonArgs = sectionArgs({
     typography: "p1",
     name: "Опис",
   }),
-  photoSource: defaultImage,
-  photoSourceMobile: defaultImageMobile,
+  photoSource: assets.imgPlaceholder,
+  photoSourceMobile: assets.imgPlaceholderHeight,
   isReverse: booleanArg({
     defaultValue: false,
     name: "Фото зліва / справа",

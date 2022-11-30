@@ -1,5 +1,4 @@
-import defaultImage from "../../../assets/img-placeholder.png";
-import defaultImageMobile from "../../../assets/img-placeholder-mobile.png";
+import { assets } from "../../../assets";
 import defaultIcon from "./defaultIcon.svg";
 
 import {
@@ -17,8 +16,8 @@ const _item = {
   title: "Lorem ipsum",
   description: "Lorem ipsum dolor sit amet, magna aliqua.",
   buttonLink: "https://google.com",
-  photoSource: defaultImage,
-  photoSourceMobile: defaultImage,
+  photoSource: assets.imgPlaceholder,
+  photoSourceMobile: assets.imgPlaceholder,
 };
 
 export const welcomeSliderTextArgs = sectionArgs({

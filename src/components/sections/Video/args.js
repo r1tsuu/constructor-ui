@@ -1,4 +1,4 @@
-import defaultImage from "../../../assets/img-placeholder.png";
+import { assets } from "../../../assets";
 
 import { sectionArgs, textArg } from "../../../utils";
 
@@ -10,5 +10,5 @@ export const videoArgs = sectionArgs({
   }),
   videoSource: "https://www.youtube.com/watch?v=JouMAHQXx-g",
   videoSourceMobile: "https://www.youtube.com/watch?v=YcltiaoEp_Q",
-  previewPhotoSource: defaultImage,
+  previewPhotoSource: assets.imgPlaceholder,
 });

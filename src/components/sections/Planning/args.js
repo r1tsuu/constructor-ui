@@ -1,5 +1,4 @@
-import defaultImage from "../../../assets/img-placeholder.png";
-import defaultImageMobile from "../../../assets/img-placeholder-mobile.png";
+import { assets } from "../../../assets";
 import advantageDefault from "./assets/advantage.svg";
 import {
   textArg,
@@ -51,31 +50,31 @@ const rooms = [
     ],
     plans: [
       {
-        photo: defaultImage,
+        photo: assets.imgSquare,
         area: "50,3 м²",
       },
       {
-        photo: defaultImage,
+        photo: assets.imgSquare,
         area: "60,3 м²",
       },
       {
-        photo: defaultImage,
+        photo: assets.imgSquare,
         area: "70,3 м²",
       },
       {
-        photo: defaultImage,
+        photo: assets.imgSquare,
         area: "90,3 м²",
       },
       {
-        photo: defaultImage,
+        photo: assets.imgSquare,
         area: "120,3 м²",
       },
     ],
     interiors: [
-      { photo: defaultImage },
-      { photo: defaultImage },
-      { photo: defaultImage },
-      { photo: defaultImage },
+      { photo: assets.imgPlaceholder },
+      { photo: assets.imgPlaceholder },
+      { photo: assets.imgPlaceholder },
+      { photo: assets.imgPlaceholder },
     ],
   },
   {
@@ -113,23 +112,23 @@ const rooms = [
     ],
     plans: [
       {
-        photo: defaultImage,
+        photo: assets.imgSquare,
         area: "30,3 м²",
       },
       {
-        photo: defaultImage,
+        photo: assets.imgSquare,
         area: "50,3 м²",
       },
       {
-        photo: defaultImage,
+        photo: assets.imgSquare,
         area: "10,3 м²",
       },
     ],
     interiors: [
-      { photo: defaultImage },
-      { photo: defaultImage },
-      { photo: defaultImage },
-      { photo: defaultImage },
+      { photo: assets.imgPlaceholder },
+      { photo: assets.imgPlaceholder },
+      { photo: assets.imgPlaceholder },
+      { photo: assets.imgPlaceholder },
     ],
   },
   {
@@ -175,31 +174,31 @@ const rooms = [
     ],
     plans: [
       {
-        photo: defaultImage,
+        photo: assets.imgSquare,
         area: "30,3 м²",
       },
       {
-        photo: defaultImage,
+        photo: assets.imgSquare,
         area: "50,3 м²",
       },
       {
-        photo: defaultImage,
+        photo: assets.imgSquare,
         area: "10,3 м²",
       },
       {
-        photo: defaultImage,
+        photo: assets.imgSquare,
         area: "30,3 м²",
       },
       {
-        photo: defaultImage,
+        photo: assets.imgSquare,
         area: "20,3 м²",
       },
     ],
     interiors: [
-      { photo: defaultImage },
-      { photo: defaultImage },
-      { photo: defaultImage },
-      { photo: defaultImage },
+      { photo: assets.imgPlaceholder },
+      { photo: assets.imgPlaceholder },
+      { photo: assets.imgPlaceholder },
+      { photo: assets.imgPlaceholder },
     ],
   },
 ];

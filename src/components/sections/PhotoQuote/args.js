@@ -1,4 +1,4 @@
-import defaultImage from "../../../assets/img-placeholder-height.png";
+import { assets } from "../../../assets";
 import { booleanArg, sectionArgs, textArg } from "../../../utils";
 
 export const photoQuoteArgs = sectionArgs({
@@ -25,6 +25,6 @@ export const photoQuoteArgs = sectionArgs({
     defaultValue: true,
     name: "Фото на всю ширину контейнеру",
   }),
-  photoSource: defaultImage,
-  photoSourceMobile: defaultImage,
+  photoSource: assets.imgPlaceholder,
+  photoSourceMobile: assets.imgPlaceholderHeight,
 });

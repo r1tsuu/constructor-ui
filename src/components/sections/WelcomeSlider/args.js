@@ -1,13 +1,12 @@
-import defaultImage from "../../../assets/img-placeholder.png";
-import defaultImageMobile from "../../../assets/img-placeholder-mobile.png";
+import { assets } from "../../../assets";
 
 import { arrowArg, buttonArg, sectionArgs } from "../../../utils";
 
 const _item = (buttonName) => ({
   buttonName,
   buttonLink: "https://google.com",
-  photoSource: defaultImage,
-  photoSourceMobile: defaultImage,
+  photoSource: assets.imgPlaceholder,
+  photoSourceMobile: assets.imgPlaceholder,
 });
 
 export const welcomeSliderArgs = sectionArgs({

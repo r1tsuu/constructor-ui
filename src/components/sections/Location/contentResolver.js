@@ -20,11 +20,11 @@ export const locationContentResolver = ({
 }) => {
   const firstPhoto = resolveField(
     getSourceFile(firstTab_photoSource.value[0], env),
-    defaultContent.firstTab_name
+    defaultContent.firstTab_photoSource
   );
   const secondPhoto = resolveField(
     getSourceFile(secondTab_photoSource.value[0], env),
-    defaultContent.secondTab_name
+    defaultContent.secondTab_photoSource
   );
 
   return {
@@ -37,7 +37,8 @@ export const locationContentResolver = ({
       photoSource: firstPhoto,
       photoSourceMobile: resolveFieldMobile(
         getSourceFile(firstTab_photoSourceMobile.value[0], env),
-        firstPhoto
+        firstPhoto,
+        defaultContent.firstTab_photoSource
       ),
     },
     secondTab: {
@@ -45,7 +46,8 @@ export const locationContentResolver = ({
       photoSource: secondPhoto,
       photoSourceMobile: resolveFieldMobile(
         getSourceFile(secondTab_photoSourceMobile.value[0], env),
-        secondPhoto
+        secondPhoto,
+        defaultContent.secondTab_photoSource
       ),
     },
   };

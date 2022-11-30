@@ -1,11 +1,11 @@
-import defaultPhoto from "../../../assets/img-placeholder.png";
+import { assets } from "../../../assets";
 import { arrowArg, radioArg, sectionArgs, textArg } from "../../../utils";
 
 const _item = (title, description) => ({
   title,
   description,
-  photoSource: defaultPhoto,
-  photoSourceMobile: defaultPhoto,
+  photoSource: assets.imgPlaceholder,
+  photoSourceMobile: assets.imgPlaceholderHeight,
 });
 
 export const advantagesSliderArgs = sectionArgs({

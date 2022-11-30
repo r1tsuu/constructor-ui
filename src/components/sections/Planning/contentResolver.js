@@ -31,6 +31,7 @@ export const planningContentResolver = ({
         const {
           characteristics: defaultCharacteristics,
           advantages: defaultAdvntages,
+          interiors: defaultInteriors,
         } = at;
 
         return {
@@ -131,6 +132,14 @@ export const planningContentResolver = ({
                 ),
               };
             })
+          ),
+          interiors: resolveField(
+            custom_fields.interiors.value.map(
+              (file) => ({
+                photo: getSourceFile(file, env),
+              }),
+              defaultInteriors
+            )
           ),
         };
       })

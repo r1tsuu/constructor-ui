@@ -80,7 +80,15 @@ const ModalSliderContent = ({
                   {area}
                 </Typography>
               )}
-              <img src={photo} alt="" />
+              <img
+                src={photo}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover",
+                }}
+                alt=""
+              />
             </div>
           </SwiperSlide>
         ))}
@@ -248,7 +256,16 @@ const RoomBlock = ({
                   onClick={handleModalPlansOpen}
                   key={_id ?? index}
                 >
-                  <img className={styles.roomPlanPhoto} src={photo} alt="" />
+                  <img
+                    className={styles.roomPlanPhoto}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                    src={photo}
+                    alt=""
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>

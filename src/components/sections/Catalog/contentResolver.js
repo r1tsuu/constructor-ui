@@ -8,14 +8,12 @@ export const catalogContentResolver = ({
   buttonLink,
   static_popupBtn,
   static_linkBtn,
-  static_description,
   defaultContent,
 }) => {
   return {
     staticTexts: {
       popupBtn: static_popupBtn.value,
       linkBtn: static_linkBtn.value,
-      description: static_description.value,
     },
     buttonLink: fieldUtils.resolveField(
       buttonLink.value,

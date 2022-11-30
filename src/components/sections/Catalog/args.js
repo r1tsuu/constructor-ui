@@ -1,4 +1,4 @@
-import defaultPhoto from "../../../assets/img-placeholder.png";
+import { assets } from "../../../assets";
 import {
   arrowArg,
   buttonArg,
@@ -12,11 +12,16 @@ import {
 const _item = (title, description) => ({
   title,
   description,
-  photoSource: defaultPhoto,
-  photoSourceMobile: defaultPhoto,
+  photoSource: assets.imgPlaceholderHeight,
+  photoSourceMobile: assets.imgPlaceholderHeight,
 });
 
-const photos = [defaultPhoto, defaultPhoto, defaultPhoto, defaultPhoto];
+const photos = [
+  assets.imgPlaceholder,
+  assets.imgPlaceholder,
+  assets.imgPlaceholder,
+  assets.imgPlaceholder,
+];
 
 const description = `Період зимових свят — це час мріяти, будувати плани та приміряти нові образи. Тому напередодні Нового року бренд Anna Mi радий презентувати свою нову колекцію, яка об'єднала в собі головні тренди прийдешнього 2022-го року. Як створити свій особливий образ і на які деталі звернути особливу увагу — читайте в нашому блозі.
 Період зимових свят — це час мріяти, будувати плани та приміряти нові образи. Тому напередодні Нового року бренд Anna Mi радий презентувати свою нову колекцію, яка об'єднала в собі головні тренди прийдешнього 2022-го року. Як створити свій особливий образ і на які деталі звернути особливу увагу — читайте в нашому блозі.
@@ -24,6 +29,10 @@ const description = `Період зимових свят — це час мрі
 `;
 
 const tabsPopup = [
+  {
+    title: "Опис",
+    description: "Descriptionasdasdsadsadasdasdsadsa",
+  },
   {
     title: "Технічні характеристики",
     description: "characteristics",
@@ -74,7 +83,7 @@ const tabItems = [
     title: "Головний заголовок в 2 ряди, не більше, або в 1",
     description,
     price: "5 000 грн",
-    photos: [defaultPhoto],
+    photos: [assets.imgPlaceholderHeight],
     tabsPopup,
   },
 ];

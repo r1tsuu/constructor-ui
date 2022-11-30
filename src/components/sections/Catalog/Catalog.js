@@ -51,7 +51,6 @@ const Pagination = ({
 
 const CardModalContent = ({
   title,
-  description,
   price,
   buttonLink,
   photos,
@@ -67,14 +66,6 @@ const CardModalContent = ({
   const { goTo, arrowProps, swiperProps } = useSwiperNavigation({
     type: settings.cardsArrowType,
   });
-
-  const tabsList = [
-    {
-      title: staticTexts.description,
-      description,
-    },
-    ...tabsPopup,
-  ];
 
   const handleTabChange = (index) => setActiveTab(index);
 
@@ -97,7 +88,10 @@ const CardModalContent = ({
         >
           {photos.map((source, index) => (
             <SwiperSlide key={index}>
-              <img src={source} />
+              <img
+                style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                src={source}
+              />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -146,7 +140,7 @@ const CardModalContent = ({
         </div>
         <Tabs.Root value={activeTab} onValueChange={handleTabChange}>
           <Tabs.List className={styles.cardPopupTabsList}>
-            {tabsList.map(({ title }, index) => (
+            {tabsPopup.map(({ title }, index) => (
               <Tabs.Trigger
                 className={styles.cardPopupTab}
                 key={index}
@@ -175,7 +169,7 @@ const CardModalContent = ({
               <div className={styles.tabsListProgressFull} />
             </ColorsInjector>
           </Tabs.List>
-          {tabsList.map(({ description }, index) => (
+          {tabsPopup.map(({ description }, index) => (
             <Tabs.Content value={index} key={index}>
               <Typography
                 className={styles.cardPopupDescription}
@@ -239,7 +233,11 @@ const Card = ({
           >
             {photos.map((source, index) => (
               <SwiperSlide>
-                <img style={{ height: "100%" }} src={source} key={index} />
+                <img
+                  style={{ height: "100%", width: "100%", objectFit: "cover" }}
+                  src={source}
+                  key={index}
+                />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -332,7 +330,7 @@ const CatalogTabItem = ({ settings, tabItems, staticTexts, buttonLink }) => {
 
   const handleRealIndexChange = (swiper) => setCurrentIndex(swiper.realIndex);
   const handlePaginationButtonClick = (index) => goTo(index);
-  console.log(tabItems);
+
   return (
     <div className={styles.tabContent}>
       <Swiper
@@ -453,7 +451,6 @@ export const CatalogTranslationsContainer = ({
       staticTexts={{
         popupBtn: staticTexts.popupBtn || t("CATALOG_DETAILS"),
         linkBtn: staticTexts.linkBtn || t("CATALOG_CALLBACK"),
-        description: staticTexts.description || t("CATALOG_DESCRIPTION"),
       }}
     />
   );
