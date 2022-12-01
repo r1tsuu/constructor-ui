@@ -87,11 +87,14 @@ const CardModalContent = ({
           {...swiperProps}
         >
           {photos.map((source, index) => (
-            <SwiperSlide key={index}>
-              <img
-                style={{ height: "100%", width: "100%", objectFit: "cover" }}
-                src={source}
-              />
+            <SwiperSlide
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+              key={index}
+            >
+              <img style={{ width: "100%" }} src={source} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -223,7 +226,7 @@ const Card = ({
 
   return (
     <ColorsInjector background={settings.cardBackground}>
-      <div className={styles.card}>
+      <div className={styles.cardContent}>
         <div className={styles.cardPhotosWrapper}>
           <Swiper
             rewind
@@ -232,12 +235,13 @@ const Card = ({
             className={styles.cardPhotosSwiper}
           >
             {photos.map((source, index) => (
-              <SwiperSlide>
-                <img
-                  style={{ height: "100%", width: "100%", objectFit: "cover" }}
-                  src={source}
-                  key={index}
-                />
+              <SwiperSlide
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                }}
+              >
+                <img style={{ width: "100%" }} src={source} key={index} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -342,10 +346,7 @@ const CatalogTabItem = ({ settings, tabItems, staticTexts, buttonLink }) => {
         className={styles.tabContentSwiper}
       >
         {tabItems.map((card, index) => (
-          <SwiperSlide
-            className={styles.tabContentSlide}
-            key={card._id ?? index}
-          >
+          <SwiperSlide className={styles.card} key={card._id ?? index}>
             <Card
               buttonLink={buttonLink}
               isMinDesktop={isMinDesktop}

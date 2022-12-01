@@ -49,12 +49,10 @@
 .tabContent {
   margin-top: 30px;
   position: relative;
-  flex-direction: column;
-  display: flex;
-  gap: 30px;
 
   @include laptop {
-    flex-direction: row;
+    display: flex;
+    gap: 30px;
   }
 }
 
@@ -69,6 +67,10 @@
 }
 
 .tabContentSwiper {
+  margin-bottom: 30px;
+  @include laptop {
+    margin-bottom: 0;
+  }
   > div > div {
     width: auto !important;
   }
