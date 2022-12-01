@@ -15,6 +15,7 @@ export const Section = ({
   bgImage,
   bgPosition,
   className,
+  css,
   children,
   ...props
 }) => {

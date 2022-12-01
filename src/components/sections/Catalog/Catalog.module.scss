@@ -222,7 +222,12 @@
     "slider"
     "priceAndBtn";
 
-  padding: 0 30px;
+  padding: 40px 15px;
+  overflow: auto;
+
+  @include tablet {
+    padding: 60px 30px;
+  }
 
   @include laptop {
     grid-template-columns: 1fr 1fr;
@@ -275,8 +280,9 @@
 
 .cardPopupDescription {
   height: 345px;
-
+  padding-bottom: 30px;
   @include tablet {
+    padding-bottom: 40px;
   }
   overflow: auto;
 }
