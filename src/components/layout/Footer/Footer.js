@@ -96,11 +96,11 @@ export const Footer = ({
             <Typography as={"a"} {...settings.downTextSecond}>
               {downTextSecond}
             </Typography>
-            <Link href={"/terms"}>
-              <Typography {...settings.downTextThird} as={"a"}>
-                {downTextThird}
-              </Typography>
-            </Link>
+          </Link>
+          <Link href={"/terms"}>
+            <Typography {...settings.downTextThird} as={"a"}>
+              {downTextThird}
+            </Typography>
           </Link>
         </>
       ) : (
