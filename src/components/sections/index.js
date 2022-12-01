@@ -14,3 +14,4 @@ export * from "./Terms";
 export * from "./Video";
 export * from "./WelcomeSlider";
 export * from "./WelcomeSliderText";
+export * from "./PrivacyPolicy";

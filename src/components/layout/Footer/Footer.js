@@ -1,5 +1,6 @@
 import React from "react";
 import { ColorsInjector } from "../../../containers";
+import { useEnvironment } from "../../../contexts/EnvironmentContext";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import { mediaQueries } from "../../../utils/constants";
 import { resolvePaddings } from "../../../utils/resolvePaddings";
@@ -64,6 +65,7 @@ export const Footer = ({
   buttonLink,
   subscribe,
 }) => {
+  const { Link } = useEnvironment();
   const isMobile = !useMediaQuery(mediaQueries.minTablet);
   const upperItems = [
     {
@@ -88,12 +90,29 @@ export const Footer = ({
 
   const privacyEl = (
     <div className={styles.privacy}>
-      <Typography {...settings.downTextSecond} as={"span"}>
-        {downTextSecond}
-      </Typography>
-      <Typography {...settings.downTextThird} as={"span"}>
-        {downTextThird}
-      </Typography>
+      {Link ? (
+        <>
+          <Link href={"/privacy-policy"}>
+            <Typography as={"a"} {...settings.downTextSecond}>
+              {downTextSecond}
+            </Typography>
+            <Link href={"/terms"}>
+              <Typography {...settings.downTextThird} as={"a"}>
+                {downTextThird}
+              </Typography>
+            </Link>
+          </Link>
+        </>
+      ) : (
+        <>
+          <Typography {...settings.downTextSecond} as={"a"}>
+            {downTextSecond}
+          </Typography>
+          <Typography {...settings.downTextThird} as={"a"}>
+            {downTextThird}
+          </Typography>
+        </>
+      )}
     </div>
   );
 
