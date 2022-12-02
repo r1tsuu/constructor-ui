@@ -48,6 +48,7 @@
 }
 
 .roomTabContent {
+  padding: 50px;
   margin-bottom: 20px;
   width: 100%;
   display: flex;
@@ -78,6 +79,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .arrowsProgress {
+    justify-content: flex-start;
+  }
 }
 
 .roomPlansZoomButton {
@@ -167,17 +172,6 @@
       position: static;
     }
   }
-}
-
-.progress {
-  display: flex;
-  gap: 12px;
-}
-
-.progressSeparator {
-  width: 59px;
-  height: 1px;
-  align-self: center;
 }
 
 .roomLeft {

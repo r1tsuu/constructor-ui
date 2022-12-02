@@ -8,6 +8,7 @@ import {
   booleanArg,
   colorArg,
   arrowArg,
+  arg,
 } from "../../../utils";
 
 const rooms = [
@@ -216,6 +217,14 @@ export const planningArgs = sectionArgs({
     typography: "h2",
     color: "text-primary",
     name: "Заголовок",
+  }),
+  blockBackgroundColor: colorArg({
+    defaultValue: "#334150",
+    name: "Колір фону блоку кімнати",
+  }),
+  blockBorderRadius: arg({
+    defaultValue: "10px",
+    name: "Радіус обводки блоку кімнати",
   }),
   goToMarketButtonType: buttonArg({
     name: "Перейти до маркетплейсу тип кнопки",

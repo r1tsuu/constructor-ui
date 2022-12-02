@@ -1,9 +1,5 @@
 import { atOrFist } from "../../../utils";
-import {
-  resolveField,
-  resolveFieldMobile,
-  getSourceFile,
-} from "../../../utils/fields-utils";
+import { resolveField, getSourceFile } from "../../../utils/fields-utils";
 
 export const planningContentResolver = ({
   subTitle,
