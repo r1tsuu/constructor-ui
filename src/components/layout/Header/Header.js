@@ -80,7 +80,13 @@ export const Header = ({
     </svg>
   );
 
-  const logoElement = (
+  const logoElement = Link ? (
+    <Link href="/">
+      <a className={styles.logoContainer}>
+        <img src={logoSource} alt="logo" />
+      </a>
+    </Link>
+  ) : (
     <div className={styles.logoContainer}>
       <img src={logoSource} alt="logo" />
     </div>
@@ -146,7 +152,7 @@ export const Header = ({
                 </div>
               )}
               {isMinTablet && email && (
-                <div className={styles.flex}>
+                <a href={`mailto:${email}`} className={styles.flex}>
                   <svg
                     width="17"
                     height="18"
@@ -170,13 +176,13 @@ export const Header = ({
                     </ColorsInjector>
                   </svg>
                   <Typography {...settings.email}>{email}</Typography>
-                </div>
+                </a>
               )}
               {isMinLaptop && (
-                <div className={styles.flex}>
+                <a href={`tel:${phone}`} className={styles.flex}>
                   {phoneIconElement}
                   <Typography {...settings.phone}>{phone}</Typography>
-                </div>
+                </a>
               )}
               {isMinLaptop ? (
                 <Button
@@ -238,7 +244,11 @@ export const Header = ({
         }}
       >
         <div className={styles.callbackPopupContainer}>
-          <Button type={settings.callbackPopupPhoneButtonType} label={phone} />
+          <Button
+            href={`tel:${phone}`}
+            type={settings.callbackPopupPhoneButtonType}
+            label={phone}
+          />
           <Button
             type={settings.callbackPopupLinkButtonType}
             href={callbackLink}
