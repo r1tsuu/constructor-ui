@@ -3,6 +3,7 @@ import icon_2 from "./assets/tel.svg";
 import icon_3 from "./assets/f.svg";
 import icon_4 from "./assets/v.svg";
 import icon_5 from "./assets/y.svg";
+import logo from "../Header/logo.svg";
 
 import {
   buttonArg,
@@ -16,6 +17,8 @@ import {
 
 export const footerArgs = sectionArgs(
   {
+    logo,
+    logoLink: "/asd",
     firstText_title: textArg({
       defaultValue: "офіс продажу",
       typography: "h5",

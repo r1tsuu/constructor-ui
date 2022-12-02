@@ -64,6 +64,8 @@ export const Footer = ({
   buttonName,
   buttonLink,
   subscribe,
+  logo,
+  logoLink,
 }) => {
   const { Link } = useEnvironment();
   const isMobile = !useMediaQuery(mediaQueries.minTablet);
@@ -75,10 +77,6 @@ export const Footer = ({
     {
       ...secondText,
       props: settings.secondText,
-    },
-    {
-      ...thirdText,
-      props: settings.thirdText,
     },
   ].filter(({ title }) => Boolean(title));
 
@@ -134,11 +132,23 @@ export const Footer = ({
       >
         <ContentContainer>
           <div className={styles.upperContainer}>
+            {logo && (
+              <a
+                className={styles.upperItem}
+                rel="noreferrer"
+                target={"_blank"}
+                href={logoLink}
+              >
+                <img src={logo} />
+              </a>
+            )}
             {upperItems.map(({ title, description, props }, index) => (
               <div className={styles.upperItem} key={index}>
-                <Typography {...props.title} as={"h4"}>
-                  {title}
-                </Typography>
+                {title && (
+                  <Typography {...props.title} as={"h4"}>
+                    {title}
+                  </Typography>
+                )}
                 <Typography {...props.description} as={"p"}>
                   {description}
                 </Typography>
