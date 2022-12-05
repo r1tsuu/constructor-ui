@@ -86,6 +86,14 @@ export const colorType = (name) => {
   };
 };
 
+export const hiddenType = () => {
+  return {
+    table: {
+      disable: true,
+    },
+  };
+};
+
 export const imageType = () => imagePlaceholder;
 
 export const radio = (options = [], name) => {
@@ -195,6 +203,11 @@ export const arg = ({ defaultValue, name }) => ({
   name,
 });
 
+export const hiddenArg = ({ value }) => ({
+  value,
+  type: "hidden",
+});
+
 export const argsWithBase = ({ args, base }) => {
   return Object.keys(args).reduce(
     (acc, argKey) => ({
@@ -233,6 +246,21 @@ export const args = (args, noPrefix = false) => {
       const settingsArgKey = resolveSettingsArgKey();
 
       switch (argType) {
+        case "hidden":
+          return {
+            args: {
+              ...acc.args,
+              [argKey]: arg.value,
+            },
+            argTypes: {
+              ...acc.argTypes,
+              [argKey]: {
+                table: {
+                  disable: true,
+                },
+              },
+            },
+          };
         case "arg":
           return {
             args: {

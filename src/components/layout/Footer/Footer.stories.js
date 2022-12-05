@@ -4,14 +4,26 @@ import { createSection } from "../../../utils/stories-utils";
 import { parseArgs } from "../../../utils";
 
 import { Footer } from "./Footer";
+import logo from "../Header/logo.svg";
 import { footerArgs } from "./args";
 
 export default createSection({
   name: COMPONENT_KEYS.FOOTER,
   component: Footer,
-  args: footerArgs,
+  args: {
+    args: {
+      ...footerArgs.args,
+      withLogo: false,
+    },
+    argTypes: {
+      ...footerArgs.argTypes,
+      withLogo: {
+        control: "boolean",
+      },
+    },
+  },
 });
 
 export const Default = (args) => {
-  return <Footer {...parseArgs(args)} />;
+  return <Footer logo={args.withLogo && logo} {...parseArgs(args)} />;
 };

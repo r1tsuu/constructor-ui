@@ -17,7 +17,6 @@ import {
 
 export const footerArgs = sectionArgs(
   {
-    logo,
     logoLink: "/asd",
     firstText_title: textArg({
       defaultValue: "офіс продажу",
