@@ -18,3 +18,4 @@ export { SectionProvider } from "./contexts/SectionContext";
 export * from "./components/sections";
 export * from "./components/layout";
 export * from "./components/UiKitSettings";
+export * from "./components/blog";
