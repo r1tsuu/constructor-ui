@@ -86,4 +86,10 @@ export const blogAllPageArgs = args({
   list: hiddenArg({
     value: [_card(), _card(), _card(), _card(), _card(), _card()],
   }),
+  page: hiddenArg({
+    value: 3,
+  }),
+  pageCount: hiddenArg({
+    value: 10,
+  }),
 });

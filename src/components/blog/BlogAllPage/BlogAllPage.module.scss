@@ -83,3 +83,28 @@
     }
   }
 }
+
+.paginateWrapper {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+
+  @include tablet {
+    margin-top: 70px;
+  }
+
+  @include desktop {
+    margin-top: 100px;
+  }
+}
+
+.paginate {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 345px;
+
+  @include tablet {
+    max-width: 414px;
+  }
+}
