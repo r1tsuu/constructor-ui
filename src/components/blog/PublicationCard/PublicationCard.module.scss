@@ -1,0 +1,54 @@
+@import "../../../styles/mixins";
+
+.card {
+  position: relative;
+  cursor: pointer;
+}
+
+.category {
+  font-size: 11px;
+  line-height: 120%;
+  font-family: var(--typography-h2-font-family);
+  height: 22px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
+
+.cardBot {
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.image {
+  height: 233px;
+  object-fit: cover;
+  width: 100%;
+  @include laptop {
+    &[data-grid="2"] {
+      height: 355px;
+    }
+    &[data-grid="4"] {
+      height: 172px;
+    }
+  }
+
+  @include desktop {
+    &[data-grid="2"] {
+      height: 450px;
+    }
+    &[data-grid="3"] {
+      height: 296px;
+    }
+    &[data-grid="4"] {
+      height: 219px;
+    }
+  }
+}

@@ -65,6 +65,7 @@ export const COMPONENT_KEYS = {
 
   // BLOG
   BLOG_PAGE: "BLOG_PAGE",
+  BLOG_ALL_PAGE: "BLOG_ALL_PAGE",
 };
 
 export const COMPONENT_NAMES = {

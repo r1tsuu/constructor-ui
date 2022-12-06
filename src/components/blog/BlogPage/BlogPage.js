@@ -80,6 +80,7 @@ const BlogSlider = ({ photos, settings }) => {
           {...swiperProps}
           spaceBetween={20}
           slidesPerView={1}
+          rewind
         >
           {photos.map(({ source }, index) => (
             <SwiperSlide key={index}>
