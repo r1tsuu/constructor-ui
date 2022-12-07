@@ -2,6 +2,7 @@ import React from "react";
 import { ColorsInjector } from "../../../containers";
 import { ContentContainer, Typography } from "../../shared";
 import { PublicationCard } from "../PublicationCard";
+import ReactPaginate from "react-paginate";
 
 import styles from "./BlogAllPage.module.scss";
 
@@ -11,6 +12,9 @@ export const BlogAllPage = ({
   list,
   onCategoryChange = () => {},
   categories,
+  pageCount,
+  onPageChange = () => {},
+  page,
 }) => {
   return (
     <ColorsInjector background={settings.backgroundColor}>
@@ -52,6 +56,17 @@ export const BlogAllPage = ({
                 gridColumns={settings.gridColumns}
               />
             ))}
+          </div>
+          <div className={styles.paginateWrapper}>
+            <ReactPaginate
+              initialPage={page}
+              sele
+              nextLabel=""
+              previousLabel=""
+              pageCount={pageCount}
+              pageRangeDisplayed={4}
+              marginPagesDisplayed={2}
+            />
           </div>
         </ContentContainer>
       </main>
