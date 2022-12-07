@@ -6,6 +6,33 @@ import { assets } from "../../../assets";
 //   photoSourceMobile: assets.imgPlaceholderHeight,
 // });
 
+const tabs = [
+  {
+    title: "Tab 1",
+    table: {
+      head: ["Nazva", "Nazva 2", "Nazva 3"],
+      body: [
+        ["1. Nazva", "Tekst", "Tekst"],
+        ["2. Nazva", "Tekst", "Tekst"],
+        ["3. Nazva", "Tekst", "Tekst"],
+        ["4. Nazva", "Tekst", "Tekst"],
+      ],
+    },
+  },
+  {
+    title: "Tab 2",
+    table: {
+      head: ["Nazva2", "Nazva 2", "Nazva 3"],
+      body: [
+        ["1. Nazva", "Tekst", "Tekst"],
+        ["2. Nazva", "Tekst", "Tekst"],
+        ["3. Nazva", "Tekst", "Tekst"],
+        ["4. Nazva", "Tekst", "Tekst"],
+      ],
+    },
+  },
+];
+
 export const TableArgs = sectionArgs({
   title: textArg({
     color: "text-primary",
@@ -16,6 +43,7 @@ export const TableArgs = sectionArgs({
     photoSource: assets.imgPlaceholder,
     photoSourceMobile: assets.imgPlaceholderHeight,
   }),
+  tabs,
 });
 
 // const tableTitles = [
