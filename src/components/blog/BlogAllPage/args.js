@@ -1,6 +1,7 @@
 import {
   arg,
   args,
+  arrowArg,
   colorArg,
   hiddenArg,
   radioArg,
@@ -48,11 +49,7 @@ export const blogAllPageArgs = args({
     defaultValue: "accent",
     name: "Таби категорії прогресс колір активний",
   }),
-  gridColumns: radioArg({
-    options: [2, 3, 4],
-    defaultValue: 2,
-    name: "Кількість колонок",
-  }),
+
   card_date: textArg({
     typography: "h5",
     color: "text-secondary",
@@ -66,6 +63,9 @@ export const blogAllPageArgs = args({
   card_borderColor: colorArg({
     defaultValue: "stroke",
     name: "Картка - колір обводки",
+  }),
+  paginationArrowType: arrowArg({
+    name: "Тип стрілки пагінація",
   }),
   categories: hiddenArg({
     value: [
@@ -87,7 +87,7 @@ export const blogAllPageArgs = args({
     value: [_card(), _card(), _card(), _card(), _card(), _card()],
   }),
   page: hiddenArg({
-    value: 3,
+    value: 0,
   }),
   pageCount: hiddenArg({
     value: 10,

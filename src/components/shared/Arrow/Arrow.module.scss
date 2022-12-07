@@ -8,6 +8,10 @@
     stroke: var(--arrow-icon-color);
     transition: stroke 0.25s;
   }
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
 }
 
 .cube {

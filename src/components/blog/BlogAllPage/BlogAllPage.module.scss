@@ -98,13 +98,54 @@
   }
 }
 
+.paginateWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  [data-direction="prev"] {
+    margin-right: 60px;
+  }
+
+  [data-direction="next"] {
+    margin-left: 60px;
+  }
+}
+
 .paginate {
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 345px;
+  justify-content: center;
+  gap: 40px;
+}
+
+.page {
+  color: var(--color-text-secondary);
+  font-family: var(--typography-h2-font-family);
+
+  line-height: var(--typography-h4-line-height);
+  letter-spacing: var(--typography-h4-letter-spacing);
+  font-family: var(--typography-h4-font-family);
+  text-transform: var(--typography-h4-text-transform);
+  font-size: var(--typography-h4-font-size-mobile);
 
   @include tablet {
-    max-width: 414px;
+    font-size: var(--typography-h4-font-size-tablet);
   }
+
+  @include laptop {
+    font-size: var(--typography-h4-font-size-laptop);
+  }
+
+  @include desktop {
+    font-size: var(--typography-h4-font-size-desktop);
+  }
+}
+
+.active {
+  color: var(--color-text-primary);
+}
+
+.next,
+.prev {
+  display: none;
 }

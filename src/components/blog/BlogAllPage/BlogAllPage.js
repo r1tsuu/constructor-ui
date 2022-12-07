@@ -1,6 +1,6 @@
 import React from "react";
 import { ColorsInjector } from "../../../containers";
-import { ContentContainer, Typography } from "../../shared";
+import { Arrow, ContentContainer, Typography } from "../../shared";
 import { PublicationCard } from "../PublicationCard";
 import ReactPaginate from "react-paginate";
 
@@ -47,25 +47,43 @@ export const BlogAllPage = ({
               <div className={styles.tabsListProgressFull} />
             </ColorsInjector>
           </div>
-          <div data-grid={settings.gridColumns} className={styles.grid}>
+          <div data-grid={3} className={styles.grid}>
             {list.map((card, index) => (
               <PublicationCard
                 {...card}
                 key={index}
                 settings={settings.card}
-                gridColumns={settings.gridColumns}
+                gridColumns={3}
               />
             ))}
           </div>
+
           <div className={styles.paginateWrapper}>
+            <Arrow
+              disabled={page === 0}
+              onClick={() => onPageChange(page - 1)}
+              type={settings.paginationArrowType}
+              isPrev
+            />
             <ReactPaginate
-              initialPage={page}
+              forcePage={page}
+              onPageChange={onPageChange}
+              className={styles.paginate}
               sele
               nextLabel=""
               previousLabel=""
+              breakClassName={styles.page}
+              previousClassName={styles.prev}
+              nextClassName={styles.next}
               pageCount={pageCount}
+              activeClassName={styles.active}
+              pageClassName={styles.page}
               pageRangeDisplayed={4}
               marginPagesDisplayed={2}
+            />
+            <Arrow
+              onClick={() => onPageChange(page + 1)}
+              type={settings.paginationArrowType}
             />
           </div>
         </ContentContainer>
