@@ -12,11 +12,14 @@ export const Table = ({ title, settings, tabs }) => {
         <Typography as={"h2"} className={styles.title} {...settings.title}>
           {title}
         </Typography>
-        {tabs.map(({ title }, index) => (
-          <div key={index} onClick={setActiveTab.bind(null, index)}>
-            {title}
-          </div>
-        ))}
+        <div className={styles["tabs-wrapper"]}>
+          {tabs.map(({ title }, index) => (
+            <div key={index} onClick={setActiveTab.bind(null, index)}>
+              {title}
+            </div>
+          ))}
+        </div>
+
         {tabs.map(
           ({ table: { head, body } }, index) =>
             activeTab === index && (
