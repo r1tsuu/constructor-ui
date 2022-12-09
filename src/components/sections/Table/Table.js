@@ -20,29 +20,31 @@ export const Table = ({ title, settings, tabs }) => {
           ))}
         </div>
 
-        {tabs.map(
-          ({ table: { head, body } }, index) =>
-            activeTab === index && (
-              <table key={index}>
-                <thead>
-                  <tr>
-                    {head.map((item, index) => (
-                      <th key={index}>{item}</th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody>
-                  {body.map((item, index) => (
-                    <tr key={index}>
-                      {item.map((item, index) => (
-                        <td key={index}>{item}</td>
+        <div className={styles["table-wrapper"]}>
+          {tabs.map(
+            ({ table: { head, body } }, index) =>
+              activeTab === index && (
+                <table key={index}>
+                  <thead>
+                    <tr>
+                      {head.map((item, index) => (
+                        <th key={index}>{item}</th>
                       ))}
                     </tr>
-                  ))}
-                </tbody>
-              </table>
-            )
-        )}
+                  </thead>
+                  <tbody>
+                    {body.map((item, index) => (
+                      <tr key={index}>
+                        {item.map((item, index) => (
+                          <td key={index}>{item}</td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )
+          )}
+        </div>
       </ContentContainer>
     </Section>
   );
