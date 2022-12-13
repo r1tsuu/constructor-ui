@@ -1,0 +1,92 @@
+@import "../../../styles/mixins";
+
+.subTitle {
+  margin-bottom: 15px;
+}
+
+.title {
+  margin-bottom: 30px;
+
+  @include desktop {
+    margin-bottom: 40px;
+  }
+}
+
+.content {
+  @include laptop {
+    display: flex;
+  }
+  // gap: 80px;
+}
+
+.slider {
+  // width: 60%;
+  max-width: 945px;
+  @include desktop {
+    max-width: 1185px;
+  }
+}
+
+.slide {
+  width: auto;
+  height: auto;
+  min-height: 284px;
+  width: 284px;
+
+  @include tablet {
+    min-height: 374px;
+    width: 295px;
+  }
+
+  @include desktop {
+    width: 375px;
+    min-height: 447px;
+  }
+}
+
+.card {
+  display: grid;
+  width: 100%;
+  height: 100%;
+  padding: 25px 35px;
+}
+
+.cardSubtitle {
+  margin-top: 10px;
+}
+
+.cardDescription {
+  margin-top: 20px;
+
+  @include tablet {
+    margin-top: 40px;
+  }
+
+  @include desktop {
+    margin-top: 50px;
+  }
+}
+
+.cardBottom {
+  align-self: flex-end;
+}
+
+.cardAdvantage {
+  margin-bottom: 15px;
+}
+
+.titleArrowsWrapper {
+  @include tablet {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.arrows {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+  @include tablet {
+    margin-top: 0;
+  }
+}

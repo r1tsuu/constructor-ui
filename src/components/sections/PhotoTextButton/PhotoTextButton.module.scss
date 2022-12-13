@@ -6,6 +6,7 @@
     display: grid;
     grid-template-columns: var(--grid-template-columns);
     grid-template-areas:
+      "photoWrapper icon"
       "photoWrapper subTitle"
       "photoWrapper title"
       "photoWrapper description"
@@ -15,11 +16,22 @@
     &[data-is-reverse="true"] {
       column-gap: 125px;
       grid-template-areas:
+        "icon photoWrapper"
         "subTitle photoWrapper"
         "title photoWrapper"
         "description photoWrapper"
         "buttonWrapper photoWrapper";
     }
+  }
+}
+
+.iconWrapper {
+  grid-area: icon;
+  display: flex;
+  margin-bottom: 15px;
+  justify-content: center;
+  @include laptop {
+    margin-bottom: 30px;
   }
 }
 

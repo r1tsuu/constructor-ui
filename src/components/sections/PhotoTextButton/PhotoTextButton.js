@@ -14,6 +14,7 @@ export const PhotoTextButton = ({
   photoSource,
   photoSourceMobile,
   settings,
+  icon,
 }) => {
   const isMobile = !useMediaQuery(mediaQueries.minTablet);
   return (
@@ -25,6 +26,11 @@ export const PhotoTextButton = ({
         data-is-reverse={settings.isReverse}
         className={styles.grid}
       >
+        {icon && (
+          <div className={styles.iconWrapper}>
+            <img src={icon} alt="" />
+          </div>
+        )}
         {subTitle && (
           <Typography
             as={"h3"}
@@ -45,16 +51,18 @@ export const PhotoTextButton = ({
             {description}
           </Typography>
         )}
-        <div
-          data-position={settings.buttonPosition}
-          className={styles.buttonWrapper}
-        >
-          <Button
-            href={buttonLink}
-            type={settings.buttonType}
-            label={buttonName}
-          />
-        </div>
+        {buttonName && (
+          <div
+            data-position={settings.buttonPosition}
+            className={styles.buttonWrapper}
+          >
+            <Button
+              href={buttonLink}
+              type={settings.buttonType}
+              label={buttonName}
+            />
+          </div>
+        )}
       </ContentContainer>
     </Section>
   );

@@ -7,6 +7,7 @@ import {
   booleanArg,
   arg,
 } from "../../../utils";
+import icon from "./hero_wind.gif";
 
 export const photoTextButtonArgs = sectionArgs({
   gridTemplateColumns: arg({
@@ -45,4 +46,5 @@ export const photoTextButtonArgs = sectionArgs({
     defaultValue: "left",
     name: "Позиція кнопки (зліва / центр / справа)",
   }),
+  icon,
 });
