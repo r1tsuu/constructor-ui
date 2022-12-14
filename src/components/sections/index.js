@@ -10,6 +10,7 @@ export * from "./PhotoQuote";
 export * from "./PhotoTextButton";
 export * from "./Planning";
 export * from "./Technologies";
+export * from "./Table";
 export * from "./Terms";
 export * from "./Video";
 export * from "./WelcomeSlider";
