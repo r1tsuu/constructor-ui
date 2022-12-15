@@ -81,21 +81,25 @@ export const TableArgs = sectionArgs({
     color: "text-primary",
     typography: "h2",
     defaultValue: `Таблиця характеристик`,
+    name: "Заголовок",
   }),
   tabTitle: textArg({
     color: "text-secondary",
     typography: "h4",
     defaultValue: `tab`,
+    name: "Заголовок табу",
   }),
   tableTitle: textArg({
     color: "text-primary",
     typography: "p",
     defaultValue: `Назва 2`,
+    name: "Таблиця - заголовок колонки",
   }),
   tableBodyTitle: textArg({
     color: "text-secondary",
     typography: "p",
     defaultValue: `Текст колонки`,
+    name: "Таблиця - текст колонки",
   }),
   activeTableRowColorTitle: colorArg({
     defaultValue: "text-primary",
