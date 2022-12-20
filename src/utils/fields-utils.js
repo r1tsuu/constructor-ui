@@ -5,12 +5,18 @@ export const getSingleFileSourceWithType = (singleFileWithType, SITE_URL) => {
 export const getSingleFileSource = ({
   singleFile,
   SITE_URL,
-  type = "compression",
+  type = "path",
 }) => {
   return getSingleFileSourceWithType(singleFile.path, SITE_URL);
 };
 
-export const getSourceFile = (file, env, type = "compression") => {
+export const getSourceFileNullable = (file, env, type = "path") => {
+  if (!file) return null;
+  if (!file[type]) return null;
+  return `${env.SITE_URL}${file.path.replace("./", "/")}`;
+};
+
+export const getSourceFile = (file, env, type = "path") => {
   if (!file) return "_";
   if (!file[type]) return "_";
   return `${env.SITE_URL}${file.path.replace("./", "/")}`;
