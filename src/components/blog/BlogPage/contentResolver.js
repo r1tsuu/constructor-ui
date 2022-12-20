@@ -2,6 +2,7 @@ import { COMPONENT_KEYS } from "../../../utils/constants";
 import {
   resolveField,
   getSourceFileNullable,
+  getSourceFile,
 } from "../../../utils/fields-utils";
 
 const imageResolver = ({ photoSource, photoSourceMobile, env }) => {
