@@ -85,7 +85,7 @@ export const WelcomeSlider = ({ items, settings }) => {
                           <Arrow {...arrowProps.prev} />
                           <Arrow {...arrowProps.next} />
                         </div>
-                        {isMinLaptop && (
+                        {isMinLaptop && buttonName && (
                           <div className={styles.minLaptopButtonWrapper}>
                             <Button
                               href={buttonLink}
@@ -110,7 +110,7 @@ export const WelcomeSlider = ({ items, settings }) => {
           maxValue={items.length}
           arrowProps={arrowProps}
         />
-        {!isMinLaptop && (
+        {!isMinLaptop && items[realIndex].buttonName && (
           <Button
             type={settings.buttonType}
             label={items[realIndex].buttonName}

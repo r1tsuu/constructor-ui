@@ -58,66 +58,69 @@ export const TermsPhoto = ({
           {minTablet && <Arrows {...arrowProps} />}
         </div>
         <div className={styles.content}>
-          <Swiper
-            {...swiperProps}
-            className={styles.slider}
-            slidesPerView={"auto"}
-            spaceBetween={20}
-          >
-            {items.map(
-              (
-                {
-                  _id,
-                  title,
-                  subTitle,
-                  description,
-                  advantage,
-                  buttonName,
-                  buttonLink,
-                },
-                index
-              ) => (
-                <SwiperSlide key={_id || index} className={styles.slide}>
-                  <Card {...settings.card.props} className={styles.card}>
-                    <Typography {...settings.card.title}>{title}</Typography>
-                    {subTitle && (
-                      <Typography
-                        className={styles.cardSubtitle}
-                        {...settings.card.subTitle}
-                      >
-                        {subTitle}
-                      </Typography>
-                    )}
-                    <Typography
-                      className={styles.cardDescription}
-                      {...settings.card.description}
-                    >
-                      {description}
-                    </Typography>
-                    <div className={styles.cardBottom}>
-                      {advantage && (
+          <div className={styles.swiperWrapper}>
+            <Swiper
+              {...swiperProps}
+              className={styles.slider}
+              slidesPerView={"auto"}
+              spaceBetween={20}
+            >
+              {items.map(
+                (
+                  {
+                    _id,
+                    title,
+                    subTitle,
+                    description,
+                    advantage,
+                    buttonName,
+                    buttonLink,
+                  },
+                  index
+                ) => (
+                  <SwiperSlide key={_id || index} className={styles.slide}>
+                    <Card {...settings.card.props} className={styles.card}>
+                      <Typography {...settings.card.title}>{title}</Typography>
+                      {subTitle && (
                         <Typography
-                          className={styles.cardAdvantage}
-                          {...settings.card.advantage}
+                          className={styles.cardSubtitle}
+                          {...settings.card.subTitle}
                         >
-                          {advantage}
+                          {subTitle}
                         </Typography>
                       )}
-                      <div className={styles.cardButtonWrapper}>
-                        <Button
-                          as={"a"}
-                          href={buttonLink}
-                          target={"_blank"}
-                          type={settings.buttonType}
-                          label={buttonName}
-                        />
+                      <Typography
+                        className={styles.cardDescription}
+                        {...settings.card.description}
+                      >
+                        {description}
+                      </Typography>
+                      <div className={styles.cardBottom}>
+                        {advantage && (
+                          <Typography
+                            className={styles.cardAdvantage}
+                            {...settings.card.advantage}
+                          >
+                            {advantage}
+                          </Typography>
+                        )}
+                        <div className={styles.cardButtonWrapper}>
+                          <Button
+                            as={"a"}
+                            href={buttonLink}
+                            target={"_blank"}
+                            type={settings.buttonType}
+                            label={buttonName}
+                          />
+                        </div>
                       </div>
-                    </div>
-                  </Card>
-                </SwiperSlide>
-              )
-            )}
-          </Swiper>
+                    </Card>
+                  </SwiperSlide>
+                )
+              )}
+            </Swiper>
+            {!minTablet && <Arrows {...arrowProps} />}
+          </div>
 
           {minLaptop && (
             <div>
@@ -126,7 +129,6 @@ export const TermsPhoto = ({
             </div>
           )}
         </div>
-        {!minTablet && <Arrows {...arrowProps} />}
       </ContentContainer>
     </Section>
   );

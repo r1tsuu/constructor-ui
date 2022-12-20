@@ -82,10 +82,19 @@
   letter-spacing: var(--typography-p1-letter-spacing);
   font-family: var(--typography-p1-font-family);
   text-transform: var(--typography-p1-text-transform);
-  font-size: var(--typography-p1-font-size);
+  font-size: var(--typography-p1-font-size-mobile);
+
+  @include tablet {
+    font-size: var(--typography-p1-font-size-tablet);
+  }
 
   @include laptop {
+    font-size: var(--typography-p1-font-size-laptop);
     height: var(--input-height);
+  }
+
+  @include desktop {
+    font-size: var(--typography-p1-font-size-desktop);
   }
 
   &[data-is-textarea="true"] {
@@ -100,7 +109,20 @@
     letter-spacing: var(--typography-p1-letter-spacing);
     font-family: var(--typography-p1-font-family);
     text-transform: var(--typography-p1-text-transform);
-    font-size: var(--typography-p1-font-size);
+    font-size: var(--typography-p1-font-size-mobile);
+
+    @include tablet {
+      font-size: var(--typography-p1-font-size-tablet);
+    }
+
+    @include laptop {
+      font-size: var(--typography-p1-font-size-laptop);
+      height: var(--input-height);
+    }
+
+    @include desktop {
+      font-size: var(--typography-p1-font-size-desktop);
+    }
   }
 
   &:focus-visible {
