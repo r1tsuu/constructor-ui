@@ -19,9 +19,7 @@ const imageResolver = ({ photoSource, photoSourceMobile, env }) => {
 
 const listResolver = ({ list }) => {
   return {
-    list: list.data.map(({ custom_fields: { title } }) => ({
-      title: title.value,
-    })),
+    list: list.data.map(({ custom_fields: { title } }) => title.value),
   };
 };
 
