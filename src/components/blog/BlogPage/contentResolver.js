@@ -98,8 +98,13 @@ const componentBlockTypes = {
   },
 };
 
-export const blogPageContentResolver = ({ contentData, env, ...rest }) => {
-  return {
+export const blogPageContentResolver = ({
+  contentData,
+  photo,
+  env,
+  ...rest
+}) => {
+  const returned = {
     contentData: contentData.map(({ component, content }) => {
       const { key, contentResolver } = componentBlockTypes[component];
 
@@ -111,6 +116,10 @@ export const blogPageContentResolver = ({ contentData, env, ...rest }) => {
         }),
       };
     }),
+    photoSource: `${env.SITE_URL}${photo.replace("./", "/")}`,
     ...rest,
   };
+
+  console.log(returned);
+  return returned;
 };
