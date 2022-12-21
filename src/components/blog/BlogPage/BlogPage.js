@@ -153,7 +153,7 @@ export const BlogPage = ({
   categoryBorderColor,
   categoryBackground,
   settings,
-  content,
+  contentData: content,
 }) => {
   const [date, setDate] = useState();
 

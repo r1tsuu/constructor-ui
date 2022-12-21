@@ -98,9 +98,9 @@ const componentBlockTypes = {
   },
 };
 
-export const blogPageContentResolver = ({ constructror, env, ...rest }) => {
+export const blogPageContentResolver = ({ contentData, env, ...rest }) => {
   return {
-    constructor: constructror.map(({ component, content }) => {
+    contentData: contentData.map(({ component, content }) => {
       const { key, contentResolver } = componentBlockTypes[component];
 
       return {
@@ -109,8 +109,8 @@ export const blogPageContentResolver = ({ constructror, env, ...rest }) => {
           ...content,
           env,
         }),
-        ...rest,
       };
     }),
+    ...rest,
   };
 };
