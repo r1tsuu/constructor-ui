@@ -98,7 +98,7 @@ const componentBlockTypes = {
   },
 };
 
-export const blogPageContentResolver = ({ constructror, env }) => {
+export const blogPageContentResolver = ({ constructror, env, ...rest }) => {
   return {
     constructor: constructror.map(({ component, content }) => {
       const { key, contentResolver } = componentBlockTypes[component];
@@ -109,6 +109,7 @@ export const blogPageContentResolver = ({ constructror, env }) => {
           ...content,
           env,
         }),
+        ...rest,
       };
     }),
   };
