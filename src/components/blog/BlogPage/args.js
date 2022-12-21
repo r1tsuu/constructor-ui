@@ -119,7 +119,7 @@ export const blogPageArgs = args({
     defaultValue: "text-primary",
     name: "Блок Слайдер - колір пагінації активний",
   }),
-  content: hiddenArg({
+  contentData: hiddenArg({
     value: [
       {
         blockType: "text",
