@@ -37,10 +37,12 @@ const quoteResolver = ({ title }) => {
   };
 };
 
-const videoResolver = ({ env, src, previewPhotoSrc }) => {
+const videoResolver = ({ env, src, video, photoPreviewSrc }) => {
   return {
-    src: getSourceFileNullable(src.value[0], env),
-    previewPhotoSrc: getSourceFileNullable(previewPhotoSrc.value[0], env),
+    src: video.value.length
+      ? getSourceFileNullable(video.value[0], env)
+      : src.value,
+    previewPhotoSrc: getSourceFileNullable(photoPreviewSrc.value[0], env),
   };
 };
 
