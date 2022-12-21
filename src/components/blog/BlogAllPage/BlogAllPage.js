@@ -58,34 +58,36 @@ export const BlogAllPage = ({
             ))}
           </div>
 
-          <div className={styles.paginateWrapper}>
-            <Arrow
-              disabled={page === 0}
-              onClick={() => onPageChange(page - 1)}
-              type={settings.paginationArrowType}
-              isPrev
-            />
-            <ReactPaginate
-              forcePage={page}
-              onPageChange={onPageChange}
-              className={styles.paginate}
-              sele
-              nextLabel=""
-              previousLabel=""
-              breakClassName={styles.page}
-              previousClassName={styles.prev}
-              nextClassName={styles.next}
-              pageCount={pageCount}
-              activeClassName={styles.active}
-              pageClassName={styles.page}
-              pageRangeDisplayed={4}
-              marginPagesDisplayed={2}
-            />
-            <Arrow
-              onClick={() => onPageChange(page + 1)}
-              type={settings.paginationArrowType}
-            />
-          </div>
+          {pageCount !== 1 && (
+            <div className={styles.paginateWrapper}>
+              <Arrow
+                disabled={page === 0}
+                onClick={() => onPageChange(page - 1)}
+                type={settings.paginationArrowType}
+                isPrev
+              />
+              <ReactPaginate
+                forcePage={page}
+                onPageChange={onPageChange}
+                className={styles.paginate}
+                sele
+                nextLabel=""
+                previousLabel=""
+                breakClassName={styles.page}
+                previousClassName={styles.prev}
+                nextClassName={styles.next}
+                pageCount={pageCount}
+                activeClassName={styles.active}
+                pageClassName={styles.page}
+                pageRangeDisplayed={4}
+                marginPagesDisplayed={2}
+              />
+              <Arrow
+                onClick={() => onPageChange(page + 1)}
+                type={settings.paginationArrowType}
+              />
+            </div>
+          )}
         </ContentContainer>
       </main>
     </ColorsInjector>
