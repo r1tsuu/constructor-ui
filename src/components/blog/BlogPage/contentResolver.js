@@ -27,7 +27,9 @@ const listResolver = ({ list }) => {
 
 const sliderResolver = ({ photos, env }) => {
   return {
-    photos: photos.value.map((file) => getSourceFileNullable(file, env)),
+    photos: photos.value.map((file) => ({
+      source: getSourceFileNullable(file, env),
+    })),
   };
 };
 
