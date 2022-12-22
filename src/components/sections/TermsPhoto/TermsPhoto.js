@@ -55,10 +55,10 @@ export const TermsPhoto = ({
           <Typography as={"h2"} className={styles.title} {...settings.title}>
             {title}
           </Typography>
-          {minTablet && <Arrows {...arrowProps} />}
         </div>
         <div className={styles.content}>
           <div className={styles.swiperWrapper}>
+            {minTablet && <Arrows {...arrowProps} />}
             <Swiper
               {...swiperProps}
               className={styles.slider}
