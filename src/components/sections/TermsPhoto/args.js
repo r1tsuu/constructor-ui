@@ -6,8 +6,6 @@ import {
   cardArg,
 } from "../../../utils";
 
-import icon from "./LL_icons_DIM.gif";
-
 const _card = ({
   title = "xx",
   subTitle = null,
@@ -36,7 +34,6 @@ export const termsPhotoArgs = sectionArgs({
     typography: "h2",
     name: "Заголовок",
   }),
-  photo: icon,
   items: [
     _card({
       title: "100%",

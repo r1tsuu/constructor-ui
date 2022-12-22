@@ -11,7 +11,7 @@ export const termsPhotoContentResolver = ({
 }) => ({
   title: fieldUtils.resolveField(title.value, defaultContent.title),
   subTitle: fieldUtils.resolveField(subTitle.value, defaultContent.subTitle),
-  photo: fieldUtils.getSourceFile(photo[0], env),
+  photo: fieldUtils.getSourceFile(photo.value[0], env),
   items: fieldUtils.resolveField(
     items.data.map(({ custom_fields, _id }, index) => ({
       title: fieldUtils.resolveField(

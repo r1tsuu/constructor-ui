@@ -6,10 +6,14 @@ import { parseArgs } from "../../../utils";
 import { PhotoTextButton } from "./PhotoTextButton";
 import { photoTextButtonArgs } from "./args";
 
+import icon from "./hero_wind.gif";
+
 export default createSection({
   name: COMPONENT_KEYS.PHOTO_TEXT_BUTTON,
   component: PhotoTextButton,
   args: photoTextButtonArgs,
 });
 
-export const Default = (args) => <PhotoTextButton {...parseArgs(args)} />;
+export const Default = (args) => (
+  <PhotoTextButton icon={icon} {...parseArgs(args)} />
+);
