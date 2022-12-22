@@ -1,0 +1,205 @@
+@import "../../../styles/mixins";
+
+.subTitle {
+  margin-bottom: 15px;
+}
+.content-wrapper {
+  margin-top: 30px;
+  padding: 15px;
+  margin-left: -15px;
+  margin-right: -15px;
+  @include tablet {
+    margin-left: 0;
+    margin-right: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+  }
+  @include laptop {
+    grid-template-columns: 0.6fr 1fr;
+    column-gap: 70px;
+    padding: 50px 50px;
+  }
+  @include desktop {
+    grid-template-columns: 0.61fr 1fr;
+    column-gap: 85px;
+    margin-top: 40px;
+  }
+}
+
+.tabs-wrapper {
+  display: flex;
+  gap: 40px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.tab {
+  position: relative;
+}
+
+.tabsListProgressFull {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+}
+
+.tabProgress {
+  position: absolute;
+  bottom: -10px;
+  z-index: 3;
+  height: 1px;
+  width: 100%;
+  transform: scale(0);
+  transition: transform 0.5s;
+  &[data-is-active="true"] {
+    transform: scale(1);
+  }
+}
+
+.tab-item {
+  cursor: pointer;
+}
+
+.slider-wrapper {
+  position: relative;
+  --arrow-cube-dimensions: 30px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  z-index: 5;
+  gap: 10px;
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+}
+
+.paginationButton {
+  padding: 0;
+  width: 8px;
+  border-radius: 50%;
+  height: 8px;
+  transition: transform 0.25s, background-color 0.25s;
+
+  @include laptop {
+    height: 8px;
+    width: 8px;
+  }
+
+  &[data-is-active="true"] {
+    transform: scale(1.6);
+  }
+}
+
+.table-wrapper {
+  display: grid;
+  overflow: auto;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  height: 290px;
+  &::-webkit-scrollbar {
+    height: 2px;
+    width: 2px;
+    background-color: var(--color-stroke);
+    @include laptop {
+      height: 2px;
+    }
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+  }
+  @include tablet {
+    margin-top: 0;
+    height: 375px;
+  }
+  @include laptop {
+    // cursor: grab;
+  }
+  @include desktop {
+    height: 420px;
+  }
+}
+
+.table {
+  border-spacing: 0;
+}
+
+.table-title {
+  padding: 20px 20px;
+  min-width: 162px;
+  border-width: 1px;
+  border-style: solid;
+}
+
+.table-head {
+  position: sticky;
+  top: 0;
+}
+
+.table-body-title {
+  padding: 12px 20px;
+  border: 1px solid var(--color-accent);
+  text-align: center;
+  border-bottom-width: 1px;
+  // cursor: pointer;
+}
+
+.button-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 25px;
+  @include tablet {
+    flex-direction: row;
+    justify-content: center;
+    grid-column: 2 span;
+  }
+  @include laptop {
+    grid-column: 2 / 1 span;
+    align-items: end;
+  }
+}
+
+.table-body-row {
+  // border-width: 1px;
+  // border-style: solid;
+}
+
+.slideImg {
+  @include tablet {
+    height: 375px;
+    object-fit: cover;
+  }
+  @include laptop {
+    height: 501px;
+  }
+  @include desktop {
+    height: 653px;
+  }
+}
+
+.slideArrows {
+  @include laptop {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    // align-self: center;
+    z-index: 2;
+    width: 100%;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+
+.slider-wrapper {
+  @include laptop {
+    display: flex;
+    align-items: center;
+    grid-row: 1 / 2 span;
+  }
+}

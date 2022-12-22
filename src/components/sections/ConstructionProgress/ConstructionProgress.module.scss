@@ -1,0 +1,104 @@
+@import "../../../styles/mixins";
+
+.subTitle {
+  margin-bottom: 15px;
+}
+
+.title {
+  margin-bottom: 30px;
+
+  @include desktop {
+    margin-bottom: 40px;
+  }
+}
+
+.content-wrapper {
+  display: grid;
+  row-gap: 30px;
+  @include tablet {
+    grid-template-columns: 1fr 0.46fr;
+    column-gap: 40px;
+    padding: 40px;
+    border: 1px solid var(--color-stroke);
+    & > div:first-child > :last-child {
+      padding: 20px 30px 40px 30px;
+      gap: 15px;
+      @include desktop {
+        padding: 20px 40px 50px 40px;
+      }
+    }
+  }
+  @include laptop {
+    grid-template-columns: 0.56fr 1fr;
+  }
+
+  @include desktop {
+    column-gap: 50px;
+    & > div:first-child > :nth-child(2) > img {
+      height: 305px;
+    }
+  }
+}
+
+.cards-wrapper {
+  border-top: 1px solid var(--color-stroke);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-stroke);
+  &:nth-child(n + 3) {
+    display: none;
+  }
+  @include tablet {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    &:nth-child(n + 5) {
+      display: flex;
+    }
+  }
+  @include laptop {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 23px;
+    padding-bottom: 23px;
+    &:nth-child(n + 1) {
+      display: flex;
+    }
+  }
+  @include desktop {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+
+.card-link {
+  position: relative;
+  width: max-content;
+}
+
+.tabProgress {
+  position: absolute;
+  bottom: -3px;
+  z-index: 3;
+  height: 1px;
+  width: 100%;
+  transform: scale(1);
+  transition: transform 0.5s;
+}
+
+.button-wrapper {
+  padding-top: 30px;
+  @include tablet {
+    display: flex;
+    justify-content: center;
+  }
+  @include desktop {
+    padding-top: 40px;
+  }
+}
