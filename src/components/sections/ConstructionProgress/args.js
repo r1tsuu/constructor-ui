@@ -1,4 +1,12 @@
-import { arg, booleanArg, buttonArg, colorArg, hiddenArg, sectionArgs, textArg } from "../../../utils";
+import {
+  arg,
+  booleanArg,
+  buttonArg,
+  colorArg,
+  hiddenArg,
+  sectionArgs,
+  textArg,
+} from "../../../utils";
 import { assets } from "../../../assets";
 
 const cardImg = {
@@ -88,7 +96,7 @@ export const ConstructionProgressArgs = sectionArgs({
     name: "Картка - заголовок",
   }),
   card_link: textArg({
-    typography: "p",
+    typography: "p1",
     color: "text-primary",
     name: "Картка - посилання",
   }),

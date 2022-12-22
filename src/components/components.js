@@ -100,22 +100,34 @@ import {
 } from "./UiKitSettings/CustomThemeColors";
 import { Typographies, typographiesArgs } from "./UiKitSettings/Typographies";
 
-const section = (Component, allArgs, contentResolver) => {
+const section = (
+  Component,
+  allArgs,
+  contentResolver,
+  hook = () => ({
+    isRender: true,
+  })
+) => {
   const defaultArgs = allArgs.args;
   return {
     defaultSettings: defaultArgs,
     Component({ settings, ...content }) {
+      const { isRender, ...hookData } = hook(content);
       const env = useEnvironment();
-      return (
-        <Component
-          settings={parseArgs(settings ?? defaultArgs).settings}
-          {...contentResolver({
-            ...content,
-            env,
-            defaultContent: defaultArgs,
-          })}
-        />
-      );
+
+      if (isRender)
+        return (
+          <Component
+            settings={parseArgs(settings ?? defaultArgs).settings}
+            {...contentResolver({
+              ...content,
+              env,
+              defaultContent: defaultArgs,
+            })}
+            {...hookData}
+          />
+        );
+      return null;
     },
     type: "section",
   };

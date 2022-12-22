@@ -23,6 +23,7 @@ const translations = {
     CATALOG_DESCRIPTION: "Опис",
 
     FOOTER_SCROOL_UP: "Вгору",
+    DETAILS: "Детальніше",
   },
   ru: {
     FORM_NAME: "Имя:",
@@ -46,6 +47,7 @@ const translations = {
     CATALOG_DESCRIPTION: "Описание",
 
     FOOTER_SCROOL_UP: "Вгору",
+    DETAILS: "Детальнее",
   },
   en: {
     FORM_NAME: "Name:",
@@ -69,6 +71,7 @@ const translations = {
     CATALOG_DESCRIPTION: "Description",
 
     FOOTER_SCROOL_UP: "Вгору",
+    DETAILS: "Details",
   },
 };
 
@@ -117,4 +120,9 @@ export const useTranslation = () => {
       ? translations[currentLanguage][translationCode]
       : translationCode;
   };
+};
+
+export const useCurrentLanguage = () => {
+  const { currentLanguage } = useContext(LanguageContext);
+  return currentLanguage;
 };

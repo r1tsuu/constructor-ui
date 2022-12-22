@@ -499,13 +499,18 @@ export const toStrZeroes = (num, places = 2) => {
   return String(num).padStart(places, "0");
 };
 
-export const section = (Component, allArgs, contentResolver) => {
+export const section = (
+  Component,
+  allArgs,
+  contentResolver,
+  hook = (element, content) => element
+) => {
   const defaultArgs = allArgs.args;
   return {
     defaultSettings: defaultArgs,
     Component({ settings, ...content }) {
       const env = useEnvironment();
-      return (
+      const el = hook(
         <Component
           settings={parseArgs(settings ?? defaultArgs).settings}
           {...contentResolver({
@@ -513,8 +518,11 @@ export const section = (Component, allArgs, contentResolver) => {
             env,
             defaultContent: defaultArgs,
           })}
-        />
+        />,
+        content
       );
+
+      return el;
     },
     type: "section",
   };
