@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { ColorsInjector } from "../../../containers";
+import { useEnvironment } from "../../../contexts/EnvironmentContext";
 import { Typography } from "../../shared";
 
 import styles from "./PublicationCard.module.scss";
@@ -15,12 +16,13 @@ export const PublicationCard = ({
   categoryBackgroundColor,
   categoryBorderColor,
   photoSource,
+  url,
 }) => {
   const [date, setDate] = useState();
-
+  const { Link } = useEnvironment();
   useEffect(() => setDate(new Date(createdAt).toLocaleDateString()));
 
-  return (
+  const el = (
     <div className={styles.card}>
       <div
         style={{
@@ -48,4 +50,13 @@ export const PublicationCard = ({
       </ColorsInjector>
     </div>
   );
+
+  if (Link)
+    return (
+      <Link href={url}>
+        <a>{el}</a>
+      </Link>
+    );
+
+  return el;
 };

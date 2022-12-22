@@ -24,8 +24,13 @@ export const BlogAllPage = ({
             {title}
           </Typography>
           <div className={styles.categories}>
-            {categories.map((category, index) => {
-              const handleClick = () => onCategoryChange(category);
+            {categories.map(({ title, isActive, ...rest }, index) => {
+              const handleClick = () =>
+                onCategoryChange({
+                  title,
+                  isActive,
+                  ...rest,
+                });
 
               return (
                 <div onClick={handleClick} key={index} className={styles.tab}>
