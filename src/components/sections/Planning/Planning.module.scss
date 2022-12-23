@@ -27,6 +27,8 @@
   display: flex;
   overflow: auto;
   margin-bottom: 60px;
+  position: relative;
+  padding-bottom: 20px;
 
   @include tablet {
     margin-bottom: 45px;
@@ -44,11 +46,15 @@
 .roomTabTrigger {
   background: inherit;
   border: none;
+  position: relative;
   cursor: pointer;
 }
 
 .roomTabContent {
   padding: 50px;
+}
+
+.roomTabContentGrid {
   margin-bottom: 20px;
   width: 100%;
   display: flex;
@@ -56,6 +62,7 @@
   @include laptop {
     flex-direction: row;
     gap: 133px;
+    // height: 480px;
   }
 
   @include desktop {
@@ -81,7 +88,7 @@
   align-items: center;
 
   .arrowsProgress {
-    justify-content: flex-start;
+    // justify-content: flex-start;
   }
 }
 
@@ -109,23 +116,23 @@
 .roomPlansSliderWrapper {
   margin-top: 24px;
   margin-bottom: 40px;
-  width: 225px;
-  height: 334px;
+  // width: 225px;
+  // height: 334px;
 
-  @include tablet {
-    width: 439px;
-    height: 586px;
-  }
+  // @include tablet {
+  //   width: 439px;
+  //   height: 586px;
+  // }
 
-  @include laptop {
-    width: 336px;
-    height: 468px;
-  }
+  // @include laptop {
+  //   width: 336px;
+  //   height: 468px;
+  // }
 
-  @include desktop {
-    width: 410px;
-    height: 572px;
-  }
+  // @include desktop {
+  //   width: 410px;
+  //   height: 572px;
+  // }
 
   @include tablet {
     margin-bottom: 24px;
@@ -156,8 +163,10 @@
   position: relative;
   width: 100%;
   align-items: center;
-  max-width: 325px;
   gap: 36px;
+  @include laptop {
+    justify-content: unset;
+  }
 
   .arrow {
     position: absolute;
@@ -170,6 +179,7 @@
 
     @include tablet {
       position: static;
+      max-width: 325px;
     }
   }
 }
@@ -236,9 +246,9 @@
 
 .roomAdvantages {
   padding: 25px 0;
-  border-style: solid;
-  border-top-width: 1px;
-  border-bottom-width: 1px;
+  // border-style: solid;
+  // border-top-width: 1px;
+  // border-bottom-width: 1px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 16px;
@@ -320,4 +330,62 @@
   width: 100%;
   justify-content: center;
   display: flex;
+}
+
+.line {
+  position: absolute;
+  bottom: -20px;
+  z-index: 3;
+  height: 1px;
+  width: 100%;
+  transform: scale(0);
+  transition: transform 0.5s;
+  &[data-is-active="true"] {
+    transform: scale(1);
+  }
+}
+
+.lineFull {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  height: 1px;
+}
+
+.detailsZoomMobile {
+  display: flex;
+  gap: 20px;
+  margin-top: 40px;
+  width: 100%;
+
+  @include tablet {
+    margin-top: 0;
+  }
+}
+
+.zoom {
+  height: 50px;
+  min-width: 50px;
+  width: 50px;
+  border-width: 1px;
+  border-style: solid;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.planMobileControls {
+  width: 100%;
+
+  @include tablet {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.botLeft {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }

@@ -10,6 +10,8 @@ import {
   arrowArg,
   arg,
 } from "../../../utils";
+import testPlan from "./assets/Group.svg";
+import testPlan2 from "./assets/Group2.svg";
 
 const rooms = [
   {
@@ -51,24 +53,12 @@ const rooms = [
     ],
     plans: [
       {
-        photo: assets.imgSquare,
+        photo: testPlan,
         area: "50,3 м²",
       },
       {
-        photo: assets.imgSquare,
+        photo: testPlan2,
         area: "60,3 м²",
-      },
-      {
-        photo: assets.imgSquare,
-        area: "70,3 м²",
-      },
-      {
-        photo: assets.imgSquare,
-        area: "90,3 м²",
-      },
-      {
-        photo: assets.imgSquare,
-        area: "120,3 м²",
       },
     ],
     interiors: [
@@ -177,6 +167,7 @@ const rooms = [
       {
         photo: assets.imgSquare,
         area: "30,3 м²",
+        pdf: "https://www.africau.edu/images/default/sample.pdf",
       },
       {
         photo: assets.imgSquare,
@@ -235,6 +226,9 @@ export const planningArgs = sectionArgs({
   roomInteriorsButtonType: buttonArg({
     name: "Кімната інтер'єри тип кнопки",
   }),
+  pdfButtonType: buttonArg({
+    name: "Деталі планування тип кнопки",
+  }),
   plansArrowType: arrowArg({
     name: "Планування слайдер тип стрілок",
   }),
@@ -243,12 +237,20 @@ export const planningArgs = sectionArgs({
   }),
   roomTitle: textArg({
     typography: "h4",
-    color: "text-primary",
+    color: "text-secondary",
     name: "Кімната таб",
   }),
   roomTitleActiveColor: colorArg({
-    defaultValue: "accent",
+    defaultValue: "text-primary",
     name: "Кімната таб - колір active",
+  }),
+  roomLineActiveColor: colorArg({
+    defaultValue: "#C5A57C",
+    name: "Кімната таб - колір лінії active",
+  }),
+  roomLineColor: colorArg({
+    defaultValue: "stroke",
+    name: "Кімната таб - колір лінії",
   }),
   blockTitle: textArg({
     typography: "h4",
@@ -292,6 +294,10 @@ export const planningArgs = sectionArgs({
     typography: "h5",
     color: "text-primary",
     name: "Блок планування слайдер площадь назва",
+  }),
+  zoomButtonBorderRadius: arg({
+    defaultValue: "0px",
+    name: "Кнопка планування Zoom - радіус обводки",
   }),
   zoomButtonBackground: colorArg({
     defaultValue: "transparent",

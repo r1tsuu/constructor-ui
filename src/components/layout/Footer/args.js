@@ -13,6 +13,7 @@ import {
   textArg,
   arg,
   booleanArg,
+  radioArg,
 } from "../../../utils";
 
 export const footerArgs = sectionArgs(
@@ -108,6 +109,10 @@ export const footerArgs = sectionArgs(
       name: "Увімкнути / Вимкнути Subcribe",
     }),
 
+    subscribe_borderRadius: arg({
+      defaultValue: "0px",
+      name: "Subscribe - радіус обводки",
+    }),
     subscribe_backgroundColor: colorArg({
       defaultValue: "background",
       name: "Subscribe - Колір фону блоку форми",
@@ -133,6 +138,11 @@ export const footerArgs = sectionArgs(
       color: "text-primary",
       typography: "p2",
       name: "Subcribe - Privacy текст - Друга частина",
+    }),
+    subscribe_styleType: radioArg({
+      options: [1, 2],
+      defaultValue: 1,
+      name: "Subcribe - тип стилю",
     }),
     subscribe_submittedModal_errorMessage: arg({ defaultValue: "Error" }),
     subscribe_submittedModal_successMessage: arg({ defaultValue: "Success" }),

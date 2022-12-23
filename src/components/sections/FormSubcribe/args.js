@@ -5,6 +5,7 @@ import {
   sectionArgs,
   textArg,
   arg,
+  radioArg,
 } from "../../../utils";
 
 export const formSubscribeArgs = sectionArgs({
@@ -20,6 +21,11 @@ export const formSubscribeArgs = sectionArgs({
   }),
   inputType: inputArg({}),
   buttonType: buttonArg({}),
+  styleType: radioArg({
+    options: [1, 2],
+    defaultValue: 1,
+    name: "Стиль",
+  }),
   privacy_first: textArg({
     color: "text-secondary",
     typography: "p2",

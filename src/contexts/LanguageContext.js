@@ -17,6 +17,7 @@ const translations = {
     PLANNING_CHECK_PRICE: "Дізнатись ціну",
     PLANNING_RESERVE: "Забронювати",
     PLANNING_TOTAL_AREA: "Загальна площа",
+    PLANNING_DETAILS: "Деталі планування",
 
     CATALOG_DETAILS: "Детальніше",
     CATALOG_CALLBACK: "Зв’язатись з нами",
@@ -41,6 +42,7 @@ const translations = {
     PLANNING_CHECK_PRICE: "Узнать цену",
     PLANNING_RESERVE: "Забронировать",
     PLANNING_TOTAL_AREA: "Общая площадь",
+    PLANNING_DETAILS: "Деталі планування",
 
     CATALOG_DETAILS: "Подробнее",
     CATALOG_CALLBACK: "Связаться с нами",
@@ -65,6 +67,7 @@ const translations = {
     PLANNING_CHECK_PRICE: "Check the price",
     PLANNING_RESERVE: "Reserve",
     PLANNING_TOTAL_AREA: "Total area",
+    PLANNING_DETAILS: "Деталі планування",
 
     CATALOG_DETAILS: "More details",
     CATALOG_CALLBACK: "Contact us",

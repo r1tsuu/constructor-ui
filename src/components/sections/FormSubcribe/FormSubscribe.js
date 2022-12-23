@@ -30,7 +30,13 @@ const FormSubscribeContent = ({
   const t = useTranslation();
   return (
     <ColorsInjector background={settings.backgroundColor}>
-      <div className={styles.wrapper}>
+      <div
+        data-style-type={settings.styleType}
+        className={styles.wrapper}
+        style={{
+          borderRadius: settings.borderRadius,
+        }}
+      >
         <ThankYouBlock
           isModal
           theme={themeThankYou}
