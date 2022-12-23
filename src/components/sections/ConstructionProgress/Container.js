@@ -6,7 +6,7 @@ import {
   useTranslation,
 } from "../../../contexts/LanguageContext";
 
-export const useConstructionProgress = (el, content) => {
+export const ConstructionProgressContainer = ({ el, content }) => {
   const [categories, setCategories] = useState(null);
   const [data, setData] = useState(null);
   const language = useCurrentLanguage();

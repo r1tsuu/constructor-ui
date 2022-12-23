@@ -503,26 +503,29 @@ export const section = (
   Component,
   allArgs,
   contentResolver,
-  hook = (element, content) => element
+  Container = ({ element, content }) => element
 ) => {
   const defaultArgs = allArgs.args;
   return {
     defaultSettings: defaultArgs,
     Component({ settings, ...content }) {
       const env = useEnvironment();
-      const el = hook(
-        <Component
-          settings={parseArgs(settings ?? defaultArgs).settings}
-          {...contentResolver({
-            ...content,
-            env,
-            defaultContent: defaultArgs,
-          })}
-        />,
-        content
-      );
 
-      return el;
+      return (
+        <Container
+          content={content}
+          element={
+            <Component
+              settings={parseArgs(settings ?? defaultArgs).settings}
+              {...contentResolver({
+                ...content,
+                env,
+                defaultContent: defaultArgs,
+              })}
+            />
+          }
+        />
+      );
     },
     type: "section",
   };
