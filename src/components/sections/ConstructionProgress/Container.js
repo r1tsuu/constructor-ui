@@ -6,7 +6,7 @@ import {
   useTranslation,
 } from "../../../contexts/LanguageContext";
 
-export const ConstructionProgressContainer = ({ el, content }) => {
+export const ConstructionProgressContainer = ({ element, content }) => {
   const [categories, setCategories] = useState(null);
   const [data, setData] = useState(null);
   const language = useCurrentLanguage();
@@ -64,8 +64,8 @@ export const ConstructionProgressContainer = ({ el, content }) => {
   }, [language, categories, categoryID]);
 
   if (data)
-    return cloneElement(el, {
-      ...el.props,
+    return cloneElement(element, {
+      ...element.props,
       ...data,
     });
 
