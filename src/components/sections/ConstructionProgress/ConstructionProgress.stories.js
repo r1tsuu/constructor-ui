@@ -5,12 +5,12 @@ import { createSection } from "../../../utils/stories-utils";
 import { parseArgs } from "../../../utils";
 
 import { ConstructionProgress } from "./ConstructionProgress";
-import { ConstructionProgressArgs } from "./args";
+import { constructionProgressArgs } from "./args";
 
 export default createSection({
   name: COMPONENT_KEYS.CONSTRUCTION_PROGRESS,
   component: ConstructionProgress,
-  args: ConstructionProgressArgs,
+  args: constructionProgressArgs,
 });
 
 export const Default = (args) => <ConstructionProgress {...parseArgs(args)} />;

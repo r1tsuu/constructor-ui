@@ -1,0 +1,54 @@
+@import "../../../styles/mixins";
+
+.upper {
+  margin-bottom: 20px;
+  @include tablet {
+    margin-bottom: 30px;
+  }
+  @include laptop {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.title {
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  overflow: auto;
+  margin-top: 20px;
+  @include tablet {
+    margin-top: 30px;
+  }
+}
+
+.card {
+}
+
+.paginationItem {
+  width: 53px;
+  height: 3px;
+}
+
+.arrowsWrapper {
+  display: flex;
+  gap: 40px;
+}
+
+.buttonWrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+
+  @include tablet {
+    margin-top: 30px;
+  }
+
+  @include laptop {
+    margin-top: 40px;
+  }
+}

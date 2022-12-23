@@ -19,3 +19,4 @@ export * from "./WelcomeSliderText";
 export * from "./PrivacyPolicy";
 export * from "./TermsPhoto";
 export * from "./ConstructionProgress";
+export * from "./BlogSection";
