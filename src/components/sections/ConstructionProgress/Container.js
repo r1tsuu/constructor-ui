@@ -32,13 +32,15 @@ export const ConstructionProgressContainer = ({ el, content }) => {
     if (categories) {
       const currentCategory = categories.find(({ _id }) => _id === categoryID);
       async function fetchBlogFilter() {
-        const { data } = await Axios.get(
+        const {
+          data: { data },
+        } = await Axios.get(
           `${API_FRONTEND}/blog/filter?${
             currentCategory ? `url=${currentCategory.url[language]}` : ""
           }&language=${language}&limit=${6}`
         );
 
-        if (data && data.length)
+        if (data.length)
           setData({
             cards: data.slice(1).map(({ title, url }) => ({
               title,

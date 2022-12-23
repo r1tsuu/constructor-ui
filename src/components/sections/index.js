@@ -2,7 +2,6 @@ export * from "./Advantages";
 export * from "./AdvantagesSlider";
 export * from "./Catalog";
 export * from "./Characteristics";
-// export * from "./ConstructionProgress";
 export * from "./Documentation";
 export * from "./FormFeedback";
 export * from "./FormSubcribe";

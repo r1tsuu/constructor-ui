@@ -47,7 +47,7 @@ const cards = [
   },
 ];
 
-export const ConstructionProgressArgs = sectionArgs({
+export const constructionProgressArgs = sectionArgs({
   subTitle: textArg({
     defaultValue: "Найсвіжіші новини",
     typography: "h5",
