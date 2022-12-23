@@ -57,6 +57,7 @@ export const ConstructionProgressContainer = ({ element, content }) => {
               photoSource: `${SITE_URL}/${data[0].photo[0]}`,
               createdAt: data[0].createdAt,
             },
+            buttonLink: `/blog-category/${currentCategory.url[language]}`,
           });
       }
       fetchBlogFilter();
