@@ -25,7 +25,7 @@ export const planningContentResolver = ({
       details: static_details.value,
     },
     reserveLink: reserveLink.value,
-    list: resolveField(
+    rooms: resolveField(
       list.data.map(({ _id, custom_fields, data_repeat_2x }, index) => {
         const at = atOrFist(defaultContent.rooms, index);
         const {
