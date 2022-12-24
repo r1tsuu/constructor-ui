@@ -140,7 +140,8 @@ export const planningContentResolver = ({
             )
           ),
         };
-      })
+      }),
+      defaultContent.rooms
     ),
   };
 };
