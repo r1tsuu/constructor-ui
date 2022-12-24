@@ -40,7 +40,6 @@ export const Documentation = ({
                 key={_id || index}
                 as={"a"}
                 href={fileLink}
-                download
                 target={"_blank"}
                 {...settings.card.props}
                 className={styles.card}

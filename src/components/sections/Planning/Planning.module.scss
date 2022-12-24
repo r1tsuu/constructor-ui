@@ -86,6 +86,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  @include laptop {
+    align-items: stretch;
+  }
 
   .arrowsProgress {
     // justify-content: flex-start;
@@ -164,9 +167,6 @@
   width: 100%;
   align-items: center;
   gap: 36px;
-  @include laptop {
-    justify-content: unset;
-  }
 
   .arrow {
     position: absolute;
@@ -276,10 +276,12 @@
 }
 
 .roomButtonsWrapper {
-  margin-top: 60px;
   display: flex;
   gap: 20px;
   flex-direction: column;
+  button {
+    width: 100%;
+  }
 
   @include tablet {
     flex-direction: row;
@@ -287,6 +289,9 @@
 
   @include laptop {
     gap: 30px;
+    button {
+      width: var(--button-width);
+    }
   }
 }
 
@@ -361,12 +366,16 @@
   @include tablet {
     margin-top: 0;
   }
+
+  // &[data-no-pdf="true"] {
+  justify-content: flex-end;
+  // }
 }
 
 .zoom {
-  height: 50px;
-  min-width: 50px;
-  width: 50px;
+  height: var(--button-height);
+  min-width: var(--button-height);
+  width: var(--button-height);
   border-width: 1px;
   border-style: solid;
   cursor: pointer;
@@ -387,5 +396,40 @@
 .botLeft {
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  align-items: center;
+
+  @include laptop {
+    gap: 40px;
+  }
+
+  @include desktop {
+    gap: 0;
+  }
+}
+
+.roomTabContentBot {
+  display: flex;
+  align-items: center;
+  @include laptop {
+    flex-direction: row;
+    gap: 133px;
+    // height: 480px;
+    &[data-no-pdf="true"] {
+    }
+  }
+
+  @include desktop {
+    gap: 150px;
+  }
+
+  .arrowsProgress {
+    @include laptop {
+      justify-content: unset;
+    }
+  }
+}
+
+.roomTabContentBotLeft {
   width: 100%;
 }

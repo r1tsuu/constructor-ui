@@ -55,6 +55,7 @@ const rooms = [
       {
         photo: testPlan,
         area: "50,3 м²",
+        pdf: "https://google.com",
       },
       {
         photo: testPlan2,
@@ -103,16 +104,12 @@ const rooms = [
     ],
     plans: [
       {
-        photo: assets.imgSquare,
-        area: "30,3 м²",
-      },
-      {
-        photo: assets.imgSquare,
+        photo: testPlan,
         area: "50,3 м²",
       },
       {
-        photo: assets.imgSquare,
-        area: "10,3 м²",
+        photo: testPlan2,
+        area: "60,3 м²",
       },
     ],
     interiors: [
@@ -165,33 +162,15 @@ const rooms = [
     ],
     plans: [
       {
-        photo: assets.imgSquare,
-        area: "30,3 м²",
-        pdf: "https://www.africau.edu/images/default/sample.pdf",
-      },
-      {
-        photo: assets.imgSquare,
+        photo: testPlan,
         area: "50,3 м²",
       },
       {
-        photo: assets.imgSquare,
-        area: "10,3 м²",
-      },
-      {
-        photo: assets.imgSquare,
-        area: "30,3 м²",
-      },
-      {
-        photo: assets.imgSquare,
-        area: "20,3 м²",
+        photo: testPlan2,
+        area: "60,3 м²",
       },
     ],
-    interiors: [
-      { photo: assets.imgPlaceholder },
-      { photo: assets.imgPlaceholder },
-      { photo: assets.imgPlaceholder },
-      { photo: assets.imgPlaceholder },
-    ],
+    interiors: [],
   },
 ];
 
@@ -286,12 +265,12 @@ export const planningArgs = sectionArgs({
     name: "Блок переваги - колір обводки зверху знизу",
   }),
   blockPlansTotalAreaValue: textArg({
-    typography: "h5",
+    typography: "h3",
     color: "text-primary",
     name: "Блок планування слайдер площадь значення",
   }),
   blockPlansTotalAreaTitle: textArg({
-    typography: "h5",
+    typography: "h3",
     color: "text-primary",
     name: "Блок планування слайдер площадь назва",
   }),

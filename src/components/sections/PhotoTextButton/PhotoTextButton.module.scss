@@ -29,10 +29,17 @@
   grid-area: icon;
   display: flex;
   margin-bottom: 15px;
+  gap: 30px;
+  align-items: center;
   justify-content: center;
   @include laptop {
     margin-bottom: 30px;
   }
+}
+
+.iconBorder {
+  width: 75px;
+  height: 1px;
 }
 
 .subTitle {

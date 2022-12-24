@@ -8,6 +8,8 @@ export const planningContentResolver = ({
   static_reserve,
   static_interiors,
   static_totalArea,
+  static_details,
+  reserveLink,
   defaultContent,
   list,
   env,
@@ -19,8 +21,10 @@ export const planningContentResolver = ({
       goToMarket: static_goToMarket.value,
       reserve: static_reserve.value,
       interiors: static_interiors.value,
-      static_totalArea: static_totalArea,
+      totalArea: static_totalArea.value,
+      details: static_details.value,
     },
+    reserveLink: reserveLink.value,
     list: resolveField(
       list.data.map(({ _id, custom_fields, data_repeat_2x }, index) => {
         const at = atOrFist(defaultContent.rooms, index);
@@ -32,11 +36,17 @@ export const planningContentResolver = ({
 
         return {
           _id,
+          roomTitle: resolveField(custom_fields.roomTitle.value, at.roomTitle),
+          title: resolveField(custom_fields.title.value, at.title),
+          description: resolveField(
+            custom_fields.description.value,
+            at.description
+          ),
           characteristics: [
             {
               title: resolveField(
                 custom_fields.characteristic_1_title.value,
-                defaultCharacteristics[0].title
+                null
               ),
               value: resolveField(
                 custom_fields.characteristic_1_value.value,
@@ -46,7 +56,7 @@ export const planningContentResolver = ({
             {
               title: resolveField(
                 custom_fields.characteristic_2_title.value,
-                defaultCharacteristics[1].title
+                null
               ),
               value: resolveField(
                 custom_fields.characteristic_2_value.value,
@@ -56,7 +66,7 @@ export const planningContentResolver = ({
             {
               title: resolveField(
                 custom_fields.characteristic_3_title.value,
-                defaultCharacteristics[2].title
+                null
               ),
               value: resolveField(
                 custom_fields.characteristic_3_value.value,
@@ -66,7 +76,7 @@ export const planningContentResolver = ({
             {
               title: resolveField(
                 custom_fields.characteristic_4_title.value,
-                defaultCharacteristics[3].title
+                null
               ),
               value: resolveField(
                 custom_fields.characteristic_4_value.value,
@@ -80,40 +90,28 @@ export const planningContentResolver = ({
                 getSourceFile(custom_fields.advantages_1_icon.value[0], env),
                 defaultAdvntages[0].icon
               ),
-              title: resolveField(
-                custom_fields.advantages_1_title.value,
-                defaultAdvntages[0].title
-              ),
+              title: resolveField(custom_fields.advantages_1_title.value, null),
             },
             {
               icon: resolveField(
                 getSourceFile(custom_fields.advantages_2_icon.value[0], env),
                 defaultAdvntages[1].icon
               ),
-              title: resolveField(
-                custom_fields.advantages_2_title.value,
-                defaultAdvntages[1].title
-              ),
+              title: resolveField(custom_fields.advantages_2_title.value, null),
             },
             {
               icon: resolveField(
                 getSourceFile(custom_fields.advantages_3_icon.value[0], env),
                 defaultAdvntages[2].icon
               ),
-              title: resolveField(
-                custom_fields.advantages_3_title.value,
-                defaultAdvntages[2].title
-              ),
+              title: resolveField(custom_fields.advantages_3_title.value, null),
             },
             {
               icon: resolveField(
                 getSourceFile(custom_fields.advantages_4_icon.value[0], env),
                 defaultAdvntages[3].icon
               ),
-              title: resolveField(
-                custom_fields.advantages_4_title.value,
-                defaultAdvntages[3].title
-              ),
+              title: resolveField(custom_fields.advantages_4_title.value, null),
             },
           ].filter(({ title }) => Boolean(title)),
           plans: resolveField(
@@ -121,10 +119,14 @@ export const planningContentResolver = ({
               const atPlan = at.plans[index];
               return {
                 _id,
-                title: resolveField(custom_fields.title.value, atPlan.title),
+                area: resolveField(custom_fields.area.value, atPlan.area),
                 photo: resolveField(
                   getSourceFile(custom_fields.photo.value[0], env),
                   atPlan.photo
+                ),
+                pdf: resolveField(
+                  getSourceFile(custom_fields.pdf.value[0], env),
+                  null
                 ),
               };
             })
@@ -141,11 +143,4 @@ export const planningContentResolver = ({
       })
     ),
   };
-};
-
-const map = (arr, callback) => {
-  return arr.reduce(
-    (acc, current, index) => [...acc, callback(current, index, arr)],
-    []
-  );
 };

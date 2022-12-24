@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { ColorsInjector } from "../../../containers";
 
 import useMediaQuery from "../../../hooks/useMediaQuery";
 
@@ -17,6 +18,30 @@ import {
 
 import styles from "./TermsPhoto.module.scss";
 
+const Pagination = ({ currentIndex, maxIndex, onButtonClick, settings }) => {
+  return (
+    <div className={styles.pagination}>
+      {Array(maxIndex)
+        .fill("_")
+        .map((_, index) => (
+          <ColorsInjector
+            key={index}
+            background={
+              index === currentIndex
+                ? settings.paginationActiveColor
+                : settings.paginationColor
+            }
+          >
+            <button
+              className={styles.paginationItem}
+              onClick={onButtonClick.bind(null, index)}
+            />
+          </ColorsInjector>
+        ))}
+    </div>
+  );
+};
+
 const Arrows = ({ next, prev }) => {
   return (
     <div className={styles.arrows}>
@@ -26,6 +51,14 @@ const Arrows = ({ next, prev }) => {
   );
 };
 
+const usePaginationLength = (length) => {
+  const query_1 = useMediaQuery("(min-width: 480px)");
+  const query_2 = useMediaQuery("(min-width: 770px)");
+  if (query_2) return length - 2;
+  if (query_1) return length - 1;
+  return length;
+};
+
 export const TermsPhoto = ({
   subTitle = null,
   title,
@@ -33,11 +66,18 @@ export const TermsPhoto = ({
   settings,
   photo,
 }) => {
-  const minTablet = useMediaQuery(mediaQueries.minTablet);
   const minLaptop = useMediaQuery(mediaQueries.minLaptop);
-  const { swiperProps, arrowProps } = useSwiperNavigation({
+  const { goTo, swiperProps, arrowProps } = useSwiperNavigation({
     type: settings.arrowType,
   });
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleRealIndexChange = (swiper) => {
+    setCurrentIndex(swiper.realIndex);
+  };
+  const length = usePaginationLength(items.length);
+
+  const handlePaginationButtonClick = (index) => goTo(index);
 
   return (
     <Section {...settings.section}>
@@ -58,12 +98,14 @@ export const TermsPhoto = ({
         </div>
         <div className={styles.content}>
           <div className={styles.swiperWrapper}>
-            {minTablet && <Arrows {...arrowProps} />}
+            {minLaptop && <Arrows {...arrowProps} />}
             <Swiper
               {...swiperProps}
               className={styles.slider}
               slidesPerView={"auto"}
               spaceBetween={20}
+              onRealIndexChange={handleRealIndexChange}
+              rewind
             >
               {items.map(
                 (
@@ -119,7 +161,14 @@ export const TermsPhoto = ({
                 )
               )}
             </Swiper>
-            {!minTablet && <Arrows {...arrowProps} />}
+            {!minLaptop && (
+              <Pagination
+                currentIndex={currentIndex}
+                onButtonClick={handlePaginationButtonClick}
+                settings={settings}
+                maxIndex={length}
+              />
+            )}
           </div>
 
           {minLaptop && (

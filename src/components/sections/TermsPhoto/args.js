@@ -4,6 +4,7 @@ import {
   arrowArg,
   buttonArg,
   cardArg,
+  colorArg,
 } from "../../../utils";
 
 const _card = ({
@@ -100,5 +101,13 @@ export const termsPhotoArgs = sectionArgs({
     typography: "h5",
     color: "text-primary",
     name: "Картка - перевага",
+  }),
+  paginationActiveColor: colorArg({
+    defaultValue: "#A6AFB8",
+    name: "Пагінація активний колір",
+  }),
+  paginationColor: colorArg({
+    defaultValue: "#334150",
+    name: "Пагінація колір",
   }),
 });

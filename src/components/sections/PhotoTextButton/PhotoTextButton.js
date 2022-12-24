@@ -4,6 +4,7 @@ import { Button, Typography, ContentContainer, Section } from "../../shared";
 import styles from "./PhotoTextButton.module.scss";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import { mediaQueries } from "../../../utils/constants";
+import { ColorsInjector } from "../../../containers";
 
 export const PhotoTextButton = ({
   subTitle,
@@ -28,7 +29,13 @@ export const PhotoTextButton = ({
       >
         {icon && (
           <div className={styles.iconWrapper}>
+            <ColorsInjector background={settings.iconBorderColor}>
+              <div className={styles.iconBorder} />
+            </ColorsInjector>
             <img src={icon} alt="" />
+            <ColorsInjector background={settings.iconBorderColor}>
+              <div className={styles.iconBorder} />
+            </ColorsInjector>
           </div>
         )}
         {subTitle && (

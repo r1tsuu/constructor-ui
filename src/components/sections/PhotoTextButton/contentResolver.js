@@ -13,6 +13,7 @@ export const photoTextButtonContentResolver = ({
   buttonName,
   buttonLink,
   defaultContent,
+  icon,
   env,
 }) => {
   const srcDesktop = getSourceFile(photoSource.value[0], env);
@@ -28,6 +29,7 @@ export const photoTextButtonContentResolver = ({
     ),
     description: resolveField(description.value, defaultContent.description),
     buttonName: resolveField(buttonName.value, defaultContent.buttonName),
+    icon: resolveField(getSourceFile(icon.value[0], env), null),
     buttonLink: resolveField(buttonLink.value, defaultContent.buttonLink),
   };
 };

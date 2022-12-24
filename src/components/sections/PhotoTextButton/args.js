@@ -6,6 +6,7 @@ import {
   sectionArgs,
   booleanArg,
   arg,
+  colorArg,
 } from "../../../utils";
 
 export const photoTextButtonArgs = sectionArgs({
@@ -44,5 +45,9 @@ export const photoTextButtonArgs = sectionArgs({
     options: ["left", "center", "right"],
     defaultValue: "left",
     name: "Позиція кнопки (зліва / центр / справа)",
+  }),
+  iconBorderColor: colorArg({
+    defaultValue: "rgba(166, 175, 184, 0.5)",
+    name: "Колір обводки іконки",
   }),
 });

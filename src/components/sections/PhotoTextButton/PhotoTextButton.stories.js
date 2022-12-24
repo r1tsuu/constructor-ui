@@ -6,7 +6,7 @@ import { parseArgs } from "../../../utils";
 import { PhotoTextButton } from "./PhotoTextButton";
 import { photoTextButtonArgs } from "./args";
 
-import icon from "./hero_wind.gif";
+import icon from "./icon.svg";
 
 export default createSection({
   name: COMPONENT_KEYS.PHOTO_TEXT_BUTTON,

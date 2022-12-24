@@ -26,7 +26,7 @@ export const testColors = {
 
 export const mediaQueries = {
   minTablet: "(min-width: 768px)",
-  minLaptop: "(min-width: 1150px)",
+  minLaptop: "(min-width: 1280px)",
   minDesktop: "(min-width: 1550px)",
 };
 
