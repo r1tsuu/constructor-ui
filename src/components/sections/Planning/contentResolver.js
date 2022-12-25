@@ -26,12 +26,13 @@ export const planningContentResolver = ({
     },
     reserveLink: reserveLink.value,
     rooms: resolveField(
-      list.data.map(({ _id, custom_fields, data_repeat_2x }, index) => {
+      list.data.map(({ _id, custom_fields, data_repeat_x2 }, index) => {
         const at = atOrFist(defaultContent.rooms, index);
         const {
           characteristics: defaultCharacteristics,
           advantages: defaultAdvntages,
           interiors: defaultInteriors,
+          plans: defaultPlans,
         } = at;
 
         return {
@@ -80,7 +81,7 @@ export const planningContentResolver = ({
               ),
               value: resolveField(
                 custom_fields.characteristic_4_value.value,
-                defaultCharacteristics[3].value
+                defaultCharacteristics[2].value
               ),
             },
           ].filter(({ title }) => Boolean(title)),
@@ -115,7 +116,7 @@ export const planningContentResolver = ({
             },
           ].filter(({ title }) => Boolean(title)),
           plans: resolveField(
-            data_repeat_2x.map(({ _id, custom_fields }, index) => {
+            data_repeat_x2.map(({ _id, custom_fields }, index) => {
               const atPlan = at.plans[index];
               return {
                 _id,
@@ -129,7 +130,8 @@ export const planningContentResolver = ({
                   null
                 ),
               };
-            })
+            }),
+            defaultPlans
           ),
           interiors: resolveField(
             custom_fields.interiors.value.map(
