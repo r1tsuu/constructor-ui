@@ -7,6 +7,7 @@ import {
   booleanArg,
   buttonArg,
   colorArg,
+  hiddenArg,
   radioArg,
   sectionArgs,
   textArg,
@@ -23,8 +24,12 @@ const _item = {
 export const welcomeSliderTextArgs = sectionArgs({
   arrowType: arrowArg({ arrowType: "long-default" }),
   items: Array(6).fill(_item),
-  buttonName: "Детальніше",
-  iconSource: defaultIcon,
+  buttonName: hiddenArg({
+    value: "Детальніше",
+  }),
+  iconSource: hiddenArg({
+    value: defaultIcon,
+  }),
   enableIcon: booleanArg({
     defaultValue: true,
     name: "Увімкнути / Вимкнути іконку",

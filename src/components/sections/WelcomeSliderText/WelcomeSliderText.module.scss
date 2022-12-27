@@ -108,7 +108,7 @@
   padding: 20px;
 
   display: flex;
-  gap: 88px;
+  justify-content: space-between;
 
   @include tablet {
     padding: 30px;

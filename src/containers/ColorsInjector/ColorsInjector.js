@@ -105,9 +105,8 @@ export const ColorsInjector = ({
   } = children;
 
   const styleMerged = {
-    ...style,
-    ...props.style,
     ...childStyle,
+    ...style,
   };
 
   const classNameMerged = clsx(styles.colors, childClassName, className);

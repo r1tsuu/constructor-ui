@@ -2,9 +2,11 @@
 //
 import React from "react";
 import { render } from "react-dom";
-import { components } from "./components";
+import { components, MapSection, mapSectionArgs } from "./components";
+import { parseArgs } from "./utils";
 import { COMPONENT_KEYS } from "./utils/constants";
 import * as testUtils from "./utils/test-utils";
+import img from "./components/sections/MapSection/map_estate.png";
 
 function Video() {
   const { Component } = components[COMPONENT_KEYS.VIDEO];
@@ -231,8 +233,8 @@ function renderToContainer(element) {
 function renderSecions() {
   renderToContainer(
     <testUtils.EnvUiKitMocker>
-      <Video />
-      <PhotoTextButton />
+      <MapSection {...parseArgs(mapSectionArgs.args)} mainLocationIcon={img} />
+      {/* <PhotoTextButton /> */}
     </testUtils.EnvUiKitMocker>
   );
 }

@@ -1,4 +1,5 @@
 import "./styles/index.scss";
+// import { run } from "./test";
 
 export { UiKitContainer } from "./containers/UiKitContainer/UiKitContainer";
 export { GlobalComponentsContainer } from "./containers/GlobalComponentsContainer";
@@ -12,7 +13,6 @@ export {
 export { LanguageProvider } from "./contexts/LanguageContext";
 export { SectionProvider } from "./contexts/SectionContext";
 
-// import { run } from "./test";
 // run();
 
 export * from "./components/sections";
