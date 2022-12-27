@@ -7,6 +7,7 @@ import styles from "./Card.module.scss";
 export const Card = ({
   borderColor = "stroke",
   bg = "background",
+  borderRadius,
   as: As = "div",
   children,
   ...props

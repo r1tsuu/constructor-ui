@@ -138,9 +138,11 @@ export const cardArg = ({
   bg = "background",
   borderColor = "stroke",
   prefix,
+  borderRadius = "0px",
   name = "Картка",
 }) => ({
   bg,
+  borderRadius,
   borderColor,
   type: "card",
   prefix,

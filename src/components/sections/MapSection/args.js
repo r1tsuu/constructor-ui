@@ -3,21 +3,27 @@ import { arg, colorArg, sectionArgs, textArg } from "../../../utils";
 export const mapSectionArgs = sectionArgs({
   swapBarBackgroundColor: colorArg({
     defaultValue: "background",
+    name: "Swap bar - колір фону",
   }),
   swapBarBackgroundColorActive: colorArg({
     defaultValue: "accent",
+    name: "Swap bar - колір фону active",
   }),
   swapBarBorderRadius: arg({
     defaultValue: "10px",
+    name: "Swap bar - радіус обводки",
   }),
   swapBarActiveBorderRadius: arg({
     defaultValue: "7px",
+    name: "Swap bar - радіус обводки ative",
   }),
   swapBarTextColor: colorArg({
     defaultValue: "text-primary",
+    name: "Swap bar - колір тексту",
   }),
   swapBarTextColorActive: colorArg({
     defaultValue: "text-primary",
+    name: "Swap bar - колір тексту active",
   }),
 
   mapCategoriesBackground: colorArg({

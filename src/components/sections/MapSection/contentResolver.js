@@ -30,8 +30,9 @@ export const mapSectionContentResolver = ({
       ({ custom_fields: { title, icon, iconMap }, data_repeat_x2 }) => ({
         title: title.value,
         icon: getSourceFile(icon.value[0], env),
-        list: data_repeat_x2.map(({ custom_fields: { location } }) => ({
+        list: data_repeat_x2.map(({ custom_fields: { location, title } }) => ({
           icon: getSourceFile(iconMap.value[0], env),
+          title: title.value,
           placeID: location.value.placeID,
           location: location.value.data?.geometry.location,
         })),

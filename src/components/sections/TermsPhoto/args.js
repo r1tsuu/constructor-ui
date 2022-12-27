@@ -5,6 +5,7 @@ import {
   buttonArg,
   cardArg,
   colorArg,
+  arg,
 } from "../../../utils";
 
 const _card = ({
