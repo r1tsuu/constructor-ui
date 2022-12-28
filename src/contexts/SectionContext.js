@@ -5,13 +5,28 @@ const SectionContext = createContext({
   id: null,
   formQueryParams: {},
   setFormQueryParams: () => {},
+  css: null,
+  cssModal: null,
 });
 
-export const SectionProvider = ({ children, globalFormIndex, id }) => {
+export const SectionProvider = ({
+  children,
+  globalFormIndex,
+  id,
+  css,
+  cssModal,
+}) => {
   const [formQueryParams, setFormQueryParams] = useState({});
   return (
     <SectionContext.Provider
-      value={{ globalFormIndex, id, formQueryParams, setFormQueryParams }}
+      value={{
+        globalFormIndex,
+        id,
+        formQueryParams,
+        setFormQueryParams,
+        css,
+        cssModal,
+      }}
     >
       {children}
     </SectionContext.Provider>

@@ -1,4 +1,5 @@
 import React from "react";
+import { CSSInjector } from "../../../containers/CSSInjector";
 
 import { ContentContainer, Section, Typography, Card } from "../../shared";
 

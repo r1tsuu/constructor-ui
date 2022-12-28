@@ -2,6 +2,8 @@ import clsx from "clsx";
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import { ColorsInjector } from "../../../containers";
+import { CSSInjector } from "../../../containers/CSSInjector";
+import { useSection } from "../../../contexts/SectionContext";
 import { Fade } from "../Fade";
 import { PopupCloseButton } from "../PopupCloseButton";
 
@@ -22,6 +24,7 @@ const ModalOverlay = ({
   children,
   theme,
   style,
+  css,
   ...props
 }) => {
   const handleOutsideClick = ({ target, currentTarget }) => {
@@ -45,31 +48,33 @@ const ModalOverlay = ({
       durationEnter={animationDurationEnter}
       durationExit={animationDurationExit}
     >
-      <ColorsInjector beforeBackground={backgroundColor}>
-        <div
-          style={{
-            zIndex,
-            "--overlay-background-opacity": backgroundOpacity,
-            backgroundImage: backgroundImage && `url("${backgroundImage}")`,
-            backgroundPosition,
-            ...style,
-          }}
-          onClick={handleOutsideClick}
-          className={clsx(styles.overlay, className)}
-          data-theme={theme}
-          {...props}
-        >
-          {withCloseButton && (
-            <PopupCloseButton
-              className={styles.buttonClose}
-              onClick={() => {
-                if (typeof onClose === "function") onClose();
-              }}
-            />
-          )}
-          {children}
-        </div>
-      </ColorsInjector>
+      <CSSInjector css={css}>
+        <ColorsInjector beforeBackground={backgroundColor}>
+          <div
+            style={{
+              zIndex,
+              "--overlay-background-opacity": backgroundOpacity,
+              backgroundImage: backgroundImage && `url("${backgroundImage}")`,
+              backgroundPosition,
+              ...style,
+            }}
+            onClick={handleOutsideClick}
+            className={clsx(styles.overlay, className)}
+            data-theme={theme}
+            {...props}
+          >
+            {withCloseButton && (
+              <PopupCloseButton
+                className={styles.buttonClose}
+                onClick={() => {
+                  if (typeof onClose === "function") onClose();
+                }}
+              />
+            )}
+            {children}
+          </div>
+        </ColorsInjector>
+      </CSSInjector>
     </Fade>
   );
 };
@@ -88,15 +93,17 @@ export const Modal = ({
   className,
   children,
   overlayTheme,
+  isFormModal = false,
   ...props
 }) => {
+  const { cssModal, globalFormIndex } = useSection();
   const [isSSR, setIsSSR] = useState(null);
 
   useEffect(() => {
     setIsSSR(false);
   }, []);
 
-  if (typeof window === "undefined") return null;
+  if (isSSR) return null;
 
   return ReactDOM.createPortal(
     <ModalOverlay
@@ -112,6 +119,7 @@ export const Modal = ({
       className={className}
       theme={overlayTheme}
       withCloseButton={withCloseButton}
+      css={!globalFormIndex && cssModal}
       {...props}
     >
       {children}
