@@ -16,10 +16,21 @@
   }
 
   &[data-style-type="2"] {
-    flex-direction: row;
-    .formInputButtonWrapper {
-      @include tablet {
+    padding: 0;
+    @include laptop {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 0;
+      .formInputButtonWrapper {
         gap: 20px;
+      }
+
+      .left {
+        width: var(--style-2-width);
+      }
+
+      .right {
+        width: var(--style-2-width);
       }
     }
   }

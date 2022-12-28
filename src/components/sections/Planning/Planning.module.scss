@@ -157,7 +157,20 @@
   height: 100%;
 }
 
+.roomPlanPhotoContainer {
+  height: 100px;
+
+  @include tablet {
+    height: 270px;
+  }
+
+  @include desktop {
+    height: 305px;
+  }
+}
+
 .roomPlanPhoto {
+  max-height: 100%;
 }
 
 .arrowsProgress {
@@ -240,7 +253,7 @@
   @include laptop {
     position: relative;
     flex-direction: column;
-    gap: 28px;
+    // gap: 28px;
   }
 }
 
@@ -316,18 +329,19 @@
   flex-direction: column;
   align-items: center;
   gap: 40px;
+  height: 100%;
   img {
     width: 100%;
   }
   padding: 30px;
 
-  @include tablet {
-    padding: 60px;
-  }
+  // @include tablet {
+  //   padding: 60px;
+  // }
 
-  @include laptop {
-    padding: 120px;
-  }
+  // @include laptop {
+  //   padding: 120px;
+  // }
 }
 
 .modalSliderArea {

@@ -16,6 +16,7 @@ export const PublicationCard = ({
   categoryBackgroundColor,
   categoryBorderColor,
   photoSource,
+
   url,
 }) => {
   const [date, setDate] = useState();
@@ -42,10 +43,15 @@ export const PublicationCard = ({
           alt=""
         />
       </div>
-      <ColorsInjector borderColor={settings.borderColor}>
+      <ColorsInjector
+        borderColor={settings.borderColor}
+        background={settings.botBackground}
+      >
         <div className={styles.cardBot}>
           <Typography {...settings.date}>{date}</Typography>
-          <Typography {...settings.title}>{title}</Typography>
+          <Typography className={styles.title} {...settings.title}>
+            {title}
+          </Typography>
         </div>
       </ColorsInjector>
     </div>

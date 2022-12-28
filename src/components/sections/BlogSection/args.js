@@ -102,6 +102,10 @@ export const blogSectionArgs = sectionArgs({
     defaultValue: "stroke",
     name: "Картка - колір обводки",
   }),
+  card_botBackground: colorArg({
+    defaultValue: "background",
+    name: "Картка - фон низ",
+  }),
   paginationActiveColor: colorArg({
     defaultValue: "#A6AFB8",
     name: "Пагінація активний колір",

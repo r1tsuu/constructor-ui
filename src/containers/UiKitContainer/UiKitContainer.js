@@ -55,6 +55,7 @@ const getArrowLongVars = (arrowLong) => {
   if (!arrowLong) return {};
   return {
     [`--arrow-long-custom-icon-color`]: arrowLong.iconColor,
+    "--arrow-long-custom-icon-hover-color": arrowLong.iconHoverColor,
   };
 };
 

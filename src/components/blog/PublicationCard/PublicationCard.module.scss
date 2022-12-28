@@ -25,6 +25,15 @@
   gap: 10px;
   border-width: 1px;
   border-style: solid;
+  height: 127px;
+
+  @include tablet {
+    height: 153px;
+  }
+
+  @include desktop {
+    height: 184px;
+  }
 }
 
 .image {
@@ -51,4 +60,12 @@
       height: 219px;
     }
   }
+}
+
+.title {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }

@@ -110,6 +110,7 @@ const ModalSliderContent = ({
                 justifyContent: "center",
                 alignItems: "center",
                 flexDirection: "column",
+                paddingTop: "30px",
               }}
             >
               {area && (
@@ -124,6 +125,7 @@ const ModalSliderContent = ({
               <img
                 style={{
                   width: "auto",
+                  maxHeight: "100%",
                 }}
                 src={photo}
                 alt=""
@@ -230,45 +232,59 @@ const RoomBlock = ({
                   {description}
                 </Typography>
               )}
-              <ul className={styles.roomCharacteristics}>
-                {characteristics.map(({ title, value, _id }, index) => (
-                  <li className={styles.roomCharacteristic} key={_id ?? index}>
-                    <Typography
-                      as={"h5"}
-                      {...settings.blockCharacteristicTitle}
+              {characteristics.length > 0 && (
+                <ul className={styles.roomCharacteristics}>
+                  {characteristics.map(({ title, value, _id }, index) => (
+                    <li
+                      className={styles.roomCharacteristic}
+                      key={_id ?? index}
                     >
-                      {title}
-                    </Typography>
-                    {isMinLaptop && (
-                      <ColorsInjector
-                        background={settings.blockCharacteristicSeparatorColor}
+                      <Typography
+                        as={"h5"}
+                        {...settings.blockCharacteristicTitle}
                       >
-                        <div className={styles.roomCharacteristicSeparator} />
-                      </ColorsInjector>
-                    )}
-                    <Typography
-                      as={"span"}
-                      {...settings.blockCharacteristicValue}
-                    >
-                      {value}
-                    </Typography>
-                  </li>
-                ))}
-              </ul>
-              <ColorsInjector borderColor={settings.blockAdvantagesBorderColor}>
-                <ui className={styles.roomAdvantages}>
-                  {advantages.map(({ icon, title, _id }, index) => (
-                    <li className={styles.roomAdvantage} key={_id ?? index}>
-                      <div className={styles.roomAdvantageIconWrapper}>
-                        <img src={icon} alt="" />
-                      </div>
-                      <Typography as={"span"} {...settings.blockAdvantageTitle}>
                         {title}
+                      </Typography>
+                      {isMinLaptop && (
+                        <ColorsInjector
+                          background={
+                            settings.blockCharacteristicSeparatorColor
+                          }
+                        >
+                          <div className={styles.roomCharacteristicSeparator} />
+                        </ColorsInjector>
+                      )}
+                      <Typography
+                        as={"span"}
+                        {...settings.blockCharacteristicValue}
+                      >
+                        {value}
                       </Typography>
                     </li>
                   ))}
-                </ui>
-              </ColorsInjector>
+                </ul>
+              )}
+              {advantages.length > 0 && (
+                <ColorsInjector
+                  borderColor={settings.blockAdvantagesBorderColor}
+                >
+                  <ui className={styles.roomAdvantages}>
+                    {advantages.map(({ icon, title, _id }, index) => (
+                      <li className={styles.roomAdvantage} key={_id ?? index}>
+                        <div className={styles.roomAdvantageIconWrapper}>
+                          <img src={icon} alt="" />
+                        </div>
+                        <Typography
+                          as={"span"}
+                          {...settings.blockAdvantageTitle}
+                        >
+                          {title}
+                        </Typography>
+                      </li>
+                    ))}
+                  </ui>
+                </ColorsInjector>
+              )}
             </div>
             <div className={styles.roomRight}>
               <div className={styles.roomRightContent}>
@@ -297,9 +313,9 @@ const RoomBlock = ({
                             display: "flex",
                             justifyContent: "center",
                             alignItems: "center",
-                            height: "100%",
                             width: "100%",
                           }}
+                          className={styles.roomPlanPhotoContainer}
                         >
                           <img
                             onClick={handleModalPlansOpen}

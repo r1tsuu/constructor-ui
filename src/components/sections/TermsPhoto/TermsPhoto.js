@@ -172,9 +172,13 @@ export const TermsPhoto = ({
           </div>
 
           {minLaptop && (
-            <div>
-              {" "}
-              <img src={photo} alt="" />{" "}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
+              <img src={photo} alt="" />
             </div>
           )}
         </div>

@@ -46,41 +46,55 @@ const FormSubscribeContent = ({
           {...settings.submittedModal}
           errorMessage="asd"
         />
-        <Typography {...settings.title} as={"h2"}>
-          {title}
-        </Typography>
-        <form
-          onSubmit={handleSubmit((form) => {
-            reset();
-            if (onSubmit) {
-              onSubmit(form);
-            }
-          })}
-          noValidate
-          autoComplete="off"
-          className={styles.form}
+        <div
+          className={styles.left}
+          style={{
+            "--style-2-width": settings.secondStyleLeft,
+          }}
         >
-          <div className={styles.formInputButtonWrapper}>
-            <ControlledInput
-              isRequired
-              hideRequiredLabel
-              name={"phone"}
-              inputType={settings.inputType}
-              fieldType={"phone"}
-              control={control}
-              placeholder={t("FORM_PHONE")}
-            />
-            <Button htmlType={"submit"} label={t("FORM_SEND")} />
-          </div>
-          <div>
-            <Typography as={"span"} {...settings.privacy.first}>
-              {t("FORM_PRIVACY_1")}
-            </Typography>
-            <Typography as={"span"} {...settings.privacy.second}>
-              {t("FORM_PRIVACY_2")}
-            </Typography>
-          </div>
-        </form>
+          <Typography {...settings.title} as={"h2"}>
+            {title}
+          </Typography>
+        </div>
+        <div
+          className={styles.right}
+          style={{
+            "--style-2-width": settings.secondStyleRight,
+          }}
+        >
+          <form
+            onSubmit={handleSubmit((form) => {
+              reset();
+              if (onSubmit) {
+                onSubmit(form);
+              }
+            })}
+            noValidate
+            autoComplete="off"
+            className={styles.form}
+          >
+            <div className={styles.formInputButtonWrapper}>
+              <ControlledInput
+                isRequired
+                hideRequiredLabel
+                name={"phone"}
+                inputType={settings.inputType}
+                fieldType={"phone"}
+                control={control}
+                placeholder={t("FORM_PHONE")}
+              />
+              <Button htmlType={"submit"} label={t("FORM_SEND")} />
+            </div>
+            <div>
+              <Typography as={"span"} {...settings.privacy.first}>
+                {t("FORM_PRIVACY_1")}
+              </Typography>
+              <Typography as={"span"} {...settings.privacy.second}>
+                {t("FORM_PRIVACY_2")}
+              </Typography>
+            </div>
+          </form>
+        </div>
       </div>
     </ColorsInjector>
   );
