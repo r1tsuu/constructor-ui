@@ -23,7 +23,11 @@ const AdvantagesSliderArrowsProgress = ({
   className,
 }) => {
   return (
-    <div style={style} className={clsx(styles.arrowsWrapper, className)}>
+    <div
+      data-selector="arrows-progress-wrapper"
+      style={style}
+      className={clsx(styles.arrowsWrapper, className)}
+    >
       <Arrow {...arrowProps.prev} />
       <ProgressNumbers value={realIndex + 1} maxValue={itemsLength} />
       <Arrow {...arrowProps.next} />
@@ -43,6 +47,7 @@ export const AdvantagesSlider = ({ title, subTitle, items, settings }) => {
       <ContentContainer>
         {subTitle && (
           <Typography
+            data-selector={"subtitle"}
             className={styles.subTitle}
             {...settings.subTitle}
             as={"h3"}
@@ -50,7 +55,12 @@ export const AdvantagesSlider = ({ title, subTitle, items, settings }) => {
             {subTitle}
           </Typography>
         )}
-        <Typography className={styles.title} {...settings.title} as={"h2"}>
+        <Typography
+          data-selector="title"
+          className={styles.title}
+          {...settings.title}
+          as={"h2"}
+        >
           {title}
         </Typography>
         <Swiper
@@ -75,6 +85,7 @@ export const AdvantagesSlider = ({ title, subTitle, items, settings }) => {
               index
             ) => (
               <SwiperSlide
+                data-selector="item-slide"
                 className={clsx(
                   styles.item,
                   index === realIndex && styles.isActive,
@@ -82,14 +93,22 @@ export const AdvantagesSlider = ({ title, subTitle, items, settings }) => {
                 )}
                 key={_id ?? index}
               >
-                <div className={styles.itemPhotoWrapper}>
+                <div
+                  data-selector="item-photo-wrapper"
+                  className={styles.itemPhotoWrapper}
+                >
                   <img
                     className={styles.itemPhoto}
                     src={isMobile ? photoSourceMobile : photoSource}
+                    alt=""
                   />
                 </div>
-                <div className={styles.itemTextWrapper}>
+                <div
+                  data-selector="item-text-wrapper"
+                  className={styles.itemTextWrapper}
+                >
                   <Typography
+                    data-selector="item-title"
                     className={styles.itemTitle}
                     {...settings.card.title}
                     as={"h4"}
@@ -98,6 +117,7 @@ export const AdvantagesSlider = ({ title, subTitle, items, settings }) => {
                   </Typography>
                   {description && (
                     <Typography
+                      data-selector="item-description"
                       className={styles.itemDescription}
                       as={"p"}
                       {...settings.card.description}

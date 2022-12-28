@@ -7,7 +7,7 @@ import { Modal } from "../Modal";
 
 import styles from "./ThankYouBlock.module.scss";
 import clsx from "clsx";
-import { useTranslation } from "../../../contexts/LanguageContext";
+
 import { PopupCloseButton } from "../PopupCloseButton";
 
 const ThankYouBlockContent = ({
@@ -21,7 +21,6 @@ const ThankYouBlockContent = ({
   onModalClose,
   isModal,
 }) => {
-  const t = useTranslation();
   const isSuccess = submitted === "success";
 
   if (!submitted) return <div />;
@@ -29,6 +28,7 @@ const ThankYouBlockContent = ({
   return (
     <ColorsInjector borderColor={borderColor} background={background}>
       <div
+        data-component="thank-you"
         style={{
           borderRadius,
         }}
@@ -94,6 +94,7 @@ export const ThankYouBlock = ({
   successMessage,
   messageSettings,
   onModalClose,
+
   isModal = false,
 }) => {
   const thankYouBlockContentElement = (

@@ -11,6 +11,7 @@ export const Characteristics = ({ title, subTitle, items, settings }) => {
       <ContentContainer>
         {subTitle && (
           <Typography
+            data-selector="subtitle"
             className={styles.subTitle}
             as={"h3"}
             {...settings.subTitle}
@@ -19,11 +20,20 @@ export const Characteristics = ({ title, subTitle, items, settings }) => {
           </Typography>
         )}
         {title && (
-          <Typography className={styles.title} as={"h3"} {...settings.title}>
+          <Typography
+            data-selector="title"
+            className={styles.title}
+            as={"h3"}
+            {...settings.title}
+          >
             {title}
           </Typography>
         )}
-        <ul data-grid-columns={settings.gridColumns} className={styles.grid}>
+        <ul
+          data-selector="list"
+          data-grid-columns={settings.gridColumns}
+          className={styles.grid}
+        >
           {items.map(({ _id, title, subTitle }, index) => (
             <Card
               as={"li"}
@@ -31,10 +41,19 @@ export const Characteristics = ({ title, subTitle, items, settings }) => {
               className={styles.card}
               {...settings.card.props}
             >
-              <Typography className={styles.cardTitle} {...settings.card.title}>
+              <Typography
+                data-selector="card-title"
+                className={styles.cardTitle}
+                {...settings.card.title}
+              >
                 {title}
               </Typography>
-              <Typography {...settings.card.subTitle}>{subTitle}</Typography>
+              <Typography
+                data-selector="card-subtitle"
+                {...settings.card.subTitle}
+              >
+                {subTitle}
+              </Typography>
             </Card>
           ))}
         </ul>

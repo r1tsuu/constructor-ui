@@ -19,7 +19,10 @@ import styles from "./WelcomeSlider.module.scss";
 const WelcomeSliderProgress = ({ isMobile, arrowProps, value, maxValue }) => {
   if (isMobile)
     return (
-      <div className={styles.mobileArrowsProgressWrapper}>
+      <div
+        data-selector="mobile-arrows-progress-wrapper"
+        className={styles.mobileArrowsProgressWrapper}
+      >
         <Arrow {...arrowProps.prev} />
         <ProgressNumbers value={value} maxValue={maxValue} />
         <Arrow {...arrowProps.next} />
@@ -42,7 +45,7 @@ export const WelcomeSlider = ({ items, settings }) => {
 
   return (
     <Section {...settings.section}>
-      <div className={styles.swiperWrapper}>
+      <div data-selector="swiper-wrapper" className={styles.swiperWrapper}>
         <Swiper
           className={styles.swiper}
           {...swiperProps}
@@ -68,8 +71,12 @@ export const WelcomeSlider = ({ items, settings }) => {
               index
             ) => (
               <SwiperSlide key={_id ?? index}>
-                <div className={styles.slideContent}>
+                <div
+                  data-selector="slide-content"
+                  className={styles.slideContent}
+                >
                   <img
+                    data-selector="slide-photo"
                     className={styles.slidePhoto}
                     src={isMobile ? photoSourceMobile : photoSource}
                     alt=""
@@ -80,13 +87,19 @@ export const WelcomeSlider = ({ items, settings }) => {
                       durationEnter={450}
                       durationExit={150}
                     >
-                      <div>
-                        <div className={styles.arrowsWrapper}>
+                      <div data-selector="slide-wrapper">
+                        <div
+                          daata-selector="arrows-wrapper"
+                          className={styles.arrowsWrapper}
+                        >
                           <Arrow {...arrowProps.prev} />
                           <Arrow {...arrowProps.next} />
                         </div>
                         {isMinLaptop && buttonName && (
-                          <div className={styles.minLaptopButtonWrapper}>
+                          <div
+                            data-selector="min-laptop-button-wrapper"
+                            className={styles.minLaptopButtonWrapper}
+                          >
                             <Button
                               href={buttonLink}
                               type={settings.buttonType}
@@ -112,6 +125,7 @@ export const WelcomeSlider = ({ items, settings }) => {
         />
         {!isMinLaptop && items[realIndex].buttonName && (
           <Button
+            data-selector="button-mobile"
             type={settings.buttonType}
             label={items[realIndex].buttonName}
           />

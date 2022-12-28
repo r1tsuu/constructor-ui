@@ -17,6 +17,7 @@ export const Arrow = ({
   isPrev,
   type = "cube-default",
   as: As = "button",
+  selector,
   className,
   ...props
 }) => {
@@ -24,6 +25,7 @@ export const Arrow = ({
 
   return (
     <As
+      data-component="arrow"
       className={clsx(styles.baseStyles, arrowTypesStyles[type], className)}
       data-direction={isPrev ? "prev" : "next"}
       {...props}

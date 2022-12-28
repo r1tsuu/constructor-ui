@@ -16,6 +16,7 @@ export const Input = forwardRef(
       isTextarea = false,
       className,
       style,
+      selector,
       ...props
     },
     ref
@@ -23,8 +24,10 @@ export const Input = forwardRef(
     const Tag = isTextarea ? "textarea" : "input";
     return (
       <div
+        data-component="input"
         className={clsx(styles.wrapper, styles[type], className)}
         style={style}
+        {...props}
       >
         <input
           ref={ref}
@@ -32,7 +35,6 @@ export const Input = forwardRef(
           data-is-error={Boolean(errorMessage)}
           data-is-textarea={isTextarea}
           className={clsx(styles.input, className)}
-          {...props}
         />
 
         {isRequired && !hideRequiredLabel && (
@@ -85,6 +87,7 @@ export const ControlledInput = ({
   name,
   order,
   className,
+  ...rest
 }) => {
   const {
     field: { onChange, onBlur, value, ref },
@@ -118,6 +121,7 @@ export const ControlledInput = ({
         order,
       }}
       className={className}
+      {...rest}
     />
   );
 };

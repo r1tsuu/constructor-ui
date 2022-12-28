@@ -3,9 +3,15 @@ import React from "react";
 
 import styles from "./PopupCloseButton.module.scss";
 
-export const PopupCloseButton = ({ onClick, className, borderRadius }) => {
+export const PopupCloseButton = ({
+  onClick,
+  className,
+  borderRadius,
+  selector,
+}) => {
   return (
     <button
+      data-component="popup-close"
       style={{
         borderRadius,
       }}

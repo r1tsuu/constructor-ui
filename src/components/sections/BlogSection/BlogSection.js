@@ -17,7 +17,7 @@ import { PublicationCard } from "../../blog/PublicationCard/PublicationCard";
 
 const Pagination = ({ currentIndex, maxIndex, onButtonClick, settings }) => {
   return (
-    <div className={styles.pagination}>
+    <div data-selector="pagination" className={styles.pagination}>
       {Array(maxIndex)
         .fill("_")
         .map((_, index) => (
@@ -30,6 +30,8 @@ const Pagination = ({ currentIndex, maxIndex, onButtonClick, settings }) => {
             }
           >
             <button
+              data-selector="pagination-item"
+              data-is-active={index === currentIndex}
               className={styles.paginationItem}
               onClick={onButtonClick.bind(null, index)}
             />
@@ -61,12 +63,15 @@ export const BlogSection = ({
   return (
     <Section {...settings.section}>
       <ContentContainer>
-        <div className={styles.upper}>
-          <Typography {...settings.title} as={"h2"}>
+        <div data-selector="upper" className={styles.upper}>
+          <Typography data-selector="title" {...settings.title} as={"h2"}>
             {title}
           </Typography>
           {isMinLaptop && (
-            <div className={styles.arrowsWrapper}>
+            <div
+              data-selector="arrows-wrapper"
+              className={styles.arrowsWrapper}
+            >
               <Arrow {...arrowProps.prev} />
               <Arrow {...arrowProps.next} />
             </div>
@@ -89,12 +94,13 @@ export const BlogSection = ({
         >
           {cards.map((card, index) => (
             <SwiperSlide
+              data-selector="card-slide"
               style={{
                 width: "auto",
               }}
               key={index}
             >
-              <div className={styles.card}>
+              <div data-selector="card-wrapper" className={styles.card}>
                 <PublicationCard {...card} settings={settings.card} />
               </div>
             </SwiperSlide>
@@ -108,7 +114,7 @@ export const BlogSection = ({
             maxIndex={cards.length}
           />
         )}
-        <div className={styles.buttonWrapper}>
+        <div data-selector="button-wrapper" className={styles.buttonWrapper}>
           <Button
             href={buttonLink}
             label={buttonName}

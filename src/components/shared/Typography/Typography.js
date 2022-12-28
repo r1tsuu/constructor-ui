@@ -22,6 +22,7 @@ export const Typography = ({
   isHTML = true,
   style,
   editableInStorybook = true,
+  selector,
   ...props
 }) => {
   const fontSizes = fontSize.split(" ").reduce(
@@ -35,6 +36,7 @@ export const Typography = ({
   return (
     <ColorsInjector textColor={color}>
       <As
+        data-component="typography"
         className={clsx(styles.list, styles[type], styles.fontSize, className)}
         style={{
           ...fontSizes,

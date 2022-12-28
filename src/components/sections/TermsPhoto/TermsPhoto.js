@@ -20,7 +20,7 @@ import styles from "./TermsPhoto.module.scss";
 
 const Pagination = ({ currentIndex, maxIndex, onButtonClick, settings }) => {
   return (
-    <div className={styles.pagination}>
+    <div data-selector="pagination" className={styles.pagination}>
       {Array(maxIndex)
         .fill("_")
         .map((_, index) => (
@@ -33,6 +33,8 @@ const Pagination = ({ currentIndex, maxIndex, onButtonClick, settings }) => {
             }
           >
             <button
+              data-selector="pagination-button"
+              data-is-active={index === currentIndex}
               className={styles.paginationItem}
               onClick={onButtonClick.bind(null, index)}
             />
@@ -44,7 +46,7 @@ const Pagination = ({ currentIndex, maxIndex, onButtonClick, settings }) => {
 
 const Arrows = ({ next, prev }) => {
   return (
-    <div className={styles.arrows}>
+    <div data-selector="arrows" className={styles.arrows}>
       <Arrow {...prev} />
       <Arrow {...next} />
     </div>
@@ -84,6 +86,7 @@ export const TermsPhoto = ({
       <ContentContainer>
         {subTitle && (
           <Typography
+            data-selector="subtitle"
             className={styles.subTitle}
             as={"h3"}
             {...settings.subTitle}
@@ -91,13 +94,21 @@ export const TermsPhoto = ({
             {subTitle}
           </Typography>
         )}
-        <div className={styles.titleArrowsWrapper}>
-          <Typography as={"h2"} className={styles.title} {...settings.title}>
+        <div
+          data-selector="title-arrows-wrapper"
+          className={styles.titleArrowsWrapper}
+        >
+          <Typography
+            data-selector="title"
+            as={"h2"}
+            className={styles.title}
+            {...settings.title}
+          >
             {title}
           </Typography>
         </div>
-        <div className={styles.content}>
-          <div className={styles.swiperWrapper}>
+        <div data-selector="content" className={styles.content}>
+          <div data-selector="swiper-wrapper" className={styles.swiperWrapper}>
             {minLaptop && <Arrows {...arrowProps} />}
             <Swiper
               {...swiperProps}
@@ -122,9 +133,15 @@ export const TermsPhoto = ({
                 ) => (
                   <SwiperSlide key={_id || index} className={styles.slide}>
                     <Card {...settings.card.props} className={styles.card}>
-                      <Typography {...settings.card.title}>{title}</Typography>
+                      <Typography
+                        data-selector="card-title"
+                        {...settings.card.title}
+                      >
+                        {title}
+                      </Typography>
                       {subTitle && (
                         <Typography
+                          data-selector="card-subtitle"
                           className={styles.cardSubtitle}
                           {...settings.card.subTitle}
                         >
@@ -132,27 +149,36 @@ export const TermsPhoto = ({
                         </Typography>
                       )}
                       <Typography
+                        data-selector="card-description"
                         className={styles.cardDescription}
                         {...settings.card.description}
                       >
                         {description}
                       </Typography>
-                      <div className={styles.cardBottom}>
+                      <div
+                        data-selector="card-bottom"
+                        className={styles.cardBottom}
+                      >
                         {advantage && (
                           <Typography
+                            data-selector="card-advantage"
                             className={styles.cardAdvantage}
                             {...settings.card.advantage}
                           >
                             {advantage}
                           </Typography>
                         )}
-                        <div className={styles.cardButtonWrapper}>
+                        <div
+                          data-selector="card-button-wrapper"
+                          className={styles.cardButtonWrapper}
+                        >
                           <Button
                             as={"a"}
                             href={buttonLink}
                             target={"_blank"}
                             type={settings.buttonType}
                             label={buttonName}
+                            fullWidth
                           />
                         </div>
                       </div>
@@ -173,6 +199,7 @@ export const TermsPhoto = ({
 
           {minLaptop && (
             <div
+              data-selector="icon-wrapper"
               style={{
                 display: "flex",
                 alignItems: "center",

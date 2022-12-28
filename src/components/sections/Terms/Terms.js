@@ -19,7 +19,7 @@ import styles from "./Terms.module.scss";
 
 const Arrows = ({ next, prev }) => {
   return (
-    <div className={styles.arrows}>
+    <div data-selector="arrows" className={styles.arrows}>
       <Arrow {...prev} />
       <Arrow {...next} />
     </div>
@@ -37,6 +37,7 @@ export const Terms = ({ subTitle = null, title, items, settings }) => {
       <ContentContainer>
         {subTitle && (
           <Typography
+            data-selector="subtitle"
             className={styles.subTitle}
             as={"h3"}
             {...settings.subTitle}
@@ -44,8 +45,16 @@ export const Terms = ({ subTitle = null, title, items, settings }) => {
             {subTitle}
           </Typography>
         )}
-        <div className={styles.titleArrowsWrapper}>
-          <Typography as={"h2"} className={styles.title} {...settings.title}>
+        <div
+          data-selector="title-arrows-wrapper"
+          className={styles.titleArrowsWrapper}
+        >
+          <Typography
+            data-selector="title"
+            as={"h2"}
+            className={styles.title}
+            {...settings.title}
+          >
             {title}
           </Typography>
           {minTablet && <Arrows {...arrowProps} />}
@@ -71,9 +80,15 @@ export const Terms = ({ subTitle = null, title, items, settings }) => {
             ) => (
               <SwiperSlide key={_id || index} className={styles.slide}>
                 <Card {...settings.card.props} className={styles.card}>
-                  <Typography {...settings.card.title}>{title}</Typography>
+                  <Typography
+                    data-selector="card-title"
+                    {...settings.card.title}
+                  >
+                    {title}
+                  </Typography>
                   {subTitle && (
                     <Typography
+                      data-selector="card-subtitle"
                       className={styles.cardSubtitle}
                       {...settings.card.subTitle}
                     >
@@ -81,27 +96,36 @@ export const Terms = ({ subTitle = null, title, items, settings }) => {
                     </Typography>
                   )}
                   <Typography
+                    data-selector="card-description"
                     className={styles.cardDescription}
                     {...settings.card.description}
                   >
                     {description}
                   </Typography>
-                  <div className={styles.cardBottom}>
+                  <div
+                    data-selector="card-bottom"
+                    className={styles.cardBottom}
+                  >
                     {advantage && (
                       <Typography
+                        data-selector="card-advantage"
                         className={styles.cardAdvantage}
                         {...settings.card.advantage}
                       >
                         {advantage}
                       </Typography>
                     )}
-                    <div className={styles.cardButtonWrapper}>
+                    <div
+                      data-selector="card-button-wrapper"
+                      className={styles.cardButtonWrapper}
+                    >
                       <Button
                         as={"a"}
                         href={buttonLink}
                         target={"_blank"}
                         type={settings.buttonType}
                         label={buttonName}
+                        fullWidth
                       />
                     </div>
                   </div>

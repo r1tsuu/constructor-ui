@@ -8,7 +8,11 @@ import styles from "./ProgressNumbers.module.scss";
 
 export const ProgressNumbers = ({ value, maxValue, className, ...props }) => {
   return (
-    <div className={clsx(styles.wrapper, className)} {...props}>
+    <div
+      data-component="progress-numbers"
+      className={clsx(styles.wrapper, className)}
+      {...props}
+    >
       <Typography color={"text-primary"} as={"span"} type={"h3"}>
         {`${toStrZeroes(value)}/`}
       </Typography>

@@ -30,18 +30,23 @@ export const PhotoTextButton = ({
           "--gap": settings.gap,
         }}
       >
-        <div className={styles.left}>
+        <div data-selector="left" className={styles.left}>
           {icon && (
             <div
+              data-selector="icon-wrapper"
               data-position={settings.iconPosition}
               className={styles.iconWrapper}
             >
               {settings.iconBorder && (
                 <ColorsInjector background={settings.iconBorderColor}>
-                  <div className={styles.iconBorder} />
+                  <div
+                    data-selector="icon-border"
+                    className={styles.iconBorder}
+                  />
                 </ColorsInjector>
               )}
               <div
+                data-selector="icon-wrapper"
                 style={{
                   width: settings.iconWidth,
                   height: settings.iconHeight,
@@ -58,13 +63,17 @@ export const PhotoTextButton = ({
               </div>
               {settings.iconBorder && (
                 <ColorsInjector background={settings.iconBorderColor}>
-                  <div className={styles.iconBorder} />
+                  <div
+                    data-selector="icon-border"
+                    className={styles.iconBorder}
+                  />
                 </ColorsInjector>
               )}
             </div>
           )}
           {subTitle && (
             <Typography
+              data-selector="subtitle"
               as={"h3"}
               className={styles.subTitle}
               {...settings.subTitle}
@@ -72,12 +81,18 @@ export const PhotoTextButton = ({
               {subTitle}
             </Typography>
           )}
-          <Typography as={"h2"} className={styles.title} {...settings.title}>
+          <Typography
+            data-selector="title"
+            as={"h2"}
+            className={styles.title}
+            {...settings.title}
+          >
             {title}
           </Typography>
 
           {description && isMinLaptop && (
             <Typography
+              data-selector="description"
               className={styles.description}
               {...settings.description}
             >
@@ -86,6 +101,7 @@ export const PhotoTextButton = ({
           )}
           {buttonName && isMinLaptop && (
             <div
+              data-selector="button-wrapperr"
               data-position={settings.buttonPosition}
               className={styles.buttonWrapper}
             >
@@ -97,12 +113,13 @@ export const PhotoTextButton = ({
             </div>
           )}
         </div>
-        <div className={styles.right}>
-          <div className={styles.photoWrapper}>
+        <div data-selector="right" className={styles.right}>
+          <div data-selector="photo-wrapper" className={styles.photoWrapper}>
             <img alt="" src={isMobile ? photoSourceMobile : photoSource} />
           </div>
           {description && !isMinLaptop && (
             <Typography
+              data-selector="description"
               className={styles.description}
               {...settings.description}
             >
@@ -111,6 +128,7 @@ export const PhotoTextButton = ({
           )}
           {buttonName && !isMinLaptop && (
             <div
+              data-selector="button-wrapper"
               data-position={settings.buttonPosition}
               className={styles.buttonWrapper}
             >

@@ -26,7 +26,10 @@ const Pagination = ({
   settings,
 }) => {
   return (
-    <div className={clsx(styles.pagination, className)}>
+    <div
+      data-selector="pagination"
+      className={clsx(styles.pagination, className)}
+    >
       {Array(maxIndex)
         .fill("_")
         .map((_, index) => (
@@ -39,6 +42,7 @@ const Pagination = ({
             }
           >
             <button
+              data-selector="pagination-item"
               className={styles.paginationButton}
               data-is-active={index === currentIndex}
               onClick={onButtonClick.bind(null, index)}
@@ -77,8 +81,11 @@ const CardModalContent = ({
   const handlePaginationButtonClick = (index) => goTo(index);
 
   return (
-    <div className={styles.cardPopupGrid}>
-      <div className={styles.cardPopupSliderWrapper}>
+    <div data-selector="popup-grid" className={styles.cardPopupGrid}>
+      <div
+        data-selector="popup-wrapper"
+        className={styles.cardPopupSliderWrapper}
+      >
         <Swiper
           rewind
           slidesPerView={"auto"}
@@ -94,7 +101,7 @@ const CardModalContent = ({
               }}
               key={index}
             >
-              <img style={{ width: "100%" }} src={source} />
+              <img alt="" style={{ width: "100%" }} src={source} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -108,15 +115,22 @@ const CardModalContent = ({
           />
         )}
         {photos.length > 1 && (
-          <div className={styles.cardPhotosArrows}>
+          <div
+            data-selector="arrows-wrapper"
+            className={styles.cardPhotosArrows}
+          >
             <Arrow {...arrowProps.prev} />
             <Arrow {...arrowProps.next} />
           </div>
         )}
       </div>
-      <div className={styles.cardPopupContent}>
-        <div className={styles.cardPopupTitleButton}>
+      <div data-selector="content" className={styles.cardPopupContent}>
+        <div
+          data-selector="title-button-wrapper"
+          className={styles.cardPopupTitleButton}
+        >
           <Typography
+            data-selector="title"
             style={{
               width: "100%",
             }}
@@ -125,7 +139,11 @@ const CardModalContent = ({
           >
             {title}
           </Typography>
-          <button onClick={onClose} className={styles.popupCloseButton}>
+          <button
+            data-selector="close-button"
+            onClick={onClose}
+            className={styles.popupCloseButton}
+          >
             <svg
               width="12"
               height="12"
@@ -150,6 +168,8 @@ const CardModalContent = ({
                 value={index}
               >
                 <Typography
+                  data-selector="tab-title"
+                  data-is-active={index === activeTab}
                   {...settings.cardPopupTabTitle}
                   as={"h4"}
                   color={
@@ -162,6 +182,7 @@ const CardModalContent = ({
                 </Typography>
                 <ColorsInjector background={settings.tabProgressColorActive}>
                   <div
+                    data-selector="tab-progress"
                     className={styles.tabProgress}
                     data-is-active={index === activeTab}
                   />
@@ -169,12 +190,16 @@ const CardModalContent = ({
               </Tabs.Trigger>
             ))}
             <ColorsInjector background={settings.tabProgressColor}>
-              <div className={styles.tabsListProgressFull} />
+              <div
+                data-selector="tab-full"
+                className={styles.tabsListProgressFull}
+              />
             </ColorsInjector>
           </Tabs.List>
           {tabsPopup.map(({ description }, index) => (
             <Tabs.Content value={index} key={index}>
               <Typography
+                data-selector="description"
                 className={styles.cardPopupDescription}
                 {...settings.cardPopupDescription}
                 as={"p"}
@@ -185,8 +210,15 @@ const CardModalContent = ({
           ))}
         </Tabs.Root>
       </div>
-      <div className={styles.cardPopupPriceAndBtn}>
-        <Typography as={"h3"} {...settings.cardPopupPrice}>
+      <div
+        data-selector="price-button-wrapper"
+        className={styles.cardPopupPriceAndBtn}
+      >
+        <Typography
+          data-selector="price"
+          as={"h3"}
+          {...settings.cardPopupPrice}
+        >
           {price}
         </Typography>
         <Button
@@ -226,8 +258,11 @@ const Card = ({
 
   return (
     <ColorsInjector background={settings.cardBackground}>
-      <div className={styles.cardContent}>
-        <div className={styles.cardPhotosWrapper}>
+      <div data-selector="card-content" className={styles.cardContent}>
+        <div
+          data-selector="card-photos-wrapper"
+          className={styles.cardPhotosWrapper}
+        >
           <Swiper
             rewind
             onRealIndexChange={handleRealIndexChange}
@@ -255,15 +290,19 @@ const Card = ({
             />
           )}
           {isMinDesktop && photos.length > 1 && (
-            <div className={styles.cardPhotosArrows}>
+            <div
+              data-selector="card-photos-arrows"
+              className={styles.cardPhotosArrows}
+            >
               <Arrow {...arrowProps.prev} />
               <Arrow {...arrowProps.next} />
             </div>
           )}
         </div>
         <ColorsInjector borderColor={settings.cardBorderColor}>
-          <div className={styles.cardTop}>
+          <div data-selector="card-top" className={styles.cardTop}>
             <Typography
+              data-selector="card-title"
               as={"h4"}
               className={styles.cardTitle}
               {...settings.cardTitle}
@@ -273,6 +312,7 @@ const Card = ({
             <Typography
               as={"p"}
               className={styles.cardDescription}
+              data-selector="card-description"
               {...settings.cardDescription}
             >
               {description}
@@ -281,6 +321,7 @@ const Card = ({
               className={styles.cardPrice}
               {...settings.cardPrice}
               as={"h5"}
+              data-selector="card-price"
             >
               {price}
             </Typography>
@@ -288,11 +329,16 @@ const Card = ({
         </ColorsInjector>
         <div className={styles.cardBot}>
           <Button
+            data-selector="button-popup"
             onClick={handleOpenPopup}
             label={staticTexts.popupBtn}
             type={settings.cardPopupButtonType}
           />
-          <Button href={buttonLink} type={settings.cardLinkButtonType}>
+          <Button
+            data-selector="button-link"
+            href={buttonLink}
+            type={settings.cardLinkButtonType}
+          >
             {staticTexts.linkBtn}
           </Button>
         </div>
@@ -336,7 +382,7 @@ const CatalogTabItem = ({ settings, tabItems, staticTexts, buttonLink }) => {
   const handlePaginationButtonClick = (index) => goTo(index);
 
   return (
-    <div className={styles.tabContent}>
+    <div data-selector="tab-content" className={styles.tabContent}>
       <Swiper
         rewind
         slidesPerView={"auto"}
@@ -358,7 +404,10 @@ const CatalogTabItem = ({ settings, tabItems, staticTexts, buttonLink }) => {
         ))}
       </Swiper>
       {isMinLaptop && (
-        <div className={styles.tabContentArrows}>
+        <div
+          data-selector="tab-content-arrows"
+          className={styles.tabContentArrows}
+        >
           <Arrow {...arrowProps.prev} />
           <Arrow {...arrowProps.next} />
         </div>
@@ -390,7 +439,12 @@ export const Catalog = ({
   return (
     <Section {...settings.section}>
       <ContentContainer>
-        <Typography {...settings.title} as={"h2"} className={styles.title}>
+        <Typography
+          data-selector="title"
+          {...settings.title}
+          as={"h2"}
+          className={styles.title}
+        >
           {title}
         </Typography>
         <Tabs.Root value={tabIndex} onValueChange={handleTabIndexChange}>
@@ -403,6 +457,8 @@ export const Catalog = ({
               >
                 <Typography
                   as={"p"}
+                  data-selector="tab"
+                  data-is-active={index === tabIndex}
                   {...settings.tab}
                   color={
                     index === tabIndex
@@ -414,6 +470,7 @@ export const Catalog = ({
                 </Typography>
                 <ColorsInjector background={settings.tabProgressColorActive}>
                   <div
+                    data-selector="tabs-progress"
                     className={styles.tabProgress}
                     data-is-active={index === tabIndex}
                   />

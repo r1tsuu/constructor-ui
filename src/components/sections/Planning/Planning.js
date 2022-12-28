@@ -28,6 +28,7 @@ const Zoom = ({ onClick, settings }) => {
       borderColor={settings.zoomButtonBorderColor}
     >
       <button
+        data-selector="zoom-button"
         style={{ borderRadius: settings.zoomButtonBorderRadius }}
         onClick={onClick}
         className={styles.zoom}
@@ -60,7 +61,7 @@ const Zoom = ({ onClick, settings }) => {
 
 const ArrowsProgress = ({ arrowProps, current, max, settings }) => {
   return (
-    <div className={styles.arrowsProgress}>
+    <div data-selector="arrows-progress" className={styles.arrowsProgress}>
       <Arrow {...arrowProps.prev} />
       <ProgressNumbers maxValue={max} value={current + 1} />
       <Arrow {...arrowProps.next} />
@@ -86,7 +87,10 @@ const ModalSliderContent = ({
   };
 
   return (
-    <div className={styles.modalSliderContent}>
+    <div
+      data-selector="modal-slider-content"
+      className={styles.modalSliderContent}
+    >
       <Swiper
         rewind
         className={styles.swiper}
@@ -104,6 +108,7 @@ const ModalSliderContent = ({
             }}
           >
             <div
+              data-selector="slide-wrapper"
               style={{
                 height: "100%",
                 display: "flex",
@@ -115,6 +120,7 @@ const ModalSliderContent = ({
             >
               {area && (
                 <Typography
+                  data-selector="slide-area"
                   as={"div"}
                   {...settings.modalSliderArea}
                   className={styles.modalSliderArea}
@@ -123,6 +129,7 @@ const ModalSliderContent = ({
                 </Typography>
               )}
               <img
+                data-selector="slide-image"
                 style={{
                   width: "auto",
                   maxHeight: "100%",
@@ -209,14 +216,19 @@ const RoomBlock = ({
     <>
       <ColorsInjector background={settings.blockBackgroundColor}>
         <div
+          data-selector="room-tab-content"
           style={{
             borderRadius: settings.blockBorderRadius,
           }}
           className={styles.roomTabContent}
         >
-          <div className={styles.roomTabContentGrid}>
-            <div className={styles.roomLeft}>
+          <div
+            data-selector="room-tab-content-grid"
+            className={styles.roomTabContentGrid}
+          >
+            <div data-selector="room-left" className={styles.roomLeft}>
               <Typography
+                data-selector="room-title"
                 as={"h3"}
                 {...settings.blockTitle}
                 className={styles.roomTitle}
@@ -225,6 +237,7 @@ const RoomBlock = ({
               </Typography>
               {description && (
                 <Typography
+                  data-selector="room-description"
                   as={"p"}
                   {...settings.blockDescription}
                   className={styles.roomDescription}
@@ -233,13 +246,18 @@ const RoomBlock = ({
                 </Typography>
               )}
               {characteristics.length > 0 && (
-                <ul className={styles.roomCharacteristics}>
+                <ul
+                  data-selector="room-characteristics-list"
+                  className={styles.roomCharacteristics}
+                >
                   {characteristics.map(({ title, value, _id }, index) => (
                     <li
+                      data-selector="room-characteristics-item"
                       className={styles.roomCharacteristic}
                       key={_id ?? index}
                     >
                       <Typography
+                        data-selector="room-characteristics-item-title"
                         as={"h5"}
                         {...settings.blockCharacteristicTitle}
                       >
@@ -251,11 +269,15 @@ const RoomBlock = ({
                             settings.blockCharacteristicSeparatorColor
                           }
                         >
-                          <div className={styles.roomCharacteristicSeparator} />
+                          <div
+                            data-selector="room-characteristics-item-separator"
+                            className={styles.roomCharacteristicSeparator}
+                          />
                         </ColorsInjector>
                       )}
                       <Typography
                         as={"span"}
+                        data-selector="room-characteristics-item-value"
                         {...settings.blockCharacteristicValue}
                       >
                         {value}
@@ -268,13 +290,24 @@ const RoomBlock = ({
                 <ColorsInjector
                   borderColor={settings.blockAdvantagesBorderColor}
                 >
-                  <ui className={styles.roomAdvantages}>
+                  <ui
+                    data-selector="room-advantages-list"
+                    className={styles.roomAdvantages}
+                  >
                     {advantages.map(({ icon, title, _id }, index) => (
-                      <li className={styles.roomAdvantage} key={_id ?? index}>
-                        <div className={styles.roomAdvantageIconWrapper}>
+                      <li
+                        data-selector="room-advantages-item"
+                        className={styles.roomAdvantage}
+                        key={_id ?? index}
+                      >
+                        <div
+                          data-selector="room-advantages-item-icon-wrapper"
+                          className={styles.roomAdvantageIconWrapper}
+                        >
                           <img src={icon} alt="" />
                         </div>
                         <Typography
+                          data-selector="room-advantages-item-title"
                           as={"span"}
                           {...settings.blockAdvantageTitle}
                         >
@@ -286,13 +319,23 @@ const RoomBlock = ({
                 </ColorsInjector>
               )}
             </div>
-            <div className={styles.roomRight}>
-              <div className={styles.roomRightContent}>
-                <Typography as={"span"} {...settings.blockPlansTotalAreaTitle}>
+            <div data-selector="room-right" className={styles.roomRight}>
+              <div
+                data-selector="room-right-content"
+                className={styles.roomRightContent}
+              >
+                <Typography
+                  data-selector="room-plans-total-area-title"
+                  as={"span"}
+                  {...settings.blockPlansTotalAreaTitle}
+                >
                   {`${staticTexts.totalArea}: ${activePlan.area}`}
                 </Typography>
 
-                <div className={styles.roomPlansSliderWrapper}>
+                <div
+                  data-selector="room-plans-slider-wrapper"
+                  className={styles.roomPlansSliderWrapper}
+                >
                   <Swiper
                     rewind
                     {...swiperProps}
@@ -309,6 +352,7 @@ const RoomBlock = ({
                         }}
                       >
                         <div
+                          data-selector="room-plans-slide-photo-container"
                           style={{
                             display: "flex",
                             justifyContent: "center",
@@ -330,6 +374,7 @@ const RoomBlock = ({
                 </div>
                 {!isMinLaptop && (
                   <div
+                    data-selector="room-plans-mobile-controls"
                     className={styles.planMobileControls}
                     data-no-pdf={!Boolean(activePlan.pdf)}
                   >
@@ -339,13 +384,17 @@ const RoomBlock = ({
                       max={plans.length}
                       settings={settings}
                     />
-                    <div className={styles.detailsZoomMobile}>
+                    <div
+                      data-selector="room-plans-details-zoom-mobile"
+                      className={styles.detailsZoomMobile}
+                    >
                       <a
                         style={{ width: "100%" }}
                         href={activePlan.pdf}
                         target={"_blank"}
                       >
                         <Button
+                          data-selector="button-pdf"
                           type={settings.pdfButtonType}
                           label={staticTexts.details}
                           style={{
@@ -367,16 +416,24 @@ const RoomBlock = ({
               </div>
             </div>
           </div>
-          <div className={styles.roomTabContentBot}>
-            <div className={styles.roomTabContentBotLeft}>
-              <div className={styles.roomButtonsWrapper}>
+          <div data-selector="room-bot" className={styles.roomTabContentBot}>
+            <div
+              data-selector="room-bot-left"
+              className={styles.roomTabContentBotLeft}
+            >
+              <div
+                data-selector="room-bot-left-buttons-wrapper"
+                className={styles.roomButtonsWrapper}
+              >
                 <Button
+                  data-selector="button-reserve-link"
                   href={reserveLink}
                   type={settings.roomReserveButtonType}
                   label={staticTexts.reserve}
                 />
 
                 <Button
+                  data-selector="button-interiors"
                   type={settings.roomInteriorsButtonType}
                   onClick={handleInteriorsModalOpen}
                   label={staticTexts.interiors}
@@ -391,6 +448,7 @@ const RoomBlock = ({
             </div>
             {isMinLaptop && (
               <div
+                data-selector="bot-right"
                 data-no-pdf={!Boolean(activePlan.pdf)}
                 className={styles.botLeft}
               >
@@ -400,9 +458,13 @@ const RoomBlock = ({
                   max={plans.length}
                   settings={settings}
                 />
-                <div className={styles.detailsZoomMobile}>
+                <div
+                  data-selector="room-bot-right-details-zoom"
+                  className={styles.detailsZoomMobile}
+                >
                   <a href={activePlan.pdf} target={"_blank"}>
                     <Button
+                      data-selector="button-pdf"
                       type={settings.pdfButtonType}
                       label={staticTexts.details}
                       style={{
@@ -463,6 +525,7 @@ const Planning = ({
       <ContentContainer>
         {subTitle && (
           <Typography
+            data-selector="subTitle"
             as={"h3"}
             {...settings.subTitle}
             className={styles.subTitle}
@@ -470,7 +533,12 @@ const Planning = ({
             {subTitle}
           </Typography>
         )}
-        <Typography as={"h2"} {...settings.title} className={styles.title}>
+        <Typography
+          data-selector="title"
+          as={"h2"}
+          {...settings.title}
+          className={styles.title}
+        >
           {title}
         </Typography>
         <Tabs.Root
@@ -486,6 +554,8 @@ const Planning = ({
                 key={_id ?? index}
               >
                 <Typography
+                  data-selector="tab-room-title"
+                  data-is-active={index === activeRoomIndex}
                   as={"span"}
                   {...settings.roomTitle}
                   color={
@@ -498,6 +568,7 @@ const Planning = ({
                 </Typography>
                 <ColorsInjector background={settings.roomLineActiveColor}>
                   <div
+                    data-selector="tab-room-line"
                     data-is-active={index === activeRoomIndex}
                     className={styles.line}
                   />
@@ -505,7 +576,7 @@ const Planning = ({
               </Tabs.Trigger>
             ))}
             <ColorsInjector background={settings.roomLineColor}>
-              <div className={styles.lineFull} />
+              <div data-selector="tabs-line" className={styles.lineFull} />
             </ColorsInjector>
           </Tabs.List>
 
@@ -525,8 +596,12 @@ const Planning = ({
             </Tabs.Content>
           ))}
         </Tabs.Root>
-        <div className={styles.goToMarketButtonWrapper}>
+        <div
+          data-selector="button-go-to-marker-wrapper"
+          className={styles.goToMarketButtonWrapper}
+        >
           <Button
+            data-selector="button-go-to-marker"
             label={staticTexts.goToMarket}
             href={goToMarketLink}
             type={settings.goToMarketButtonType}

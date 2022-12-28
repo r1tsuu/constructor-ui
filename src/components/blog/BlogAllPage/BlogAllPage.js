@@ -20,7 +20,12 @@ export const BlogAllPage = ({
     <ColorsInjector background={settings.backgroundColor}>
       <main className={styles.page} data-theme={settings.theme}>
         <ContentContainer>
-          <Typography className={styles.title} {...settings.title} as={"h1"}>
+          <Typography
+            data-selector="title"
+            className={styles.title}
+            {...settings.title}
+            as={"h1"}
+          >
             {title}
           </Typography>
           <div className={styles.categories}>
@@ -33,10 +38,18 @@ export const BlogAllPage = ({
                 });
 
               return (
-                <div onClick={handleClick} key={index} className={styles.tab}>
-                  <Typography {...settings.category}>{title}</Typography>
+                <div
+                  data-selector="tab"
+                  onClick={handleClick}
+                  key={index}
+                  className={styles.tab}
+                >
+                  <Typography data-selector="tab-title" {...settings.category}>
+                    {title}
+                  </Typography>
                   <ColorsInjector background={settings.categoryActiveProgress}>
                     <div
+                      data-selector="tab-progress"
                       className={styles.tabProgress}
                       data-is-active={isActive}
                     />
@@ -45,10 +58,13 @@ export const BlogAllPage = ({
               );
             })}
             <ColorsInjector background={settings.categoryProgress}>
-              <div className={styles.tabsListProgressFull} />
+              <div
+                data-selector="tabs-progress"
+                className={styles.tabsListProgressFull}
+              />
             </ColorsInjector>
           </div>
-          <div data-grid={3} className={styles.grid}>
+          <div data-selector="list" data-grid={3} className={styles.grid}>
             {list.map((card, index) => (
               <PublicationCard
                 {...card}
@@ -60,7 +76,7 @@ export const BlogAllPage = ({
           </div>
 
           {pageCount !== 1 && (
-            <div className={styles.paginateWrapper}>
+            <div data-selector="paginate" className={styles.paginateWrapper}>
               <Arrow
                 disabled={page === 0}
                 onClick={() => onPageChange(page - 1)}

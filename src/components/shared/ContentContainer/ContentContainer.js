@@ -12,7 +12,11 @@ export const ContentContainer = ({
   ...props
 }) => {
   return (
-    <div className={clsx(style, className)} {...props}>
+    <div
+      data-component="container"
+      className={clsx(style, className)}
+      {...props}
+    >
       {children}
     </div>
   );

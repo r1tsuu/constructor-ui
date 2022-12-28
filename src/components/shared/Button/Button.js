@@ -17,6 +17,7 @@ export const Button = ({
   href,
   htmlType,
   formQueryParams = {},
+  selector,
   ...props
 }) => {
   const { handleOpenForm } = useGlobalForms();
@@ -56,12 +57,16 @@ export const Button = ({
   if (isLink && Link) {
     return (
       <Link href={elementProps.href}>
-        <a data-full-width={fullWidth} className={elementProps.className}>
+        <a
+          data-component={"button"}
+          data-full-width={fullWidth}
+          className={elementProps.className}
+        >
           {elementProps.children}
         </a>
       </Link>
     );
   }
 
-  return <As {...elementProps} />;
+  return <As {...elementProps} data-component="button" />;
 };

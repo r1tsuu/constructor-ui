@@ -17,7 +17,7 @@ import { mediaQueries } from "../../../utils/constants";
 const BlogImage = ({ photoSource, photoSourceMobile }) => {
   const isMobile = !useMediaQuery(mediaQueries.minTablet);
   return (
-    <section>
+    <section data-component="blog-image">
       <img src={isMobile ? photoSourceMobile : photoSource} />
     </section>
   );
@@ -25,13 +25,15 @@ const BlogImage = ({ photoSource, photoSourceMobile }) => {
 
 const BlogList = ({ list, settings }) => {
   return (
-    <section>
+    <section data-component="blog-list">
       <ul className={styles.list}>
         {list.map((title, index) => (
           <li key={index} className={styles.item}>
-            <Typography {...settings.title}>{title}</Typography>
+            <Typography data-selector="title" {...settings.title}>
+              {title}
+            </Typography>
             <ColorsInjector background={settings.iconColor}>
-              <span className={styles.listIcon} />
+              <span data-selector="list-icon" className={styles.listIcon} />
             </ColorsInjector>
           </li>
         ))}
@@ -42,7 +44,7 @@ const BlogList = ({ list, settings }) => {
 
 const Pagination = ({ currentIndex, maxIndex, onButtonClick, settings }) => {
   return (
-    <div className={styles.pagination}>
+    <div data-selector="paginaton" className={styles.pagination}>
       {Array(maxIndex)
         .fill("_")
         .map((_, index) => (
@@ -55,6 +57,7 @@ const Pagination = ({ currentIndex, maxIndex, onButtonClick, settings }) => {
             }
           >
             <button
+              data-selector="pagination-button"
               data-is-active={index === currentIndex}
               onClick={onButtonClick.bind(null, index)}
             />
@@ -73,8 +76,8 @@ const BlogSlider = ({ photos, settings }) => {
 
   const handlePaginationClick = (index) => goTo(index);
   return (
-    <section>
-      <div className={styles.slider}>
+    <section data-component="blog-slider">
+      <div data-selector="slider" className={styles.slider}>
         <Swiper
           onRealIndexChange={handleRealIndexChange}
           {...swiperProps}
@@ -88,7 +91,7 @@ const BlogSlider = ({ photos, settings }) => {
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className={styles.arrowsWrapper}>
+        <div data-selector="arrows-wrapper" className={styles.arrowsWrapper}>
           <Arrow {...arrowProps.prev} />
           <Arrow {...arrowProps.next} />
         </div>
@@ -106,7 +109,7 @@ const BlogSlider = ({ photos, settings }) => {
 const BlogQuote = ({ title, settings }) => {
   return (
     <ColorsInjector borderColor={settings.borderColor}>
-      <section className={styles.quotes}>
+      <section data-component="blog-quote" className={styles.quotes}>
         <ColorsInjector fill={settings.fill}>
           <svg
             width="20"
@@ -118,27 +121,29 @@ const BlogQuote = ({ title, settings }) => {
             <path d="M0 44.8599C0.0947035 45.1384 0.295947 45.4567 0.603732 45.8147C3.61055 44.5615 6.01364 42.9104 7.813 40.8614C9.58868 38.8324 10.4765 36.7834 10.4765 34.7146C10.4765 33.1629 10.0622 31.9197 9.23355 30.9847C8.64165 30.3282 7.94322 30 7.13824 30C6.45165 30 5.8124 30.3282 5.22051 30.9847C4.3445 31.9594 3.9065 33.0535 3.9065 34.267C3.9065 34.7046 4.02488 35.1423 4.26164 35.5799C4.38002 35.7788 4.74699 36.117 5.36256 36.5944C5.95446 37.0918 6.29775 37.42 6.39246 37.5791C6.53451 37.8179 6.60554 38.0765 6.60554 38.355C6.60554 39.8867 4.40369 42.055 0 44.8599Z" />
           </svg>
         </ColorsInjector>
-        <Typography {...settings.title}>{title}</Typography>
+        <Typography data-selector="title" {...settings.title}>
+          {title}
+        </Typography>
       </section>
     </ColorsInjector>
   );
 };
 
 const BlogVideo = ({ src, previewPhotoSrc }) => (
-  <section>
+  <section data-component="blog-video">
     <ResponsiveVideoPlayer src={src} previewPhotoSrc={previewPhotoSrc} />
   </section>
 );
 
 const BlogButton = ({ buttonName, buttonLink, settings }) => (
-  <section>
+  <section data-component="blog-button">
     <Button href={buttonLink} label={buttonName} type={settings.buttonType} />
   </section>
 );
 
 const BlogText = ({ title, settings }) => {
   return (
-    <section>
+    <section data-component="blog-text">
       <Typography {...settings.title}>{title}</Typography>
     </section>
   );
@@ -161,6 +166,7 @@ export const BlogPage = ({
     {
       renderIcon: (color) => (
         <svg
+          data-component="social-icon"
           width="20"
           height="21"
           viewBox="0 0 20 21"
@@ -179,6 +185,7 @@ export const BlogPage = ({
     {
       renderIcon: (color) => (
         <svg
+          data-component="social-icon"
           width="20"
           height="20"
           viewBox="0 0 20 20"
@@ -209,6 +216,7 @@ export const BlogPage = ({
     {
       renderIcon: (color) => (
         <svg
+          data-component="social-icon"
           width="24"
           height="24"
           viewBox="0 0 24 24"
@@ -244,9 +252,13 @@ export const BlogPage = ({
     <ColorsInjector background={settings.backgroundColor}>
       <main data-theme={settings.theme} className={styles.page}>
         <ContentContainer className={styles.wrapper}>
-          <div className={styles.left}>
-            <div className={styles.introCategoryDate}>
+          <div data-selector="left" className={styles.left}>
+            <div
+              data-selector="intro-category-date"
+              className={styles.introCategoryDate}
+            >
               <div
+                data-component="category-card"
                 className={styles.categoryCard}
                 style={{
                   color: categoryColor,
@@ -256,12 +268,19 @@ export const BlogPage = ({
               >
                 {categoryLabel}
               </div>
-              <Typography {...settings.createdAt}>{date}</Typography>
+              <Typography data-selector="date" {...settings.createdAt}>
+                {date}
+              </Typography>
             </div>
-            <Typography className={styles.title} as={"h1"} {...settings.title}>
+            <Typography
+              data-selector="title"
+              className={styles.title}
+              as={"h1"}
+              {...settings.title}
+            >
               {title}
             </Typography>
-            <div className={styles.introSocials}>
+            <div data-selector="intro-socials" className={styles.introSocials}>
               {socials.map(({ renderIcon }, index) => (
                 <ColorsInjector
                   background={settings.socialBackgroundColor}
@@ -270,6 +289,7 @@ export const BlogPage = ({
                   borderHoverColor={settings.socialBorderColorHover}
                 >
                   <button
+                    data-selector="social-button"
                     style={{
                       borderRadius: settings.socialBorderRadius,
                     }}
@@ -282,8 +302,8 @@ export const BlogPage = ({
               ))}
             </div>
           </div>
-          <div className={styles.constructor}>
-            <div className={styles.photoWrapper}>
+          <div data-selector="constructor-blog" className={styles.constructor}>
+            <div data-selector="photo-wrapper" className={styles.photoWrapper}>
               <img src={photoSource} alt="" />
             </div>
             {content?.map(({ blockType, ...blockContent }, index) => {
@@ -346,6 +366,8 @@ export const BlogPage = ({
                   );
                 case "image":
                   return <BlogImage key={index} {...blockContent} />;
+                default:
+                  return null;
               }
             })}
           </div>

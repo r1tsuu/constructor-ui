@@ -21,33 +21,45 @@ export const PhotoQuote = ({
     <Section {...settings.section}>
       <ContentContainer className={styles.grid}>
         <div
+          data-selector="photo-wrapper"
           data-is-full-width={settings.fullPhotoWidth}
           className={styles.photoWrapper}
         >
           <img src={isMobile ? photoSourceMobile : photoSource} />
         </div>
-        <div className={styles.sectionContent}>
-          <div className={styles.quoteStartWrapper}>
+        <div data-selector="content" className={styles.sectionContent}>
+          <div
+            data-selector="quote-start-wrapper"
+            className={styles.quoteStartWrapper}
+          >
             <QuotesIcon />
           </div>
           <Typography
+            data-selector="description"
             className={styles.description}
             as={"p"}
             {...settings.description}
           >
             {description}
           </Typography>
-          <div className={styles.quoteEndWrapper}>
+          <div
+            data-selector="quote-end-wrapper"
+            className={styles.quoteEndWrapper}
+          >
             <QuotesIcon isEnd />
           </div>
-          <div className={styles.bottom}>
+          <div data-selector="buttom" className={styles.bottom}>
             {name && (
-              <Typography as={"h3"} {...settings.name}>
+              <Typography data-selector="name" as={"h3"} {...settings.name}>
                 {name}
               </Typography>
             )}
             {position && (
-              <Typography as={"h4"} {...settings.position}>
+              <Typography
+                data-selector="position"
+                as={"h4"}
+                {...settings.position}
+              >
                 {position}
               </Typography>
             )}

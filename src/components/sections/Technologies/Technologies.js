@@ -10,6 +10,7 @@ export const Technologies = ({ subTitle, title, items, settings }) => {
       <ContentContainer>
         {subTitle && (
           <Typography
+            data-selector="subtitle"
             as={"h3"}
             className={styles.subTitle}
             {...settings.subTitle}
@@ -17,10 +18,19 @@ export const Technologies = ({ subTitle, title, items, settings }) => {
             {subTitle}
           </Typography>
         )}
-        <Typography as={"h2"} className={styles.title} {...settings.title}>
+        <Typography
+          data-selector="title"
+          as={"h2"}
+          className={styles.title}
+          {...settings.title}
+        >
           {title}
         </Typography>
-        <ul data-grid-columns={settings.gridColumns} className={styles.grid}>
+        <ul
+          data-selector="list"
+          data-grid-columns={settings.gridColumns}
+          className={styles.grid}
+        >
           {items.map(({ _id, title, subTitle, icon }, index) => (
             <Card
               as={"li"}
@@ -28,13 +38,21 @@ export const Technologies = ({ subTitle, title, items, settings }) => {
               className={styles.card}
               {...settings.card.props}
             >
-              <div className={styles.cardIconWrapper}>
+              <div
+                data-selector="card-icon-wrapper"
+                className={styles.cardIconWrapper}
+              >
                 <img alt="" src={icon} />
               </div>
-              <Typography className={styles.cardTitle} {...settings.card.title}>
+              <Typography
+                data-selector="title"
+                className={styles.cardTitle}
+                {...settings.card.title}
+              >
                 {title}
               </Typography>
               <Typography
+                data-selector="subtitle"
                 className={styles.cardSubTitle}
                 {...settings.card.subTitle}
               >

@@ -24,8 +24,9 @@ export const PublicationCard = ({
   useEffect(() => setDate(new Date(createdAt).toLocaleDateString()));
 
   const el = (
-    <div className={styles.card}>
+    <div data-component="publication-card" className={styles.card}>
       <div
+        data-selector="category-card"
         style={{
           backgroundColor: categoryBackgroundColor,
           color: categoryColor,
@@ -35,7 +36,7 @@ export const PublicationCard = ({
       >
         {categoryTitle}
       </div>
-      <div>
+      <div data-selector="image-wrapper">
         <img
           className={styles.image}
           data-grid={gridColumns}
@@ -47,9 +48,15 @@ export const PublicationCard = ({
         borderColor={settings.borderColor}
         background={settings.botBackground}
       >
-        <div className={styles.cardBot}>
-          <Typography {...settings.date}>{date}</Typography>
-          <Typography className={styles.title} {...settings.title}>
+        <div data-selector="bot" className={styles.cardBot}>
+          <Typography data-selector="date" {...settings.date}>
+            {date}
+          </Typography>
+          <Typography
+            data-selector="title"
+            className={styles.title}
+            {...settings.title}
+          >
             {title}
           </Typography>
         </div>

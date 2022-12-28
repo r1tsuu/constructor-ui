@@ -51,6 +51,7 @@ const ModalOverlay = ({
       <CSSInjector css={css}>
         <ColorsInjector beforeBackground={backgroundColor}>
           <div
+            data-component="modal"
             style={{
               zIndex,
               "--overlay-background-opacity": backgroundOpacity,

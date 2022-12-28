@@ -26,14 +26,26 @@ export const Documentation = ({
     <Section {...settings.section}>
       <ContentContainer>
         {subTitle && (
-          <Typography {...settings.subTitle} className={styles.subTitle}>
+          <Typography
+            data-selector="subtitle"
+            {...settings.subTitle}
+            className={styles.subTitle}
+          >
             {subTitle}
           </Typography>
         )}
-        <Typography {...settings.title} className={styles.title}>
+        <Typography
+          data-selector="title"
+          {...settings.title}
+          className={styles.title}
+        >
           {title}
         </Typography>
-        <div className={styles.grid} data-grid-columns={settings.gridColumns}>
+        <div
+          data-selector="list"
+          className={styles.grid}
+          data-grid-columns={settings.gridColumns}
+        >
           {currentItems.map(
             ({ _id, icon, title, fileSize, fileLink }, index) => (
               <Card
@@ -44,16 +56,21 @@ export const Documentation = ({
                 {...settings.card.props}
                 className={styles.card}
               >
-                <div className={styles.cardIcon}>
+                <div
+                  data-selector="card-icon-wrapper"
+                  className={styles.cardIcon}
+                >
                   <img alt="" src={icon} />
                 </div>
                 <Typography
+                  data-selector="card-title"
                   className={styles.cardTitle}
                   {...settings.card.title}
                 >
                   {title}
                 </Typography>
                 <Typography
+                  data-selector="card-file-size"
                   className={styles.cardFileSize}
                   {...settings.card.fileSize}
                 >
@@ -64,7 +81,10 @@ export const Documentation = ({
           )}
         </div>
         {showButton && (
-          <div className={styles.mobilePaginationButtonWrapper}>
+          <div
+            data-selector="mobile-button-wrapper"
+            className={styles.mobilePaginationButtonWrapper}
+          >
             <Button {...buttonProps} label={paginationButtonName} />
           </div>
         )}

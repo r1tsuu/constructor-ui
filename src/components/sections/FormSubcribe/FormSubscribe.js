@@ -31,6 +31,7 @@ const FormSubscribeContent = ({
   return (
     <ColorsInjector background={settings.backgroundColor}>
       <div
+        data-selector="wrapper"
         data-style-type={settings.styleType}
         className={styles.wrapper}
         style={{
@@ -47,16 +48,18 @@ const FormSubscribeContent = ({
           errorMessage="asd"
         />
         <div
+          data-selector="left"
           className={styles.left}
           style={{
             "--style-2-width": settings.secondStyleLeft,
           }}
         >
-          <Typography {...settings.title} as={"h2"}>
+          <Typography data-selector="title" {...settings.title} as={"h2"}>
             {title}
           </Typography>
         </div>
         <div
+          data-selector="right"
           className={styles.right}
           style={{
             "--style-2-width": settings.secondStyleRight,
@@ -73,7 +76,10 @@ const FormSubscribeContent = ({
             autoComplete="off"
             className={styles.form}
           >
-            <div className={styles.formInputButtonWrapper}>
+            <div
+              data-selector="input-button-wrapper"
+              className={styles.formInputButtonWrapper}
+            >
               <ControlledInput
                 isRequired
                 hideRequiredLabel
@@ -85,11 +91,19 @@ const FormSubscribeContent = ({
               />
               <Button htmlType={"submit"} label={t("FORM_SEND")} />
             </div>
-            <div>
-              <Typography as={"span"} {...settings.privacy.first}>
+            <div data-selector="privacy-wrapper">
+              <Typography
+                data-selector="privacy-1"
+                as={"span"}
+                {...settings.privacy.first}
+              >
                 {t("FORM_PRIVACY_1")}
               </Typography>
-              <Typography as={"span"} {...settings.privacy.second}>
+              <Typography
+                data-selector="privacy-2"
+                as={"span"}
+                {...settings.privacy.second}
+              >
                 {t("FORM_PRIVACY_2")}
               </Typography>
             </div>

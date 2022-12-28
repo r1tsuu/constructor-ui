@@ -23,7 +23,12 @@ export const Video = ({
   return (
     <Section {...settings.section}>
       <ContentContainer>
-        <Typography className={styles.title} {...settings.title} as={"h2"}>
+        <Typography
+          data-selector="title"
+          className={styles.title}
+          {...settings.title}
+          as={"h2"}
+        >
           {title}
         </Typography>
         <ResponsiveVideoPlayer

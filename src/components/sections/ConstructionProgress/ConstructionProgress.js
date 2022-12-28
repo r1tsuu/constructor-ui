@@ -27,11 +27,19 @@ export const ConstructionProgress = ({
     <Section {...settings.section}>
       <ContentContainer>
         {subTitle && (
-          <Typography {...settings.subTitle} className={styles.subTitle}>
+          <Typography
+            data-selector="subtitle"
+            {...settings.subTitle}
+            className={styles.subTitle}
+          >
             {subTitle}
           </Typography>
         )}
-        <Typography {...settings.title} className={styles.title}>
+        <Typography
+          data-selector="title"
+          {...settings.title}
+          className={styles.title}
+        >
           {title}
         </Typography>
         <ColorsInjector
@@ -39,38 +47,57 @@ export const ConstructionProgress = ({
           borderColor={settings.contentBorderColor}
         >
           <div
+            data-selector="content-wrapper"
             className={styles["content-wrapper"]}
             style={{
               borderRadius: settings.contentBorderRadius,
             }}
           >
             <PublicationCard settings={settings.card} {...cardImg} />
-            <div className={styles["cards-wrapper"]}>
+            <div data-selector="list" className={styles["cards-wrapper"]}>
               {cards.map(({ title, buttonLink, buttonName }) => (
-                <div className={styles["card"]}>
+                <div data-selector="card" className={styles["card"]}>
                   <Typography {...settings.card.title}>{title}</Typography>
                   {Link ? (
                     <Link href={buttonLink}>
-                      <a className={styles["card-link"]}>
-                        <Typography {...settings.card.link}>
+                      <a
+                        data-selector="card-link"
+                        className={styles["card-link"]}
+                      >
+                        <Typography
+                          data-selector="card-link-button"
+                          {...settings.card.link}
+                        >
                           {buttonName}
                         </Typography>
                         <ColorsInjector
                           background={settings.borderBottomLinkColor}
                         >
-                          <div className={styles.tabProgress} />
+                          <div
+                            data-selector="tab-progress"
+                            className={styles.tabProgress}
+                          />
                         </ColorsInjector>
                       </a>
                     </Link>
                   ) : (
-                    <a className={styles["card-link"]}>
-                      <Typography {...settings.card.link}>
+                    <a
+                      data-selector="card-link"
+                      className={styles["card-link"]}
+                    >
+                      <Typography
+                        data-selector="card-link-button"
+                        {...settings.card.link}
+                      >
                         {buttonName}
                       </Typography>
                       <ColorsInjector
                         background={settings.borderBottomLinkColor}
                       >
-                        <div className={styles.tabProgress} />
+                        <div
+                          data-selector="tab-progress"
+                          className={styles.tabProgress}
+                        />
                       </ColorsInjector>
                     </a>
                   )}
@@ -79,7 +106,10 @@ export const ConstructionProgress = ({
             </div>
           </div>
         </ColorsInjector>
-        <div className={styles["button-wrapper"]}>
+        <div
+          data-selector="button-wrapper"
+          className={styles["button-wrapper"]}
+        >
           <Button href={buttonLink} type={settings.linkButtonType}>
             {buttonName}
           </Button>

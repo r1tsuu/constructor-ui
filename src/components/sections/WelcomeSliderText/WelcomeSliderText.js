@@ -34,6 +34,7 @@ const SlideBlock = ({
   return (
     <ColorsInjector beforeBackground={backgroundColor}>
       <div
+        data-selector="slide-block"
         style={{
           "--block-min-height": minHeight,
           "--block-background-opacity": backgroundOpacity,
@@ -45,14 +46,25 @@ const SlideBlock = ({
         }}
         className={clsx(styles.block, enableIcon && styles.withIcon, className)}
       >
-        <div className={clsx(styles.blockContent)}>
-          <div className={styles.blockLeft}>
-            <div className={styles.blockTextWrapper}>
-              <Typography {...titleSettings} as={"h4"}>
+        <div
+          data-selector="slide-block-content"
+          className={clsx(styles.blockContent)}
+        >
+          <div data-selector="slide-block-left" className={styles.blockLeft}>
+            <div
+              data-selector="slide-block-text-wrapper"
+              className={styles.blockTextWrapper}
+            >
+              <Typography
+                data-selector="slide-block-title"
+                {...titleSettings}
+                as={"h4"}
+              >
                 {title}
               </Typography>
               {description && (
                 <Typography
+                  data-selector="slide-block-description"
                   className={styles.blockDescription}
                   {...descriptionSettings}
                   as={"p"}
@@ -61,20 +73,30 @@ const SlideBlock = ({
                 </Typography>
               )}
             </div>
-            <div className={styles.blockBottom}>
+            <div
+              data-selector="slide-block-bottom"
+              className={styles.blockBottom}
+            >
               <ColorsInjector textColor={buttonTextColor}>
-                <a href={buttonLink} className={styles.blockButton}>
+                <a
+                  data-selector="slide-block-button-link"
+                  href={buttonLink}
+                  className={styles.blockButton}
+                >
                   {buttonName}
                 </a>
               </ColorsInjector>
-              <div className={styles.arrows}>
+              <div data-selector="slide-block-arrows" className={styles.arrows}>
                 <Arrow {...arrowProps.prev} />
                 <Arrow {...arrowProps.next} />
               </div>
             </div>
           </div>
           {enableIcon && (
-            <div className={styles.blockIconWrapper}>
+            <div
+              data-selector="slide-block-icon-wrapper"
+              className={styles.blockIconWrapper}
+            >
               <img src={iconSource} alt="" />
             </div>
           )}
@@ -111,7 +133,7 @@ export const WelcomeSliderText = ({
 
   return (
     <Section {...settings.section}>
-      <div className={styles.swiperWrapper}>
+      <div data-selector="swiper-wrapper" className={styles.swiperWrapper}>
         <Splide
           ref={swiperRef}
           onMove={handleMove}
@@ -148,8 +170,12 @@ export const WelcomeSliderText = ({
           {items.map(
             ({ _id, photoSource, photoSourceMobile, ...block }, index) => (
               <SplideSlide key={_id ?? index}>
-                <div className={styles.slideContent}>
+                <div
+                  data-selector="slide-content"
+                  className={styles.slideContent}
+                >
                   <img
+                    data-selector="slide-image"
                     className={styles.slidePhoto}
                     src={isMobile ? photoSourceMobile : photoSource}
                     alt=""

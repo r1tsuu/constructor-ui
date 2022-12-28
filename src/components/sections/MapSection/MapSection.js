@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Typography } from "../../shared";
+import { Section, Typography } from "../../shared";
 import GoogleMapReact from "google-map-react";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import useMediaQuery from "../../../hooks/useMediaQuery";
@@ -19,6 +19,7 @@ const getRouteURL = (placeID) =>
 const IconArrow = ({ stroke, isDOWN }) => (
   <ColorsInjector stroke={stroke}>
     <svg
+      data-selector="icon-arrow"
       width="11"
       height="11"
       style={{
@@ -39,6 +40,7 @@ const IconArrow = ({ stroke, isDOWN }) => (
 const IconRoute = ({ fill }) => (
   <ColorsInjector fill={fill}>
     <svg
+      data-selector="icon-route"
       width="20"
       height="18"
       viewBox="0 0 20 18"
@@ -56,6 +58,7 @@ const ButtonRoute = ({ settings, main, isMinTablet, routeLabel }) => (
     borderColor={settings.buttonRouteBorderColor}
   >
     <a
+      data-selector="button-route"
       href={getRouteURL(main.placeID)}
       target={"_blank"}
       style={{
@@ -77,6 +80,7 @@ const ButtonCategories = ({ isOpened, onClick, settings, label }) => {
       borderColor={settings.buttonRouteBorderColor}
     >
       <button
+        data-selector="button-categories"
         className={styles.buttonCategories}
         onClick={onClick}
         style={{
@@ -95,20 +99,29 @@ const CustomMarker = ({ title, placeID, settings, routeLabel, icon }) => {
     <Tooltip.Provider delayDuration={0}>
       <Tooltip.Root>
         <Tooltip.Trigger asChild>
-          <div className={styles.locationIcon}>
+          <div
+            data-selector="tooltip-marker-location-icon-wrapper"
+            className={styles.locationIcon}
+          >
             <img src={icon} alt="" />
           </div>
         </Tooltip.Trigger>
-        <Tooltip.Portal>
+        <Tooltip.Portal data-selector="tooltip-marker">
           <ColorsInjector background={settings.toolTipBackground}>
             <Tooltip.Content
               style={{ marginBottom: "15px" }}
               data-theme={settings.section.theme}
               className={styles.tooltipContent}
             >
-              <Typography {...settings.toolTipTitle}>{title}</Typography>
+              <Typography
+                data-selector="tooltip-marker-title"
+                {...settings.toolTipTitle}
+              >
+                {title}
+              </Typography>
               <ColorsInjector textColor={settings.toolTipRouteColor}>
                 <a
+                  data-selector="tooltip-marker-route"
                   href={getRouteURL(placeID)}
                   target={"_blank"}
                   className={styles.toolTipRoute}
@@ -281,12 +294,19 @@ const Categories = ({ list, value, onShow, onHide, settings, main }) => {
 
   return (
     <ColorsInjector background={settings.mapCategoriesBackground}>
-      <div className={styles.categories}>
+      <div data-selector="categories" className={styles.categories}>
         <ColorsInjector borderColor={settings.mapCategoriesBorder}>
-          <div className={styles.category}>
-            <div className={styles.categoryLeft}>
-              <img src={main.categoryIcon} alt="" />
-              <Typography {...settings.categoryText}>
+          <div data-selector="category" className={styles.category}>
+            <div data-selector="category-left" className={styles.categoryLeft}>
+              <img
+                data-selector="category-icon"
+                src={main.categoryIcon}
+                alt=""
+              />
+              <Typography
+                data-selector="category-text"
+                {...settings.categoryText}
+              >
                 {main.categoryTitle}
               </Typography>
             </div>
@@ -294,12 +314,29 @@ const Categories = ({ list, value, onShow, onHide, settings, main }) => {
         </ColorsInjector>
         {list.map(({ title, icon }, index) => (
           <ColorsInjector borderColor={settings.mapCategoriesBorder}>
-            <div className={styles.category} key={index}>
-              <div className={styles.categoryLeft}>
-                <img src={icon} alt="" />
-                <Typography {...settings.categoryText}>{title}</Typography>
+            <div
+              data-selector="category"
+              className={styles.category}
+              key={index}
+            >
+              <div
+                data-selector="category-left"
+                className={styles.categoryLeft}
+              >
+                <img data-selector="category-icon" src={icon} alt="" />
+                <Typography
+                  data-selector="category-text"
+                  {...settings.categoryText}
+                >
+                  {title}
+                </Typography>
               </div>
-              <div onClick={createHandler(index)} style={{ cursor: "pointer" }}>
+              <div
+                data-selector="toggle-button"
+                data-is-active={getIsActive(index)}
+                onClick={createHandler(index)}
+                style={{ cursor: "pointer" }}
+              >
                 <img src={getIsActive(index) ? iconHide : iconShow} alt="" />
               </div>
             </div>
@@ -312,7 +349,10 @@ const Categories = ({ list, value, onShow, onHide, settings, main }) => {
 
 const CategoriesMobile = ({ list, value, onShow, onHide, settings, main }) => {
   return (
-    <div className={styles.categoriesMobileContainer}>
+    <div
+      data-selector="categories-mobile"
+      className={styles.categoriesMobileContainer}
+    >
       <Categories
         main={main}
         list={list}
@@ -347,7 +387,11 @@ const CategoriesMobileContainer = ({
   useClickOutside(ref, handleClose);
 
   return (
-    <div ref={ref} className={styles.categoriesButtonMobileContainer}>
+    <div
+      data-selector="categories-mobile-container"
+      ref={ref}
+      className={styles.categoriesButtonMobileContainer}
+    >
       <ButtonCategories
         isOpened={isOpened}
         onClick={handleToggle}
@@ -399,7 +443,10 @@ const MapContainer = ({
     if (isMinLaptop)
       return (
         <>
-          <div className={styles.categoriesDesktopContainer}>
+          <div
+            data-selector="categories-desktop-container"
+            className={styles.categoriesDesktopContainer}
+          >
             <Categories
               main={main}
               list={list}
@@ -409,7 +456,10 @@ const MapContainer = ({
               settings={settings}
             />
           </div>
-          <div className={styles.routeButtonDesktopContainer}>
+          <div
+            data-selector="route-button-desktop-container"
+            className={styles.routeButtonDesktopContainer}
+          >
             <ButtonRoute
               routeLabel={routeLabel}
               main={main}
@@ -421,7 +471,10 @@ const MapContainer = ({
       );
 
     return (
-      <div className={styles.mobileDownContainer}>
+      <div
+        data-selector="mobile-bot-container"
+        className={styles.mobileDownContainer}
+      >
         <CategoriesMobileContainer
           main={main}
           list={list}
@@ -449,6 +502,7 @@ const MapContainer = ({
         display: "flex",
         alignItems: "center",
       }}
+      data-selector="map-wrapper"
     >
       {renderBottom()}
       <Map
@@ -477,12 +531,13 @@ const TabsList = ({
   };
 
   return (
-    <div className={styles.tabsContainer}>
+    <div data-selector="tabs-container" className={styles.tabsContainer}>
       <ColorsInjector
         textColor={settings.swapBarTextColor}
         background={settings.swapBarBackgroundColor}
       >
         <div
+          data-selector="tabs"
           className={styles.tabs}
           style={{
             borderRadius: settings.swapBarBorderRadius,
@@ -500,6 +555,8 @@ const TabsList = ({
                   borderRadius: settings.swapBarActiveBorderRadius,
                 },
               })}
+              data-selector="tab"
+              data-is-active={activeTab === 1}
               className={styles.tab}
               onClick={handleFirstTabClick}
             >
@@ -518,6 +575,8 @@ const TabsList = ({
                   borderRadius: settings.swapBarActiveBorderRadius,
                 },
               })}
+              data-selector="tab"
+              data-is-active={activeTab === 2}
               className={styles.tab}
               onClick={handleSecondTabClick}
             >
@@ -548,8 +607,8 @@ export const MapSection = ({
   const [activeTab, setActiveTab] = useState(1);
 
   return (
-    <div data-theme={settings.section.theme}>
-      <div className={styles.container}>
+    <Section {...settings.section}>
+      <div data-selector="container" className={styles.container}>
         <TabsList
           activeTab={activeTab}
           settings={settings}
@@ -574,6 +633,7 @@ export const MapSection = ({
           />
         ) : (
           <div
+            data-selector="photo-wrapper"
             style={{
               width: "100%",
               height: "100%",
@@ -591,6 +651,6 @@ export const MapSection = ({
           </div>
         )}
       </div>
-    </div>
+    </Section>
   );
 };

@@ -28,6 +28,7 @@ const TabButton = ({
       borderColor={activeBackground}
     >
       <button
+        data-selector="tab-button"
         onClick={onClick}
         disabled={isActive}
         className={styles.tabButton}
@@ -41,8 +42,8 @@ const TabButton = ({
 const TabContent = ({ isActive, isMobile, photoSource, photoSourceMobile }) => {
   return (
     <Fade isActive={isActive}>
-      <div className={styles.tabContent}>
-        <img src={isMobile ? photoSourceMobile : photoSource} />
+      <div data-selector="tab-content" className={styles.tabContent}>
+        <img alt="" src={isMobile ? photoSourceMobile : photoSource} />
       </div>
     </Fade>
   );
@@ -68,19 +69,24 @@ export const Location = ({
   const setToSecondTab = () => setActiveTab("second");
 
   const buttonElement = (
-    <div>
+    <div data-selector="button">
       <Button href={buttonLink} label={buttonName} type={settings.buttonType} />
     </div>
   );
 
   const typographyElement = (
-    <Typography as={"h2"} {...settings.title} className={styles.title}>
+    <Typography
+      data-selector="title"
+      as={"h2"}
+      {...settings.title}
+      className={styles.title}
+    >
       {title}
     </Typography>
   );
 
   const tabButtonsElement = (
-    <div className={styles.tabButtons}>
+    <div data-selector="tab-buttons" className={styles.tabButtons}>
       <TabButton
         name={firstTab.name}
         isActive={isActiveFirst}
@@ -101,6 +107,7 @@ export const Location = ({
       <ContentContainer className={styles.grid}>
         {subTitle && (
           <Typography
+            data-selector="subtitle"
             className={styles.subTitle}
             as={"h3"}
             {...settings.subTitle}
@@ -109,9 +116,15 @@ export const Location = ({
           </Typography>
         )}
         {isMinLaptop ? (
-          <div className={styles.minLaptopTopPanel}>
+          <div
+            data-selector="min-laptop-top-panel"
+            className={styles.minLaptopTopPanel}
+          >
             {typographyElement}
-            <div className={styles.tabButtonsButtonWrapperContainer}>
+            <div
+              data-selector="tab-buttons-button-wrapper"
+              className={styles.tabButtonsButtonWrapperContainer}
+            >
               {tabButtonsElement}
               {buttonElement}
             </div>
@@ -120,7 +133,10 @@ export const Location = ({
           [typographyElement, tabButtonsElement]
         )}
 
-        <div className={styles.tabContentWrapper}>
+        <div
+          data-selector="tab-content-wrapper"
+          className={styles.tabContentWrapper}
+        >
           <TabContent
             {...firstTab}
             isMobile={isMobile}

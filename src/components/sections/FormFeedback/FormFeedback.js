@@ -47,6 +47,7 @@ const FormFeedback = ({
         style={{
           borderRadius: settings.formBorderRadius,
         }}
+        data-selector="wrapper"
         className={styles.wrapper}
       >
         <ThankYouBlock
@@ -72,10 +73,15 @@ const FormFeedback = ({
             }
           })}
         >
-          <Typography className={styles.title} {...settings.title} as={"h2"}>
+          <Typography
+            data-selector="title"
+            className={styles.title}
+            {...settings.title}
+            as={"h2"}
+          >
             {title}
           </Typography>
-          <div className={styles.inputFields}>
+          <div data-selector="input-list" className={styles.inputFields}>
             {settings.enableName && (
               <ControlledInput
                 {...baseInputProps}
@@ -119,11 +125,19 @@ const FormFeedback = ({
             label={t("FORM_SEND")}
             type={settings.buttonType}
           />
-          <div className={styles.privacy}>
-            <Typography as={"span"} {...settings.privacy.first}>
+          <div data-selector="privacy" className={styles.privacy}>
+            <Typography
+              data-selector="privacy-1"
+              as={"span"}
+              {...settings.privacy.first}
+            >
               {t("FORM_PRIVACY_1")}
             </Typography>
-            <Typography as={"span"} {...settings.privacy.second}>
+            <Typography
+              data-selector="privacy-2"
+              as={"span"}
+              {...settings.privacy.second}
+            >
               {t("FORM_PRIVACY_2")}
             </Typography>
           </div>
