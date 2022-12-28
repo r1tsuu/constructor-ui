@@ -12,6 +12,12 @@
   &[disabled] {
     cursor: not-allowed;
   }
+
+  &:hover {
+    path {
+      stroke: var(--arrow-icon-hover-color);
+    }
+  }
 }
 
 .cube {
@@ -89,8 +95,10 @@
 
 .longDefault {
   --arrow-icon-color: var(--arrow-long-default-icon-color);
+  --arrow-icon-hover-color: var(--arrow-long-default-icon-hover-color);
 }
 
 .longCustom {
   --arrow-icon-color: var(--arrow-long-custom-icon-color);
+  --arrow-icon-hover-color: var(--arrow-long-custom-icon-hover-color);
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Typography } from "../../shared";
 import GoogleMapReact from "google-map-react";
 import * as Tooltip from "@radix-ui/react-tooltip";
@@ -6,6 +6,7 @@ import useMediaQuery from "../../../hooks/useMediaQuery";
 import { mediaQueries } from "../../../utils/constants";
 import styles from "./MapSection.module.scss";
 import { ColorsInjector } from "../../../containers";
+import { useClickOutside } from "../../../hooks/useClickOutside";
 
 import iconShow from "./icon_show.svg";
 import iconHide from "./icon_hide.svg";
@@ -309,15 +310,7 @@ const Categories = ({ list, value, onShow, onHide, settings, main }) => {
   );
 };
 
-const CategoriesMobile = ({
-  list,
-  value,
-  onShow,
-  onHide,
-  settings,
-  main,
-  onClose,
-}) => {
+const CategoriesMobile = ({ list, value, onShow, onHide, settings, main }) => {
   return (
     <div className={styles.categoriesMobileContainer}>
       <Categories
@@ -350,8 +343,11 @@ const CategoriesMobileContainer = ({
 
   const handleClose = () => setIsOpened(false);
 
+  const ref = useRef();
+  useClickOutside(ref, handleClose);
+
   return (
-    <div className={styles.categoriesButtonMobileContainer}>
+    <div ref={ref} className={styles.categoriesButtonMobileContainer}>
       <ButtonCategories
         isOpened={isOpened}
         onClick={handleToggle}
@@ -366,7 +362,6 @@ const CategoriesMobileContainer = ({
           onShow={onShow}
           onHide={onHide}
           settings={settings}
-          onClose={handleClose}
         />
       )}
     </div>

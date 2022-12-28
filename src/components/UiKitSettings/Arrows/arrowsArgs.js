@@ -23,6 +23,9 @@ export const arrowsArgs = args(
     ...cubeArg("secondary"),
     ...cubeArg("tertiary"),
     long_iconColor: colorArg({ defaultValue: "#28a745" }),
+    long_iconHoverColor: colorArg({
+      defaultValue: "#28a745",
+    }),
   },
   true
 );
