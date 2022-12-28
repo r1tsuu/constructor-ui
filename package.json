@@ -9,6 +9,7 @@
     "url": "git+https://github.com/r1tsuu/constructor-ui.git"
   },
   "dependencies": {
+    "@emotion/css": "^11.10.5",
     "@radix-ui/react-tabs": "^1.0.1",
     "@radix-ui/react-tooltip": "^1.0.2",
     "@splidejs/react-splide": "^0.7.12",
