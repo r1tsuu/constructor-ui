@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  overflow: hidden;
+  // overflow: hidden;
   gap: 20px;
   width: 100%;
 
@@ -13,38 +13,38 @@
   }
 }
 
-.swiper {
-  max-width: 100%;
-  margin: 0 auto;
-  padding: 0 15px;
-  display: flex;
+// .swiper {
+//   max-width: 100%;
+//   margin: 0 auto;
+//   padding: 0 15px;
+//   display: flex;
 
-  @include tablet {
-    padding: 0 30px;
-  }
+//   @include tablet {
+//     padding: 0 30px;
+//   }
 
-  @include laptop {
-    max-width: calc(100% - 360px);
-  }
+//   @include laptop {
+//     max-width: calc(100% - 360px);
+//   }
 
-  @include desktop {
-  }
+//   @include desktop {
+//   }
 
-  @media screen and (min-width: 2000px) {
-    max-width: calc(100% - 468px);
-  }
+//   @media screen and (min-width: 2000px) {
+//     max-width: calc(100% - 468px);
+//   }
 
-  overflow: visible;
+//   overflow: visible;
 
-  :global(.swiper-slide) {
-    // width: auto !important;
-    height: auto !important;
-  }
+//   :global(.swiper-slide) {
+//     // width: auto !important;
+//     height: auto !important;
+//   }
 
-  :global(.swiper-wrapper) {
-    height: auto;
-  }
-}
+//   :global(.swiper-wrapper) {
+//     height: auto;
+//   }
+// }
 
 .slideContent {
   position: relative;

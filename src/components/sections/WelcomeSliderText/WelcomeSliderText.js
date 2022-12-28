@@ -1,12 +1,14 @@
-import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import React, { useEffect, useRef, useState } from "react";
+
+import { Splide, SplideSlide } from "@splidejs/react-splide";
 import clsx from "clsx";
 import { ColorsInjector } from "../../../containers";
 import { Arrow, Fade, Section, Typography } from "../../shared";
 
-import { useSwiperNavigation } from "../../../hooks/useSwiperNavigation";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import { mediaQueries } from "../../../utils/constants";
+
+import "@splidejs/react-splide/dist/css/splide.min.css";
 
 import styles from "./WelcomeSliderText.module.scss";
 
@@ -92,38 +94,62 @@ export const WelcomeSliderText = ({
 }) => {
   const isMobile = !useMediaQuery(mediaQueries.minTablet);
   const isMinLaptop = useMediaQuery(mediaQueries.minLaptop);
+  const swiperRef = useRef(null);
   const [realIndex, setRealIndex] = useState(0);
-  const { swiperProps, arrowProps } = useSwiperNavigation({
-    type: settings.arrowType,
-  });
 
-  const handleRealIndexChange = (swiper) => setRealIndex(swiper.realIndex);
+  const arrowProps = {
+    prev: {
+      isPrev: true,
+      onClick: () => swiperRef.current?.go("<"),
+      type: settings.arrowType,
+    },
+    next: {
+      onClick: () => swiperRef.current?.go(">"),
+      type: settings.arrowType,
+    },
+  };
+
+  const handleMove = (splide, index) => setRealIndex(index);
 
   return (
     <Section {...settings.section}>
       <div className={styles.swiperWrapper}>
-        <Swiper
-          {...swiperProps}
-          spaceBetween={20}
-          breakpoints={{
-            768: {
-              spaceBetween: 30,
-            },
-            1150: {
-              spaceBetween: 73,
-            },
-            1550: {
-              spaceBetween: 86,
+        <Splide
+          ref={swiperRef}
+          onMove={handleMove}
+          options={{
+            arrows: false,
+            pagination: false,
+            gap: 20,
+            mediaQuery: "min",
+            breakpoints: {
+              768: {
+                gap: 40,
+                padding: {
+                  left: 30,
+                  right: 30,
+                },
+              },
+              1280: {
+                type: "loop",
+                padding: {
+                  left: 100,
+                  right: 100,
+                },
+                gap: 50,
+              },
+              1550: {
+                padding: {
+                  left: 180,
+                  right: 180,
+                },
+              },
             },
           }}
-          loop
-          loopedSlides={2}
-          onRealIndexChange={handleRealIndexChange}
-          className={styles.swiper}
         >
           {items.map(
             ({ _id, photoSource, photoSourceMobile, ...block }, index) => (
-              <SwiperSlide key={_id ?? index}>
+              <SplideSlide key={_id ?? index}>
                 <div className={styles.slideContent}>
                   <img
                     className={styles.slidePhoto}
@@ -145,10 +171,10 @@ export const WelcomeSliderText = ({
                     />
                   </Fade>
                 </div>
-              </SwiperSlide>
+              </SplideSlide>
             )
           )}
-        </Swiper>
+        </Splide>
       </div>
     </Section>
   );

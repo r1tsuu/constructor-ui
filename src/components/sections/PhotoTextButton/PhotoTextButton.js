@@ -28,14 +28,35 @@ export const PhotoTextButton = ({
         className={styles.grid}
       >
         {icon && (
-          <div className={styles.iconWrapper}>
-            <ColorsInjector background={settings.iconBorderColor}>
-              <div className={styles.iconBorder} />
-            </ColorsInjector>
-            <img src={icon} alt="" />
-            <ColorsInjector background={settings.iconBorderColor}>
-              <div className={styles.iconBorder} />
-            </ColorsInjector>
+          <div
+            data-position={settings.iconPosition}
+            className={styles.iconWrapper}
+          >
+            {settings.iconBorder && (
+              <ColorsInjector background={settings.iconBorderColor}>
+                <div className={styles.iconBorder} />
+              </ColorsInjector>
+            )}
+            <div
+              style={{
+                width: settings.iconWidth,
+                height: settings.iconHeight,
+              }}
+            >
+              <img
+                style={{
+                  width: "100%",
+                  height: "100%",
+                }}
+                src={icon}
+                alt=""
+              />
+            </div>
+            {settings.iconBorder && (
+              <ColorsInjector background={settings.iconBorderColor}>
+                <div className={styles.iconBorder} />
+              </ColorsInjector>
+            )}
           </div>
         )}
         {subTitle && (

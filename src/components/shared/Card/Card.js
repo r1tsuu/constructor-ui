@@ -17,6 +17,9 @@ export const Card = ({
       <As
         {...mergeProps(props, {
           className: styles.style,
+          style: {
+            borderRadius,
+          },
         })}
       >
         {children}

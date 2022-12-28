@@ -17,9 +17,11 @@ export const Characteristics = ({ title, subTitle, items, settings }) => {
             {subTitle}
           </Typography>
         )}
-        <Typography className={styles.title} as={"h3"} {...settings.title}>
-          {title}
-        </Typography>
+        {title && (
+          <Typography className={styles.title} as={"h3"} {...settings.title}>
+            {title}
+          </Typography>
+        )}
         <ul data-grid-columns={settings.gridColumns} className={styles.grid}>
           {items.map(({ _id, title, subTitle }, index) => (
             <Card

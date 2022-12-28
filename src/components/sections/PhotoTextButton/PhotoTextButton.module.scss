@@ -31,9 +31,16 @@
   margin-bottom: 15px;
   gap: 30px;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   @include laptop {
     margin-bottom: 30px;
+  }
+
+  &[data-position="center"] {
+    justify-content: center;
+  }
+  &[data-position="right"] {
+    justify-content: flex-end;
   }
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "@r1tsuu/constructor-ui",
-  "version": "0.5.96",
+  "version": "0.5.97",
   "private": false,
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -11,6 +11,7 @@
   "dependencies": {
     "@radix-ui/react-tabs": "^1.0.1",
     "@radix-ui/react-tooltip": "^1.0.2",
+    "@splidejs/react-splide": "^0.7.12",
     "clsx": "1.2.1",
     "google-map-react": "^2.2.0",
     "react-hook-form": "^7.39.1",

@@ -50,4 +50,21 @@ export const photoTextButtonArgs = sectionArgs({
     defaultValue: "rgba(166, 175, 184, 0.5)",
     name: "Колір обводки іконки",
   }),
+  iconBorder: booleanArg({
+    defaultValue: true,
+    name: "Увімкнути вимкнути бордер ікони",
+  }),
+  iconWidth: arg({
+    defaultValue: "60px",
+    name: "Ширина іконки",
+  }),
+  iconHeight: arg({
+    defaultValue: "60px",
+    name: "Висота іконки",
+  }),
+  iconPosition: radioArg({
+    options: ["left", "center", "right"],
+    defaultValue: "center",
+    name: "Позиція іконки (зліва / центр / справа)",
+  }),
 });

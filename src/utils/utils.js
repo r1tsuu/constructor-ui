@@ -314,11 +314,13 @@ export const args = (args, noPrefix = false) => {
         case "card":
           const borderColorKey = `${settingsArgKey}_props_borderColor`;
           const bgKey = `${settingsArgKey}_props_bg`;
+          const borderRadiusKey = `${settingsArgKey}_props_borderRadius`;
           return {
             args: {
               ...acc.args,
               [borderColorKey]: arg.borderColor,
               [bgKey]: arg.bg,
+              [borderRadiusKey]: arg.borderRadius,
             },
             argTypes: {
               ...acc.argTypes,
@@ -326,6 +328,9 @@ export const args = (args, noPrefix = false) => {
                 arg.name && `${arg.name} / Колір бордеру`
               ),
               [bgKey]: colorType(arg.name && `${arg.name} / Колір фону`),
+              [borderRadiusKey]: {
+                name: arg.name && `${arg.name} / Радіус обводки`,
+              },
             },
           };
 
