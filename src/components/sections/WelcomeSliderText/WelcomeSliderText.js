@@ -8,8 +8,6 @@ import { Arrow, Fade, Section, Typography } from "../../shared";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import { mediaQueries } from "../../../utils/constants";
 
-import "@splidejs/react-splide/dist/css/splide.min.css";
-
 import styles from "./WelcomeSliderText.module.scss";
 
 const SlideBlock = ({

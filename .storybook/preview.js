@@ -1,6 +1,7 @@
 import { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import "../src/styles/index.scss";
 import "../src/styles/reset.css";
+import "@splidejs/react-splide/dist/css/splide.min.css";
 
 import { InStorybookDecorator } from "./decorators";
 
