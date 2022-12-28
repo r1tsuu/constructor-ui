@@ -10,12 +10,20 @@ import {
 } from "../../../utils";
 
 export const photoTextButtonArgs = sectionArgs({
-  gridTemplateColumns: arg({
-    defaultValue: "1fr 1fr",
-    name: "grid-template-columns",
+  leftWidth: arg({
+    defaultValue: "50%",
+    name: "Left Column Width",
+  }),
+  rightWidth: arg({
+    defaultValue: "50%",
+    name: "Right Column Width",
+  }),
+  gap: arg({
+    defaultValue: "75px",
+    name: "Column gap",
   }),
   subTitle: textArg({
-    defaultValue: "будуємо з любов’ю",
+    defaultValue: "AIzaSyD01Sevf9MJqWV2QZOZt91yxKg5",
     typography: "h5",
     color: "accent",
     name: "Підзаголовок",
