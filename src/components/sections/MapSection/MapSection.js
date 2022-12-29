@@ -109,6 +109,7 @@ const CustomMarker = ({
           style={{
             ...(isMain && {
               zIndex: 11,
+              position: "relative",
             }),
           }}
           asChild
@@ -117,6 +118,7 @@ const CustomMarker = ({
             style={{
               ...(isMain && {
                 zIndex: 11,
+                position: "relative",
               }),
             }}
             data-selector="tooltip-marker-location-icon-wrapper"

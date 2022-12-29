@@ -135,8 +135,8 @@ export const Footer = ({
   );
 
   return (
-    <ColorsInjector background={settings.section.bg}>
-      <CSSInjector css={css}>
+    <CSSInjector css={css}>
+      <ColorsInjector background={settings.section.bg}>
         <footer
           id={id}
           data-section={componentName}
@@ -295,7 +295,7 @@ export const Footer = ({
             </ColorsInjector>
           </ContentContainer>
         </footer>
-      </CSSInjector>
-    </ColorsInjector>
+      </ColorsInjector>
+    </CSSInjector>
   );
 };

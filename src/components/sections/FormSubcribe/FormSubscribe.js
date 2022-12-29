@@ -51,7 +51,7 @@ const FormSubscribeContent = ({
           data-selector="left"
           className={styles.left}
           style={{
-            "--style-2-width": settings.secondStyleLeft.replace("p", "%"),
+            "--style-2-width": settings.secondStyleLeft?.replace("p", "%"),
           }}
         >
           <Typography data-selector="title" {...settings.title} as={"h2"}>
@@ -62,7 +62,7 @@ const FormSubscribeContent = ({
           data-selector="right"
           className={styles.right}
           style={{
-            "--style-2-width": settings.secondStyleRight.replace("p", "%"),
+            "--style-2-width": settings.secondStyleRight?.replace("p", "%"),
           }}
         >
           <form
@@ -89,7 +89,11 @@ const FormSubscribeContent = ({
                 control={control}
                 placeholder={t("FORM_PHONE")}
               />
-              <Button htmlType={"submit"} label={t("FORM_SEND")} />
+              <Button
+                type={settings.buttonType}
+                htmlType={"submit"}
+                label={t("FORM_SEND")}
+              />
             </div>
             <div data-selector="privacy-wrapper">
               <Typography

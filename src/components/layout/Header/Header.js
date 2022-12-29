@@ -100,8 +100,8 @@ export const Header = ({
 
   return (
     <>
-      <ColorsInjector background={settings.section.bg}>
-        <CSSInjector css={css}>
+      <CSSInjector css={css}>
+        <ColorsInjector background={settings.section.bg}>
           <header
             id={id}
             data-component={componentName}
@@ -263,8 +263,9 @@ export const Header = ({
               </div>
             </ContentContainer>
           </header>
-        </CSSInjector>
-      </ColorsInjector>
+        </ColorsInjector>
+      </CSSInjector>
+
       <Modal
         css={cssCallback}
         isOpen={isMobileCallbackPopupOpened}
