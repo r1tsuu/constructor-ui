@@ -148,7 +148,7 @@ const Map = ({ list, settings, routeLabel, main }) => {
       bootstrapURLKeys={{
         key: GOOGLE_API_KEY,
       }}
-      zoom={14}
+      zoom={settings.mapZoom}
       options={{
         disableDefaultUI: true,
         zoomControl: false,

@@ -18,6 +18,10 @@ export const mapSectionArgs = sectionArgs(
       defaultValue: "7px",
       name: "Swap bar - радіус обводки ative",
     }),
+    mapZoom: arg({
+      defaultValue: 14,
+      name: "Карта Zoom",
+    }),
     swapBarTextColor: colorArg({
       defaultValue: "text-primary",
       name: "Swap bar - колір тексту",

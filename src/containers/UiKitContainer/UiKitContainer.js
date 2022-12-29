@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useMemo } from "react";
+import { injectGlobal } from "@emotion/css";
 
 const getInputVars = (input, type) => ({
   [`--input-${type}-border-width`]: input.borderWidth,
@@ -89,6 +90,7 @@ export const UiKitContainer = ({
   customColors,
   arrowsCube,
   arrowLong,
+  css,
   inputs,
   children,
   toHTML = true,
@@ -131,8 +133,13 @@ export const UiKitContainer = ({
 
   useEffect(() => {
     if (toHTML) insertVariables(varsObject);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [varsObject]);
+
+  useEffect(() => {
+    if (css) injectGlobal(css);
+  }, [css]);
 
   if (toHTML) return children;
   return (
