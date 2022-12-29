@@ -22,29 +22,23 @@ export const welcomeSliderTextContentResolver = ({
     items.data.map(({ custom_fields, _id }, index) => {
       const photoSource = resolveField(
         getSourceFile(custom_fields.photoSource.value[0], env),
-        atOrFist(defaultContent.items, index).photoSource
+        "_"
       );
       return {
-        title: resolveField(
-          custom_fields.title.value,
-          atOrFist(defaultContent.items, index).title
-        ),
+        title: resolveField(custom_fields.title.value, "title"),
         description: resolveField(
           custom_fields.description.value,
-          atOrFist(defaultContent.items, index).description
+          "descriptio"
         ),
-        buttonLink: resolveField(
-          custom_fields.buttonLink.value,
-          atOrFist(defaultContent.items, index).buttonLink
-        ),
+        buttonLink: resolveField(custom_fields.buttonLink.value, "link"),
         photoSource,
         photoSourceMobile: resolveFieldMobile(
           getSourceFile(custom_fields.photoSourceMobile.value[0], env),
           photoSource,
-          atOrFist(defaultContent.items, index).photoSourceMobile
+          "mobile"
         ),
       };
     }),
-    defaultContent.items
+    []
   ),
 });
