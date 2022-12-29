@@ -172,9 +172,19 @@ export const FormFeedbackModal = ({
   onClose,
   submitted,
   isOpen,
+  css,
+  componentName,
+  id,
 }) => {
   return (
-    <Modal data-theme={section.theme} isOpen={isOpen} onClose={onClose}>
+    <Modal
+      id={id}
+      css={css}
+      data-component={componentName}
+      data-theme={section.theme}
+      isOpen={isOpen}
+      onClose={onClose}
+    >
       <FormFeedback
         title={title}
         settings={restSettings}
@@ -212,7 +222,7 @@ export const FormFeedbackSectionContainer = ({ title, settings }) => {
 };
 
 export const FormFeedbackModalContainer = ({ title, settings }) => {
-  const { globalFormIndex, id } = useSection();
+  const { globalFormIndex, id, css, componentName } = useSection();
   const {
     openedForm: { index, queryParams },
     handleCloseForm,
@@ -221,6 +231,9 @@ export const FormFeedbackModalContainer = ({ title, settings }) => {
   return (
     <FormFeedbackSubmitContainer id={id} queryParams={queryParams}>
       <FormFeedbackModal
+        id={id}
+        css={css}
+        componentName={componentName}
         title={title}
         settings={settings}
         isOpen={index === globalFormIndex}

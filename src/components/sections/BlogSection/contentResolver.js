@@ -5,6 +5,6 @@ export const blogSectionContentResolver = ({
   buttonName,
   defaultContent,
 }) => ({
-  title: resolveField(title.value, defaultContent.title),
-  buttonName: resolveField(buttonName.value, defaultContent.buttonName),
+  title: resolveField(title.value, "title"),
+  buttonName: resolveField(buttonName.value, "buttonName"),
 });

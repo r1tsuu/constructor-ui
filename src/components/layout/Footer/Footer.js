@@ -1,6 +1,8 @@
 import React from "react";
 import { ColorsInjector } from "../../../containers";
+import { CSSInjector } from "../../../containers/CSSInjector";
 import { useEnvironment } from "../../../contexts/EnvironmentContext";
+import { useSection } from "../../../contexts/SectionContext";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import { mediaQueries } from "../../../utils/constants";
 import { resolvePaddings } from "../../../utils/resolvePaddings";
@@ -11,6 +13,7 @@ import styles from "./Footer.module.scss";
 
 const RosseryLogo = ({ fill }) => (
   <svg
+    data-selector="rossery-logo"
     width="63"
     height="11"
     viewBox="0 0 63 11"
@@ -67,6 +70,7 @@ export const Footer = ({
   logo,
   logoLink,
 }) => {
+  const { componentName, css, id } = useSection();
   const { Link } = useEnvironment();
   const isMobile = !useMediaQuery(mediaQueries.minTablet);
   const upperItems = [
@@ -87,26 +91,42 @@ export const Footer = ({
     });
 
   const privacyEl = (
-    <div className={styles.privacy}>
+    <div data-selector="privacy" className={styles.privacy}>
       {Link ? (
         <>
           <Link href={"/privacy-policy"}>
-            <Typography as={"a"} {...settings.downTextSecond}>
+            <Typography
+              data-selector="down-text-second"
+              as={"a"}
+              {...settings.downTextSecond}
+            >
               {downTextSecond}
             </Typography>
           </Link>
           <Link href={"/terms"}>
-            <Typography {...settings.downTextThird} as={"a"}>
+            <Typography
+              data-selector="down-text-third"
+              {...settings.downTextThird}
+              as={"a"}
+            >
               {downTextThird}
             </Typography>
           </Link>
         </>
       ) : (
         <>
-          <Typography {...settings.downTextSecond} as={"a"}>
+          <Typography
+            data-selector="down-text-second"
+            {...settings.downTextSecond}
+            as={"a"}
+          >
             {downTextSecond}
           </Typography>
-          <Typography {...settings.downTextThird} as={"a"}>
+          <Typography
+            data-selector="down-text-third"
+            {...settings.downTextThird}
+            as={"a"}
+          >
             {downTextThird}
           </Typography>
         </>
@@ -116,114 +136,166 @@ export const Footer = ({
 
   return (
     <ColorsInjector background={settings.section.bg}>
-      <footer
-        style={{
-          ...resolvePaddings({
-            ...settings.section,
-            defaultPaddingTop: "40px 50px 60px 60px",
-            defaultPaddingBottom: "10px 10px 10px 10px",
-          }),
-          backgroundImage:
-            settings.section.bgImage && `url("${settings.section.bgImage}")`,
-          backgroundPosition: settings.section.bgPosition,
-        }}
-        className={styles.footer}
-        data-theme={settings.section.theme}
-      >
-        <ContentContainer>
-          <div className={styles.upperContainer}>
-            {logo && (
-              <a
-                className={styles.upperItem}
-                rel="noreferrer"
-                target={"_blank"}
-                href={logoLink}
-              >
-                <img src={logo} />
-              </a>
-            )}
-            {upperItems.map(({ title, description, props }, index) => (
-              <div className={styles.upperItem} key={index}>
-                {title && (
-                  <Typography {...props.title} as={"h4"}>
-                    {title}
-                  </Typography>
-                )}
-                <Typography {...props.description} as={"p"}>
-                  {description}
-                </Typography>
-              </div>
-            ))}
-            <div className={styles.upperItem}>
-              <Typography {...settings.socialsTitle} as={"h4"}>
-                {socialsTitle}
-              </Typography>
-              <div className={styles.socials}>
-                {socials.map(({ link, icon }, index) => (
-                  <a target={"_blank"} href={link} key={index}>
-                    <img src={icon} alt="" />
-                  </a>
-                ))}
-              </div>
-            </div>
-            <div className={styles.upperItem}>
-              <Button
-                className={styles.button}
-                type={settings.buttonType}
-                href={buttonLink}
-                label={buttonName}
-              />
-            </div>
-          </div>
-          {settings.enableSubscribe && (
-            <div className={styles.subscribeWrapper}>
-              <FormSubscribeContainer
-                isSection={false}
-                settings={settings.subscribe}
-                {...subscribe}
-              />
-            </div>
-          )}
-          {
-            <div className={styles.preBottom}>
-              <div>{isMobile && privacyEl}</div>
-              <button onClick={scrollToTop} className={styles.toUp}>
-                <svg
-                  width="10"
-                  height="12"
-                  viewBox="0 0 10 12"
-                  xmlns="http://www.w3.org/2000/svg"
+      <CSSInjector css={css}>
+        <footer
+          id={id}
+          data-section={componentName}
+          style={{
+            ...resolvePaddings({
+              ...settings.section,
+              defaultPaddingTop: "40px 50px 60px 60px",
+              defaultPaddingBottom: "10px 10px 10px 10px",
+            }),
+            backgroundImage:
+              settings.section.bgImage && `url("${settings.section.bgImage}")`,
+            backgroundPosition: settings.section.bgPosition,
+          }}
+          className={styles.footer}
+          data-theme={settings.section.theme}
+        >
+          <ContentContainer>
+            <div
+              data-selector="upper-container"
+              className={styles.upperContainer}
+            >
+              {logo && (
+                <a
+                  data-selector="logo-link"
+                  className={styles.upperItem}
+                  rel="noreferrer"
+                  target={"_blank"}
+                  href={logoLink}
                 >
-                  <ColorsInjector stroke={settings.toUpIconColor}>
-                    <path d="M5 12V1M5 1L1 4.66667M5 1L9 4.66667" />
-                  </ColorsInjector>
-                </svg>
-                <Typography {...settings.scrollUpText} as={"span"}>
-                  {scrollUpText}
+                  <img src={logo} />
+                </a>
+              )}
+              {upperItems.map(({ title, description, props }, index) => (
+                <div
+                  data-selector="upper-item"
+                  className={styles.upperItem}
+                  key={index}
+                >
+                  {title && (
+                    <Typography
+                      data-selector="upper-item-title"
+                      {...props.title}
+                      as={"h4"}
+                    >
+                      {title}
+                    </Typography>
+                  )}
+                  <Typography
+                    data-selector="upper-item-description"
+                    {...props.description}
+                    as={"p"}
+                  >
+                    {description}
+                  </Typography>
+                </div>
+              ))}
+              <div data-slector="upper-item" className={styles.upperItem}>
+                <Typography
+                  data-selector="socials-title"
+                  {...settings.socialsTitle}
+                  as={"h4"}
+                >
+                  {socialsTitle}
                 </Typography>
-              </button>
+                <div data-selector="socials" className={styles.socials}>
+                  {socials.map(({ link, icon }, index) => (
+                    <a
+                      data-selector="socials-item"
+                      target={"_blank"}
+                      href={link}
+                      key={index}
+                    >
+                      <img src={icon} alt="" />
+                    </a>
+                  ))}
+                </div>
+              </div>
+              <div data-selector="upper-item" className={styles.upperItem}>
+                <Button
+                  data-selector="button-link"
+                  className={styles.button}
+                  type={settings.buttonType}
+                  href={buttonLink}
+                  label={buttonName}
+                />
+              </div>
             </div>
-          }
-          <ColorsInjector borderColor={settings.borderColor}>
-            <div className={styles.bottom}>
-              <Typography {...settings.downTextFirst} as={"span"}>
-                {downTextFirst}
-              </Typography>
-              {!isMobile && privacyEl}
-              <a
-                href={"https://rossery.com"}
-                target={"_blank"}
-                className={styles.handcrafted}
+            {settings.enableSubscribe && (
+              <div
+                data-selector="subscribe-wrapper"
+                className={styles.subscribeWrapper}
               >
-                <Typography {...settings.handcraftedText} as={"span"}>
-                  {handcraftedText}
+                <FormSubscribeContainer
+                  isSection={false}
+                  settings={settings.subscribe}
+                  {...subscribe}
+                />
+              </div>
+            )}
+            {
+              <div data-selector="pre-bottom" className={styles.preBottom}>
+                <div data-selector="privacy-wrapper">
+                  {isMobile && privacyEl}
+                </div>
+                <button
+                  data-selector="button-to-up"
+                  onClick={scrollToTop}
+                  className={styles.toUp}
+                >
+                  <svg
+                    width="10"
+                    height="12"
+                    viewBox="0 0 10 12"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <ColorsInjector stroke={settings.toUpIconColor}>
+                      <path d="M5 12V1M5 1L1 4.66667M5 1L9 4.66667" />
+                    </ColorsInjector>
+                  </svg>
+                  <Typography
+                    data-selector="scroll-up-text"
+                    {...settings.scrollUpText}
+                    as={"span"}
+                  >
+                    {scrollUpText}
+                  </Typography>
+                </button>
+              </div>
+            }
+            <ColorsInjector borderColor={settings.borderColor}>
+              <div data-selector="bottom" className={styles.bottom}>
+                <Typography
+                  data-selector="down-text-first"
+                  {...settings.downTextFirst}
+                  as={"span"}
+                >
+                  {downTextFirst}
                 </Typography>
-                <RosseryLogo fill={settings.rosseryColor} />
-              </a>
-            </div>
-          </ColorsInjector>
-        </ContentContainer>
-      </footer>
+                {!isMobile && privacyEl}
+                <a
+                  data-selector="handcrafted-link"
+                  href={"https://rossery.com"}
+                  target={"_blank"}
+                  className={styles.handcrafted}
+                >
+                  <Typography
+                    data-selector="handcrafted-text"
+                    {...settings.handcraftedText}
+                    as={"span"}
+                  >
+                    {handcraftedText}
+                  </Typography>
+                  <RosseryLogo fill={settings.rosseryColor} />
+                </a>
+              </div>
+            </ColorsInjector>
+          </ContentContainer>
+        </footer>
+      </CSSInjector>
     </ColorsInjector>
   );
 };

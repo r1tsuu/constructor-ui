@@ -6,7 +6,7 @@ export const constructionProgressContentResolver = ({
   buttonName,
   defaultContent,
 }) => ({
-  title: resolveField(title.value, defaultContent.title),
-  subTitle: resolveField(subTitle.value, defaultContent.subTitle),
-  buttonName: resolveField(buttonName.value, defaultContent.buttonName),
+  title: resolveField(title.value, "title"),
+  subTitle: resolveField(subTitle.value, "subtitle"),
+  buttonName: resolveField(buttonName.value, "buttonName"),
 });

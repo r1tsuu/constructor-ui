@@ -72,5 +72,10 @@ export const ConstructionProgressContainer = ({ element, content }) => {
       ...data,
     });
 
-  return null;
+  return cloneElement(element, {
+    ...element.props,
+    cardImg: null,
+    cards: [],
+    buttonLink: "/blog-category/all",
+  });
 };

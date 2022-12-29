@@ -159,9 +159,11 @@ const ModalSlider = ({
   initialIndex = 0,
   onIndexChange,
   onClose,
+  cssModal,
 }) => {
   return (
     <Modal
+      css={cssModal}
       overlayTheme={overlayTheme}
       isOpen={isOpen}
       withCloseButton
@@ -187,6 +189,7 @@ const RoomBlock = ({
   plans,
   interiors = [],
   staticTexts,
+  cssModal,
   initedPlanIndex,
   settings,
 }) => {
@@ -484,6 +487,7 @@ const RoomBlock = ({
         </div>
       </ColorsInjector>
       <ModalSlider
+        cssNodal={cssModal}
         overlayTheme={settings.section.theme}
         isOpen={isModalPlansOpened}
         onClose={handlePlansModalClose}
@@ -494,6 +498,7 @@ const RoomBlock = ({
       />
       {interiors.length > 0 && (
         <ModalSlider
+          cssModal={cssModal}
           overlayTheme={settings.section.theme}
           isOpen={isModalInteriorsOpened}
           onClose={handleInteriorsModalClose}
@@ -515,6 +520,7 @@ const Planning = ({
   staticTexts,
   initedRoomIndex,
   initedPlanIndex,
+  cssModal,
 }) => {
   const isMinLaptop = useMediaQuery(mediaQueries.minLaptop);
   const [activeRoomIndex, setActiveRoomIndex] = useState(initedRoomIndex ?? 0);
@@ -583,6 +589,7 @@ const Planning = ({
           {rooms.map(({ _id, ...roomBlockProps }, index) => (
             <Tabs.Content value={index} key={_id ?? index}>
               <RoomBlock
+                cssModal={cssModal}
                 reserveLink={reserveLink}
                 index={index}
                 isMinLaptop={isMinLaptop}

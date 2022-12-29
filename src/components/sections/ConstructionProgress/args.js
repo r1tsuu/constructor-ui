@@ -100,6 +100,10 @@ export const constructionProgressArgs = sectionArgs({
     color: "text-primary",
     name: "Картка - посилання",
   }),
+  card_botBackground: colorArg({
+    defaultValue: "background",
+    name: "Картка - фон низ",
+  }),
   card_borderColor: colorArg({
     defaultValue: "stroke",
     name: "Картка - колір обводки",

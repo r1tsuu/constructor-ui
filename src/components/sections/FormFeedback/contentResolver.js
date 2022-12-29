@@ -6,7 +6,7 @@ export const formFeedbackContentResolver = ({
   _successMessage,
   defaultContent,
 }) => ({
-  title: resolveField(title.value, defaultContent.title),
+  title: resolveField(title.value, "title"),
   errorMessage: resolveField(_errorMessage.value, "Error"),
   successMessage: resolveField(_successMessage.value, "Success"),
 });

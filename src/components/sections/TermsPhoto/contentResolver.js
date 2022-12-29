@@ -9,37 +9,25 @@ export const termsPhotoContentResolver = ({
   defaultContent,
   env,
 }) => ({
-  title: fieldUtils.resolveField(title.value, defaultContent.title),
-  subTitle: fieldUtils.resolveField(subTitle.value, defaultContent.subTitle),
+  title: fieldUtils.resolveField(title.value, "title"),
+  subTitle: fieldUtils.resolveField(subTitle.value),
   photo: fieldUtils.getSourceFile(photo.value[0], env),
-  items: fieldUtils.resolveField(
-    items.data.map(({ custom_fields, _id }, index) => ({
-      title: fieldUtils.resolveField(
-        custom_fields.title.value,
-        atOrFist(defaultContent.items, index).title
-      ),
-      subTitle: fieldUtils.resolveField(
-        custom_fields.subTitle.value,
-        atOrFist(defaultContent.items, index).subTitle
-      ),
-      description: fieldUtils.resolveField(
-        custom_fields.description.value,
-        atOrFist(defaultContent.items, index).description
-      ),
-      advantage: fieldUtils.resolveField(
-        custom_fields.advantage.value,
-        atOrFist(defaultContent.items, index).advantage
-      ),
-      buttonName: fieldUtils.resolveField(
-        custom_fields.buttonName.value,
-        atOrFist(defaultContent.items, index).buttonName
-      ),
-      buttonLink: fieldUtils.resolveField(
-        custom_fields.buttonLink.value,
-        atOrFist(defaultContent.items, index).buttonLink
-      ),
-      _id,
-    })),
-    defaultContent.items
-  ),
+  items: items.data.map(({ custom_fields, _id }, index) => ({
+    title: fieldUtils.resolveField(custom_fields.title.value, "title"),
+    subTitle: fieldUtils.resolveField(custom_fields.subTitle.value, "subtitle"),
+    description: fieldUtils.resolveField(
+      custom_fields.description.value,
+      "descirption"
+    ),
+    advantage: fieldUtils.resolveField(
+      custom_fields.advantage.value,
+      "advantage"
+    ),
+    buttonName: fieldUtils.resolveField(
+      custom_fields.buttonName.value,
+      "button"
+    ),
+    buttonLink: fieldUtils.resolveField(custom_fields.buttonLink.value, ""),
+    _id,
+  })),
 });

@@ -241,6 +241,7 @@ const Card = ({
   staticTexts,
   isMinDesktop,
   buttonLink,
+  cssModal,
 }) => {
   const [isPopupOpened, setPopupOpened] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -348,6 +349,7 @@ const Card = ({
           isOpen={isPopupOpened}
           onClose={handleClosePopup}
           backgroundOpacity={1}
+          css={cssModal}
           backgroundColor={settings.cardPopupBackgroundColor}
         >
           <CardModalContent
@@ -369,7 +371,13 @@ const Card = ({
   );
 };
 
-const CatalogTabItem = ({ settings, tabItems, staticTexts, buttonLink }) => {
+const CatalogTabItem = ({
+  settings,
+  tabItems,
+  staticTexts,
+  buttonLink,
+  cssModal,
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { goTo, arrowProps, swiperProps } = useSwiperNavigation({
     type: settings.cardsArrowType,
@@ -394,6 +402,7 @@ const CatalogTabItem = ({ settings, tabItems, staticTexts, buttonLink }) => {
         {tabItems.map((card, index) => (
           <SwiperSlide className={styles.card} key={card._id ?? index}>
             <Card
+              cssModal={cssModal}
               buttonLink={buttonLink}
               isMinDesktop={isMinDesktop}
               staticTexts={staticTexts}
@@ -431,6 +440,7 @@ export const Catalog = ({
   settings,
   staticTexts = {},
   buttonLink,
+  cssModal,
 }) => {
   const [tabIndex, setTabIndex] = useState(0);
 
@@ -484,6 +494,7 @@ export const Catalog = ({
           {list.map(({ tabItems, _id }, index) => (
             <Tabs.Content value={index} key={_id ?? index}>
               <CatalogTabItem
+                cssModal={cssModal}
                 buttonLink={buttonLink}
                 staticTexts={staticTexts}
                 settings={settings}

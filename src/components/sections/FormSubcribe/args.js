@@ -27,11 +27,11 @@ export const formSubscribeArgs = sectionArgs({
     name: "Стиль",
   }),
   secondStyleLeft: arg({
-    defaultValue: "50%",
+    defaultValue: "50p",
     name: "Стиль 2 Left Width",
   }),
   secondStyleRight: arg({
-    defaultValue: "50%",
+    defaultValue: "50p",
     name: "Стиль 2 Right Width",
   }),
   privacy_first: textArg({

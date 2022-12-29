@@ -25,87 +25,48 @@ export const footerContentResolver = ({
 }) => ({
   errorMessage: fieldUtils.resolveField(_errorMessage.value, "error"),
   successMessage: fieldUtils.resolveField(_successMessage.value, "success"),
-  socials: fieldUtils.resolveField(
-    socials.data.map(({ custom_fields, _id }, index) => ({
-      _id,
-      icon: fieldUtils.resolveField(
-        fieldUtils.getSourceFile(custom_fields.icon.value[0], env),
-        atOrFist(defaultContent.socials, index).icon,
-        "path"
-      ),
-      link: fieldUtils.resolveField(
-        custom_fields.link.value,
-        atOrFist(defaultContent.socials, index).link
-      ),
-    })),
-    defaultContent.socials
-  ),
-  firstText: {
-    title: fieldUtils.resolveField(
-      firstText_title.value,
-      defaultContent.firstText_title
+  socials: socials.data.map(({ custom_fields, _id }, index) => ({
+    _id,
+    icon: fieldUtils.resolveField(
+      fieldUtils.getSourceFile(custom_fields.icon.value[0], env),
+      ""
     ),
+    link: fieldUtils.resolveField(custom_fields.link.value, ""),
+  })),
+
+  firstText: {
+    title: fieldUtils.resolveField(firstText_title.value, "title"),
     description: fieldUtils.resolveField(
       firstText_description.value,
-      defaultContent.firstText_description
+      "descriptino"
     ),
   },
   secondText: {
-    title: fieldUtils.resolveField(
-      secondText_title.value,
-      defaultContent.secondText_title
-    ),
+    title: fieldUtils.resolveField(secondText_title.value, "secondtext"),
     description: fieldUtils.resolveField(
       secondText_description.value,
-      defaultContent.secondText_description
+      "secondtextdescr"
     ),
   },
   thirdText: {
-    title: fieldUtils.resolveField(
-      thirdText_title.value,
-      defaultContent.thirdText_title
-    ),
+    title: fieldUtils.resolveField(thirdText_title.value, "thirdtitle"),
     description: fieldUtils.resolveField(
       thirdText_description.value,
-      defaultContent.thirdText_description
+      "thirddescr"
     ),
   },
-  downTextFirst: fieldUtils.resolveField(
-    downTextFirst.value,
-    defaultContent.downTextFirst
-  ),
-  downTextSecond: fieldUtils.resolveField(
-    downTextSecond.value,
-    defaultContent.downTextSecond
-  ),
-  downTextThird: fieldUtils.resolveField(
-    downTextThird.value,
-    defaultContent.downTextThird
-  ),
+  downTextFirst: fieldUtils.resolveField(downTextFirst.value, "downtextfirts"),
+  downTextSecond: fieldUtils.resolveField(downTextSecond.value, "downtexescn"),
+  downTextThird: fieldUtils.resolveField(downTextThird.value, "downtextthird"),
   handcraftedText: fieldUtils.resolveField(
     handcraftedText.value,
-    defaultContent.handcraftedText
+    "handcrafted"
   ),
-  scrollUpText: fieldUtils.resolveField(
-    scrollUpText.value,
-    defaultContent.scrollUpText
-  ),
-  socialsTitle: fieldUtils.resolveField(
-    socialsTitle.value,
-    defaultContent.socialsTitle
-  ),
-  buttonName: fieldUtils.resolveField(
-    buttonName.value,
-    defaultContent.buttonName
-  ),
-  buttonLink: fieldUtils.resolveField(
-    buttonLink.value,
-    defaultContent.buttonLink
-  ),
+  scrollUpText: fieldUtils.resolveField(scrollUpText.value, "scrollup"),
+  socialsTitle: fieldUtils.resolveField(socialsTitle.value, "socialstitle"),
+  buttonName: fieldUtils.resolveField(buttonName.value, "button"),
+  buttonLink: fieldUtils.resolveField(buttonLink.value, ""),
   subscribe: {
-    title: fieldUtils.resolveField(
-      subscribeTitle.value,
-      defaultContent.subscribe_title
-    ),
+    title: fieldUtils.resolveField(subscribeTitle.value, "subrscribe"),
   },
 });

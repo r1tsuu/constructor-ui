@@ -1,3 +1,4 @@
+import { assets } from "../../../assets";
 import {
   resolveField,
   resolveFieldMobile,
@@ -20,34 +21,34 @@ export const locationContentResolver = ({
 }) => {
   const firstPhoto = resolveField(
     getSourceFile(firstTab_photoSource.value[0], env),
-    defaultContent.firstTab_photoSource
+    assets.imgPlaceholder
   );
   const secondPhoto = resolveField(
     getSourceFile(secondTab_photoSource.value[0], env),
-    defaultContent.secondTab_photoSource
+    assets.imgPlaceholder
   );
 
   return {
-    title: resolveField(title.value, defaultContent.title),
-    subTitle: resolveField(subTitle.value, defaultContent.subTitle),
-    buttonLink: resolveField(buttonLink.value, defaultContent.buttonLink),
-    buttonName: resolveField(buttonName.value, defaultContent.buttonName),
+    title: resolveField(title.value, "title"),
+    subTitle: resolveField(subTitle.value, "subtitle"),
+    buttonLink: buttonLink.value,
+    buttonName: buttonName.value,
     firstTab: {
-      name: resolveField(firstTab_name.value, defaultContent.firstTab_name),
+      name: resolveField(firstTab_name.value, "firsttabname"),
       photoSource: firstPhoto,
       photoSourceMobile: resolveFieldMobile(
         getSourceFile(firstTab_photoSourceMobile.value[0], env),
         firstPhoto,
-        defaultContent.firstTab_photoSource
+        assets.imgPlaceholder
       ),
     },
     secondTab: {
-      name: resolveField(secondTab_name.value, defaultContent.secondTab_name),
+      name: resolveField(secondTab_name.value, "secondtabname"),
       photoSource: secondPhoto,
       photoSourceMobile: resolveFieldMobile(
         getSourceFile(secondTab_photoSourceMobile.value[0], env),
         secondPhoto,
-        defaultContent.secondTab_photoSource
+        assets.imgPlaceholder
       ),
     },
   };

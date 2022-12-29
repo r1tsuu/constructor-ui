@@ -42,6 +42,7 @@ export const ConstructionProgress = ({
         >
           {title}
         </Typography>
+
         <ColorsInjector
           background={settings.contentBackground}
           borderColor={settings.contentBorderColor}
@@ -53,7 +54,9 @@ export const ConstructionProgress = ({
               borderRadius: settings.contentBorderRadius,
             }}
           >
-            <PublicationCard settings={settings.card} {...cardImg} />
+            {cardImg && (
+              <PublicationCard settings={settings.card} {...cardImg} />
+            )}
             <div data-selector="list" className={styles["cards-wrapper"]}>
               {cards.map(({ title, buttonLink, buttonName }) => (
                 <div data-selector="card" className={styles["card"]}>
@@ -106,6 +109,7 @@ export const ConstructionProgress = ({
             </div>
           </div>
         </ColorsInjector>
+
         <div
           data-selector="button-wrapper"
           className={styles["button-wrapper"]}

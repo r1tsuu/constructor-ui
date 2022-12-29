@@ -94,12 +94,31 @@ const ButtonCategories = ({ isOpened, onClick, settings, label }) => {
   );
 };
 
-const CustomMarker = ({ title, placeID, settings, routeLabel, icon }) => {
+const CustomMarker = ({
+  title,
+  placeID,
+  settings,
+  routeLabel,
+  icon,
+  isMain,
+}) => {
   return (
     <Tooltip.Provider delayDuration={0}>
       <Tooltip.Root>
-        <Tooltip.Trigger asChild>
+        <Tooltip.Trigger
+          style={{
+            ...(isMain && {
+              zIndex: 11,
+            }),
+          }}
+          asChild
+        >
           <div
+            style={{
+              ...(isMain && {
+                zIndex: 11,
+              }),
+            }}
             data-selector="tooltip-marker-location-icon-wrapper"
             className={styles.locationIcon}
           >
@@ -119,7 +138,7 @@ const CustomMarker = ({ title, placeID, settings, routeLabel, icon }) => {
               >
                 {title}
               </Typography>
-              <ColorsInjector textColor={settings.toolTipRouteColor}>
+              {/* <ColorsInjector textColor={settings.toolTipRouteColor}>
                 <a
                   data-selector="tooltip-marker-route"
                   href={getRouteURL(placeID)}
@@ -128,7 +147,7 @@ const CustomMarker = ({ title, placeID, settings, routeLabel, icon }) => {
                 >
                   {routeLabel}
                 </a>
-              </ColorsInjector>
+              </ColorsInjector> */}
             </Tooltip.Content>
           </ColorsInjector>
         </Tooltip.Portal>
@@ -140,7 +159,10 @@ const CustomMarker = ({ title, placeID, settings, routeLabel, icon }) => {
 const Map = ({ list, settings, routeLabel, main }) => {
   const markersList = list
     .flatMap(({ list }) => list)
-    .filter(({ placeID, location }) => placeID && location);
+    .filter(
+      ({ placeID, location }) =>
+        placeID && location && location.lat && location.lng
+    );
 
   return (
     <GoogleMapReact
@@ -313,7 +335,10 @@ const Categories = ({ list, value, onShow, onHide, settings, main }) => {
           </div>
         </ColorsInjector>
         {list.map(({ title, icon }, index) => (
-          <ColorsInjector borderColor={settings.mapCategoriesBorder}>
+          <ColorsInjector
+            key={title}
+            borderColor={settings.mapCategoriesBorder}
+          >
             <div
               data-selector="category"
               className={styles.category}

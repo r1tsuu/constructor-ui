@@ -9,6 +9,6 @@ export const privacyPolicyContentResolver = ({
   text,
   defaultContent,
 }) => ({
-  title: resolveField(title.value, defaultContent.title),
-  text: resolveField(text.value, defaultContent.text),
+  title: resolveField(title.value, "title"),
+  text: resolveField(text.value, "text"),
 });

@@ -16,14 +16,14 @@ export const videoContentResolver = ({
     videoSource,
     videoSourceMobile,
     previewPhoto: previewPhotoSource,
-    defaultPreviewPhoto: defaultContent.previewPhotoSource,
-    defaultVideoSource: defaultContent.videoSource,
-    defaultVideoSourceMobile: defaultContent.videoSourceMobile,
+    defaultPreviewPhoto: "",
+    defaultVideoSource: "",
+    defaultVideoSourceMobile: "",
     env,
   });
 
   return {
-    title: resolveField(title.value, defaultContent.title),
+    title: resolveField(title.value, "title"),
     previewPhotoSource: preview,
     videoSource: source,
     videoSourceMobile: sourceMobile,

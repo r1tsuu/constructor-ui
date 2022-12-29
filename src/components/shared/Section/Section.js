@@ -19,7 +19,7 @@ export const Section = ({
   children,
   ...props
 }) => {
-  const { id, css } = useSection();
+  const { id, css, componentName } = useSection();
 
   return (
     <CSSInjector css={css}>
@@ -28,6 +28,7 @@ export const Section = ({
           {...(id && {
             id,
           })}
+          data-section={componentName}
           style={{
             backgroundImage: bgImage && `url("${bgImage}")`,
             backgroundPosition: bgPosition,

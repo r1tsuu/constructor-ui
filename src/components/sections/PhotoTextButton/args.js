@@ -11,11 +11,11 @@ import {
 
 export const photoTextButtonArgs = sectionArgs({
   leftWidth: arg({
-    defaultValue: "50%",
+    defaultValue: "50p",
     name: "Left Column Width",
   }),
   rightWidth: arg({
-    defaultValue: "50%",
+    defaultValue: "50p",
     name: "Right Column Width",
   }),
   gap: arg({

@@ -25,8 +25,8 @@ export const PhotoTextButton = ({
         data-is-reverse={settings.isReverse}
         className={styles.container}
         style={{
-          "--left-width": settings.leftWidth,
-          "--right-width": settings.rightWidth,
+          "--left-width": settings.leftWidth.replace("p", "%"),
+          "--right-width": settings.rightWidth.replace("p", "%"),
           "--gap": settings.gap,
         }}
       >

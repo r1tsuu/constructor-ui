@@ -11,36 +11,25 @@ export const headerContentResolver = ({
   defaultContent,
   env,
   menuList,
+  cssMenu,
+  cssCallback,
   ...rest
 }) => ({
-  logoSource: fieldUtils.resolveField(
-    fieldUtils.getSourceFile(logoSource.value[0], env, "path"),
-    defaultContent.logoSource
-  ),
-  email: fieldUtils.resolveField(email.value, defaultContent.email),
-  phone: fieldUtils.resolveField(phone.value, defaultContent.phone),
-  callbackLink: fieldUtils.resolveField(
-    callbackLink.value,
-    defaultContent.callbackLink
-  ),
+  logoSource: fieldUtils.getSourceFile(logoSource.value[0], env, "path"),
+  email: fieldUtils.resolveField(email.value, "testemail@gmail.com"),
+  phone: fieldUtils.resolveField(phone.value, "+38012345677"),
+  callbackLink: fieldUtils.resolveField(callbackLink.value, "link"),
   menu: fieldUtils.resolveField(menu.value, defaultContent.menu),
   callbackButtonName: fieldUtils.resolveField(
     callbackButtonName.value,
-    defaultContent.callbackButtonName
+    "callback"
   ),
-  menuList: fieldUtils.resolveField(
-    menuList.data.map(({ custom_fields, _id }, index) => ({
-      _id,
-      title: fieldUtils.resolveField(
-        custom_fields.title.value,
-        atOrFist(defaultContent.menuList, index).title
-      ),
-      link: fieldUtils.resolveField(
-        custom_fields.link.value,
-        atOrFist(defaultContent.menuList, index).link
-      ),
-    })),
-    defaultContent.menuList
-  ),
+  menuList: menuList.data.map(({ custom_fields, _id }, index) => ({
+    _id,
+    title: fieldUtils.resolveField(custom_fields.title.value, "title"),
+    link: fieldUtils.resolveField(custom_fields.link.value, ""),
+  })),
+  cssMenu: cssMenu.value,
+  cssCallback: cssCallback.value,
   ...rest,
 });

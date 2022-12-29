@@ -5,6 +5,8 @@ import {
   resolveFieldMobile,
 } from "../../../utils/fields-utils";
 
+import { assets } from "../../../assets";
+
 export const advantagesSliderContentResolver = ({
   items,
   title,
@@ -13,36 +15,26 @@ export const advantagesSliderContentResolver = ({
   defaultContent,
 }) => {
   return {
-    title: resolveField(title.value, defaultContent.title),
-    subTitle: resolveField(subTitle.value, defaultContent.subTitle),
-    items: resolveField(
-      items.data.map(({ custom_fields, _id }, index) => {
-        const photoSource = getSourceFile(
-          custom_fields.photoSource.value[0],
-          env
-        );
-        return {
-          photoSource: resolveField(
-            photoSource,
-            atOrFist(defaultContent.items, index).photoSource
-          ),
-          photoSourceMobile: resolveFieldMobile(
-            getSourceFile(custom_fields.photoSource.value[0], env),
-            photoSource,
-            atOrFist(defaultContent.items, index).photoSourceMobile
-          ),
-          title: resolveField(
-            custom_fields.title.value,
-            atOrFist(defaultContent.items, index).title
-          ),
-          description: resolveField(
-            custom_fields.description.value,
-            atOrFist(defaultContent.items, index).description
-          ),
-          _id,
-        };
-      }),
-      defaultContent.items
-    ),
+    title: resolveField(title.value, "title"),
+    subTitle: resolveField(subTitle.value, "subtitle"),
+    items: items.data.map(({ custom_fields, _id }, index) => {
+      const photoSource = getSourceFile(
+        custom_fields.photoSource.value[0],
+        env
+      );
+      return {
+        photoSource: resolveField(photoSource, assets.imgPlaceholder),
+        photoSourceMobile: resolveField(
+          getSourceFile(custom_fields.photoSourceMobile.value[0], env),
+          photoSource
+        ),
+        title: resolveField(custom_fields.title.value, "title"),
+        description: resolveField(
+          custom_fields.description.value,
+          "description"
+        ),
+        _id,
+      };
+    }),
   };
 };

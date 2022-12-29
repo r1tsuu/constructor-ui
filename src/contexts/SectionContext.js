@@ -6,7 +6,7 @@ const SectionContext = createContext({
   formQueryParams: {},
   setFormQueryParams: () => {},
   css: null,
-  cssModal: null,
+  componentName: null,
 });
 
 export const SectionProvider = ({
@@ -14,7 +14,7 @@ export const SectionProvider = ({
   globalFormIndex,
   id,
   css,
-  cssModal,
+  componentName,
 }) => {
   const [formQueryParams, setFormQueryParams] = useState({});
   return (
@@ -25,7 +25,7 @@ export const SectionProvider = ({
         formQueryParams,
         setFormQueryParams,
         css,
-        cssModal,
+        componentName,
       }}
     >
       {children}

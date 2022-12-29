@@ -7,34 +7,28 @@ export const termsContentResolver = ({
   items,
   defaultContent,
 }) => ({
-  title: fieldUtils.resolveField(title.value, defaultContent.title),
-  subTitle: fieldUtils.resolveField(subTitle.value, defaultContent.subTitle),
+  title: fieldUtils.resolveField(title.value, "title"),
+  subTitle: fieldUtils.resolveField(subTitle.value, "subtitle"),
   items: fieldUtils.resolveField(
     items.data.map(({ custom_fields, _id }, index) => ({
-      title: fieldUtils.resolveField(
-        custom_fields.title.value,
-        atOrFist(defaultContent.items, index).title
-      ),
+      title: fieldUtils.resolveField(custom_fields.title.value, "title"),
       subTitle: fieldUtils.resolveField(
         custom_fields.subTitle.value,
-        atOrFist(defaultContent.items, index).subTitle
+        "subtitle"
       ),
       description: fieldUtils.resolveField(
         custom_fields.description.value,
-        atOrFist(defaultContent.items, index).description
+        "descriptino"
       ),
       advantage: fieldUtils.resolveField(
         custom_fields.advantage.value,
-        atOrFist(defaultContent.items, index).advantage
+        "advantage"
       ),
       buttonName: fieldUtils.resolveField(
         custom_fields.buttonName.value,
-        atOrFist(defaultContent.items, index).buttonName
+        "button"
       ),
-      buttonLink: fieldUtils.resolveField(
-        custom_fields.buttonLink.value,
-        atOrFist(defaultContent.items, index).buttonLink
-      ),
+      buttonLink: fieldUtils.resolveField(custom_fields.buttonLink.value, ""),
       _id,
     })),
     defaultContent.items

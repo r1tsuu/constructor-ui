@@ -51,7 +51,7 @@ const FormSubscribeContent = ({
           data-selector="left"
           className={styles.left}
           style={{
-            "--style-2-width": settings.secondStyleLeft,
+            "--style-2-width": settings.secondStyleLeft.replace("p", "%"),
           }}
         >
           <Typography data-selector="title" {...settings.title} as={"h2"}>
@@ -62,7 +62,7 @@ const FormSubscribeContent = ({
           data-selector="right"
           className={styles.right}
           style={{
-            "--style-2-width": settings.secondStyleRight,
+            "--style-2-width": settings.secondStyleRight.replace("p", "%"),
           }}
         >
           <form

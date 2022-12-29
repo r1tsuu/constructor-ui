@@ -95,9 +95,10 @@ export const Modal = ({
   children,
   overlayTheme,
   isFormModal = false,
+  css,
+
   ...props
 }) => {
-  const { cssModal, globalFormIndex } = useSection();
   const [isSSR, setIsSSR] = useState(true);
 
   useEffect(() => {
@@ -120,7 +121,7 @@ export const Modal = ({
       className={className}
       theme={overlayTheme}
       withCloseButton={withCloseButton}
-      css={!globalFormIndex && cssModal}
+      css={css}
       {...props}
     >
       {children}

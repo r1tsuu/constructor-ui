@@ -9,6 +9,8 @@ import { mediaQueries } from "../../../utils/constants";
 import styles from "./Header.module.scss";
 import { resolvePaddings } from "../../../utils/resolvePaddings";
 import { useEnvironment } from "../../../contexts/EnvironmentContext";
+import { useSection } from "../../../contexts/SectionContext";
+import { CSSInjector } from "../../../containers/CSSInjector";
 
 const MenuButton = ({ children, onClick, settings }) => {
   return (
@@ -19,6 +21,7 @@ const MenuButton = ({ children, onClick, settings }) => {
       borderHoverColor={settings.menuButtonBorderColorHover}
     >
       <button
+        data-selector="menu-button"
         onClick={onClick}
         className={styles.button}
         style={{ borderRadius: settings.menuButtonBorderRadius }}
@@ -43,7 +46,10 @@ export const Header = ({
   onLanguageChange,
   menuList,
   isSticky,
+  cssMenu,
+  cssCallback,
 }) => {
+  const { id, css, componentName } = useSection();
   const { Link } = useEnvironment();
   const [isMobileCallbackPopupOpened, setMobileCallbackPopupOpened] =
     useState(false);
@@ -82,12 +88,12 @@ export const Header = ({
 
   const logoElement = Link ? (
     <Link href="/">
-      <a className={styles.logoContainer}>
+      <a data-selector="logo-container" className={styles.logoContainer}>
         <img src={logoSource} alt="logo" />
       </a>
     </Link>
   ) : (
-    <div className={styles.logoContainer}>
+    <div data-selector="logo-container" className={styles.logoContainer}>
       <img src={logoSource} alt="logo" />
     </div>
   );
@@ -95,143 +101,172 @@ export const Header = ({
   return (
     <>
       <ColorsInjector background={settings.section.bg}>
-        <header
-          style={{
-            ...resolvePaddings({
-              ...settings.section,
-              defaultPaddingTop: "20px 20px 20px 20px",
-              defaultPaddingBottom: "20px 20px 20px 20px",
-            }),
-            backgroundImage:
-              settings.section.bgImage && `url("${settings.section.bgImage}")`,
-            backgroundPosition: settings.section.bgPosition,
-          }}
-          className={styles.header}
-          data-is-sticky={isSticky}
-          data-theme={settings.section.theme}
-        >
-          <ContentContainer className={styles.container}>
-            {logoElement}
-            <div className={styles.right}>
-              {languages.length > 1 && (
-                <div className={styles.flex}>
-                  <svg
-                    width="18"
-                    height="20"
-                    viewBox="0 0 18 20"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <ColorsInjector fill={settings.languageIconColor}>
-                      <path
-                        fill-rule="evenodd"
-                        clip-rule="evenodd"
-                        d="M9.0022 0.980469C11.4845 0.980469 13.7352 1.98971 15.3662 3.62397C16.9928 5.25381 18 7.50879 18 10.0007C18 12.4879 16.9928 14.7432 15.3662 16.3773C13.7351 18.0072 11.4846 19.0164 9.0022 19.0164C6.5154 19.0164 4.26498 18.0072 2.63823 16.3773C1.0071 14.743 0 12.488 0 10.0007C0 7.50889 1.00723 5.25397 2.63823 3.62397C4.26482 1.98958 6.5153 0.980469 9.0022 0.980469V0.980469ZM14.3723 4.61987C13.8376 4.07954 13.2226 3.62409 12.5496 3.26679C12.6566 3.43198 12.759 3.60168 12.8571 3.78033C13.6547 5.22714 14.1762 7.15628 14.2699 9.29516H16.5649C16.4001 7.4732 15.5933 5.83901 14.3723 4.61997L14.3723 4.61987ZM14.3723 15.3816C15.5934 14.1581 16.4001 12.5237 16.5649 10.7019H14.2699C14.1763 12.8409 13.6549 14.77 12.8571 16.2167C12.759 16.3953 12.6566 16.5695 12.5496 16.7302C13.2226 16.3729 13.8376 15.9175 14.3723 15.3817L14.3723 15.3816ZM3.63209 15.3816C4.16685 15.9174 4.77743 16.3729 5.45481 16.7301C5.34784 16.5693 5.24538 16.3952 5.14732 16.2166C4.34966 14.7698 3.82821 12.8406 3.73014 10.7017H1.43944C1.6043 12.5237 2.41103 14.1579 3.63207 15.3814L3.63209 15.3816ZM3.63209 4.61987C2.41104 5.83898 1.60432 7.47336 1.43946 9.29506H3.73015C3.82822 7.15606 4.34964 5.22698 5.14734 3.78023C5.2454 3.60158 5.34785 3.43188 5.45483 3.26669C4.77745 3.624 4.16686 4.07941 3.6321 4.61978L3.63209 4.61987ZM9.70195 2.52113V9.29525H12.8661C12.7726 7.40196 12.3179 5.70931 11.6273 4.45903C11.0925 3.48551 10.4284 2.79785 9.70205 2.52106L9.70195 2.52113ZM9.70195 10.7017V17.4759C10.4284 17.199 11.0924 16.5113 11.6272 15.5423C12.318 14.2875 12.7725 12.5951 12.866 10.7019H9.70186L9.70195 10.7017ZM8.29808 17.4759V10.7017H5.1384C5.22754 12.595 5.6866 14.2877 6.37728 15.5422C6.91205 16.5111 7.57612 17.1988 8.29808 17.4757V17.4759ZM8.29808 9.29525V2.52113C7.57612 2.79804 6.91205 3.4857 6.37728 4.4591C5.68647 5.70938 5.22753 7.40189 5.1384 9.29532L8.29808 9.29525Z"
-                      />
-                    </ColorsInjector>
-                  </svg>
-                  {languages.map((code) => (
-                    <Typography
-                      key={code}
-                      as={"button"}
-                      style={{
-                        textTransform: "uppercase",
-                      }}
-                      className={styles.languageButton}
-                      {...settings.language}
-                      color={
-                        code === currentLanguage
-                          ? settings.language.color
-                          : settings.languageActiveColor
-                      }
-                      onClick={onLanguageChange.bind(null, code)}
+        <CSSInjector css={css}>
+          <header
+            id={id}
+            data-component={componentName}
+            style={{
+              ...resolvePaddings({
+                ...settings.section,
+                defaultPaddingTop: "20px 20px 20px 20px",
+                defaultPaddingBottom: "20px 20px 20px 20px",
+              }),
+              backgroundImage:
+                settings.section.bgImage &&
+                `url("${settings.section.bgImage}")`,
+              backgroundPosition: settings.section.bgPosition,
+            }}
+            className={styles.header}
+            data-is-sticky={isSticky}
+            data-theme={settings.section.theme}
+          >
+            <ContentContainer className={styles.container}>
+              {logoElement}
+              <div data-selector="right" className={styles.right}>
+                {languages.length > 1 && (
+                  <div data-selector="languages" className={styles.flex}>
+                    <svg
+                      width="18"
+                      height="20"
+                      viewBox="0 0 18 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
                     >
-                      {code}
-                    </Typography>
-                  ))}
-                </div>
-              )}
-              {isMinTablet && email && (
-                <a href={`mailto:${email}`} className={styles.flex}>
-                  <svg
-                    width="17"
-                    height="18"
-                    viewBox="0 0 17 18"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                      <ColorsInjector fill={settings.languageIconColor}>
+                        <path
+                          fill-rule="evenodd"
+                          clip-rule="evenodd"
+                          d="M9.0022 0.980469C11.4845 0.980469 13.7352 1.98971 15.3662 3.62397C16.9928 5.25381 18 7.50879 18 10.0007C18 12.4879 16.9928 14.7432 15.3662 16.3773C13.7351 18.0072 11.4846 19.0164 9.0022 19.0164C6.5154 19.0164 4.26498 18.0072 2.63823 16.3773C1.0071 14.743 0 12.488 0 10.0007C0 7.50889 1.00723 5.25397 2.63823 3.62397C4.26482 1.98958 6.5153 0.980469 9.0022 0.980469V0.980469ZM14.3723 4.61987C13.8376 4.07954 13.2226 3.62409 12.5496 3.26679C12.6566 3.43198 12.759 3.60168 12.8571 3.78033C13.6547 5.22714 14.1762 7.15628 14.2699 9.29516H16.5649C16.4001 7.4732 15.5933 5.83901 14.3723 4.61997L14.3723 4.61987ZM14.3723 15.3816C15.5934 14.1581 16.4001 12.5237 16.5649 10.7019H14.2699C14.1763 12.8409 13.6549 14.77 12.8571 16.2167C12.759 16.3953 12.6566 16.5695 12.5496 16.7302C13.2226 16.3729 13.8376 15.9175 14.3723 15.3817L14.3723 15.3816ZM3.63209 15.3816C4.16685 15.9174 4.77743 16.3729 5.45481 16.7301C5.34784 16.5693 5.24538 16.3952 5.14732 16.2166C4.34966 14.7698 3.82821 12.8406 3.73014 10.7017H1.43944C1.6043 12.5237 2.41103 14.1579 3.63207 15.3814L3.63209 15.3816ZM3.63209 4.61987C2.41104 5.83898 1.60432 7.47336 1.43946 9.29506H3.73015C3.82822 7.15606 4.34964 5.22698 5.14734 3.78023C5.2454 3.60158 5.34785 3.43188 5.45483 3.26669C4.77745 3.624 4.16686 4.07941 3.6321 4.61978L3.63209 4.61987ZM9.70195 2.52113V9.29525H12.8661C12.7726 7.40196 12.3179 5.70931 11.6273 4.45903C11.0925 3.48551 10.4284 2.79785 9.70205 2.52106L9.70195 2.52113ZM9.70195 10.7017V17.4759C10.4284 17.199 11.0924 16.5113 11.6272 15.5423C12.318 14.2875 12.7725 12.5951 12.866 10.7019H9.70186L9.70195 10.7017ZM8.29808 17.4759V10.7017H5.1384C5.22754 12.595 5.6866 14.2877 6.37728 15.5422C6.91205 16.5111 7.57612 17.1988 8.29808 17.4757V17.4759ZM8.29808 9.29525V2.52113C7.57612 2.79804 6.91205 3.4857 6.37728 4.4591C5.68647 5.70938 5.22753 7.40189 5.1384 9.29532L8.29808 9.29525Z"
+                        />
+                      </ColorsInjector>
+                    </svg>
+                    {languages.map((code) => (
+                      <Typography
+                        key={code}
+                        as={"button"}
+                        style={{
+                          textTransform: "uppercase",
+                        }}
+                        className={styles.languageButton}
+                        {...settings.language}
+                        color={
+                          code === currentLanguage
+                            ? settings.language.color
+                            : settings.languageActiveColor
+                        }
+                        onClick={onLanguageChange.bind(null, code)}
+                      >
+                        {code}
+                      </Typography>
+                    ))}
+                  </div>
+                )}
+                {isMinTablet && email && (
+                  <a
+                    data-selector="email"
+                    href={`mailto:${email}`}
+                    className={styles.flex}
                   >
-                    <ColorsInjector stroke={settings.emailIconColor}>
-                      <path
-                        d="M3.05922 3.89844H13.9392C14.6872 3.89844 15.2992 4.51044 15.2992 5.25844V13.4184C15.2992 14.1664 14.6872 14.7784 13.9392 14.7784H3.05922C2.31122 14.7784 1.69922 14.1664 1.69922 13.4184V5.25844C1.69922 4.51044 2.31122 3.89844 3.05922 3.89844Z"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </ColorsInjector>
-                    <ColorsInjector stroke={settings.emailIconColor}>
-                      <path
-                        d="M15.2992 5.25781L8.49922 10.0178L1.69922 5.25781"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </ColorsInjector>
-                  </svg>
-                  <Typography {...settings.email}>{email}</Typography>
-                </a>
-              )}
-              {isMinLaptop && (
-                <a href={`tel:${phone}`} className={styles.flex}>
-                  {phoneIconElement}
-                  <Typography {...settings.phone}>{phone}</Typography>
-                </a>
-              )}
-              {isMinLaptop ? (
-                <Button
-                  href={callbackLink}
-                  type={settings.callbackButtonType}
-                  label={callbackButtonName}
-                />
-              ) : (
-                <ColorsInjector
-                  background={settings.callbackButtonBackground}
-                  backgroundHover={settings.callbackButtonBackgroundHover}
-                  borderColor={settings.callbackButtonBorderColor}
-                  borderHoverColor={settings.callbackButtonBorderColorHover}
-                >
-                  <button
-                    style={{
-                      borderRadius: settings.callbackButtonBorderRadius,
-                    }}
-                    onClick={handleMobileCallbackPopupOpen}
-                    className={styles.button}
+                    <svg
+                      width="17"
+                      height="18"
+                      viewBox="0 0 17 18"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <ColorsInjector stroke={settings.emailIconColor}>
+                        <path
+                          d="M3.05922 3.89844H13.9392C14.6872 3.89844 15.2992 4.51044 15.2992 5.25844V13.4184C15.2992 14.1664 14.6872 14.7784 13.9392 14.7784H3.05922C2.31122 14.7784 1.69922 14.1664 1.69922 13.4184V5.25844C1.69922 4.51044 2.31122 3.89844 3.05922 3.89844Z"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </ColorsInjector>
+                      <ColorsInjector stroke={settings.emailIconColor}>
+                        <path
+                          d="M15.2992 5.25781L8.49922 10.0178L1.69922 5.25781"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </ColorsInjector>
+                    </svg>
+                    <Typography {...settings.email}>{email}</Typography>
+                  </a>
+                )}
+                {isMinLaptop && (
+                  <a
+                    data-selector="phone"
+                    href={`tel:${phone}`}
+                    className={styles.flex}
                   >
                     {phoneIconElement}
-                  </button>
-                </ColorsInjector>
-              )}
-              <div className={styles.menuContainer}>
-                {isMinLaptop && menu && (
-                  <Typography {...settings.menu}>{menu}</Typography>
+                    <Typography {...settings.phone}>{phone}</Typography>
+                  </a>
                 )}
-                <MenuButton onClick={handleMenuOpen} settings={settings}>
-                  <svg
-                    viewBox="0 0 50 50"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                {isMinLaptop ? (
+                  <Button
+                    data-selector="button-callback"
+                    href={callbackLink}
+                    type={settings.callbackButtonType}
+                    label={callbackButtonName}
+                  />
+                ) : (
+                  <ColorsInjector
+                    background={settings.callbackButtonBackground}
+                    backgroundHover={settings.callbackButtonBackgroundHover}
+                    borderColor={settings.callbackButtonBorderColor}
+                    borderHoverColor={settings.callbackButtonBorderColorHover}
                   >
-                    <ColorsInjector stroke={settings.menuButtonIconColor}>
-                      <path d="M19 22.5H31" stroke="white" stroke-width="1.5" />
-                    </ColorsInjector>
-                    <ColorsInjector stroke={settings.menuButtonIconColor}>
-                      <path d="M19 27.5H31" stroke="white" stroke-width="1.5" />
-                    </ColorsInjector>
-                  </svg>
-                </MenuButton>
+                    <button
+                      data-selector="button-callback-popup"
+                      style={{
+                        borderRadius: settings.callbackButtonBorderRadius,
+                      }}
+                      onClick={handleMobileCallbackPopupOpen}
+                      className={styles.button}
+                    >
+                      {phoneIconElement}
+                    </button>
+                  </ColorsInjector>
+                )}
+                <div
+                  data-selector="menu-container"
+                  className={styles.menuContainer}
+                >
+                  {isMinLaptop && menu && (
+                    <Typography data-selector="menu-title" {...settings.menu}>
+                      {menu}
+                    </Typography>
+                  )}
+                  <MenuButton onClick={handleMenuOpen} settings={settings}>
+                    <svg
+                      viewBox="0 0 50 50"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <ColorsInjector stroke={settings.menuButtonIconColor}>
+                        <path
+                          d="M19 22.5H31"
+                          stroke="white"
+                          stroke-width="1.5"
+                        />
+                      </ColorsInjector>
+                      <ColorsInjector stroke={settings.menuButtonIconColor}>
+                        <path
+                          d="M19 27.5H31"
+                          stroke="white"
+                          stroke-width="1.5"
+                        />
+                      </ColorsInjector>
+                    </svg>
+                  </MenuButton>
+                </div>
               </div>
-            </div>
-          </ContentContainer>
-        </header>
+            </ContentContainer>
+          </header>
+        </CSSInjector>
       </ColorsInjector>
       <Modal
+        css={cssCallback}
         isOpen={isMobileCallbackPopupOpened}
         onClose={handleMobileCallbackPopupClose}
         overlayTheme={settings.section.theme}
@@ -243,18 +278,24 @@ export const Header = ({
           padding: "20px",
         }}
       >
-        <div className={styles.callbackPopupContainer}>
+        <div
+          data-selector="callback-popup-container"
+          className={styles.callbackPopupContainer}
+        >
           <Button
+            data-selector="button-phone"
             href={`tel:${phone}`}
             type={settings.callbackPopupPhoneButtonType}
             label={phone}
           />
           <Button
+            data-selector="button-callback-link"
             type={settings.callbackPopupLinkButtonType}
             href={callbackLink}
             label={callbackButtonName}
           />
           <Button
+            data-selector="button-callback-popup"
             onClick={handleMobileCallbackPopupClose}
             type={settings.callbackPopupCancelButtonType}
             label={cancelButtonName}
@@ -262,6 +303,7 @@ export const Header = ({
         </div>
       </Modal>
       <Modal
+        css={cssMenu}
         isOpen={isMenuOpened}
         onClose={handleMenuClose}
         overlayTheme={settings.section.theme}
@@ -274,8 +316,8 @@ export const Header = ({
         }}
       >
         <ColorsInjector background={settings.menuPopupContentBackground}>
-          <div className={styles.menuContent}>
-            <div className={styles.container}>
+          <div data-selector="menu-content" className={styles.menuContent}>
+            <div data-selector="container" className={styles.container}>
               {logoElement}
               <MenuButton settings={settings} onClick={handleMenuClose}>
                 <svg
@@ -294,15 +336,20 @@ export const Header = ({
                 </svg>
               </MenuButton>
             </div>
-            <div className={styles.menuList}>
+            <div data-selector="nav" className={styles.menuList}>
               {menuList.map(({ link, title, _id }, index) => (
                 <ColorsInjector
                   key={_id ?? index}
                   borderColor={settings.menuBorderColor}
                 >
-                  <div className={styles.menuItem}>
+                  <div data-selector="nav-item" className={styles.menuItem}>
                     <Link className={styles.link} href={link}>
-                      <Typography {...settings.menuLink}>{title}</Typography>
+                      <Typography
+                        data-selector="nav-link"
+                        {...settings.menuLink}
+                      >
+                        {title}
+                      </Typography>
                     </Link>
                   </div>
                 </ColorsInjector>

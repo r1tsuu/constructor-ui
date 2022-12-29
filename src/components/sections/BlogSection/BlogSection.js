@@ -47,6 +47,7 @@ export const BlogSection = ({
   buttonName,
   buttonLink,
   settings,
+  noData,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { goTo, arrowProps, swiperProps } = useSwiperNavigation({

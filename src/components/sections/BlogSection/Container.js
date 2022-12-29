@@ -63,5 +63,9 @@ export const BlogSectionContainer = ({ element, content }) => {
       ...data,
     });
 
-  return null;
+  return cloneElement(element, {
+    ...element.props,
+    cards: [],
+    buttonLink: "/blog-category/all",
+  });
 };
