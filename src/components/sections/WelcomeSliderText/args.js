@@ -23,7 +23,9 @@ const _item = {
 
 export const welcomeSliderTextArgs = sectionArgs({
   arrowType: arrowArg({ arrowType: "long-default" }),
-  items: Array(3).fill(_item),
+  items: hiddenArg({
+    value: Array(3).fill(_item),
+  }),
   buttonName: hiddenArg({
     value: "Детальніше",
   }),

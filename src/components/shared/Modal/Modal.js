@@ -98,7 +98,7 @@ export const Modal = ({
   ...props
 }) => {
   const { cssModal, globalFormIndex } = useSection();
-  const [isSSR, setIsSSR] = useState(null);
+  const [isSSR, setIsSSR] = useState(true);
 
   useEffect(() => {
     setIsSSR(false);
