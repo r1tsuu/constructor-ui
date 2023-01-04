@@ -33,6 +33,9 @@ export const PhotoTextButton = ({
         <div data-selector="left" className={styles.left}>
           {icon && (
             <div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1 }}
               data-selector="icon-wrapper"
               data-position={settings.iconPosition}
               className={styles.iconWrapper}

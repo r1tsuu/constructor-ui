@@ -6,6 +6,7 @@ import { useSection } from "../../../contexts/SectionContext";
 import { resolvePaddings } from "../../../utils/resolvePaddings";
 
 import styles from "./Section.module.scss";
+import { InViewAnimated } from "../../../containers/InViewAnimated";
 
 export const Section = ({
   theme = "dark",
@@ -17,14 +18,20 @@ export const Section = ({
   bgPosition,
   className,
   children,
+  inViewAnimationDisabled = false,
   ...props
 }) => {
   const { id, css, componentName } = useSection();
 
+  const renderChild = () => {
+    if (inViewAnimationDisabled) return children;
+    return <InViewAnimated>{children}</InViewAnimated>;
+  };
+
   return (
     <CSSInjector css={css}>
       <ColorsInjector background={bg}>
-        <As
+        <section
           {...(id && {
             id,
           })}
@@ -43,8 +50,8 @@ export const Section = ({
           className={clsx(styles.section, className)}
           {...props}
         >
-          {children}
-        </As>
+          {renderChild()}
+        </section>
       </ColorsInjector>
     </CSSInjector>
   );

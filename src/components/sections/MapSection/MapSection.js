@@ -10,6 +10,8 @@ import { useClickOutside } from "../../../hooks/useClickOutside";
 
 import iconShow from "./icon_show.svg";
 import iconHide from "./icon_hide.svg";
+import { IconShow } from "./IconShow";
+import { IconHide } from "./IconHide";
 
 const GOOGLE_API_KEY = "AIzaSyD01Sevf9MJqWV2QZOZt91yxKg5-SOOwoo";
 
@@ -364,7 +366,7 @@ const Categories = ({ list, value, onShow, onHide, settings, main }) => {
                 onClick={createHandler(index)}
                 style={{ cursor: "pointer" }}
               >
-                <img src={getIsActive(index) ? iconHide : iconShow} alt="" />
+                {getIsActive(index) ? <IconShow /> : <IconHide />}
               </div>
             </div>
           </ColorsInjector>
@@ -634,7 +636,7 @@ export const MapSection = ({
   const [activeTab, setActiveTab] = useState(1);
 
   return (
-    <Section {...settings.section}>
+    <Section inViewAnimationDisabled {...settings.section}>
       <div data-selector="container" className={styles.container}>
         <TabsList
           activeTab={activeTab}

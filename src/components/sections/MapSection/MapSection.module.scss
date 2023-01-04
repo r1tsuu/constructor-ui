@@ -109,12 +109,12 @@
 
   @include laptop {
     width: 290px;
-    max-height: 349px;
+    max-height: 500px;
   }
 
   @include desktop {
     width: 423px;
-    max-height: 500px;
+    max-height: 720px;
   }
 }
 

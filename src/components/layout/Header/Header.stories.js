@@ -5,6 +5,7 @@ import { parseArgs } from "../../../utils";
 
 import { Header } from "./Header";
 import { headerArgs } from "./args";
+import { assets } from "../../../assets";
 
 export default createSection({
   name: COMPONENT_KEYS.HEADER,
@@ -18,6 +19,7 @@ export const Default = (args) => {
       languages={["ua", "en"]}
       onLanguageChange={() => {}}
       currentLanguage={"ua"}
+      menuPhoto={assets.imgPlaceholderHeight}
       {...parseArgs(args)}
     />
   );

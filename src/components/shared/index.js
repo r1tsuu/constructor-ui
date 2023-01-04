@@ -10,3 +10,4 @@ export * from "./Modal";
 export * from "./Fade";
 export * from "./ThankYouBlock";
 export * from "./PopupCloseButton";
+export * from "./Input";

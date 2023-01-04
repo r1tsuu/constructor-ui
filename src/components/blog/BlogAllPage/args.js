@@ -64,6 +64,10 @@ export const blogAllPageArgs = args({
     defaultValue: "stroke",
     name: "Картка - колір обводки",
   }),
+  card_botBackground: colorArg({
+    defaultValue: "background",
+    name: "Картка - фон низ",
+  }),
   paginationArrowType: arrowArg({
     name: "Тип стрілки пагінація",
   }),

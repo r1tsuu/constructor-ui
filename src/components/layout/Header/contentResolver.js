@@ -11,8 +11,10 @@ export const headerContentResolver = ({
   defaultContent,
   env,
   menuList,
+  cancelButtonName,
   cssMenu,
   cssCallback,
+  menuPhoto,
   ...rest
 }) => ({
   logoSource: fieldUtils.getSourceFile(logoSource.value[0], env, "path"),
@@ -31,5 +33,7 @@ export const headerContentResolver = ({
   })),
   cssMenu: cssMenu.value,
   cssCallback: cssCallback.value,
+  cancelButtonName: cancelButtonName.value,
+  menuPhoto: fieldUtils.getSourceFile(menuPhoto.value[0], env),
   ...rest,
 });

@@ -1,61 +1,82 @@
 import clsx from "clsx";
-import { useController } from "react-hook-form";
 import React, { forwardRef } from "react";
+import { useController } from "react-hook-form";
 import { Typography } from "../Typography";
+import PI from "react-phone-input-2";
 
+import "react-phone-input-2/lib/style.css";
 import styles from "./Input.module.scss";
 
-export const Input = forwardRef(
-  (
-    {
-      type,
-      errorMessage = "",
-      placeholder,
-      isRequired = false,
-      hideRequiredLabel = false,
-      isTextarea = false,
-      className,
-      style,
-      selector,
-      ...props
-    },
-    ref
-  ) => {
-    const Tag = isTextarea ? "textarea" : "input";
-    return (
-      <div
-        data-component="input"
-        className={clsx(styles.wrapper, styles[type], className)}
-        style={style}
-        {...props}
-      >
-        <input
-          ref={ref}
+const ReactPhoneInput = PI.default ? PI.default : PI;
+
+export const Input = ({
+  type,
+  errorMessage = "",
+  placeholder,
+  isRequired = false,
+  hideRequiredLabel = false,
+  isTextarea = false,
+  className,
+  style,
+  isPhone,
+  value,
+  onChange,
+  onBlur,
+  inputRef,
+}) => {
+  const Tag = isTextarea ? "textarea" : "input";
+  return (
+    <div
+      data-component="input"
+      className={clsx(styles.wrapper, styles[type], className)}
+      style={style}
+    >
+      {isPhone ? (
+        <ReactPhoneInput
+          placeholder={placeholder}
+          country="ua"
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+          inputProps={{
+            ref: inputRef,
+            className: clsx(styles.input, styles.phone, className),
+            "data-selector": "input-component",
+            "data-is-error": Boolean(errorMessage),
+            "data-is-textarea": false,
+          }}
+        />
+      ) : (
+        <Tag
+          data-selector="input-component"
+          ref={inputRef}
           placeholder={placeholder}
           data-is-error={Boolean(errorMessage)}
           data-is-textarea={isTextarea}
           className={clsx(styles.input, className)}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
         />
+      )}
 
-        {isRequired && !hideRequiredLabel && (
-          <Typography
-            editableInStorybook={false}
-            className={styles.required}
-            type={"p1"}
-            as={"div"}
-            color={
-              errorMessage
-                ? "var(--input-error-color"
-                : "var(--input-text-color)"
-            }
-          >
-            *
-          </Typography>
-        )}
-      </div>
-    );
-  }
-);
+      {isRequired && !hideRequiredLabel && (
+        <Typography
+          data-selector="input-required"
+          editableInStorybook={false}
+          className={styles.required}
+          type={"p1"}
+          as={"div"}
+          color={
+            errorMessage ? "var(--input-error-color" : "var(--input-text-color)"
+          }
+        >
+          *
+        </Typography>
+      )}
+    </div>
+  );
+};
 
 const patterns = {
   default: {
@@ -110,10 +131,11 @@ export const ControlledInput = ({
       onChange={onChange}
       name={name}
       onBlur={onBlur}
-      ref={ref}
+      inputRef={ref}
       errorMessage={error?.message}
       type={inputType}
       isTextarea={fieldType === "message"}
+      isPhone={fieldType === "phone"}
       placeholder={placeholder}
       isRequired={isRequired}
       hideRequiredLabel={hideRequiredLabel}

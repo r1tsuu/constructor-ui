@@ -15,6 +15,7 @@ import {
 import { ControlledInput } from "../../shared/Input";
 
 import styles from "./FormFeedback.module.scss";
+import clsx from "clsx";
 
 const FormFeedback = ({
   title,
@@ -22,6 +23,7 @@ const FormFeedback = ({
   onSubmit,
   submitted, // false, "error", "success"
   onClosePopupButtonClick,
+  className,
 }) => {
   const { control, handleSubmit, reset } = useForm({
     defaultValues: {
@@ -48,7 +50,7 @@ const FormFeedback = ({
           borderRadius: settings.formBorderRadius,
         }}
         data-selector="wrapper"
-        className={styles.wrapper}
+        className={clsx(styles.wrapper, className)}
       >
         <ThankYouBlock
           // borderRadius={settings.formBorderRadius}
@@ -186,6 +188,7 @@ export const FormFeedbackModal = ({
       onClose={onClose}
     >
       <FormFeedback
+        className={styles.modal}
         title={title}
         settings={restSettings}
         onSubmit={onSubmit}

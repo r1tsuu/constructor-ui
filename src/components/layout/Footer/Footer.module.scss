@@ -18,6 +18,15 @@
     padding-top: var(--padding-top-desktop);
     padding-bottom: var(--padding-bottom-desktop);
   }
+
+  [data-selector="subscribe-wrapper"] {
+    [data-selector="wrapper"] {
+      padding: 50px;
+      @include laptop {
+        padding: 60px;
+      }
+    }
+  }
 }
 
 .upperContainer {

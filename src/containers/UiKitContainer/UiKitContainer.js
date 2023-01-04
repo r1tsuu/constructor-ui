@@ -91,7 +91,6 @@ export const UiKitContainer = ({
   arrowsCube,
   arrowLong,
   css,
-  inputs,
   children,
   toHTML = true,
   ...props
@@ -106,10 +105,6 @@ export const UiKitContainer = ({
 
   const varsObject = useMemo(() => {
     return Object.assign(
-      resolveAllVars({
-        components: inputs,
-        getVars: getInputVars,
-      }),
       resolveAllVars({
         components: buttons,
         getVars: getButtonVars,

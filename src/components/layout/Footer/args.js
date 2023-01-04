@@ -144,6 +144,14 @@ export const footerArgs = sectionArgs(
       defaultValue: 1,
       name: "Subcribe - тип стилю",
     }),
+    subscribe_secondStyleLeft: arg({
+      defaultValue: "50p",
+      name: "Стиль 2 Left Width",
+    }),
+    subscribe_secondStyleRight: arg({
+      defaultValue: "50p",
+      name: "Стиль 2 Right Width",
+    }),
     subscribe_submittedModal_errorMessage: arg({ defaultValue: "Error" }),
     subscribe_submittedModal_successMessage: arg({ defaultValue: "Success" }),
     subscribe_submittedModal_messageSettings: textArg({

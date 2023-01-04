@@ -48,6 +48,7 @@ export const Header = ({
   isSticky,
   cssMenu,
   cssCallback,
+  menuPhoto,
 }) => {
   const { id, css, componentName } = useSection();
   const { Link } = useEnvironment();
@@ -112,8 +113,7 @@ export const Header = ({
                 defaultPaddingBottom: "20px 20px 20px 20px",
               }),
               backgroundImage:
-                settings.section.bgImage &&
-                `url("${settings.section.bgImage}")`,
+                settings.section.bgImage && `url("${menuPhoto}")`,
               backgroundPosition: settings.section.bgPosition,
             }}
             className={styles.header}
@@ -344,14 +344,24 @@ export const Header = ({
                   borderColor={settings.menuBorderColor}
                 >
                   <div data-selector="nav-item" className={styles.menuItem}>
-                    <Link className={styles.link} href={link}>
+                    {Link ? (
+                      <Link className={styles.link} href={link}>
+                        <Typography
+                          as="a"
+                          data-selector="nav-link"
+                          {...settings.menuLink}
+                        >
+                          {title}
+                        </Typography>
+                      </Link>
+                    ) : (
                       <Typography
                         data-selector="nav-link"
                         {...settings.menuLink}
                       >
                         {title}
                       </Typography>
-                    </Link>
+                    )}
                   </div>
                 </ColorsInjector>
               ))}

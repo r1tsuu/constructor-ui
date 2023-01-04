@@ -23,6 +23,7 @@ export const Typography = ({
   style,
   editableInStorybook = true,
   selector,
+  withAnimation = true,
   ...props
 }) => {
   const fontSizes = fontSize.split(" ").reduce(

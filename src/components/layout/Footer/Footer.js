@@ -75,12 +75,17 @@ export const Footer = ({
   const isMobile = !useMediaQuery(mediaQueries.minTablet);
   const upperItems = [
     {
+      isFirst: true,
       ...firstText,
       props: settings.firstText,
     },
     {
       ...secondText,
       props: settings.secondText,
+    },
+    {
+      ...thirdText,
+      props: settings.thirdText,
     },
   ].filter(({ title }) => Boolean(title));
 
@@ -158,41 +163,44 @@ export const Footer = ({
               data-selector="upper-container"
               className={styles.upperContainer}
             >
-              {logo && (
-                <a
-                  data-selector="logo-link"
-                  className={styles.upperItem}
-                  rel="noreferrer"
-                  target={"_blank"}
-                  href={logoLink}
-                >
-                  <img src={logo} />
-                </a>
-              )}
-              {upperItems.map(({ title, description, props }, index) => (
-                <div
-                  data-selector="upper-item"
-                  className={styles.upperItem}
-                  key={index}
-                >
-                  {title && (
-                    <Typography
-                      data-selector="upper-item-title"
-                      {...props.title}
-                      as={"h4"}
-                    >
-                      {title}
-                    </Typography>
-                  )}
-                  <Typography
-                    data-selector="upper-item-description"
-                    {...props.description}
-                    as={"p"}
+              {upperItems.map(
+                ({ title, description, props, isFirst }, index) => (
+                  <div
+                    data-selector="upper-item"
+                    className={styles.upperItem}
+                    key={index}
                   >
-                    {description}
-                  </Typography>
-                </div>
-              ))}
+                    {title && (
+                      <Typography
+                        data-selector="upper-item-title"
+                        {...props.title}
+                        as={"h4"}
+                      >
+                        {title}
+                      </Typography>
+                    )}
+                    {isFirst && logo ? (
+                      <a
+                        data-selector="logo-link"
+                        className={styles.upperItem}
+                        rel="noreferrer"
+                        target={"_blank"}
+                        href={logoLink}
+                      >
+                        <img src={logo} alt="" />
+                      </a>
+                    ) : (
+                      <Typography
+                        data-selector="upper-item-description"
+                        {...props.description}
+                        as={"p"}
+                      >
+                        {description}
+                      </Typography>
+                    )}
+                  </div>
+                )
+              )}
               <div data-slector="upper-item" className={styles.upperItem}>
                 <Typography
                   data-selector="socials-title"
@@ -232,6 +240,7 @@ export const Footer = ({
                 <FormSubscribeContainer
                   isSection={false}
                   settings={settings.subscribe}
+                  type="feedback"
                   {...subscribe}
                 />
               </div>

@@ -5,7 +5,7 @@
   --input-border-color: var(--input-default-1-border-color);
   --input-border-radius: var(--input-default-1-border-radius);
   --input-padding: var(--input-default-1-padding);
-  --input-background-color: vavr(--input-default-1-background-color);
+  --input-background-color: var(--input-default-1-background-color);
   --input-text-color: var(--input-default-1-text-color);
   --input-error-color: var(--input-default-1-error-color);
   --input-height: var(--input-default-1-height);
@@ -16,7 +16,7 @@
   --input-border-color: var(--input-default-2-border-color);
   --input-border-radius: var(--input-default-2-border-radius);
   --input-padding: var(--input-default-2-padding);
-  --input-background-color: vavr(--input-default-2-background-color);
+  --input-background-color: var(--input-default-2-background-color);
   --input-text-color: var(--input-default-2-text-color);
   --input-error-color: var(--input-default-2-error-color);
   --input-height: var(--input-default-2-height);
@@ -27,7 +27,7 @@
   --input-border-color: var(--input-primary-border-color);
   --input-border-radius: var(--input-primary-border-radius);
   --input-padding: var(--input-primary-padding);
-  --input-background-color: vavr(--input-primary-background-color);
+  --input-background-color: var(--input-primary-background-color);
   --input-text-color: var(--input-primary-text-color);
   --input-error-color: var(--input-primary-error-color);
   --input-height: var(--input-primary-height);
@@ -38,7 +38,7 @@
   --input-border-color: var(--input-secondary-border-color);
   --input-border-radius: var(--input-secondary-border-radius);
   --input-padding: var(--input-secondary-padding);
-  --input-background-color: vavr(--input-secondary-background-color);
+  --input-background-color: var(--input-secondary-background-color);
   --input-text-color: var(--input-secondary-text-color);
   --input-error-color: var(--input-secondary-error-color);
   --input-height: var(--input-secondary-height);
@@ -49,7 +49,7 @@
   --input-border-color: var(--input-tertiary-border-color);
   --input-border-radius: var(--input-tertiary-border-radius);
   --input-padding: var(--input-tertiary-padding);
-  --input-background-color: vavr(--input-tertiary-background-color);
+  --input-background-color: var(--input-tertiary-background-color);
   --input-text-color: var(--input-tertiary-text-color);
   --input-error-color: var(--input-tertiary-error-color);
   --input-height: var(--input-tertiary-height);
@@ -58,6 +58,18 @@
 .wrapper {
   position: relative;
   width: 100%;
+
+  :global {
+    .flag-dropdown {
+      background-color: transparent !important;
+      border: none !important;
+    }
+
+    .selected-flag {
+      background-color: transparent !important;
+      padding-left: 20px !important;
+    }
+  }
 }
 
 .input {
@@ -98,7 +110,7 @@
   }
 
   &[data-is-textarea="true"] {
-    overflow: hidden;
+    overflow: scroll;
     padding-top: 15px;
     height: calc(var(--input-height-calculated) + 35px);
   }
@@ -134,11 +146,15 @@
   &[data-is-error="true"] {
     border-color: var(--input-error-color);
   }
+
+  &.phone {
+    padding-left: 60px;
+  }
 }
 
 .required {
   position: absolute;
-  right: 0;
+  right: 20px;
   padding: var(--input-padding);
   top: 50%;
   line-height: 8px !important;

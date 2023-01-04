@@ -20,11 +20,17 @@ const FormSubscribeContent = ({
   onThankYouModalClose,
   settings,
   themeThankYou,
+  type,
 }) => {
+  const isPhone = type === "subscribe";
   const { control, handleSubmit, reset } = useForm({
-    defaultValues: {
-      phone: "",
-    },
+    defaultValues: isPhone
+      ? {
+          phone: "",
+        }
+      : {
+          email: "",
+        },
   });
   console.log(settings);
   const t = useTranslation();
@@ -83,11 +89,11 @@ const FormSubscribeContent = ({
               <ControlledInput
                 isRequired
                 hideRequiredLabel
-                name={"phone"}
+                name={isPhone ? "phone" : "email"}
                 inputType={settings.inputType}
-                fieldType={"phone"}
+                fieldType={isPhone ? "phone" : "email"}
                 control={control}
-                placeholder={t("FORM_PHONE")}
+                placeholder={t(isPhone ? "FORM_PHONE" : "FORM_EMAIL")}
               />
               <Button
                 type={settings.buttonType}
@@ -126,9 +132,11 @@ export const FormSubscribe = ({
   onThankYouModalClose,
   settings,
   themeThankYou,
+  type,
 }) => {
   const formSubcsribeElement = (
     <FormSubscribeContent
+      type={type}
       themeThankYou={settings.theme ?? themeThankYou}
       onSubmit={onSubmit}
       title={title}
@@ -153,10 +161,16 @@ export const FormSubscribeContainer = ({
   isSection = true,
   title,
   settings,
+  type = "subscribe",
 }) => {
   return (
-    <FormContainer type={"subscribe"}>
-      <FormSubscribe isSection={isSection} title={title} settings={settings} />
+    <FormContainer type={type}>
+      <FormSubscribe
+        type={type}
+        isSection={isSection}
+        title={title}
+        settings={settings}
+      />
     </FormContainer>
   );
 };

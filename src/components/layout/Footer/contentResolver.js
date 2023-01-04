@@ -18,6 +18,8 @@ export const footerContentResolver = ({
   buttonName,
   buttonLink,
   subscribeTitle,
+  logo,
+  logoLink,
   env,
   _errorMessage,
   _successMessage,
@@ -69,4 +71,6 @@ export const footerContentResolver = ({
   subscribe: {
     title: fieldUtils.resolveField(subscribeTitle.value, "subrscribe"),
   },
+  logo: fieldUtils.getSourceFile(logo.value[0], env),
+  logoLink: logoLink.value,
 });
