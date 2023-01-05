@@ -41,6 +41,10 @@ export const blogAllPageArgs = args({
     typography: "h4",
     color: "text-secondary",
   }),
+  categoryActiveColor: colorArg({
+    name: "Таб категорія активний колір",
+    defaultValue: "text-primary",
+  }),
   categoryProgress: colorArg({
     defaultValue: "stroke",
     name: "Таби категорії прогресс колір",

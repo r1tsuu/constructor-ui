@@ -49,6 +49,7 @@ export const ConstructionProgressContainer = ({ element, content }) => {
             })),
             cardImg: {
               title: data[0].title,
+              dateText: data[0].dateText,
               categoryTitle: data[0].category[0].title,
               categoryBackgroundColor: data[0].category[0].backgroundColor,
               categoryBorderColor: data[0].category[0].borderColor,

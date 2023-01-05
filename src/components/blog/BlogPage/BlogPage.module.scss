@@ -137,14 +137,24 @@
 }
 
 .item {
-  padding-left: 40px;
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  @include laptop {
+    gap: 30px;
+  }
+
+  @include desktop {
+    gap: 40px;
+  }
 }
 
 .listIcon {
   width: 8px;
   height: 8px;
-  position: absolute;
+  // position: absolute;
   left: 0;
   top: 18px;
 }

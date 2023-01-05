@@ -117,12 +117,13 @@
 
   @include laptop {
     max-width: 350px;
+    opacity: 0;
   }
 
   @include desktop {
     max-width: 440px;
   }
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.8s;
 }
 
@@ -131,6 +132,14 @@
   display: flex;
   align-items: center;
   gap: 30px;
+  width: 100%;
+  justify-content: space-between;
+
+  @include tablet {
+    max-width: unset;
+    width: unset;
+    justify-content: flex-start;
+  }
 
   @include laptop {
     position: absolute;

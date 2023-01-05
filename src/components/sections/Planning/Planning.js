@@ -241,7 +241,6 @@ const RoomBlock = ({
               {description && (
                 <Typography
                   data-selector="room-description"
-                  as={"p"}
                   {...settings.blockDescription}
                   className={styles.roomDescription}
                 >
@@ -266,7 +265,7 @@ const RoomBlock = ({
                       >
                         {title}
                       </Typography>
-                      {isMinLaptop && (
+                      {true && (
                         <ColorsInjector
                           background={
                             settings.blockCharacteristicSeparatorColor
@@ -331,6 +330,7 @@ const RoomBlock = ({
                   data-selector="room-plans-total-area-title"
                   as={"span"}
                   {...settings.blockPlansTotalAreaTitle}
+                  className={styles.blockPlansTotalAreaTitle}
                 >
                   {`${staticTexts.totalArea}: ${activePlan.area}`}
                 </Typography>
@@ -368,6 +368,7 @@ const RoomBlock = ({
                             onClick={handleModalPlansOpen}
                             className={styles.roomPlanPhoto}
                             src={photo}
+                            style={{ height: "100%" }}
                             alt=""
                           />
                         </div>
@@ -519,6 +520,7 @@ const Planning = ({
   goToMarketLink,
   staticTexts,
   initedRoomIndex,
+  description,
   initedPlanIndex,
   cssModal,
 }) => {

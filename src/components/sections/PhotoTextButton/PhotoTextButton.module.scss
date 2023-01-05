@@ -80,8 +80,9 @@
 }
 
 .buttonWrapper {
+  width: 100%;
+  display: flex;
   @include laptop {
-    display: flex;
     margin-bottom: 37.5px;
   }
 

@@ -12,14 +12,16 @@
   background-repeat: no-repeat;
   background-size: contain;
 
-  &::before {
-    content: "";
-    top: 0;
-    left: 0;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    opacity: var(--overlay-background-opacity);
+  &[data-without-before="false"] {
+    &::before {
+      content: "";
+      top: 0;
+      left: 0;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      opacity: var(--overlay-background-opacity);
+    }
   }
 
   .buttonClose {

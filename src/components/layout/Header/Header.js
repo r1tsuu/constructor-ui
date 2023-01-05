@@ -112,9 +112,6 @@ export const Header = ({
                 defaultPaddingTop: "20px 20px 20px 20px",
                 defaultPaddingBottom: "20px 20px 20px 20px",
               }),
-              backgroundImage:
-                settings.section.bgImage && `url("${menuPhoto}")`,
-              backgroundPosition: settings.section.bgPosition,
             }}
             className={styles.header}
             data-is-sticky={isSticky}
@@ -308,14 +305,29 @@ export const Header = ({
         isOpen={isMenuOpened}
         onClose={handleMenuClose}
         overlayTheme={settings.section.theme}
-        backgroundColor={settings.menuPopupBackgroundColor}
-        backgroundOpacity={settings.menuPopupBackgroundOpacity}
-        backgroundImage={settings.menuPopupBackgroundImage}
-        backgroundPosition={settings.menuPopupBackgroundPosition}
-        style={{
-          justifyContent: "flex-end",
-        }}
+        {...(menuPhoto
+          ? {
+              backgroundModal: settings.menuPopupContentBackground,
+              noBefore: true,
+            }
+          : {
+              backgroundColor: settings.menuPopupBackgroundColor,
+            })}
+        style={
+          {
+            // justifyContent: "flex-end",
+          }
+        }
       >
+        {menuPhoto && isMinLaptop && (
+          <div style={{ width: "50%" }}>
+            <img
+              src={menuPhoto}
+              style={{ width: "100%", height: "100%" }}
+              alt=""
+            />
+          </div>
+        )}
         <ColorsInjector background={settings.menuPopupContentBackground}>
           <div data-selector="menu-content" className={styles.menuContent}>
             <div data-selector="container" className={styles.container}>

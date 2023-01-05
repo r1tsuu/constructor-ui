@@ -16,12 +16,10 @@ export const PublicationCard = ({
   categoryBackgroundColor,
   categoryBorderColor,
   photoSource,
-
+  dateText,
   url,
 }) => {
-  const [date, setDate] = useState();
   const { Link } = useEnvironment();
-  useEffect(() => setDate(new Date(createdAt).toLocaleDateString()));
 
   const el = (
     <div data-component="publication-card" className={styles.card}>
@@ -31,12 +29,13 @@ export const PublicationCard = ({
           backgroundColor: categoryBackgroundColor,
           color: categoryColor,
           borderColor: categoryBorderColor,
+          zIndex: 100,
         }}
         className={styles.category}
       >
         {categoryTitle}
       </div>
-      <div data-selector="image-wrapper">
+      <div style={{ overflow: "hidden" }} data-selector="image-wrapper">
         <img
           className={styles.image}
           data-grid={gridColumns}
@@ -50,7 +49,7 @@ export const PublicationCard = ({
       >
         <div data-selector="bot" className={styles.cardBot}>
           <Typography data-selector="date" {...settings.date}>
-            {date}
+            {dateText}
           </Typography>
           <Typography
             data-selector="title"

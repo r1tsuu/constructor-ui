@@ -29,12 +29,12 @@ const BlogList = ({ list, settings }) => {
       <ul className={styles.list}>
         {list.map((title, index) => (
           <li key={index} className={styles.item}>
-            <Typography data-selector="title" {...settings.title}>
-              {title}
-            </Typography>
             <ColorsInjector background={settings.iconColor}>
               <span data-selector="list-icon" className={styles.listIcon} />
             </ColorsInjector>
+            <Typography data-selector="title" {...settings.title}>
+              {title}
+            </Typography>
           </li>
         ))}
       </ul>
@@ -152,7 +152,7 @@ const BlogText = ({ title, settings }) => {
 export const BlogPage = ({
   title,
   photoSource,
-  createdAt,
+  dateText,
   categoryLabel,
   categoryColor,
   categoryBorderColor,
@@ -160,8 +160,6 @@ export const BlogPage = ({
   settings,
   contentData: content,
 }) => {
-  const [date, setDate] = useState();
-
   const socials = [
     {
       renderIcon: (color) => (
@@ -244,10 +242,6 @@ export const BlogPage = ({
     },
   ];
 
-  useEffect(() => {
-    setDate(new Date(createdAt).toLocaleDateString());
-  }, []);
-
   return (
     <ColorsInjector background={settings.backgroundColor}>
       <main data-theme={settings.theme} className={styles.page}>
@@ -269,7 +263,7 @@ export const BlogPage = ({
                 {categoryLabel}
               </div>
               <Typography data-selector="date" {...settings.createdAt}>
-                {date}
+                {dateText}
               </Typography>
             </div>
             <Typography

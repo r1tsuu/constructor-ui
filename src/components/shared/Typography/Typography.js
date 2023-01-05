@@ -26,13 +26,16 @@ export const Typography = ({
   withAnimation = true,
   ...props
 }) => {
-  const fontSizes = fontSize.split(" ").reduce(
-    (acc, value, index) => ({
-      ...acc,
-      [indexVarsMap[index]]: value,
-    }),
-    {}
-  );
+  const fontSizes =
+    fontSize === ""
+      ? {}
+      : fontSize.split(" ").reduce(
+          (acc, value, index) => ({
+            ...acc,
+            [indexVarsMap[index]]: value,
+          }),
+          {}
+        );
 
   return (
     <ColorsInjector textColor={color}>

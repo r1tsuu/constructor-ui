@@ -1,7 +1,8 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Section, Typography } from "../../shared";
 import GoogleMapReact from "google-map-react";
 import * as Tooltip from "@radix-ui/react-tooltip";
+import * as Popover from "@radix-ui/react-popover";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import { mediaQueries } from "../../../utils/constants";
 import styles from "./MapSection.module.scss";
@@ -12,6 +13,7 @@ import iconShow from "./icon_show.svg";
 import iconHide from "./icon_hide.svg";
 import { IconShow } from "./IconShow";
 import { IconHide } from "./IconHide";
+import { useDraggable } from "react-use-draggable-scroll";
 
 const GOOGLE_API_KEY = "AIzaSyD01Sevf9MJqWV2QZOZt91yxKg5-SOOwoo";
 
@@ -97,70 +99,129 @@ const ButtonCategories = ({ isOpened, onClick, settings, label }) => {
 };
 
 const CustomMarker = ({
-  title,
   placeID,
+  title,
   settings,
-  routeLabel,
   icon,
   isMain,
+  isMinLaptop,
+  routeLabel,
 }) => {
-  return (
-    <Tooltip.Provider delayDuration={0}>
-      <Tooltip.Root>
-        <Tooltip.Trigger
-          style={{
-            ...(isMain && {
-              zIndex: 11,
-              position: "relative",
-            }),
-          }}
-          asChild
-        >
-          <div
+  if (isMinLaptop)
+    return (
+      <Tooltip.Provider delayDuration={0}>
+        <Tooltip.Root>
+          <Tooltip.Trigger
             style={{
               ...(isMain && {
                 zIndex: 11,
                 position: "relative",
               }),
             }}
-            data-selector="tooltip-marker-location-icon-wrapper"
-            className={styles.locationIcon}
+            asChild
           >
-            <img src={icon} alt="" />
-          </div>
-        </Tooltip.Trigger>
-        <Tooltip.Portal data-selector="tooltip-marker">
-          <ColorsInjector background={settings.toolTipBackground}>
-            <Tooltip.Content
-              style={{ marginBottom: "15px" }}
-              data-theme={settings.section.theme}
-              className={styles.tooltipContent}
+            <div
+              style={{
+                ...(isMain && {
+                  zIndex: 11,
+                  position: "relative",
+                }),
+              }}
+              data-selector="tooltip-marker-location-icon-wrapper"
+              className={styles.locationIcon}
             >
-              <Typography
-                data-selector="tooltip-marker-title"
-                {...settings.toolTipTitle}
+              <img src={icon} alt="" />
+            </div>
+          </Tooltip.Trigger>
+          <Tooltip.Portal data-selector="tooltip-marker">
+            <ColorsInjector background={settings.toolTipBackground}>
+              <Tooltip.Content
+                style={{ marginBottom: "15px" }}
+                data-theme={settings.section.theme}
+                className={styles.tooltipContent}
               >
-                {title}
-              </Typography>
-              {/* <ColorsInjector textColor={settings.toolTipRouteColor}>
-                <a
-                  data-selector="tooltip-marker-route"
-                  href={getRouteURL(placeID)}
-                  target={"_blank"}
-                  className={styles.toolTipRoute}
+                <Typography
+                  data-selector="tooltip-marker-title"
+                  {...settings.toolTipTitle}
                 >
-                  {routeLabel}
-                </a>
-              </ColorsInjector> */}
-            </Tooltip.Content>
-          </ColorsInjector>
-        </Tooltip.Portal>
-      </Tooltip.Root>
-    </Tooltip.Provider>
+                  {title}
+                </Typography>
+                {isMain && (
+                  <a
+                    data-selector="tooltip-route-link"
+                    className={styles.toolTipRoute}
+                    href={getRouteURL(placeID)}
+                    target={"_blank"}
+                  >
+                    <ColorsInjector textColor={settings.toolTipRouteColor}>
+                      <div>{routeLabel}</div>
+                    </ColorsInjector>
+                  </a>
+                )}
+              </Tooltip.Content>
+            </ColorsInjector>
+          </Tooltip.Portal>
+        </Tooltip.Root>
+      </Tooltip.Provider>
+    );
+
+  return (
+    <Popover.Root>
+      <Popover.Trigger
+        style={{
+          ...(isMain && {
+            zIndex: 11,
+            position: "relative",
+          }),
+        }}
+        asChild
+      >
+        <div
+          style={{
+            ...(isMain && {
+              zIndex: 11,
+              position: "relative",
+            }),
+          }}
+          data-selector="tooltip-marker-location-icon-wrapper"
+          className={styles.locationIcon}
+        >
+          <img src={icon} alt="" />
+        </div>
+      </Popover.Trigger>
+      <Popover.Portal data-selector="tooltip-marker">
+        <ColorsInjector background={settings.toolTipBackground}>
+          <Popover.Content
+            style={{ marginBottom: "15px" }}
+            data-theme={settings.section.theme}
+            className={styles.tooltipContent}
+          >
+            <Typography
+              data-selector="tooltip-marker-title"
+              {...settings.toolTipTitle}
+            >
+              {title}
+            </Typography>
+            {isMain && (
+              <a
+                data-selector="tooltip-route-link"
+                className={styles.toolTipRoute}
+                href={getRouteURL(placeID)}
+              >
+                <ColorsInjector textColor={settings.toolTipRouteColor}>
+                  <div>{routeLabel}</div>
+                </ColorsInjector>
+              </a>
+            )}
+          </Popover.Content>
+        </ColorsInjector>
+      </Popover.Portal>
+    </Popover.Root>
   );
 };
 
 const Map = ({ list, settings, routeLabel, main }) => {
+  const isMinLaptop = useMediaQuery(mediaQueries.minLaptop);
   const markersList = list
     .flatMap(({ list }) => list)
     .filter(
@@ -288,6 +349,7 @@ const Map = ({ list, settings, routeLabel, main }) => {
       }}
     >
       <CustomMarker
+        isMinLaptop={isMinLaptop}
         {...main.location}
         isMain
         settings={settings}
@@ -299,6 +361,7 @@ const Map = ({ list, settings, routeLabel, main }) => {
 
       {markersList.map(({ location, placeID, icon, title }, index) => (
         <CustomMarker
+          isMinLaptop={isMinLaptop}
           settings={settings}
           placeID={placeID}
           title={title}
@@ -618,6 +681,37 @@ const TabsList = ({
   );
 };
 
+const Photo = ({ source }) => {
+  const ref = useRef();
+  const imgRef = useRef();
+  const { events } = useDraggable(ref, {
+    activeMouseButton: "Middle",
+  });
+
+  useEffect(() => {
+    const horizontal =
+      (imgRef.current.offsetWidth - ref.current.offsetWidth) / 2;
+    const vertical = ref.current.offsetHeight / 2;
+    ref.current.scrollTo(horizontal, vertical);
+  }, []);
+
+  return (
+    <div
+      className={styles.photo}
+      ref={ref}
+      {...events}
+      data-selector="photo-wrapper"
+      style={{
+        width: "100%",
+        height: "100%",
+        overflow: "auto",
+      }}
+    >
+      <img ref={imgRef} src={source} alt="" style={{ maxWidth: "unset" }} />
+    </div>
+  );
+};
+
 export const MapSection = ({
   tabFirstLabel,
   tabSecondLabel,
@@ -661,23 +755,7 @@ export const MapSection = ({
             }}
           />
         ) : (
-          <div
-            data-selector="photo-wrapper"
-            style={{
-              width: "100%",
-              height: "100%",
-            }}
-          >
-            <img
-              src={photo}
-              alt=""
-              style={{
-                width: "100%",
-                height: "100%",
-                objectFit: "cover",
-              }}
-            />
-          </div>
+          <Photo source={photo} />
         )}
       </div>
     </Section>

@@ -16,6 +16,7 @@ const ModalOverlay = ({
   animationDurationEnter,
   animationDurationExit,
   backgroundColor,
+  backgroundModal,
   backgroundOpacity,
   backgroundImage,
   backgroundPosition,
@@ -24,6 +25,7 @@ const ModalOverlay = ({
   children,
   theme,
   style,
+  noBefore,
   css,
   ...props
 }) => {
@@ -49,7 +51,10 @@ const ModalOverlay = ({
       durationExit={animationDurationExit}
     >
       <CSSInjector css={css}>
-        <ColorsInjector beforeBackground={backgroundColor}>
+        <ColorsInjector
+          background={backgroundModal}
+          beforeBackground={backgroundColor}
+        >
           <div
             data-component="modal"
             style={{
@@ -59,6 +64,7 @@ const ModalOverlay = ({
               backgroundPosition,
               ...style,
             }}
+            data-without-before={noBefore}
             onClick={handleOutsideClick}
             className={clsx(styles.overlay, className)}
             data-theme={theme}
@@ -87,6 +93,7 @@ export const Modal = ({
   animationDurationEnter = 150,
   animationDurationExit = 75,
   backgroundColor = "#2D2D2D",
+  backgroundModal,
   backgroundOpacity = 0.9,
   backgroundImage,
   backgroundPosition,
@@ -95,6 +102,7 @@ export const Modal = ({
   children,
   overlayTheme,
   isFormModal = false,
+  noBefore = false,
   css,
 
   ...props
@@ -121,7 +129,9 @@ export const Modal = ({
       className={className}
       theme={overlayTheme}
       withCloseButton={withCloseButton}
+      backgroundModal={backgroundModal}
       css={css}
+      noBefore={noBefore}
       {...props}
     >
       {children}

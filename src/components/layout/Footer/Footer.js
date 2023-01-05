@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React from "react";
 import { ColorsInjector } from "../../../containers";
 import { CSSInjector } from "../../../containers/CSSInjector";
@@ -216,13 +217,17 @@ export const Footer = ({
                       target={"_blank"}
                       href={link}
                       key={index}
+                      className={styles.socialLink}
                     >
                       <img src={icon} alt="" />
                     </a>
                   ))}
                 </div>
               </div>
-              <div data-selector="upper-item" className={styles.upperItem}>
+              <div
+                data-selector="upper-item"
+                className={clsx(styles.upperItem, styles.buttonWrapper)}
+              >
                 <Button
                   data-selector="button-link"
                   className={styles.button}

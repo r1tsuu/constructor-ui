@@ -27,6 +27,102 @@ const list = [
       },
     ],
   },
+  {
+    title: "Ресторани та кафе",
+    icon: iconCategory,
+    list: [
+      {
+        location: {
+          lat: 50.39,
+          lng: 30.5415705,
+        },
+        title: "м.Київ, вул. Берковецька, 6",
+        // address: "вулиця Хрещатик, 21, Київ, Украина, 02000",
+        placeID: "ChIJU7Z-MdzP1EARJXTYTF2YhCQ",
+        icon: iconLocation,
+      },
+    ],
+  },
+  {
+    title: "Ресторани та кафе",
+    icon: iconCategory,
+    list: [
+      {
+        location: {
+          lat: 50.39,
+          lng: 30.5415705,
+        },
+        title: "м.Київ, вул. Берковецька, 6",
+        // address: "вулиця Хрещатик, 21, Київ, Украина, 02000",
+        placeID: "ChIJU7Z-MdzP1EARJXTYTF2YhCQ",
+        icon: iconLocation,
+      },
+    ],
+  },
+  {
+    title: "Ресторани та кафе",
+    icon: iconCategory,
+    list: [
+      {
+        location: {
+          lat: 50.39,
+          lng: 30.5415705,
+        },
+        title: "м.Київ, вул. Берковецька, 6",
+        // address: "вулиця Хрещатик, 21, Київ, Украина, 02000",
+        placeID: "ChIJU7Z-MdzP1EARJXTYTF2YhCQ",
+        icon: iconLocation,
+      },
+    ],
+  },
+  {
+    title: "Ресторани та кафе",
+    icon: iconCategory,
+    list: [
+      {
+        location: {
+          lat: 50.39,
+          lng: 30.5415705,
+        },
+        title: "м.Київ, вул. Берковецька, 6",
+        // address: "вулиця Хрещатик, 21, Київ, Украина, 02000",
+        placeID: "ChIJU7Z-MdzP1EARJXTYTF2YhCQ",
+        icon: iconLocation,
+      },
+    ],
+  },
+  {
+    title: "Ресторани та кафе",
+    icon: iconCategory,
+    list: [
+      {
+        location: {
+          lat: 50.39,
+          lng: 30.5415705,
+        },
+        title: "м.Київ, вул. Берковецька, 6",
+        // address: "вулиця Хрещатик, 21, Київ, Украина, 02000",
+        placeID: "ChIJU7Z-MdzP1EARJXTYTF2YhCQ",
+        icon: iconLocation,
+      },
+    ],
+  },
+  {
+    title: "Ресторани та кафе",
+    icon: iconCategory,
+    list: [
+      {
+        location: {
+          lat: 50.39,
+          lng: 30.5415705,
+        },
+        title: "м.Київ, вул. Берковецька, 6",
+        // address: "вулиця Хрещатик, 21, Київ, Украина, 02000",
+        placeID: "ChIJU7Z-MdzP1EARJXTYTF2YhCQ",
+        icon: iconLocation,
+      },
+    ],
+  },
 ];
 
 export default createSection({

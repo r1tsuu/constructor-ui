@@ -142,6 +142,7 @@ export const WelcomeSliderText = ({
             pagination: false,
             gap: 20,
             mediaQuery: "min",
+            rewind: true,
             breakpoints: {
               768: {
                 gap: 40,
@@ -151,6 +152,7 @@ export const WelcomeSliderText = ({
                 },
               },
               1280: {
+                rewind: false,
                 type: "loop",
                 padding: {
                   left: 100,

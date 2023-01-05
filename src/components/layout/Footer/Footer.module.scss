@@ -21,7 +21,9 @@
 
   [data-selector="subscribe-wrapper"] {
     [data-selector="wrapper"] {
-      padding: 50px;
+      @include tablet {
+        padding: 50px;
+      }
       @include laptop {
         padding: 60px;
       }
@@ -33,6 +35,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  row-gap: 30px;
 
   @include laptop {
     gap: 35px;
@@ -48,6 +51,16 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  &.buttonWrapper {
+    width: 100%;
+    @include tablet {
+      width: 220px;
+    }
+    @include desktop {
+      width: 250px;
+    }
+  }
 
   @include tablet {
     width: 220px;
@@ -117,4 +130,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.socialLink {
+  max-width: 25px;
+
+  @include tablet {
+    max-width: unset;
+  }
 }

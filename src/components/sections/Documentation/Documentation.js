@@ -80,14 +80,14 @@ export const Documentation = ({
             )
           )}
         </div>
-        {showButton && (
+        {/* {showButton && (
           <div
             data-selector="mobile-button-wrapper"
             className={styles.mobilePaginationButtonWrapper}
           >
             <Button {...buttonProps} label={paginationButtonName} />
           </div>
-        )}
+        )} */}
       </ContentContainer>
     </Section>
   );

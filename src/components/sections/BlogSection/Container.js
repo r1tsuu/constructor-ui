@@ -38,15 +38,15 @@ export const BlogSectionContainer = ({ element, content }) => {
 
         if (data.length)
           setData({
-            cards: data.map(({ title, category, url, photo, createdAt }) => ({
+            cards: data.map(({ title, category, url, photo, dateText }) => ({
               title,
+              dateText,
               categoryTitle: category[0].title,
               categoryBackgroundColor: category[0].backgroundColor,
               categoryBorderColor: category[0].borderColor,
               categoryColor: category[0].textColor,
               url: `/blog/${url}`,
               photoSource: `${SITE_URL}/${photo[0]}`,
-              createdAt,
             })),
             buttonLink: `/blog-category/${
               currentCategory ? currentCategory.url[language] : "all"

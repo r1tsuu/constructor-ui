@@ -18,7 +18,7 @@ export const BlogAllPage = ({
 }) => {
   return (
     <ColorsInjector background={settings.backgroundColor}>
-      <main className={styles.page} data-theme={settings.theme}>
+      <main className={styles.pageMain} data-theme={settings.theme}>
         <ContentContainer>
           <Typography
             data-selector="title"
@@ -44,7 +44,15 @@ export const BlogAllPage = ({
                   key={index}
                   className={styles.tab}
                 >
-                  <Typography data-selector="tab-title" {...settings.category}>
+                  <Typography
+                    data-selector="tab-title"
+                    color={
+                      isActive
+                        ? settings.categoryActiveColor
+                        : settings.category.color
+                    }
+                    type={settings.category.type}
+                  >
                     {title}
                   </Typography>
                   <ColorsInjector background={settings.categoryActiveProgress}>
