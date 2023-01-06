@@ -14,6 +14,8 @@ export const BlogAllPage = ({
   categories,
   pageCount,
   onPageChange = () => {},
+  onPageNext = () => {},
+  onPagePrev = () => {},
   page,
 }) => {
   return (
@@ -87,7 +89,7 @@ export const BlogAllPage = ({
             <div data-selector="paginate" className={styles.paginateWrapper}>
               <Arrow
                 disabled={page === 0}
-                onClick={() => onPageChange(page - 1)}
+                onClick={onPagePrev}
                 type={settings.paginationArrowType}
                 isPrev
               />
@@ -108,7 +110,8 @@ export const BlogAllPage = ({
                 marginPagesDisplayed={2}
               />
               <Arrow
-                onClick={() => onPageChange(page + 1)}
+                disabled={page === pageCount - 1}
+                onClick={onPageNext}
                 type={settings.paginationArrowType}
               />
             </div>

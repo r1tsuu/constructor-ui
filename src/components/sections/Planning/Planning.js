@@ -76,7 +76,7 @@ const ModalSliderContent = ({
   onIndexChange,
 }) => {
   const { swiperProps, arrowProps } = useSwiperNavigation({
-    type: settings.modalSliderArrowType,
+    type: settings.plansArrowType,
   });
 
   const [activeIndex, setActiveIndex] = useState(initialIndex);
@@ -168,6 +168,7 @@ const ModalSlider = ({
       isOpen={isOpen}
       withCloseButton
       onClose={onClose}
+      backgroundOpacity={1}
     >
       <ModalSliderContent
         data={data}

@@ -141,8 +141,10 @@
   }
 
   @include laptop {
-    margin-top: 75px;
+    margin-top: 35px;
   }
+  max-height: 90%;
+  overflow: auto;
 }
 
 .menuItem {
@@ -158,4 +160,13 @@
 
 .link {
   text-decoration: none;
+}
+
+.notActiveLanguages {
+  position: absolute;
+  z-index: 4;
+  transition: opacity 0.25s;
+}
+
+.languageSwitcher {
 }

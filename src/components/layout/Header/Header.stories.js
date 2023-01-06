@@ -16,7 +16,7 @@ export default createSection({
 export const Default = (args) => {
   return (
     <Header
-      languages={["ua", "en"]}
+      languages={["ua", "en", "ru"]}
       onLanguageChange={() => {}}
       currentLanguage={"ua"}
       menuPhoto={assets.imgPlaceholderHeight}

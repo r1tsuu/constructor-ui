@@ -29,7 +29,7 @@ export const PublicationCard = ({
           backgroundColor: categoryBackgroundColor,
           color: categoryColor,
           borderColor: categoryBorderColor,
-          zIndex: 100,
+          zIndex: 2,
         }}
         className={styles.category}
       >

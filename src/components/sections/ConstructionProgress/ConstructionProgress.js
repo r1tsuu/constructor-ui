@@ -60,7 +60,17 @@ export const ConstructionProgress = ({
             <div data-selector="list" className={styles["cards-wrapper"]}>
               {cards.map(({ title, buttonLink, buttonName }) => (
                 <div data-selector="card" className={styles["card"]}>
-                  <Typography {...settings.card.title}>{title}</Typography>
+                  {Link ? (
+                    <Link href={buttonLink}>
+                      <Typography {...settings.card.title} as="a">
+                        {title}
+                      </Typography>
+                    </Link>
+                  ) : (
+                    <Typography {...settings.card.title} as="a">
+                      {title}
+                    </Typography>
+                  )}
                   {Link ? (
                     <Link href={buttonLink}>
                       <a

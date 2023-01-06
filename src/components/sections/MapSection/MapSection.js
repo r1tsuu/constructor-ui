@@ -689,10 +689,14 @@ const Photo = ({ source }) => {
   });
 
   useEffect(() => {
-    const horizontal =
-      (imgRef.current.offsetWidth - ref.current.offsetWidth) / 2;
-    const vertical = ref.current.offsetHeight / 2;
-    ref.current.scrollTo(horizontal, vertical);
+    const t = setTimeout(() => {
+      const horizontal =
+        (imgRef.current.offsetWidth - ref.current.offsetWidth) / 2;
+      const vertical = ref.current.offsetHeight / 2;
+      ref.current.scrollTo(horizontal, vertical);
+    }, 100);
+
+    return () => clearTimeout(t);
   }, []);
 
   return (

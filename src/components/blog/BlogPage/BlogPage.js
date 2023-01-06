@@ -149,6 +149,8 @@ const BlogText = ({ title, settings }) => {
   );
 };
 
+const Socials = ({ settings }) => {};
+
 export const BlogPage = ({
   title,
   photoSource,

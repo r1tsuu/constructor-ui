@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { ColorsInjector } from "../../../containers/ColorsInjector";
-import { Button, ContentContainer, Modal, Typography } from "../../shared";
+import {
+  Button,
+  ContentContainer,
+  Fade,
+  Modal,
+  Typography,
+} from "../../shared";
 
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import { mediaQueries } from "../../../utils/constants";
@@ -11,6 +17,7 @@ import { resolvePaddings } from "../../../utils/resolvePaddings";
 import { useEnvironment } from "../../../contexts/EnvironmentContext";
 import { useSection } from "../../../contexts/SectionContext";
 import { CSSInjector } from "../../../containers/CSSInjector";
+import { useClickOutside } from "../../../hooks/useClickOutside";
 
 const MenuButton = ({ children, onClick, settings }) => {
   return (
@@ -55,11 +62,28 @@ export const Header = ({
   const [isMobileCallbackPopupOpened, setMobileCallbackPopupOpened] =
     useState(false);
   const [isMenuOpened, setMenuOpened] = useState(false);
+  const [visibleLanguagesMenu, setVisibleLanguagesMenu] = useState(false);
+  const languageSwitcherRef = useRef();
+
+  useClickOutside(languageSwitcherRef, () => {
+    if (visibleLanguagesMenu) setVisibleLanguagesMenu(false);
+  });
 
   const isMinLaptop = useMediaQuery(mediaQueries.minLaptop);
   const isMinTablet = useMediaQuery(mediaQueries.minTablet);
 
   const handleMenuOpen = () => setMenuOpened(true);
+
+  const handleShowLanguagesMenu = () => setVisibleLanguagesMenu(true);
+
+  const handleHideLanguagesMenu = () => setVisibleLanguagesMenu(false);
+
+  const handleToggleLanguagesMenu = () => {
+    if (true) {
+      if (visibleLanguagesMenu) setVisibleLanguagesMenu(false);
+      else setVisibleLanguagesMenu(true);
+    }
+  };
 
   const handleMobileCallbackPopupOpen = () =>
     setMobileCallbackPopupOpened(true);
@@ -99,6 +123,9 @@ export const Header = ({
     </div>
   );
 
+  const activeLanguage = languages.find((l) => l === currentLanguage);
+  const notActiveLanguages = languages.filter((l) => l !== activeLanguage);
+
   return (
     <>
       <CSSInjector css={css}>
@@ -137,25 +164,88 @@ export const Header = ({
                         />
                       </ColorsInjector>
                     </svg>
-                    {languages.map((code) => (
-                      <Typography
-                        key={code}
-                        as={"button"}
+                    <div
+                      style={{ position: "relative" }}
+                      className={styles.languageSwitcher}
+                      ref={languageSwitcherRef}
+                      data-selector="language-switcher"
+                      // onMouseEnter={handleShowLanguagesMenu}
+                      // onMouseLeave={handleHideLanguagesMenu}
+                    >
+                      <div
                         style={{
-                          textTransform: "uppercase",
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 3,
+                          cursor: "pointer",
                         }}
-                        className={styles.languageButton}
-                        {...settings.language}
-                        color={
-                          code === currentLanguage
-                            ? settings.language.color
-                            : settings.languageActiveColor
-                        }
-                        onClick={onLanguageChange.bind(null, code)}
+                        data-selector="language-switcher-active-arrow"
+                        onClick={handleToggleLanguagesMenu}
                       >
-                        {code}
-                      </Typography>
-                    ))}
+                        <Typography
+                          style={{
+                            textTransform: "uppercase",
+                            cursor: "pointer",
+                          }}
+                          as={"button"}
+                          color={settings.languageActiveColor}
+                          className={styles.languageButton}
+                          {...settings.language}
+                          data-is-active={true}
+                        >
+                          {activeLanguage}
+                        </Typography>
+                        <div
+                          data-selector="language-switcher-arrow"
+                          className={styles.arrowLanguage}
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="9"
+                            height="5"
+                            viewBox="0 0 9 5"
+                            fill="none"
+                            style={{
+                              rotate: visibleLanguagesMenu ? "180deg" : "",
+                              transition: "rotate 0.25s",
+                            }}
+                          >
+                            <path d="M1 1L4.5 4L8 1" stroke="#F5F5F5" />
+                          </svg>
+                        </div>
+                      </div>
+                      <Fade isActive={visibleLanguagesMenu}>
+                        <div
+                          data-selector="language-switcher-not-active"
+                          className={styles.notActiveLanguages}
+                        >
+                          {notActiveLanguages.map((code) => (
+                            <Typography
+                              key={code}
+                              as={"button"}
+                              style={{
+                                textTransform: "uppercase",
+                                cursor: "pointer",
+                              }}
+                              className={styles.languageButton}
+                              {...settings.language}
+                              color={
+                                code === currentLanguage
+                                  ? settings.language.color
+                                  : settings.languageActiveColor
+                              }
+                              onClick={() => {
+                                onLanguageChange(code);
+                                handleHideLanguagesMenu();
+                              }}
+                              data-is-active={false}
+                            >
+                              {code}
+                            </Typography>
+                          ))}
+                        </div>
+                      </Fade>
+                    </div>
                   </div>
                 )}
                 {isMinTablet && email && (
@@ -236,6 +326,8 @@ export const Header = ({
                   )}
                   <MenuButton onClick={handleMenuOpen} settings={settings}>
                     <svg
+                      width="48px"
+                      height="48px"
                       viewBox="0 0 50 50"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -320,10 +412,10 @@ export const Header = ({
         }
       >
         {menuPhoto && isMinLaptop && (
-          <div style={{ width: "50%" }}>
+          <div style={{ width: "50%", height: "100%" }}>
             <img
               src={menuPhoto}
-              style={{ width: "100%", height: "100%" }}
+              style={{ width: "100%", height: "100%", objectFit: "cover" }}
               alt=""
             />
           </div>
@@ -359,6 +451,7 @@ export const Header = ({
                     {Link ? (
                       <Link className={styles.link} href={link}>
                         <Typography
+                          onClick={handleMenuClose}
                           as="a"
                           data-selector="nav-link"
                           {...settings.menuLink}

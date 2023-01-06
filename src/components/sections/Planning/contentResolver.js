@@ -13,6 +13,7 @@ export const planningContentResolver = ({
   reserveLink,
   cssModal,
   defaultContent,
+  goToMarketLink,
   list,
   env,
 }) => {
@@ -28,6 +29,7 @@ export const planningContentResolver = ({
       details: static_details.value,
     },
     reserveLink: reserveLink.value,
+    goToMarketLink: goToMarketLink.value,
     rooms: list.data.map(({ _id, custom_fields, data_repeat_x2 }, index) => {
       return {
         _id,

@@ -110,7 +110,6 @@
   }
 
   &[data-is-textarea="true"] {
-    overflow: scroll;
     padding-top: 15px;
     height: calc(var(--input-height-calculated) + 35px);
   }

@@ -3,14 +3,6 @@
 .container {
   width: 100%;
   height: 88vh;
-
-  ::-webkit-scrollbar {
-    // height: 2px;
-    width: 2px;
-    height: 0;
-    width: 0;
-    background: #c5a57c;
-  }
 }
 
 .marker {
@@ -94,27 +86,28 @@
 .categoriesMobileContainer {
   position: absolute;
   bottom: 35px;
-  width: 100%;
+  width: 260px;
+  @media only screen and (min-width: 375px) {
+    width: 275px;
+  }
+
+  @include tablet {
+    width: 292px;
+  }
 }
 
 .categories {
-  max-width: 275px;
-  width: 100%;
   max-height: 250px;
   z-index: 2;
   overflow-y: auto;
+  width: 260px;
 
-  &::-webkit-scrollbar {
-    // height: 2px;
-    width: 2px;
-    background: var(--color-background);
-  }
-  &::-webkit-scrollbar-thumb {
-    background: #c5a57c;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-  }
   padding-bottom: 10px;
+
+  @media only screen and (min-width: 375px) {
+    width: 275px;
+    max-width: unset;
+  }
 
   @include tablet {
     max-width: unset;
@@ -185,7 +178,10 @@
   position: relative;
   z-index: 11;
   width: 100%;
-  max-width: 275px;
+  max-width: 260px;
+  @media only screen and (min-width: 375px) {
+    max-width: 275px;
+  }
   border-width: 1px;
   border-style: solid;
   display: flex;
@@ -201,7 +197,7 @@
   @include tablet {
     max-width: unset;
     height: 50px;
-    width: 290px;
+    width: 292px;
   }
 }
 
